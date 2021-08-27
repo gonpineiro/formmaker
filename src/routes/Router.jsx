@@ -1,6 +1,9 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import { Main, Layout } from "../components";
+import { getUserData } from "../utils";
+
+console.log(getUserData());
 
 const Router = () => {
   return (
