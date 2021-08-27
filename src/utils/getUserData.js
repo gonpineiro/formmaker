@@ -1,5 +1,14 @@
+import axios from "axios";
+
 const getUserData = () => {
-  return getData();
+  try {
+    return axios.get(
+      "https://weblogin.muninqn.gov.ar/api/getUserByToken/" +
+        getData().SESSIONKEY
+    );
+  } catch (error) {
+    alert(error); // catches both errors
+  }
 };
 
 const getData = () => {
