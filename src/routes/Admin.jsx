@@ -1,9 +1,10 @@
 import { Route } from "react-router-dom";
-import { Menu } from "../screens";
+import { Menu, Crear } from "../screens";
 
 const AdminRoute = () => (
   <>
-    <Route exact path="/apps/totems" component={Menu} />
+    <Route exact path="/apps/formulario" component={Menu} />
+    <Route exact path="/apps/formulario/crear" component={Crear} />
     <Route component={Menu} />
   </>
 );
