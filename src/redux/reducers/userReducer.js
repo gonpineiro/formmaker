@@ -2,7 +2,7 @@ import { TRAER_DATOS } from "../types/userTypes";
 
 const INITIAL_STATE = {
   datosPersonales: [],
-  userProfiles: "",
+  userProfiles: false,
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
