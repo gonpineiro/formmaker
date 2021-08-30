@@ -1,18 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { connect } from "react-redux";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import { Main, Layout } from "../components";
 
-import { getUserData } from "../utils";
+import * as userAction from "../redux/actions/userAction";
 
-const Router = () => {
-  const [userData, setUserData] = useState();
+const Router = ({ traerDatosSession, userReducer }) => {
   useEffect(() => {
-    getUserData().then(({ data }) => {
-      setUserData(data);
-    });
-  }, []);
-  console.log(userData);
+    traerDatosSession();
+  }, [traerDatosSession]);
+  console.log(userReducer);
+
   return (
     <BrowserRouter>
       <Layout>
@@ -25,4 +24,8 @@ const Router = () => {
   );
 };
 
-export default Router;
+const mapStateToProps = ({ userReducer }) => {
+  return { userReducer };
+};
+
+export default connect(mapStateToProps, userAction)(Router);
