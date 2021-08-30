@@ -1,0 +1,93 @@
+{
+  "id": 1,
+  "nombre": "nombre",
+  "description": "Esto es algo logo",
+  "banner": "Esto es una banner",
+  "terminosCondiciones": [
+    "required",
+    "texto"
+  ],
+  "inputs": [{
+      "orden": 1,
+      "type": "number",
+      "label": "algo",
+      "min_lenght": 10,
+      "max_lenght": 10,
+      "required": true,
+      "placeholder": "ejemplo"
+    },
+    {
+      "orden": 2,
+      "type": "text",
+      "label": "algo",
+      "min_lenght": 10,
+      "max_lenght": 10,
+      "required": false,
+      "placeholder": "ejemplo"
+    },
+    {
+      "orden": 3,
+      "type": "checkbox",
+      "label": "algo",
+      "min_lenght": 10,
+      "max_lenght": 10,
+      "required": false,
+      "placeholder": "ejemplo",
+      "opciones": [
+        "opcion1",
+        "opcion2",
+        "opcion3"
+      ]
+    },
+    {
+      "orden": 3,
+      "type": "radiobutton",
+      "label": "algo",
+      "min_lenght": 10,
+      "max_lenght": 10,
+      "required": false,
+      "placeholder": "ejemplo",
+      "opciones": [
+        "opcion1",
+        "opcion2",
+        "opcion3"
+      ]
+    },
+    {
+      "orden": 3,
+      "type": "select",
+      "label": "algo",
+      "min_lenght": 10,
+      "max_lenght": 10,
+      "required": false,
+      "placeholder": "ejemplo",
+      "descipcionSelect": "seleccione uno",
+      "opciones": [
+        "opcion1",
+        "opcion2",
+        "opcion3"
+      ]
+    },
+    {
+      "orden": 3,
+      "type": "date",
+      "label": "algo",
+      "min_lenght": 10,
+      "max_lenght": 10,
+      "required": false
+    },
+    {
+      "orden": 3,
+      "type": "file",
+      "label": "algo",
+      "size": "mb",
+      "required": false,
+      "tipos": [
+        "pdf",
+        "image"
+      ]
+    }
+  ]
+
+
+}
