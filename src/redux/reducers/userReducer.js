@@ -1,4 +1,4 @@
-import { APP_ID, ERROR_TOKEN } from "../../config/const";
+import { APP_ID, ERROR_TOKEN } from "../../config/config";
 import { TRAER_DATOS, VISITANTE } from "../types/userTypes";
 
 const INITIAL_STATE = {

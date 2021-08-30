@@ -2,7 +2,7 @@ import axios from "axios";
 import { getParams } from "../../utils";
 import { TRAER_DATOS, VISITANTE } from "../types/userTypes";
 
-import { URL_GET_TOKEN } from "../../config/const";
+import { URL_GET_TOKEN } from "../../config/config";
 
 export const traerDatosSession = () => async (dispatch) => {
   const sessionKey = getParams().SESSIONKEY;
