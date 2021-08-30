@@ -1,10 +1,10 @@
 import { Route } from "react-router-dom";
-import { Main } from "../components";
+import { Menu } from "../screens";
 
 const AdminRoute = () => (
   <>
-    <Route exact path="/apps/totems" component={Main} />
-    <Route component={Main} />
+    <Route exact path="/apps/totems" component={Menu} />
+    <Route component={Menu} />
   </>
 );
 

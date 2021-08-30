@@ -1,9 +1,9 @@
-import "./main.scss";
+import "./index.scss";
 
-const Main = () => {
+const Crear = () => {
   return (
     <div className="container">
-      <h2 className="titulo text-center">Seleccione el Tributo</h2>
+      <h2 className="titulo text-center">Admin</h2>
       <div className="row mt-5">
         <div className="col flex-row text-center"></div>
       </div>
@@ -11,4 +11,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Crear;

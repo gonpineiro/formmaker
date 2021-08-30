@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { BrowserRouter, Switch } from "react-router-dom";
 
-import { Layout } from "../components";
+import { Layout } from "../screens";
 import { useMount } from "../hooks";
 
 import AdminRoute from "./Admin";
@@ -14,7 +14,7 @@ const Router = ({ traerDatosSession, userReducer: { userProfiles } }) => {
 
   if (!userProfiles) return "loading";
 
-  const isAdmin = userProfiles === "2" ? true : false;
+  const isAdmin = userProfiles === "3" ? true : false;
 
   return (
     <BrowserRouter>
