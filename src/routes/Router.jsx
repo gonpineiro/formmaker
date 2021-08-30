@@ -1,24 +1,25 @@
-import { useEffect } from "react";
 import { connect } from "react-redux";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch } from "react-router-dom";
 
-import { Main, Layout } from "../components";
+import { Layout } from "../components";
+import { useMount } from "../hooks";
+
+import AdminRoute from "./Admin";
+import UserRoute from "./User";
 
 import * as userAction from "../redux/actions/userAction";
 
-const Router = ({ traerDatosSession, userReducer }) => {
-  useEffect(() => {
-    traerDatosSession();
-  }, [traerDatosSession]);
-  console.log(userReducer);
+const Router = ({ traerDatosSession, userReducer: { userProfiles } }) => {
+  useMount(traerDatosSession);
+
+  if (!userProfiles) return "loading";
+
+  const isAdmin = userProfiles === "2" ? true : false;
 
   return (
     <BrowserRouter>
       <Layout>
-        <Switch>
-          <Route exact path="/apps/totems" component={Main} />
-          <Route component={Main} />
-        </Switch>
+        <Switch>{isAdmin ? <AdminRoute /> : <UserRoute />}</Switch>
       </Layout>
     </BrowserRouter>
   );
