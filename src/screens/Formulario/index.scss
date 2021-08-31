@@ -3,24 +3,20 @@
 }
 .form-control::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #1299d6;
-  opacity: 0.5; /* Firefox */
+  color: #0d4c69;
+  opacity: 0.7; /* Firefox */
 }
 
 .form-control:-ms-input-placeholder {
   /* Internet Explorer 10-11 */
-  color: #1299d6;
+  color: #0d4c69;
+  opacity: 0.7; /* Firefox */
 }
 
 .form-control::-ms-input-placeholder {
   /* Microsoft Edge */
-  color: #1299d6;
-}
-.ui-keyboard {
-  top: auto;
-  bottom: 20px;
-  left: 50%; /* position the left edge of the element at the middle of the parent */
-  transform: translate(-50%, 0);
+  color: #0d4c69;
+  opacity: 0.7; /* Firefox */
 }
 
 .btn-salir {
@@ -70,6 +66,6 @@
 .btn-icono {
   width: 60px;
 }
-.titulo{
-  color: #1067AE;
+.titulo {
+  color: #1067ae;
 }
