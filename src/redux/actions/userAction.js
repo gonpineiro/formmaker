@@ -1,4 +1,3 @@
-import axios from "axios";
 import { getParams } from "../../utils";
 import { TRAER_DATOS, VISITANTE } from "../types/userTypes";
 
@@ -8,12 +7,12 @@ export const traerDatosSession = () => async (dispatch) => {
   const sessionKey = getParams().SESSIONKEY;
 
   if (sessionKey) {
-    console.log(getParams().SESSIONKEY);
-    axios.get(URL_GET_TOKEN + getParams().SESSIONKEY).then((res) => {
-      dispatch({
-        type: TRAER_DATOS,
-        payload: res.data,
-      });
+    const response = await fetch(URL_GET_TOKEN + getParams().SESSIONKEY);
+    const data = await response.json();
+    console.log(data);
+    dispatch({
+      type: TRAER_DATOS,
+      payload: data,
     });
   } else {
     dispatch({
