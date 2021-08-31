@@ -6,16 +6,23 @@ import { FormContext } from "../FormContext";
 
 const Formulario = () => {
   const [elements, setElements] = useState(null);
+
   useEffect(() => {
+    formJSON[0].fields = formJSON[0].fields.sort(
+      (a, b) => a.field_order - b.field_order
+    );
     setElements(formJSON[0]);
-  }, []);
+  }, [elements]);
+
   const { banner, description, fields, terminosCondiciones, nombre } =
     elements ?? {};
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
     console.log(elements);
   };
+
   const handleChange = (id, event) => {
     const newElements = { ...elements };
     newElements.fields.forEach((field) => {
@@ -27,6 +34,7 @@ const Formulario = () => {
     });
     console.log(elements);
   };
+
   return (
     <FormContext.Provider value={{ handleChange }}>
       <div className="App container">

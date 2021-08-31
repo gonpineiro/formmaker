@@ -2,16 +2,19 @@ import { connect } from "react-redux";
 import { BrowserRouter, Switch } from "react-router-dom";
 
 import { Layout } from "../screens";
-import { useMount } from "../hooks";
 
 import AdminRoute from "./Admin";
 import UserRoute from "./User";
 
 import * as userAction from "../redux/actions/userAction";
+import { useEffect } from "react";
 
 const Router = ({ traerDatosSession, userReducer }) => {
   const { isAdmin, error, loading } = userReducer;
-  useMount(traerDatosSession);
+
+  useEffect(() => {
+    traerDatosSession();
+  }, [traerDatosSession]);
 
   if (loading) return "Loading";
 
