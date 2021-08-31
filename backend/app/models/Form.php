@@ -4,7 +4,7 @@
  * This is the model class for table "Formulario".
  *
  * @property int $id_usuario
- * @property int $formulario
+ * @property int $string
  * @property int $estado
  * @property string $deleted_at
  * 
@@ -12,22 +12,22 @@
 class Form
 {
     public $id_usuario;
-    public $formulario;
+    public $string;
     public $estado;
     public $deleted_at;
 
     public function __construct()
     {
         $this->id_usuario = "";
-        $this->formulario = "";
+        $this->string = "";
         $this->estado = "";
         $this->deleted_at = "";
     }
 
-    public function set($id_usuario = null, $formulario = null, $estado = null, $deleted_at = null)
+    public function set($id_usuario = null, $string = null, $estado = null, $deleted_at = null)
     {
         $this->id_usuario = $id_usuario;
-        $this->formulario = $formulario;
+        $this->string = $string;
         $this->estado = $estado;
         $this->deleted_at = $deleted_at;
     }

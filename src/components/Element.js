@@ -11,8 +11,10 @@ const Element = ({
     field_placeholder,
     field_value,
     field_options,
+    field_class,
   },
 }) => {
+  console.log(field_class);
   switch (field_type) {
     case "text":
       return (
@@ -22,6 +24,7 @@ const Element = ({
           field_placeholder={field_placeholder}
           field_value={field_value}
           field_required={field_required}
+          field_class={field_class}
         />
       );
     case "textArea":

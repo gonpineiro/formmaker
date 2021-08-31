@@ -6,13 +6,10 @@ header('Access-Control-Allow-Headers: application/json');
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
 
 
-if (isset($_POST['formulario'])) {
+if (isset($_POST['formulario']) && $_POST['token'] === TOKEN) {
     $formController = new FormController();
     $formController->store($_POST['formulario']);
     echo json_encode($_POST['formulario'], true);
 }
 
-
-
 exit();
-verEstructura($_POST);

@@ -21,6 +21,9 @@ define('PROD', $_ENV['PROD'] == 'true' ? true : false);
 /* AppID */
 define('APPID', PROD ? 53 : 55);
 
+/* Token de seguridad */
+define('TOKEN', $_ENV['TOKEN']);
+
 /* Configuracion de URLs */
 define('WEBLOGIN', PROD ? 'https://weblogin.muninqn.gov.ar' : 'http://200.85.183.194:90');
 

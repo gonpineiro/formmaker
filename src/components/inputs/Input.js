@@ -7,6 +7,7 @@ const Input = ({
   field_placeholder,
   field_required,
   field_value,
+  field_class,
 }) => {
   const { handleChange } = useContext(FormContext);
   return (
@@ -16,7 +17,7 @@ const Input = ({
       </label>
       <input
         type="text"
-        className="form-control"
+        className={"form-control " + field_class}
         id={"id" + field_id}
         aria-describedby={field_id + "Help"}
         placeholder={field_placeholder ? field_placeholder : ""}

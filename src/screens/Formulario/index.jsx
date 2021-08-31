@@ -19,8 +19,22 @@ const Formulario = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const fields = elements.fields;
+    let sendPost = true;
 
-    console.log(elements);
+    fields.forEach((req) => {
+      if (req.field_value === "" && req.field_required === "required") {
+        document
+          .getElementById("id" + req.field_id)
+          .classList.add("is-invalid");
+        sendPost = false;
+      }
+    });
+
+    if (sendPost) {
+      /* Enviamoos los datos */
+    }
+
   };
 
   const handleChange = (id, event) => {
@@ -32,9 +46,10 @@ const Formulario = () => {
       }
       setElements(newElements);
     });
-    console.log(elements);
+    //console.log(elements);
   };
 
+  console.log("elements");
   return (
     <FormContext.Provider value={{ handleChange }}>
       <div className="App container">
