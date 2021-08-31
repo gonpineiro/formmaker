@@ -10,9 +10,8 @@ import UserRoute from "./User";
 import * as userAction from "../redux/actions/userAction";
 
 const Router = ({ traerDatosSession, userReducer }) => {
-  const { isAdmin, datosPersonales, error, loading } = userReducer;
+  const { isAdmin, error, loading } = userReducer;
   useMount(traerDatosSession);
-  console.log(datosPersonales);
 
   if (loading) return "Loading";
 
