@@ -16,6 +16,7 @@ const Select = ({
         className="form-select"
         aria-label="Default select example"
         onChange={(event) => handleChange(field_id, event)}
+        id={"id" + field_id}
       >
         <option>Elegir opción</option>
         {field_options.length > 0 &&

@@ -2,7 +2,7 @@ import "./index.scss";
 import { useState, useEffect } from "react";
 import Element from "../../components/Element";
 import { FormContext } from "../FormContext";
-import { getForm } from "../../utils";
+import { getForm, className } from "../../utils";
 
 const Formulario = () => {
   const [elements, setElements] = useState(null);
@@ -30,15 +30,15 @@ const Formulario = () => {
 
     fields.forEach((req) => {
       if (req.field_value === "" && req.field_required === "required") {
-        document
-          .getElementById("id" + req.field_id)
-          .classList.add("is-invalid");
+        className("id" + req.field_id, "is-invalid", "add");
         sendPost = false;
+      } else {
+        className("id" + req.field_id, "is-invalid", "remove");
       }
     });
 
     if (sendPost) {
-      /* Enviamoos los datos */
+      console.log("Post");
     }
   };
 
