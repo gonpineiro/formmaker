@@ -8,20 +8,11 @@ import UserRoute from "./User";
 
 import * as userAction from "../redux/actions/userAction";
 import { useEffect } from "react";
-import { postData } from "../utils";
 
 const Router = ({ traerDatosSession, userReducer }) => {
   const { isAdmin, error, loading } = userReducer;
 
   useEffect(() => {
-    const data = {
-      formulario:{
-        id: 1,
-        string: "esto es una formulario",
-        estado: "nuevo"
-      }
-    }
-    postData(data)
     traerDatosSession();
   }, [traerDatosSession]);
 

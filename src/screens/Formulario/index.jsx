@@ -1,18 +1,24 @@
 import "./index.scss";
-import formJSON from "../../formElement.json";
 import { useState, useEffect } from "react";
 import Element from "../../components/Element";
 import { FormContext } from "../FormContext";
+import { getForm } from "../../utils";
 
 const Formulario = () => {
   const [elements, setElements] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const getFormaData = async () => {
+    const formData = await getForm(1);
+    const json = JSON.parse(formData.string);
+    json.fields = json.fields.sort((a, b) => a.field_order - b.field_order);
+    setElements(json);
+    setLoading(false);
+  };
 
   useEffect(() => {
-    formJSON[0].fields = formJSON[0].fields.sort(
-      (a, b) => a.field_order - b.field_order
-    );
-    setElements(formJSON[0]);
-  }, [elements]);
+    getFormaData();
+  }, []);
 
   const { banner, description, fields, terminosCondiciones, nombre } =
     elements ?? {};
@@ -34,7 +40,6 @@ const Formulario = () => {
     if (sendPost) {
       /* Enviamoos los datos */
     }
-
   };
 
   const handleChange = (id, event) => {
@@ -49,7 +54,8 @@ const Formulario = () => {
     //console.log(elements);
   };
 
-  console.log("elements");
+  if (loading) return "Loading";
+
   return (
     <FormContext.Provider value={{ handleChange }}>
       <div className="App container">

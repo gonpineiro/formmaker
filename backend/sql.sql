@@ -1,7 +1,7 @@
 CREATE TABLE formmaker_formulario (
   id int NOT NULL IDENTITY(1, 1) PRIMARY KEY,
   id_usuario INT NULL,
-  string VARCHAR(50) NULL,
+  string VARCHAR(4000) NULL,
   estado VARCHAR(50) NULL,
   deleted_at VARCHAR(45) NULL,
   fecha_alta DATETIME DEFAULT GETDATE()
