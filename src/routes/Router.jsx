@@ -1,13 +1,11 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import { BrowserRouter, Switch } from "react-router-dom";
+import { Route } from "react-router-dom";
 
-import { Layout } from "../screens";
-
-import AdminRoute from "./Admin";
-import UserRoute from "./User";
+import { Menu, Crear, Gestionar, Formulario } from "../screens";
 
 import * as userAction from "../redux/actions/userAction";
+import RouterLayout from "./RouterLayout";
 
 const Router = ({ traerDatosSession, userReducer }) => {
   const { isAdmin, error, loading } = userReducer;
@@ -19,12 +17,23 @@ const Router = ({ traerDatosSession, userReducer }) => {
   if (loading) return "Loading";
 
   if (error) return error;
+
+  if (isAdmin) {
+    return (
+      <RouterLayout>
+        <Route exact path="/apps/formulario/menu" component={Menu} />
+        <Route exact path="/apps/formulario/crear" component={Crear} />
+        <Route exact path="/apps/formulario/gestionar" component={Gestionar} />
+        <Route component={Menu} />
+      </RouterLayout>
+    );
+  }
+
   return (
-    <BrowserRouter>
-      <Layout>
-        <Switch>{isAdmin ? <AdminRoute /> : <UserRoute />}</Switch>
-      </Layout>
-    </BrowserRouter>
+    <RouterLayout>
+      <Route exact path="/apps/formulario/" component={Formulario} />
+      <Route component={Formulario} />
+    </RouterLayout>
   );
 };
 
