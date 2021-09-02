@@ -1,7 +1,13 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { replaceUrl } from "../../utils";
 import "./index.scss";
 
 const Menu = () => {
+  useEffect(() => {
+    replaceUrl("/apps/formulario/menu");
+  });
+
   return (
     <div className="container">
       <h2 className="titulo text-center">Menu</h2>

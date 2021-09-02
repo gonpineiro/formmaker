@@ -7,17 +7,28 @@ export const traerDatosSession = () => async (dispatch) => {
   const sessionKey = getParams().SESSIONKEY;
 
   if (sessionKey) {
-    const response = await fetch(URL_GET_TOKEN + getParams().SESSIONKEY);
-    const data = await response.json();
-    console.log(data);
+    const response = await fetch(URL_GET_TOKEN + sessionKey);
+    const datosPersonales = await response.json();
+
+    const data = {
+      sessionKey,
+      datosPersonales,
+      idForm: getParams().idForm,
+    };
+
     dispatch({
       type: TRAER_DATOS,
       payload: data,
     });
   } else {
+    const data = {
+      idForm: getParams().idForm,
+      idAdmin: false,
+    };
+
     dispatch({
       type: VISITANTE,
-      payload: false,
+      payload: data,
     });
   }
 };

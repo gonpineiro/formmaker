@@ -1,23 +1,39 @@
-import "./index.scss";
 import { useState, useEffect } from "react";
+/* import { useHistory } from "react-router-dom"; */
+import { connect } from "react-redux";
+
 import Element from "../../components/Element";
 import { FormContext } from "../FormContext";
-import { getForm, className } from "../../utils";
+import { getForm, className, replaceUrl } from "../../utils";
 
-const Formulario = () => {
-  const [elements, setElements] = useState(null);
-  const [loading, setLoading] = useState(true);
+import "./index.scss";
 
-  const getFormaData = async () => {
-    const formData = await getForm(1);
+const getFormaData = async (setElements, setLoading, idForm) => {
+  const formData = await getForm(idForm);
+  if (!formData.error) {
     const json = JSON.parse(formData.string);
     json.fields = json.fields.sort((a, b) => a.field_order - b.field_order);
     setElements(json);
-    setLoading(false);
-  };
+  } else {
+    setElements(undefined);
+  }
+  setLoading(false);
+};
+
+const Formulario = ({ userReducer: { idForm } }) => {
+  /* const history = useHistory(); */
+  const [elements, setElements] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getFormaData();
+    replaceUrl("/apps/formulario/");
+    if (!idForm) {
+      /* Enviamos a un screen 404 */
+      setLoading(false);
+    } else {
+      getFormaData(setElements, setLoading, idForm);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { banner, description, fields, terminosCondiciones, nombre } =
@@ -51,10 +67,11 @@ const Formulario = () => {
       }
       setElements(newElements);
     });
-    //console.log(elements);
   };
 
   if (loading) return "Loading";
+
+  if (!elements) return "404";
 
   return (
     <FormContext.Provider value={{ handleChange }}>
@@ -88,4 +105,8 @@ const Formulario = () => {
   );
 };
 
-export default Formulario;
+const mapStateToProps = ({ userReducer }) => {
+  return { userReducer };
+};
+
+export default connect(mapStateToProps, null)(Formulario);

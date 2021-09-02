@@ -14,7 +14,6 @@ const Element = ({
     field_class,
   },
 }) => {
-  console.log(field_class);
   switch (field_type) {
     case "text":
       return (

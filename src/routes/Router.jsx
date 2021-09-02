@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter, Switch } from "react-router-dom";
 
@@ -7,7 +8,6 @@ import AdminRoute from "./Admin";
 import UserRoute from "./User";
 
 import * as userAction from "../redux/actions/userAction";
-import { useEffect } from "react";
 
 const Router = ({ traerDatosSession, userReducer }) => {
   const { isAdmin, error, loading } = userReducer;
@@ -19,7 +19,6 @@ const Router = ({ traerDatosSession, userReducer }) => {
   if (loading) return "Loading";
 
   if (error) return error;
-
   return (
     <BrowserRouter>
       <Layout>
