@@ -1,7 +1,7 @@
 const TabForm = () => {
   return (
     <>
-      <h4 className="mb-">Elegir Campos</h4>
+      <h4 className="mb-3">Elegir Campos</h4>
       <div class="accordion" id="accordionFieldType">
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">
