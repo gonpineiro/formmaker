@@ -2,10 +2,10 @@ import React from "react";
 
 const FieldNumber = () => {
   return (
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingTwo">
+    <div className="accordion-item">
+      <h2 className="accordion-header" id="headingTwo">
         <button
-          class="accordion-button collapsed"
+          className="accordion-button collapsed"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#collapseTwo"
@@ -17,37 +17,37 @@ const FieldNumber = () => {
       </h2>
       <div
         id="collapseTwo"
-        class="accordion-collapse collapse"
+        className="accordion-collapse collapse"
         aria-labelledby="headingTwo"
         data-bs-parent="#accordionFieldType"
       >
-        <div class="accordion-body">
-          <div class="mb-3">
-            <label for="number_field_label" class="form-label">
+        <div className="accordion-body">
+          <div className="mb-3">
+            <label htmlFor="number_field_label" className="form-label">
               Etiqueta
             </label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="number_field_label"
               placeholder="Ej: Número de mascotas"
             />
           </div>
-          <div class="mb-3">
-            <div class="form-check">
+          <div className="mb-3">
+            <div className="form-check">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="checkbox"
                 value=""
                 id="number_field_required"
               />
-              <label class="form-check-label" for="number_field_required">
+              <label className="form-check-label" htmlFor="number_field_required">
                 ¿Es requerido?
               </label>
             </div>
           </div>
-          <div class="col-auto">
-            <button id="addNumber" type="submit" class="btn btn-primary mb-3">
+          <div className="col-auto">
+            <button id="addNumber" type="submit" className="btn btn-primary mb-3">
               Agregar campo
             </button>
           </div>

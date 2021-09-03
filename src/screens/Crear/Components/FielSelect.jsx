@@ -2,10 +2,10 @@ import React from "react";
 
 const FielSelect = () => {
   return (
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingThree">
+    <div className="accordion-item">
+      <h2 className="accordion-header" id="headingThree">
         <button
-          class="accordion-button collapsed"
+          className="accordion-button collapsed"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#collapseThree"
@@ -17,48 +17,48 @@ const FielSelect = () => {
       </h2>
       <div
         id="collapseThree"
-        class="accordion-collapse collapse"
+        className="accordion-collapse collapse"
         aria-labelledby="headingThree"
         data-bs-parent="#accordionFieldType"
       >
-        <div class="accordion-body">
-          <div class="mb-3">
-            <label for="select_field_label" class="form-label">
+        <div className="accordion-body">
+          <div className="mb-3">
+            <label htmlFor="select_field_label" className="form-label">
               Etiqueta
             </label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="select_field_label"
               placeholder="Ej: Selecciones su tipo de vivienda"
             />
           </div>
-          <div class="mb-3">
-            <label for="select_field_options" class="form-label">
+          <div className="mb-3">
+            <label htmlFor="select_field_options" className="form-label">
               Escriba las opciones separadas por ;
             </label>
             <textarea
-              class="form-control"
+              className="form-control"
               id="select_field_options"
               rows="3"
               placeholder="Ej: casa; departamento; casa rodante;"
             ></textarea>
           </div>
-          <div class="mb-3">
-            <div class="form-check">
+          <div className="mb-3">
+            <div className="form-check">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="checkbox"
                 value=""
                 id="flexCheckChecked"
               />
-              <label class="form-check-label" for="flexCheckChecked">
+              <label className="form-check-label" htmlFor="flexCheckChecked">
                 ¿Es requerido?
               </label>
             </div>
           </div>
-          <div class="col-auto">
-            <button id="addSelect" type="submit" class="btn btn-primary mb-3">
+          <div className="col-auto">
+            <button id="addSelect" type="submit" className="btn btn-primary mb-3">
               Agregar campo
             </button>
           </div>

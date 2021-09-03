@@ -1,11 +1,17 @@
 import React from "react";
 
-const FieldText = () => {
+const FieldText = ({ handlers, field: { type, required } }) => {
+  const {
+    handlerTextFieldChange,
+    handlerTypeFieldChange,
+    handlerRequiredFieldChange,
+  } = handlers;
+
   return (
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingOne">
+    <div className="accordion-item">
+      <h2 className="accordion-header" id="headingOne">
         <button
-          class="accordion-button"
+          className="accordion-button"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#collapseOne"
@@ -17,53 +23,55 @@ const FieldText = () => {
       </h2>
       <div
         id="collapseOne"
-        class="accordion-collapse collapse show"
+        className="accordion-collapse collapse show"
         aria-labelledby="headingOne"
         data-bs-parent="#accordionFieldType"
       >
-        <div class="accordion-body">
-          <div class="mb-3">
-            <label for="text_field_label" class="form-label">
+        <div className="accordion-body">
+          <div className="mb-3">
+            <label htmlFor="text_field_label" className="form-label">
               Etiqueta
             </label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="text_field_label"
+              onChange={handlerTextFieldChange}
               placeholder="Ej: Nombre mascota, escriba su email, descripción de su vivienda"
             />
           </div>
-          <div class="mb-3">
-            <label for="text_field_type" class="form-label">
+          <div className="mb-3">
+            <label htmlFor="text_field_type" className="form-label">
               Elegir tipo
             </label>
             <select
               id="text_field_type"
-              class="form-select"
+              className="form-select"
               aria-label="Default select example"
+              onChange={handlerTypeFieldChange}
+              value={type}
             >
-              <option value="type_text" selected>
-                Texto
-              </option>
+              <option value="type_text">Texto</option>
               <option value="type_textarea">Párrafo</option>
               <option value="type_email">Email</option>
             </select>
           </div>
-          <div class="mb-3">
-            <div class="form-check">
+          <div className="mb-3">
+            <div className="form-check">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="checkbox"
-                value=""
+                checked={required}
+                onChange={handlerRequiredFieldChange}
                 id="text_field_required"
               />
-              <label class="form-check-label" for="text_field_required">
+              <label className="form-check-label" htmlFor="text_field_required">
                 ¿Es un campo requerido?
               </label>
             </div>
           </div>
-          <div class="col-auto">
-            <button id="addText" type="submit" class="btn btn-primary mb-3">
+          <div className="col-auto">
+            <button id="addText" type="submit" className="btn btn-primary mb-3">
               Agregar campo
             </button>
           </div>
