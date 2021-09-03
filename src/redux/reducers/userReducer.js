@@ -15,7 +15,7 @@ export default (state = INITIAL_STATE, action) => {
 
   switch (action.type) {
     case TRAER_DATOS:
-      if (payload.error === ERROR_TOKEN) {
+      if (payload.datosPersonales.error === ERROR_TOKEN) {
         return {
           ...state,
           loading: false,
