@@ -34,6 +34,28 @@ const FieldNumber = () => {
             />
           </div>
           <div class="mb-3">
+            <label for="min_number_field_label" class="form-label">
+              Mínimo
+            </label>
+            <input
+              type="number"
+              class="form-control"
+              id="min_number_field_label"
+              placeholder="Ej: 5"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="max_number_field_label" class="form-label">
+              Máximo
+            </label>
+            <input
+              type="number"
+              class="form-control"
+              id="max_number_field_label"
+              placeholder="Ej: 50"
+            />
+          </div>
+          <div class="mb-3">
             <div class="form-check">
               <input
                 class="form-check-input"
