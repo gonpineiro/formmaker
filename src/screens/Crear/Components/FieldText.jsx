@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 
-const FieldText = ({ handlers, field: { type, required } }) => {
-  const {
-    handlerTextFieldChange,
-    handlerTypeFieldChange,
-    handlerRequiredFieldChange,
-  } = handlers;
+const FieldText = () => {
+  const [field, setField] = useState({ required: true, type: "type_text" });
+
+  const handlerTextFieldChange = ({ target: { value } }) => {
+    setField({
+      ...field,
+      textField: value,
+    });
+  };
+
+  const handlerRequiredFieldChange = () => {
+    setField({
+      ...field,
+      required: !field.required,
+    });
+  };
+  const handlerTypeFieldChange = ({ target: { value } }) => {
+    setField({
+      ...field,
+      type: value,
+    });
+  };
 
   return (
     <div className="accordion-item">
@@ -49,7 +65,7 @@ const FieldText = ({ handlers, field: { type, required } }) => {
               className="form-select"
               aria-label="Default select example"
               onChange={handlerTypeFieldChange}
-              value={type}
+              value={field.type}
             >
               <option value="type_text">Texto</option>
               <option value="type_textarea">Párrafo</option>
@@ -83,7 +99,7 @@ const FieldText = ({ handlers, field: { type, required } }) => {
               <input
                 className="form-check-input"
                 type="checkbox"
-                checked={required}
+                checked={field.required}
                 onChange={handlerRequiredFieldChange}
                 id="text_field_required"
               />
