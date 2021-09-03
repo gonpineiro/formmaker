@@ -43,11 +43,11 @@ const TabForm = () => {
                   class="form-select"
                   aria-label="Default select example"
                 >
-                  <option value="text" selected>
+                  <option value="type_text" selected>
                     Texto
                   </option>
-                  <option value="textarea">Párrafo</option>
-                  <option value="email">Email</option>
+                  <option value="type_textarea">Párrafo</option>
+                  <option value="type_email">Email</option>
                 </select>
               </div>
               <div class="mb-3">
