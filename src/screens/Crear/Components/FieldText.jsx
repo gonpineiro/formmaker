@@ -3,20 +3,20 @@ import React, { useState } from "react";
 const FieldText = () => {
   const [field, setField] = useState({ required: true, type: "type_text" });
 
-  const handlerTextFieldChange = ({ target: { value } }) => {
+  const handlerTextChange = ({ target: { value } }) => {
     setField({
       ...field,
       textField: value,
     });
   };
 
-  const handlerRequiredFieldChange = () => {
+  const handlerRequiredChange = () => {
     setField({
       ...field,
       required: !field.required,
     });
   };
-  const handlerTypeFieldChange = ({ target: { value } }) => {
+  const handlerTypeChange = ({ target: { value } }) => {
     setField({
       ...field,
       type: value,
@@ -52,7 +52,7 @@ const FieldText = () => {
               type="text"
               className="form-control"
               id="text_field_label"
-              onChange={handlerTextFieldChange}
+              onChange={handlerTextChange}
               placeholder="Ej: Nombre mascota, escriba su email, descripción de su vivienda"
             />
           </div>
@@ -64,7 +64,7 @@ const FieldText = () => {
               id="text_field_type"
               className="form-select"
               aria-label="Default select example"
-              onChange={handlerTypeFieldChange}
+              onChange={handlerTypeChange}
               value={field.type}
             >
               <option value="type_text">Texto</option>
@@ -100,7 +100,7 @@ const FieldText = () => {
                 className="form-check-input"
                 type="checkbox"
                 checked={field.required}
-                onChange={handlerRequiredFieldChange}
+                onChange={handlerRequiredChange}
                 id="text_field_required"
               />
               <label className="form-check-label" htmlFor="text_field_required">
