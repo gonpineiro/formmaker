@@ -1,6 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 
 const FieldNumber = () => {
+  const [field, setField] = useState({ required: true });
+
+  const handlerTextChange = ({ target: { value } }) => {
+    setField({
+      ...field,
+      textField: value,
+    });
+  };
+
+  const handlerRequiredChange = () => {
+    setField({
+      ...field,
+      required: !field.required,
+    });
+  };
+
+  const handlerMaxCharChange = ({ target: { value } }) => {
+    setField({
+      ...field,
+      max: value,
+    });
+  };
+
+  const handlerMinCharChange = ({ target: { value } }) => {
+    setField({
+      ...field,
+      min: value,
+    });
+  };
+
   return (
     <div className="accordion-item">
       <h2 className="accordion-header" id="headingTwo">
@@ -31,6 +61,7 @@ const FieldNumber = () => {
               className="form-control"
               id="number_field_label"
               placeholder="Ej: Número de mascotas"
+              onChange={handlerTextChange}
             />
           </div>
           <div className="mb-3">
@@ -41,6 +72,7 @@ const FieldNumber = () => {
               type="number"
               className="form-control"
               id="min_number_field_label"
+              onChange={handlerMinCharChange}
               placeholder="Ej: 5"
             />
           </div>
@@ -52,6 +84,7 @@ const FieldNumber = () => {
               type="number"
               className="form-control"
               id="max_number_field_label"
+              onChange={handlerMaxCharChange}
               placeholder="Ej: 50"
             />
           </div>
@@ -60,16 +93,24 @@ const FieldNumber = () => {
               <input
                 className="form-check-input"
                 type="checkbox"
-                value=""
+                checked={field.required}
+                onChange={handlerRequiredChange}
                 id="number_field_required"
               />
-              <label className="form-check-label" htmlFor="number_field_required">
-                ¿Es requerido?
+              <label
+                className="form-check-label"
+                htmlFor="number_field_required"
+              >
+                ¿Es un campo requerido?
               </label>
             </div>
           </div>
           <div className="col-auto">
-            <button id="addNumber" type="submit" className="btn btn-primary mb-3">
+            <button
+              id="addNumber"
+              type="submit"
+              className="btn btn-primary mb-3"
+            >
               Agregar campo
             </button>
           </div>
