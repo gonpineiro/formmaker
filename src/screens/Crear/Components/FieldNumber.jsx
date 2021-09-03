@@ -33,30 +33,30 @@ const FieldNumber = () => {
               placeholder="Ej: Número de mascotas"
             />
           </div>
-          <div class="mb-3">
-            <label for="min_number_field_label" class="form-label">
+          <div className="mb-3">
+            <label htmlFor="min_number_field_label" className="form-label">
               Mínimo
             </label>
             <input
               type="number"
-              class="form-control"
+              className="form-control"
               id="min_number_field_label"
               placeholder="Ej: 5"
             />
           </div>
-          <div class="mb-3">
-            <label for="max_number_field_label" class="form-label">
+          <div className="mb-3">
+            <label htmlFor="max_number_field_label" className="form-label">
               Máximo
             </label>
             <input
               type="number"
-              class="form-control"
+              className="form-control"
               id="max_number_field_label"
               placeholder="Ej: 50"
             />
           </div>
-          <div class="mb-3">
-            <div class="form-check">
+          <div className="mb-3">
+            <div className="form-check">
               <input
                 className="form-check-input"
                 type="checkbox"
