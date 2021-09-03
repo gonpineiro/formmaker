@@ -56,8 +56,30 @@ const FieldText = ({ handlers, field: { type, required } }) => {
               <option value="type_email">Email</option>
             </select>
           </div>
-          <div className="mb-3">
-            <div className="form-check">
+          <div class="mb-3">
+            <label for="min_text_field_type" class="form-label">
+              Mínimo caracteres
+            </label>
+            <input
+              type="number"
+              class="form-control"
+              id="min_text_field_type"
+              placeholder="Ej: 5"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="max_text_field_type" class="form-label">
+              Máximo caracteres
+            </label>
+            <input
+              type="number"
+              class="form-control"
+              id="max_text_field_type"
+              placeholder="Ej: 50"
+            />
+          </div>
+          <div class="mb-3">
+            <div class="form-check">
               <input
                 className="form-check-input"
                 type="checkbox"
