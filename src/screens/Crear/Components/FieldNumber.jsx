@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const FieldNumber = () => {
   const [field, setField] = useState({ required: true });

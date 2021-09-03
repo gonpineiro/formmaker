@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const FieldText = () => {
   const [field, setField] = useState({ required: true, type: "type_text" });
@@ -94,7 +94,7 @@ const FieldText = () => {
               type="number"
               className="form-control"
               id="min_text_field_type"
-              onChange={handlerMaxCharChange}
+              onChange={handlerMinCharChange}
               placeholder="Ej: 5"
             />
           </div>
@@ -106,7 +106,7 @@ const FieldText = () => {
               type="number"
               className="form-control"
               id="max_text_field_type"
-              onChange={handlerMinCharChange}
+              onChange={handlerMaxCharChange}
               placeholder="Ej: 50"
             />
           </div>

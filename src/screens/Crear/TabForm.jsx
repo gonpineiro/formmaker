@@ -1,4 +1,4 @@
-import { FieldText, FieldNumber, FielSelect } from "./Components";
+import { FieldText, FieldNumber, FieldSelect } from "./Components";
 
 const TabForm = () => {
   return (
@@ -7,7 +7,7 @@ const TabForm = () => {
       <div className="accordion" id="accordionFieldType">
         <FieldText />
         <FieldNumber />
-        <FielSelect />
+        <FieldSelect />
       </div>
     </>
   );
