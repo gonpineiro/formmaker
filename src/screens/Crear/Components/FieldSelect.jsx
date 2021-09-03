@@ -1,7 +1,15 @@
 import { useState } from "react";
 
-const FieldSelect = () => {
+const FieldSelect = ({ formulario, setFormulario }) => {
   const [field, setField] = useState({ required: true });
+
+  const handlerSubmit = () => {
+    let inputs = formulario.input;
+    inputs.push(field);
+    setFormulario({
+      ...formulario,
+    });
+  };
 
   const handlerTextChange = ({ target: { value } }) => {
     setField({
@@ -87,6 +95,7 @@ const FieldSelect = () => {
             <button
               id="addSelect"
               type="submit"
+              onClick={handlerSubmit}
               className="btn btn-primary mb-3"
             >
               Agregar campo

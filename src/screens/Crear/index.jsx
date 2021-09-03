@@ -1,8 +1,10 @@
 import InfoCards from "./InfoCards";
 import { FieldText, FieldNumber, FieldSelect } from "./Components";
 import "./index.scss";
+import { useState } from "react";
 
 const Crear = () => {
+  const [formulario, setFormulario] = useState({ input: [] });
   return (
     <div className="container mb-5">
       <h2 className="titulo">Crear</h2>
@@ -10,9 +12,15 @@ const Crear = () => {
         <div className="col-12 col-md-6">
           <h4 className="mb-3">Elegir Campos</h4>
           <div className="accordion" id="accordionFieldType">
-            <FieldText />
-            <FieldNumber />
-            <FieldSelect />
+            <FieldText formulario={formulario} setFormulario={setFormulario} />
+            <FieldNumber
+              formulario={formulario}
+              setFormulario={setFormulario}
+            />
+            <FieldSelect
+              formulario={formulario}
+              setFormulario={setFormulario}
+            />
           </div>
         </div>
         <div className="col-12 col-md-6">

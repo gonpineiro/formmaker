@@ -1,7 +1,15 @@
 import { useState } from "react";
 
-const FieldText = () => {
+const FieldText = ({ formulario, setFormulario }) => {
   const [field, setField] = useState({ required: true, type: "type_text" });
+
+  const handlerSubmit = () => {
+    let inputs = formulario.input;
+    inputs.push(field);
+    setFormulario({
+      ...formulario,
+    });
+  };
 
   const handlerTextChange = ({ target: { value } }) => {
     setField({
@@ -125,7 +133,12 @@ const FieldText = () => {
             </div>
           </div>
           <div className="col-auto">
-            <button id="addText" type="submit" className="btn btn-primary mb-3">
+            <button
+              id="addText"
+              type="submit"
+              onClick={handlerSubmit}
+              className="btn btn-primary mb-3"
+            >
               Agregar campo
             </button>
           </div>
