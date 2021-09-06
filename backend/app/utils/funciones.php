@@ -345,3 +345,20 @@ function verFormatoArchivo(string $string): string
     $indice = strrpos($string, '.') + 1;
     return substr($string, $indice);
 }
+
+function cargarJsonFile($idForm, $msg)
+{
+    $path = RES_PATH . $idForm . "/";
+    if (!file_exists($path)) mkdir($path, 0755, true);
+
+    if (is_dir($path)) {
+        $gestor = scandir($path);
+        unset($gestor[0]);
+        unset($gestor[1]);
+        $id = count($gestor) + 1;
+    }
+
+    $logFile = fopen($path . $id . ".json", 'a') or die("Error creando archivo");
+    fwrite($logFile, $msg) or die("Error escribiendo en el archivo");
+    fclose($logFile);
+}

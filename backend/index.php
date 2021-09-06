@@ -17,8 +17,8 @@ if (isset($_POST) &&  $_POST['token'] === TOKEN) {
 
     /* Respuesta de un formulario */
     if (isset($_POST) && $_POST['type'] === 'respuesta') {
-        $formController->store($_POST['formulario']);
-        echo json_encode($_POST['formulario'], true);
+        $respuesta = json_encode($_POST['formObject']);
+        cargarJsonFile($_POST['idForm'], $respuesta);
     }
 
     /* Consultar un formulario */
