@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
-/* import { useHistory } from "react-router-dom"; */
 import { connect } from "react-redux";
 
 import Element from "../../components/Element";
 import { FormContext } from "../FormContext";
-import { getForm, className, replaceUrl } from "../../utils";
+import { getForm, className, replaceUrl, postData } from "../../utils";
 
 import "./index.scss";
+
+import JSONForm from "../../otro.json";
 
 const getFormaData = async (setElements, setLoading, idForm) => {
   const formData = await getForm(idForm);
@@ -19,9 +20,14 @@ const getFormaData = async (setElements, setLoading, idForm) => {
   }
   setLoading(false);
 };
+const getFormaDataByJson = (setElements, setLoading, idForm) => {
+  const json = JSONForm;
+  json.fields = json.fields.sort((a, b) => a.field_order - b.field_order);
+  setElements(json);
+  setLoading(false);
+};
 
 const Formulario = ({ userReducer: { idForm } }) => {
-  /* const history = useHistory(); */
   const [elements, setElements] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -31,7 +37,8 @@ const Formulario = ({ userReducer: { idForm } }) => {
       /* Enviamos a un screen 404 */
       setLoading(false);
     } else {
-      getFormaData(setElements, setLoading, idForm);
+      getFormaDataByJson(setElements, setLoading, idForm);
+      //getFormaData(setElements, setLoading, idForm);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -42,6 +49,7 @@ const Formulario = ({ userReducer: { idForm } }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const fields = elements.fields;
+
     let sendPost = true;
 
     fields.forEach((req) => {
@@ -54,7 +62,19 @@ const Formulario = ({ userReducer: { idForm } }) => {
     });
 
     if (sendPost) {
-      console.log("Post");
+      const Formdata = new FormData(event.target.form);
+      fields.forEach((req) => {
+        Formdata.set(req.field_name, Formdata.get(req.field_name));
+      });
+      const formObject = {};
+
+      for (const key of Formdata.keys()) {
+        formObject[key] = Formdata.get(key);
+      }
+
+      postData({ formObject }, "respuesta");
+
+      console.log(formObject);
     }
   };
 

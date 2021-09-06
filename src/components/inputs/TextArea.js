@@ -3,6 +3,7 @@ import { FormContext } from "../../screens/FormContext";
 
 const Input = ({
   field_id,
+  field_name,
   field_label,
   field_placeholder,
   field_required,
@@ -18,6 +19,7 @@ const Input = ({
         type="text"
         className="form-control"
         id={"id" + field_id}
+        name={field_name}
         aria-describedby={field_id + "Help"}
         placeholder={field_placeholder ? field_placeholder : ""}
         value={field_value}
