@@ -3,6 +3,7 @@ import { FormContext } from "../../screens/FormContext";
 const Select = ({
   field_id,
   field_label,
+  field_required,
   field_placeholder,
   field_value,
   field_options,
@@ -17,8 +18,11 @@ const Select = ({
         aria-label="Default select example"
         onChange={(event) => handleChange(field_id, event)}
         id={"id" + field_id}
+        required={field_required}
       >
-        <option>Elegir opción</option>
+        <option value="" defaultValue disabled hidden>
+          Elegir opción
+        </option>
         {field_options.length > 0 &&
           field_options.map((option, i) => (
             <option value={option.field_placeholder} key={i}>

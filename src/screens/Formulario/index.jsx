@@ -32,6 +32,7 @@ const Formulario = ({ userReducer: { idForm } }) => {
       setLoading(false);
     } else {
       getFormaData(setElements, setLoading, idForm);
+      console.log(fields);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -43,7 +44,7 @@ const Formulario = ({ userReducer: { idForm } }) => {
     event.preventDefault();
     const fields = elements.fields;
     let sendPost = true;
-
+    console.log(fields);
     fields.forEach((req) => {
       if (req.field_value === "" && req.field_required === "required") {
         className("id" + req.field_id, "is-invalid", "add");
@@ -75,7 +76,7 @@ const Formulario = ({ userReducer: { idForm } }) => {
 
   return (
     <FormContext.Provider value={{ handleChange }}>
-      <div className="App container">
+      <div className="App container mb-5">
         <img className="img-fluid" src={banner} alt="" />
         <div className="d-flex justify-content-center">
           <div className="col-12 col-md-8">
