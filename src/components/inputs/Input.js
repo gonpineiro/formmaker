@@ -3,6 +3,8 @@ import { FormContext } from "../../screens/FormContext";
 
 const Input = ({
   field_id,
+  field_name,
+  field_class,
   field_label,
   field_placeholder,
   field_required,

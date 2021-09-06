@@ -10,9 +10,15 @@ $formController = new FormController();
 if (isset($_POST) &&  $_POST['token'] === TOKEN) {
 
     /* Crear un formulario */
-    if (isset($_POST['formulario'])) {
+    if (isset($_POST) && $_POST['type'] === 'post') {
         $formController->store($_POST['formulario']);
         echo json_encode($_POST['formulario'], true);
+    }
+
+    /* Respuesta de un formulario */
+    if (isset($_POST) && $_POST['type'] === 'respuesta') {
+        $respuesta = json_encode($_POST['formObject']);
+        cargarJsonFile($_POST['idForm'], $respuesta);
     }
 
     /* Consultar un formulario */

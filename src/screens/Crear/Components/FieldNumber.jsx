@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const FieldNumber = ({ formulario, setFormulario }) => {
-  const [field, setField] = useState({ required: true });
+  const [field, setField] = useState({ required: true, type: "number" });
 
   const handlerSubmit = () => {
     let inputs = formulario.input;
@@ -14,7 +14,8 @@ const FieldNumber = ({ formulario, setFormulario }) => {
   const handlerTextChange = ({ target: { value } }) => {
     setField({
       ...field,
-      textField: value,
+      label: value,
+      placeholder: value,
     });
   };
 
@@ -28,14 +29,14 @@ const FieldNumber = ({ formulario, setFormulario }) => {
   const handlerMaxCharChange = ({ target: { value } }) => {
     setField({
       ...field,
-      max: value,
+      max_lenght: value,
     });
   };
 
   const handlerMinCharChange = ({ target: { value } }) => {
     setField({
       ...field,
-      min: value,
+      min_lenght: value,
     });
   };
 

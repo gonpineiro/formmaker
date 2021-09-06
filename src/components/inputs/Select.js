@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { FormContext } from "../../screens/FormContext";
 const Select = ({
   field_id,
+  field_name,
   field_label,
   field_required,
   field_placeholder,
@@ -19,6 +20,7 @@ const Select = ({
           aria-label="Default select example"
           onChange={(event) => handleChange(field_id, event)}
           id={"id" + field_id}
+          name={field_name}
           required={field_required}
         >
           <option value="">Elegir opción</option>

@@ -6,6 +6,7 @@ const Element = ({
   field: {
     field_type,
     field_id,
+    field_name,
     field_label,
     field_required,
     field_placeholder,
@@ -21,6 +22,7 @@ const Element = ({
       return (
         <Input
           field_id={field_id}
+          field_name={field_name}
           field_label={field_label}
           field_placeholder={field_placeholder}
           field_value={field_value}
@@ -63,6 +65,7 @@ const Element = ({
       return (
         <TextArea
           field_id={field_id}
+          field_name={field_name}
           field_label={field_label}
           field_placeholder={field_placeholder}
           field_value={field_value}
@@ -73,6 +76,7 @@ const Element = ({
       return (
         <Select
           field_id={field_id}
+          field_name={field_name}
           field_label={field_label}
           field_placeholder={field_placeholder}
           field_value={field_value}
