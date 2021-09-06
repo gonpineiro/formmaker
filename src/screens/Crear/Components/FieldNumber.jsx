@@ -1,6 +1,44 @@
-import React from "react";
+import { useState } from "react";
 
-const FieldNumber = () => {
+const FieldNumber = ({ formulario, setFormulario }) => {
+  const [field, setField] = useState({ required: true });
+
+  const handlerSubmit = () => {
+    let inputs = formulario.input;
+    inputs.push(field);
+    setFormulario({
+      ...formulario,
+    });
+  };
+
+  const handlerTextChange = ({ target: { value } }) => {
+    setField({
+      ...field,
+      textField: value,
+    });
+  };
+
+  const handlerRequiredChange = () => {
+    setField({
+      ...field,
+      required: !field.required,
+    });
+  };
+
+  const handlerMaxCharChange = ({ target: { value } }) => {
+    setField({
+      ...field,
+      max: value,
+    });
+  };
+
+  const handlerMinCharChange = ({ target: { value } }) => {
+    setField({
+      ...field,
+      min: value,
+    });
+  };
+
   return (
     <div className="accordion-item">
       <h2 className="accordion-header" id="headingTwo">
@@ -31,45 +69,57 @@ const FieldNumber = () => {
               className="form-control"
               id="number_field_label"
               placeholder="Ej: Número de mascotas"
+              onChange={handlerTextChange}
             />
           </div>
-          <div class="mb-3">
-            <label for="min_number_field_label" class="form-label">
+          <div className="mb-3">
+            <label htmlFor="min_number_field_label" className="form-label">
               Mínimo
             </label>
             <input
               type="number"
-              class="form-control"
+              className="form-control"
               id="min_number_field_label"
+              onChange={handlerMinCharChange}
               placeholder="Ej: 5"
             />
           </div>
-          <div class="mb-3">
-            <label for="max_number_field_label" class="form-label">
+          <div className="mb-3">
+            <label htmlFor="max_number_field_label" className="form-label">
               Máximo
             </label>
             <input
               type="number"
-              class="form-control"
+              className="form-control"
               id="max_number_field_label"
+              onChange={handlerMaxCharChange}
               placeholder="Ej: 50"
             />
           </div>
-          <div class="mb-3">
-            <div class="form-check">
+          <div className="mb-3">
+            <div className="form-check">
               <input
                 className="form-check-input"
                 type="checkbox"
-                value=""
+                checked={field.required}
+                onChange={handlerRequiredChange}
                 id="number_field_required"
               />
-              <label className="form-check-label" htmlFor="number_field_required">
-                ¿Es requerido?
+              <label
+                className="form-check-label"
+                htmlFor="number_field_required"
+              >
+                ¿Es un campo requerido?
               </label>
             </div>
           </div>
           <div className="col-auto">
-            <button id="addNumber" type="submit" className="btn btn-primary mb-3">
+            <button
+              id="addNumber"
+              type="submit"
+              onClick={handlerSubmit}
+              className="btn btn-primary mb-3"
+            >
               Agregar campo
             </button>
           </div>

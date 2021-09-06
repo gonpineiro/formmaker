@@ -1,6 +1,37 @@
-import React from "react";
+import { useState } from "react";
 
-const FielSelect = () => {
+const FieldSelect = ({ formulario, setFormulario }) => {
+  const [field, setField] = useState({ required: true });
+
+  const handlerSubmit = () => {
+    let inputs = formulario.input;
+    inputs.push(field);
+    setFormulario({
+      ...formulario,
+    });
+  };
+
+  const handlerTextChange = ({ target: { value } }) => {
+    setField({
+      ...field,
+      textField: value,
+    });
+  };
+
+  const handlerOptionChange = ({ target: { value } }) => {
+    setField({
+      ...field,
+      OptionField: value,
+    });
+  };
+
+  const handlerRequiredChange = () => {
+    setField({
+      ...field,
+      required: !field.required,
+    });
+  };
+
   return (
     <div className="accordion-item">
       <h2 className="accordion-header" id="headingThree">
@@ -30,6 +61,7 @@ const FielSelect = () => {
               type="text"
               className="form-control"
               id="select_field_label"
+              onChange={handlerTextChange}
               placeholder="Ej: Selecciones su tipo de vivienda"
             />
           </div>
@@ -41,6 +73,7 @@ const FielSelect = () => {
               className="form-control"
               id="select_field_options"
               rows="3"
+              onChange={handlerOptionChange}
               placeholder="Ej: casa; departamento; casa rodante;"
             ></textarea>
           </div>
@@ -49,16 +82,22 @@ const FielSelect = () => {
               <input
                 className="form-check-input"
                 type="checkbox"
-                value=""
+                checked={field.required}
+                onChange={handlerRequiredChange}
                 id="flexCheckChecked"
               />
               <label className="form-check-label" htmlFor="flexCheckChecked">
-                ¿Es requerido?
+                ¿Es un campo requerido?
               </label>
             </div>
           </div>
           <div className="col-auto">
-            <button id="addSelect" type="submit" className="btn btn-primary mb-3">
+            <button
+              id="addSelect"
+              type="submit"
+              onClick={handlerSubmit}
+              className="btn btn-primary mb-3"
+            >
               Agregar campo
             </button>
           </div>
@@ -68,4 +107,4 @@ const FielSelect = () => {
   );
 };
 
-export default FielSelect;
+export default FieldSelect;

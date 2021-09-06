@@ -1,7 +1,15 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-const FieldText = () => {
+const FieldText = ({ formulario, setFormulario }) => {
   const [field, setField] = useState({ required: true, type: "type_text" });
+
+  const handlerSubmit = () => {
+    let inputs = formulario.input;
+    inputs.push(field);
+    setFormulario({
+      ...formulario,
+    });
+  };
 
   const handlerTextChange = ({ target: { value } }) => {
     setField({
@@ -20,6 +28,20 @@ const FieldText = () => {
     setField({
       ...field,
       type: value,
+    });
+  };
+
+  const handlerMaxCharChange = ({ target: { value } }) => {
+    setField({
+      ...field,
+      max: value,
+    });
+  };
+
+  const handlerMinCharChange = ({ target: { value } }) => {
+    setField({
+      ...field,
+      min: value,
     });
   };
 
@@ -72,30 +94,32 @@ const FieldText = () => {
               <option value="type_email">Email</option>
             </select>
           </div>
-          <div class="mb-3">
-            <label for="min_text_field_type" class="form-label">
+          <div className="mb-3">
+            <label htmlFor="min_text_field_type" className="form-label">
               Mínimo caracteres
             </label>
             <input
               type="number"
-              class="form-control"
+              className="form-control"
               id="min_text_field_type"
+              onChange={handlerMinCharChange}
               placeholder="Ej: 5"
             />
           </div>
-          <div class="mb-3">
-            <label for="max_text_field_type" class="form-label">
+          <div className="mb-3">
+            <label htmlFor="max_text_field_type" className="form-label">
               Máximo caracteres
             </label>
             <input
               type="number"
-              class="form-control"
+              className="form-control"
               id="max_text_field_type"
+              onChange={handlerMaxCharChange}
               placeholder="Ej: 50"
             />
           </div>
-          <div class="mb-3">
-            <div class="form-check">
+          <div className="mb-3">
+            <div className="form-check">
               <input
                 className="form-check-input"
                 type="checkbox"
@@ -109,7 +133,12 @@ const FieldText = () => {
             </div>
           </div>
           <div className="col-auto">
-            <button id="addText" type="submit" className="btn btn-primary mb-3">
+            <button
+              id="addText"
+              type="submit"
+              onClick={handlerSubmit}
+              className="btn btn-primary mb-3"
+            >
               Agregar campo
             </button>
           </div>
