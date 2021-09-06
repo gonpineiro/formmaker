@@ -9,6 +9,7 @@ const Input = ({
   field_value,
   field_min,
   field_max,
+  field_type,
 }) => {
   const { handleChange } = useContext(FormContext);
   return (
@@ -17,7 +18,7 @@ const Input = ({
         {field_label}
       </label>
       <input
-        type="text"
+        type={field_type}
         className={"form-control "}
         id={"id" + field_id}
         aria-describedby={field_id + "Help"}
