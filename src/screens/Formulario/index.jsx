@@ -51,13 +51,16 @@ const Formulario = ({ userReducer: { idForm } }) => {
     const fields = elements.fields;
 
     let sendPost = true;
-
+    console.log(fields);
     fields.forEach((req) => {
       if (req.field_value === "" && req.field_required === "required") {
         className("id" + req.field_id, "is-invalid", "add");
+        className("id" + req.field_id, "is-valid", "remove");
+
         sendPost = false;
       } else {
         className("id" + req.field_id, "is-invalid", "remove");
+        className("id" + req.field_id, "is-valid", "add");
       }
     });
 
@@ -95,7 +98,7 @@ const Formulario = ({ userReducer: { idForm } }) => {
 
   return (
     <FormContext.Provider value={{ handleChange }}>
-      <div className="App container">
+      <div className="App container mb-5">
         <img className="img-fluid" src={banner} alt="" />
         <div className="d-flex justify-content-center">
           <div className="col-12 col-md-8">
@@ -103,7 +106,7 @@ const Formulario = ({ userReducer: { idForm } }) => {
             <h2 className="titulo">{nombre}</h2>
             <h3 className="titulo">{description}</h3>
             <br />
-            <form>
+            <form className="needs-validation" noValidate>
               {fields
                 ? fields.map((field, i) => <Element key={i} field={field} />)
                 : null}

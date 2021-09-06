@@ -26,9 +26,8 @@ const Input = ({
         onChange={(event) => handleChange(field_id, event)}
         required={field_required}
       />
-      <div id={field_id + "Help"} className="form-text">
-        {field_placeholder} correctamente.
-      </div>
+      <div className="invalid-feedback">{field_placeholder} correctamente.</div>
+      <div className="valid-feedback">¡Se ve bien!</div>
     </div>
   );
 };

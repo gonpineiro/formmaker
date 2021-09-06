@@ -13,6 +13,8 @@ const Element = ({
     field_value,
     field_options,
     field_class,
+    field_min,
+    field_max,
   },
 }) => {
   switch (field_type) {
@@ -26,6 +28,8 @@ const Element = ({
           field_value={field_value}
           field_required={field_required}
           field_class={field_class}
+          field_min={field_min}
+          field_max={field_max}
         />
       );
     case "textArea":
