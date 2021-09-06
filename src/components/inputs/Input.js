@@ -7,7 +7,6 @@ const Input = ({
   field_placeholder,
   field_required,
   field_value,
-  field_class,
   field_min,
   field_max,
 }) => {
@@ -19,7 +18,7 @@ const Input = ({
       </label>
       <input
         type="text"
-        className={"form-control " + field_class}
+        className={"form-control "}
         id={"id" + field_id}
         aria-describedby={field_id + "Help"}
         placeholder={field_placeholder ? field_placeholder : ""}
@@ -29,9 +28,8 @@ const Input = ({
         minLength={field_min}
         maxLength={field_max}
       />
-      <div id={field_id + "Help"} className="form-text">
-        {field_placeholder} correctamente.
-      </div>
+      <div className="invalid-feedback">{field_placeholder} correctamente.</div>
+      <div className="valid-feedback">¡Se ve bien!</div>
     </div>
   );
 };
