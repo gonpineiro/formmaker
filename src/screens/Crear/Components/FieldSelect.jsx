@@ -4,7 +4,11 @@ const FieldSelect = ({ formulario, setFormulario }) => {
   const [field, setField] = useState({ required: true });
 
   const handlerSubmit = () => {
+
+    console.log(field.opciones);
+
     let inputs = formulario.input;
+    inputs.opciones.split(';')
     inputs.push(field);
     setFormulario({
       ...formulario,
@@ -14,14 +18,16 @@ const FieldSelect = ({ formulario, setFormulario }) => {
   const handlerTextChange = ({ target: { value } }) => {
     setField({
       ...field,
-      textField: value,
+      label: value,
+      placeholder: value,
+      descipcionSelect: value,
     });
   };
 
   const handlerOptionChange = ({ target: { value } }) => {
     setField({
       ...field,
-      OptionField: value,
+      opciones: value,
     });
   };
 

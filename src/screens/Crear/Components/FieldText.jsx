@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const FieldText = ({ formulario, setFormulario }) => {
-  const [field, setField] = useState({ required: true, type: "type_text" });
+  const [field, setField] = useState({ required: true, type: "text" });
 
   const handlerSubmit = () => {
     let inputs = formulario.input;
@@ -14,7 +14,8 @@ const FieldText = ({ formulario, setFormulario }) => {
   const handlerTextChange = ({ target: { value } }) => {
     setField({
       ...field,
-      textField: value,
+      label: value,
+      placeholder: value,
     });
   };
 
@@ -34,14 +35,14 @@ const FieldText = ({ formulario, setFormulario }) => {
   const handlerMaxCharChange = ({ target: { value } }) => {
     setField({
       ...field,
-      max: value,
+      max_lenght: value,
     });
   };
 
   const handlerMinCharChange = ({ target: { value } }) => {
     setField({
       ...field,
-      min: value,
+      min_lenght: value,
     });
   };
 
@@ -89,9 +90,9 @@ const FieldText = ({ formulario, setFormulario }) => {
               onChange={handlerTypeChange}
               value={field.type}
             >
-              <option value="type_text">Texto</option>
-              <option value="type_textarea">Párrafo</option>
-              <option value="type_email">Email</option>
+              <option value="text">Texto</option>
+              <option value="textarea">Párrafo</option>
+              <option value="email">Email</option>
             </select>
           </div>
           <div className="mb-3">
