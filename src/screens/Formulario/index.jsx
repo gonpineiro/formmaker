@@ -76,7 +76,7 @@ const Formulario = ({ userReducer: { idForm } }) => {
         formObject[key] = Formdata.get(key);
       }
 
-      postData({ formObject }, "respuesta");
+      postData({ formObject, idForm }, "respuesta");
 
       console.log(formObject);
     }
