@@ -20,7 +20,7 @@ const Select = ({
           aria-label="Default select example"
           onChange={(event) => handleChange(field_id, event)}
           id={"id" + field_id}
-          id={field_name}
+          name={field_name}
           required={field_required}
         >
           <option value="">Elegir opción</option>

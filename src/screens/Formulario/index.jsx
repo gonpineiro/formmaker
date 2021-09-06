@@ -9,6 +9,7 @@ import "./index.scss";
 
 import JSONForm from "../../otro.json";
 
+// eslint-disable-next-line no-unused-vars
 const getFormaData = async (setElements, setLoading, idForm) => {
   const formData = await getForm(idForm);
   if (!formData.error) {
