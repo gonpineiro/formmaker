@@ -40,9 +40,9 @@
         "field_order": 4,
         "field_id": "celular",
         "field_name": "celular",
-        "field_label": "Numero de Teléfono",
+        "field_label": "Número de Teléfono",
         "field_required": "required",
-        "field_placeholder": "Ingrese su numero de teléfono",
+        "field_placeholder": "Ingrese su número de teléfono",
         "field_type": "number",
         "field_value": "",
         "field_max": "10"
@@ -53,16 +53,16 @@
         "field_name": "documento",
         "field_label": "DNI",
         "field_required": "required",
-        "field_placeholder": "Ingrese su numero de DNI",
+        "field_placeholder": "Ingrese su número de DNI",
         "field_type": "number",
         "field_value": "",
         "field_max": "8"
       },
       {
         "field_order": 6,
-        "field_id": "fechaNacimiento",
-        "field_label": "Fecha Nacimiento de alguien",
-        "field_placeholder": "Fecha nacomento",
+        "field_id": "fechaCocina",
+        "field_label": "Fecha de su presentación",
+        "field_placeholder": "Ingrese su fecha",
         "field_type": "date",
         "field_value": "",
         "field_required": "required"
@@ -73,6 +73,8 @@
         "field_label": "Elegir algo",
         "field_value": "",
         "field_required": "required",
+                "field_placeholder": "Elija una de las opciones de receta",
+
         "field_options": [
           {
             "option_label": "Sopa al instante en licuadora"
@@ -93,7 +95,7 @@
       "field_name": "receta",
       "field_label": "Escriba una receta en 200 palabras",
       "field_required": "required",
-      "field_placeholder": "Ingrese su receta rápida",
+      "field_placeholder": "Escriba o complete su receta rápida",
       "field_type": "textArea",
       "field_max": "200",
       "field_value": ""
