@@ -30,6 +30,35 @@ const Element = ({
           field_class={field_class}
           field_min={field_min}
           field_max={field_max}
+          field_type={field_type}
+        />
+      );
+    case "number":
+      return (
+        <Input
+          field_id={field_id}
+          field_label={field_label}
+          field_placeholder={field_placeholder}
+          field_value={field_value}
+          field_required={field_required}
+          field_class={field_class}
+          field_min={field_min}
+          field_max={field_max}
+          field_type={field_type}
+        />
+      );
+    case "email":
+      return (
+        <Input
+          field_id={field_id}
+          field_label={field_label}
+          field_placeholder={field_placeholder}
+          field_value={field_value}
+          field_required={field_required}
+          field_class={field_class}
+          field_min={field_min}
+          field_max={field_max}
+          field_type={field_type}
         />
       );
     case "textArea":
