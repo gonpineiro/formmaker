@@ -9,6 +9,7 @@ import {
   emailIsValid,
   replaceUrl,
   postData,
+  createFormData,
 } from "../../utils";
 
 import "./index.scss";
@@ -74,28 +75,17 @@ const Formulario = ({ userReducer: { idForm } }) => {
     });
 
     if (sendPost) {
-      const Formdata = new FormData(event.target.form);
-      fields.forEach((req) => {
-        Formdata.set(req.field_name, Formdata.get(req.field_name));
-      });
-      const formObject = {};
-
-      for (const key of Formdata.keys()) {
-        formObject[key] = Formdata.get(key);
-      }
-
+      const formObject = createFormData(event.target.form, fields);
       postData({ formObject, idForm }, "respuesta");
-
-      console.log(formObject);
     }
   };
 
-  const handleChange = (id, event) => {
+  const handleChange = (id, { target: { value } }) => {
     const newElements = { ...elements };
     newElements.fields.forEach((field) => {
       const { field_id } = field;
       if (id === field_id) {
-        field["field_value"] = event.target.value;
+        field["field_value"] = value;
       }
       setElements(newElements);
     });

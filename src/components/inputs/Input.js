@@ -23,6 +23,7 @@ const Input = ({
         type={field_type}
         className={"form-control "}
         id={"id" + field_id}
+        name={field_name}
         aria-describedby={field_id + "Help"}
         placeholder={field_placeholder ? field_placeholder : ""}
         value={field_value.slice(0, field_max)}
