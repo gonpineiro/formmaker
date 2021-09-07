@@ -3,58 +3,39 @@ import { connect } from "react-redux";
 
 import Element from "../../components/Element";
 import { FormContext } from "../FormContext";
-import { getForm, className, replaceUrl, postData } from "../../utils";
+import { getFormDataByJson } from "./getForms";
+
+import {
+  className,
+  emailIsValid,
+  replaceUrl,
+  postData,
+  createFormData,
+} from "../../utils";
 
 import "./index.scss";
-
-import JSONForm from "../../otro.json";
-
-// eslint-disable-next-line no-unused-vars
-const getFormaData = async (setElements, setLoading, idForm) => {
-  const formData = await getForm(idForm);
-  if (!formData.error) {
-    const json = JSON.parse(formData.string);
-    json.fields = json.fields.sort((a, b) => a.field_order - b.field_order);
-    setElements(json);
-  } else {
-    setElements(undefined);
-  }
-  setLoading(false);
-};
-const getFormaDataByJson = (setElements, setLoading, idForm) => {
-  const json = JSONForm;
-  json.fields = json.fields.sort((a, b) => a.field_order - b.field_order);
-  setElements(json);
-  setLoading(false);
-};
 
 const Formulario = ({ userReducer: { idForm } }) => {
   const [elements, setElements] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const { banner, description, fields, terminosCondiciones, nombre } =
+    elements ?? {};
+
   useEffect(() => {
     replaceUrl("/apps/formulario/");
     if (!idForm) {
-      /* Enviamos a un screen 404 */
       setLoading(false);
     } else {
-      getFormaDataByJson(setElements, setLoading, idForm);
-      //getFormaData(setElements, setLoading, idForm);
+      getFormDataByJson(setElements, setLoading, idForm);
+      //getFormData(setElements, setLoading, idForm);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [idForm]);
 
-  const { banner, description, fields, terminosCondiciones, nombre } =
-    elements ?? {};
-  const emailIsValid = (email) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  };
   const handleSubmit = (event) => {
     event.preventDefault();
     const fields = elements.fields;
-
     let sendPost = true;
-    console.log(fields);
     fields.forEach((req) => {
       if (req.field_value === "" && req.field_required === "required") {
         className("id" + req.field_id, "is-invalid", "add");
@@ -71,36 +52,17 @@ const Formulario = ({ userReducer: { idForm } }) => {
     });
 
     if (sendPost) {
-      const Formdata = new FormData(event.target.form);
-      fields.forEach((req) => {
-        Formdata.set(req.field_name, Formdata.get(req.field_name));
-      });
-      const formObject = {};
-
-      for (const key of Formdata.keys()) {
-        formObject[key] = Formdata.get(key);
-      }
-
+      const formObject = createFormData(event.target.form, fields);
       postData({ formObject, idForm }, "respuesta");
-
-      console.log(formObject);
     }
   };
 
-  const handleChange = (id, event) => {
+  const handleChange = (id, { target: { value } }) => {
     const newElements = { ...elements };
     newElements.fields.forEach((field) => {
       const { field_id, field_type } = field;
       if (id === field_id) {
-        switch (field_type) {
-          case "checkbox":
-            field["field_value"] = event.target.checked;
-            break;
-
-          default:
-            field["field_value"] = event.target.value;
-            break;
-        }
+        field["field_value"] = value;
       }
       setElements(newElements);
     });
