@@ -1,23 +1,23 @@
 import React from "react";
+import Checkbox from "./inputs/Checkbox";
 import Date from "./inputs/Date";
 import Input from "./inputs/Input";
-import TextArea from "./inputs/TextArea";
 import Select from "./inputs/Select";
-import Checkbox from "./inputs/Checkbox";
+import TextArea from "./inputs/TextArea";
 
 const Element = ({
   field: {
-    field_type,
-    field_id,
-    field_name,
-    field_label,
-    field_required,
-    field_placeholder,
-    field_value,
-    field_options,
     field_class,
-    field_min,
+    field_id,
+    field_label,
     field_max,
+    field_min,
+    field_name,
+    field_options,
+    field_placeholder,
+    field_required,
+    field_type,
+    field_value,
   },
   checked,
   setChecked,
