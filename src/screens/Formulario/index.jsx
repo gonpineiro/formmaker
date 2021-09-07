@@ -90,9 +90,17 @@ const Formulario = ({ userReducer: { idForm } }) => {
   const handleChange = (id, event) => {
     const newElements = { ...elements };
     newElements.fields.forEach((field) => {
-      const { field_id } = field;
+      const { field_id, field_type } = field;
       if (id === field_id) {
-        field["field_value"] = event.target.value;
+        switch (field_type) {
+          case "checkbox":
+            field["field_value"] = event.target.checked;
+            break;
+
+          default:
+            field["field_value"] = event.target.value;
+            break;
+        }
       }
       setElements(newElements);
     });
@@ -110,7 +118,10 @@ const Formulario = ({ userReducer: { idForm } }) => {
           <div className="col-12 col-md-8">
             <br />
             <h2 className="titulo">{nombre}</h2>
-            <h3 className="titulo">{description}</h3>
+            <p
+              className="titulo"
+              dangerouslySetInnerHTML={{ __html: description }}
+            ></p>
             <br />
             <form className="needs-validation" noValidate>
               {fields

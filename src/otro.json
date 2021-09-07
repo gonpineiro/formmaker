@@ -1,23 +1,22 @@
 {
-  "id": 1,
-  "nombre": "Formulario con NOmbre",
-  "description": "Esto es algo logo",
-  "banner": "https://www.neuquencapital.gov.ar/wp-content/uploads/2020/05/portada-wifi-1-1536x252.png",
-  "terminosCondiciones": "Al presionar 'enviar' acepto los tÃ©rminos y condiciones con un texto super largo por acÃ¡?? o al final un pdf?",
-  "fields": [{
+  "id": 20,
+  "nombre": "Taller gratuito de cocina saludable",
+  "description": "<br>Se habilitan:</br><br>✔ Las actividades comerciales; que podrán funcionar y atender desde las 6:00 hs hasta las 22:00 hs, de acuerdo a los protocolos sanitarios aprobados, y con un máximo del 30% del aforo, en relación a la capacidad.</br><br>✔ Las farmacias y estaciones de servicio, podrán funcionar durante las 24 horas.</br><br>✔ Los locales gastronómicos (bar, restaurante etc.) podrán funcionar y atender clientes en espacios habilitados al aire libre, desde las 6:00 hs hasta las 00:00 hs, respetando los correspondientes protocolos y con el aforo al 40%, con la modalidad de reparto o retiro en puerta se podrá realizar hasta 00:00 hs.</br><br>✔ El transporte público solo estará habilitado para las actividades esenciales.</br><br>✔ Las actividades religiosas en horarios de circulación permitidos con un máximo del 30% del aforo.</br><br>✔ Teatros, cines, museos y bibliotecas en horario de circulación permitido con un aforo máximo del 30%</br><br>Se autoriza:</br><br>✔ La práctica recreativa de deportes en clubes y asociaciones deportivas, en espacios cerrados y abiertos, con un máximo del 30% de aforo y bajo el estricto cumplimiento de los protocolos sanitarios.</br><br>✔ Academias y Talleres Artísticos, podrán dar clases individuales o grupos reducidos en los horarios de circulación permitido.</br><br>Se suspenden:</br><br>❌ Reuniones sociales en domicilios particulares y en espacios públicos al aire libre.</br><br>❌ Casinos, bingos y discotecas.</br>",
+  "banner": "https://weblogin.muninqn.gov.ar/apps/Taxis/public/estilos/libreta/banner-taxis-remisses.svg",
+  "terminosCondiciones": "Al hacer click en 'Enviar', se compromete a asistir a la capacitación en el día y horario asignado.",
+  "fields": [
+    {
       "field_order": 1,
       "field_id": "email",
-      "field_name": "email",
       "field_label": "Email",
       "field_required": "required",
       "field_placeholder": "Ingrese su email",
-      "field_type": "text",
+      "field_type": "email",
       "field_value": "miemail@mail.com"
     },
     {
-      "field_order": 6,
-      "field_id": "name",
-      "field_name": "name",
+      "field_order": 2,
+      "field_id": "nombre",
       "field_label": "Nombre",
       "field_required": "required",
       "field_placeholder": "Ingrese su nombre",
@@ -25,32 +24,41 @@
       "field_value": ""
     },
     {
-      "field_order": 7,
-      "field_id": "unTextArea",
-      "field_name": "unTextArea",
-      "field_label": "Escribir Mucho",
+      "field_order": 3,
+      "field_id": "apellido",
+      "field_label": "Apellido",
       "field_required": "required",
-      "field_placeholder": "Ingrese su texto largo",
-      "field_type": "textArea"
+      "field_placeholder": "Ingrese su apellido",
+      "field_type": "text",
+      "field_value": ""
     },
     {
-      "field_order": 3,
-      "field_id": "unSelect",
-      "field_name": "unSelect",
-      "field_label": "Elegir algo",
-      "field_value": "Blanco",
-      "field_required": "",
-      "field_options": [{
-          "option_label": "Blanco"
-        },
-        {
-          "option_label": "Negro"
-        },
-        {
-          "option_label": "Verde"
-        }
-      ],
-      "field_type": "select"
+      "field_order": 4,
+      "field_id": "celular",
+      "field_label": "Numero de Teléfono",
+      "field_required": "required",
+      "field_placeholder": "Ingrese su numero de teléfono",
+      "field_type": "number",
+      "field_value": "",
+      "field_max": "10"
+    },
+    {
+      "field_order": 5,
+      "field_id": "documento",
+      "field_label": "DNI",
+      "field_required": "required",
+      "field_placeholder": "Ingrese su numero de DNI",
+      "field_type": "number",
+      "field_value": "",
+      "field_max": "8"
+    },
+    {
+      "field_order": 6,
+      "field_id": "acepto",
+      "field_label": "Confirmo que he leído las bases y condiciones y acepto los términos.",
+      "field_type": "checkbox",
+      "field_value": "",
+      "field_required": "required"
     }
   ]
 }

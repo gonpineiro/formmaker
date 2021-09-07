@@ -2,6 +2,7 @@ import React from "react";
 import Input from "./inputs/Input";
 import TextArea from "./inputs/TextArea";
 import Select from "./inputs/Select";
+import Checkbox from "./inputs/Checkbox";
 const Element = ({
   field: {
     field_type,
@@ -75,6 +76,18 @@ const Element = ({
     case "select":
       return (
         <Select
+          field_id={field_id}
+          field_name={field_name}
+          field_label={field_label}
+          field_placeholder={field_placeholder}
+          field_value={field_value}
+          field_options={field_options}
+          field_required={field_required}
+        />
+      );
+    case "checkbox":
+      return (
+        <Checkbox
           field_id={field_id}
           field_name={field_name}
           field_label={field_label}
