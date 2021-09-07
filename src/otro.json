@@ -1,63 +1,75 @@
-[{
-  "id": 1,
-  "nombre": "Formulario con NOmbre",
-  "description": "Esto es algo logo",
-  "banner": "https://www.neuquencapital.gov.ar/wp-content/uploads/2020/05/portada-wifi-1-1536x252.png",
-  "terminosCondiciones": "Al presionar 'enviar' acepto los tÃ©rminos y condiciones con un texto super largo por acÃ¡?? o al final un pdf?",
-  "fields": [{
-      "field_order": 1,
-      "field_id": "email",
-      "field_label": "Email",
-      "field_required": "required",
-      "field_placeholder": "Ingrese su email",
-      "field_type": "email",
-      "field_value": "miemail@mail.com"
-    },
-    {
-      "field_order": 2,
-      "field_id": "nombre",
-      "field_label": "Nombre",
-      "field_required": "required",
-      "field_placeholder": "Ingrese su nombre",
-      "field_type": "text",
-      "field_value": ""
-    },
-    {
-      "field_order": 3,
-      "field_id": "apellido",
-      "field_label": "Apellido",
-      "field_required": "required",
-      "field_placeholder": "Ingrese su apellido",
-      "field_type": "text",
-      "field_value": ""
-    },
-    {
-      "field_order": 4,
-      "field_id": "celular",
-      "field_label": "Numero de Teléfono",
-      "field_required": "required",
-      "field_placeholder": "Ingrese su numero de teléfono",
-      "field_type": "number",
-      "field_value": "",
-      "field_max": "10"
-    },
-    {
-      "field_order": 5,
-      "field_id": "documento",
-      "field_label": "DNI",
-      "field_required": "required",
-      "field_placeholder": "Ingrese su numero de DNI",
-      "field_type": "number",
-      "field_value": "",
-      "field_max": "8"
-    },
-    {
-      "field_order": 6,
-      "field_id": "acepto",
-      "field_label": "Confirmo que he leído las bases y condiciones y acepto los términos.",
-      "field_type": "checkbox",
-      "field_value": "checked",
-      "field_required": "required"
-    }
-  ]
-}]
+[
+  {
+    "id": 1,
+    "nombre": "Formulario con NOmbre",
+    "description": "Esto es algo logo",
+    "banner": "https://www.neuquencapital.gov.ar/wp-content/uploads/2020/05/portada-wifi-1-1536x252.png",
+    "terminosCondiciones": "Al presionar 'enviar' acepto los tÃ©rminos y condiciones con un texto super largo por acÃ¡?? o al final un pdf?",
+    "fields": [
+      {
+        "field_order": 1,
+        "field_id": "email",
+        "field_label": "Email",
+        "field_required": "required",
+        "field_placeholder": "Ingrese su email",
+        "field_type": "email",
+        "field_value": "miemail@mail.com"
+      },
+      {
+        "field_order": 2,
+        "field_id": "nombre",
+        "field_label": "Nombre",
+        "field_required": "required",
+        "field_placeholder": "Ingrese su nombre",
+        "field_type": "text",
+        "field_value": ""
+      },
+      {
+        "field_order": 3,
+        "field_id": "apellido",
+        "field_label": "Apellido",
+        "field_required": "required",
+        "field_placeholder": "Ingrese su apellido",
+        "field_type": "text",
+        "field_value": ""
+      },
+      {
+        "field_order": 4,
+        "field_id": "celular",
+        "field_label": "Numero de Teléfono",
+        "field_required": "required",
+        "field_placeholder": "Ingrese su numero de teléfono",
+        "field_type": "number",
+        "field_value": "",
+        "field_max": "10"
+      },
+      {
+        "field_order": 5,
+        "field_id": "documento",
+        "field_label": "DNI",
+        "field_required": "required",
+        "field_placeholder": "Ingrese su numero de DNI",
+        "field_type": "number",
+        "field_value": "",
+        "field_max": "8"
+      },
+      {
+        "field_order": 7,
+        "field_id": "acepto",
+        "field_label": "Confirmo que he leído las bases y condiciones y acepto los términos.",
+        "field_type": "checkbox",
+        "field_value": "checked",
+        "field_required": "required"
+      },
+      {
+        "field_order": 6,
+        "field_id": "fechaNacimiento",
+        "field_label": "Fecha Nacimiento de alguien",
+        "field_placeholder": "Fecha nacomento",
+        "field_type": "date",
+        "field_value": "",
+        "field_required": "required"
+      }
+    ]
+  }
+]
