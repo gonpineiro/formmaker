@@ -3,7 +3,13 @@ import { connect } from "react-redux";
 
 import Element from "../../components/Element";
 import { FormContext } from "../FormContext";
-import { getForm, className, replaceUrl, postData } from "../../utils";
+import {
+  getForm,
+  className,
+  emailIsValid,
+  replaceUrl,
+  postData,
+} from "../../utils";
 
 import "./index.scss";
 
@@ -21,8 +27,9 @@ const getFormaData = async (setElements, setLoading, idForm) => {
   }
   setLoading(false);
 };
+
 const getFormaDataByJson = (setElements, setLoading, idForm) => {
-  const json = JSONForm;
+  const json = JSONForm[idForm];
   json.fields = json.fields.sort((a, b) => a.field_order - b.field_order);
   setElements(json);
   setLoading(false);
@@ -31,6 +38,9 @@ const getFormaDataByJson = (setElements, setLoading, idForm) => {
 const Formulario = ({ userReducer: { idForm } }) => {
   const [elements, setElements] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const { banner, description, fields, terminosCondiciones, nombre } =
+    elements ?? {};
 
   useEffect(() => {
     replaceUrl("/apps/formulario/");
@@ -44,17 +54,10 @@ const Formulario = ({ userReducer: { idForm } }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const { banner, description, fields, terminosCondiciones, nombre } =
-    elements ?? {};
-  const emailIsValid = (email) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  };
   const handleSubmit = (event) => {
     event.preventDefault();
     const fields = elements.fields;
-
     let sendPost = true;
-    console.log(fields);
     fields.forEach((req) => {
       if (req.field_value === "" && req.field_required === "required") {
         className("id" + req.field_id, "is-invalid", "add");

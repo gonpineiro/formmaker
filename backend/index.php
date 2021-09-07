@@ -19,6 +19,7 @@ if (isset($_POST) &&  $_POST['token'] === TOKEN) {
     if (isset($_POST) && $_POST['type'] === 'respuesta') {
         $respuesta = json_encode($_POST['formObject']);
         cargarJsonFile($_POST['idForm'], $respuesta);
+        echo $respuesta;
     }
 
     /* Consultar un formulario */

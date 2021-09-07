@@ -1,4 +1,4 @@
-{
+[{
   "id": 1,
   "nombre": "Formulario con NOmbre",
   "description": "Esto es algo logo",
@@ -53,4 +53,4 @@
       "field_type": "select"
     }
   ]
-}
+}]
