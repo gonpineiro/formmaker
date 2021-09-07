@@ -19,7 +19,7 @@ const Checkbox = ({
           className="form-check-input"
           id={field_id}
           checked={checked}
-          onChange={() => hanldeChecked()}
+          onChange={hanldeChecked}
           required={field_required}
         />
         <label className="form-check-label" htmlFor={field_id}>

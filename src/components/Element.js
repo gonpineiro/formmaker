@@ -40,6 +40,7 @@ const Element = ({
       return (
         <Input
           field_id={field_id}
+          field_name={field_name}
           field_label={field_label}
           field_placeholder={field_placeholder}
           field_value={field_value}
@@ -54,6 +55,7 @@ const Element = ({
       return (
         <Input
           field_id={field_id}
+          field_name={field_name}
           field_label={field_label}
           field_placeholder={field_placeholder}
           field_value={field_value}

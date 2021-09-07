@@ -7,6 +7,7 @@
   "fields": [{
       "field_order": 1,
       "field_id": "email",
+      "field_name": "email",
       "field_label": "Email",
       "field_required": "required",
       "field_placeholder": "Ingrese su email",
@@ -16,6 +17,7 @@
     {
       "field_order": 2,
       "field_id": "nombre",
+      "field_name": "nombre",
       "field_label": "Nombre",
       "field_required": "required",
       "field_placeholder": "Ingrese su nombre",
@@ -25,6 +27,7 @@
     {
       "field_order": 3,
       "field_id": "apellido",
+      "field_name": "apellido",
       "field_label": "Apellido",
       "field_required": "required",
       "field_placeholder": "Ingrese su apellido",
@@ -34,6 +37,7 @@
     {
       "field_order": 4,
       "field_id": "celular",
+      "field_name": "celular",
       "field_label": "Numero de Teléfono",
       "field_required": "required",
       "field_placeholder": "Ingrese su numero de teléfono",
@@ -44,6 +48,7 @@
     {
       "field_order": 5,
       "field_id": "documento",
+      "field_name": "documento",
       "field_label": "DNI",
       "field_required": "required",
       "field_placeholder": "Ingrese su numero de DNI",
@@ -54,6 +59,7 @@
     {
       "field_order": 6,
       "field_id": "acepto",
+      "field_name": "acepto",
       "field_label": "Confirmo que he leído las bases y condiciones y acepto los términos.",
       "field_type": "checkbox",
       "field_value": "checked",
