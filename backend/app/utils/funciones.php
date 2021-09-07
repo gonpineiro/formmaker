@@ -37,18 +37,6 @@ function verificarSesion()
     }
 }
 
-function cargarLog($id_usuario = null, $id_solicitud = null, $error = '-', $class = '-', $metodo = '-')
-{
-    $log_controller = new LogController();
-    $log_controller->store([
-        'id_usuario' =>  $id_usuario,
-        'id_solicitud' => $id_solicitud,
-        'error' => $error,
-        'class' => $class,
-        'metodo' => $metodo
-    ]);
-}
-
 function enviarMailApi($address, $idSolicitud)
 {
     $body = "<p>Su solicitud (Nº " . $idSolicitud . ") para 'Registro de profesionales y afines a la actividad física' fue recibida. En el transcurso de 48hs hábiles nos comunicaremos con usted. </p><p>Cualquier duda o consulta pod&eacute;s enviarnos un email a: <a href='mailto:fiscalizaciondeportiva@muninqn.gov.ar' target='_blank'>fiscalizaciondeportiva@muninqn.gov.ar</a></p><p>Subsecretaria de deporte y juventud</p><p>Municipalidad de Neuquén</p>";
