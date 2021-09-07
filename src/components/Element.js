@@ -1,8 +1,10 @@
 import React from "react";
+import Date from "./inputs/Date";
 import Input from "./inputs/Input";
 import TextArea from "./inputs/TextArea";
 import Select from "./inputs/Select";
 import Checkbox from "./inputs/Checkbox";
+
 const Element = ({
   field: {
     field_type,
@@ -103,6 +105,17 @@ const Element = ({
           checked={checked}
         />
       );
+    case "date":
+      return (
+        <Date
+          field_id={field_id}
+          field_label={field_label}
+          field_placeholder={field_placeholder}
+          field_required={field_required}
+          field_value={field_value}
+        />
+      );
+
     default:
       return null;
   }

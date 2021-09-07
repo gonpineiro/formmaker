@@ -58,6 +58,14 @@
     },
     {
       "field_order": 6,
+      "field_id": "fechaNacimiento",
+      "field_label": "Fecha Nacimiento de alguien",
+      "field_placeholder": "Fecha nacomento",
+      "field_type": "date",
+      "field_value": "",
+      "field_required": "required"
+    }, {
+      "field_order": 7,
       "field_id": "acepto",
       "field_name": "acepto",
       "field_label": "Confirmo que he leído las bases y condiciones y acepto los términos.",
