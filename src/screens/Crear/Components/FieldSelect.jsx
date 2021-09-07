@@ -4,9 +4,6 @@ const FieldSelect = ({ formulario, setFormulario }) => {
   const [field, setField] = useState({ required: true });
 
   const handlerSubmit = () => {
-
-    console.log(field.opciones);
-
     let inputs = formulario.input;
     inputs.opciones.split(';')
     inputs.push(field);

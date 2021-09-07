@@ -8,7 +8,6 @@ const Date = ({
   field_required,
   field_value,
 }) => {
-  console.log(field_value);
   const { handleChange } = useContext(FormContext);
   return (
     <div className="col-12 col-md-4 mb-3">
