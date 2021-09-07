@@ -17,6 +17,8 @@ const Element = ({
     field_min,
     field_max,
   },
+  checked,
+  setChecked,
 }) => {
   switch (field_type) {
     case "text":
@@ -95,6 +97,8 @@ const Element = ({
           field_value={field_value}
           field_options={field_options}
           field_required={field_required}
+          setChecked={setChecked}
+          checked={checked}
         />
       );
     default:

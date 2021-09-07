@@ -18,6 +18,7 @@ import "./index.scss";
 const Formulario = ({ userReducer: { idForm } }) => {
   const [elements, setElements] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [checked, setChecked] = useState(false);
 
   const { banner, description, fields, terminosCondiciones, nombre } =
     elements ?? {};
@@ -37,17 +38,19 @@ const Formulario = ({ userReducer: { idForm } }) => {
     const fields = elements.fields;
     let sendPost = true;
     fields.forEach((req) => {
-      if (req.field_value === "" && req.field_required === "required") {
-        className("id" + req.field_id, "is-invalid", "add");
-        className("id" + req.field_id, "is-valid", "remove");
-        sendPost = false;
-      } else {
-        className("id" + req.field_id, "is-invalid", "remove");
-        className("id" + req.field_id, "is-valid", "add");
-      }
-      if (req.field_type === "email" && !emailIsValid(req.field_value)) {
-        className("id" + req.field_id, "is-invalid", "add");
-        className("id" + req.field_id, "is-valid", "remove");
+      if (req.field_type !== "checkbox") {
+        if (req.field_value === "" && req.field_required === "required") {
+          className("id" + req.field_id, "is-invalid", "add");
+          className("id" + req.field_id, "is-valid", "remove");
+          sendPost = false;
+        } else {
+          className("id" + req.field_id, "is-invalid", "remove");
+          className("id" + req.field_id, "is-valid", "add");
+        }
+        if (req.field_type === "email" && !emailIsValid(req.field_value)) {
+          className("id" + req.field_id, "is-invalid", "add");
+          className("id" + req.field_id, "is-valid", "remove");
+        }
       }
     });
 
@@ -60,7 +63,7 @@ const Formulario = ({ userReducer: { idForm } }) => {
   const handleChange = (id, { target: { value } }) => {
     const newElements = { ...elements };
     newElements.fields.forEach((field) => {
-      const { field_id, field_type } = field;
+      const { field_id } = field;
       if (id === field_id) {
         field["field_value"] = value;
       }
@@ -87,7 +90,20 @@ const Formulario = ({ userReducer: { idForm } }) => {
             <br />
             <form className="needs-validation" noValidate>
               {fields
-                ? fields.map((field, i) => <Element key={i} field={field} />)
+                ? fields.map((field, i) => {
+                    if (field.field_type === "checkbox") {
+                      return (
+                        <Element
+                          key={i}
+                          field={field}
+                          setChecked={setChecked}
+                          checked={checked}
+                        />
+                      );
+                    }
+
+                    return <Element key={i} field={field} />;
+                  })
                 : null}
               <br />
               <p>{terminosCondiciones}</p>
@@ -95,6 +111,7 @@ const Formulario = ({ userReducer: { idForm } }) => {
               <button
                 type="submit"
                 className="btn btn-info btn-totem"
+                disabled={!checked}
                 onClick={(e) => handleSubmit(e)}
               >
                 Enviar

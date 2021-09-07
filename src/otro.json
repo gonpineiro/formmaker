@@ -56,7 +56,7 @@
       "field_id": "acepto",
       "field_label": "Confirmo que he leído las bases y condiciones y acepto los términos.",
       "field_type": "checkbox",
-      "field_value": "",
+      "field_value": "checked",
       "field_required": "required"
     }
   ]

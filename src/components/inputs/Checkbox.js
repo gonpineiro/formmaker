@@ -1,14 +1,16 @@
-import React, { useContext } from "react";
-import { FormContext } from "../../screens/FormContext";
-
 const Checkbox = ({
   field_id,
   field_label,
   field_placeholder,
   field_required,
   field_value,
+  checked,
+  setChecked,
 }) => {
-  const { handleChange } = useContext(FormContext);
+  const hanldeChecked = () => {
+    setChecked(!checked);
+  };
+
   return (
     <>
       <div className="mb-3 form-check">
@@ -16,10 +18,9 @@ const Checkbox = ({
           type="checkbox"
           className="form-check-input"
           id={field_id}
-          //checked={field_value}
-          onChange={(event) => handleChange(field_id, event)}
+          checked={checked}
+          onChange={() => hanldeChecked()}
           required={field_required}
-          value={field_value}
         />
         <label className="form-check-label" htmlFor={field_id}>
           {field_label}
