@@ -17,7 +17,7 @@ import "./index.scss";
 import JSONForm from "../../otro.json";
 
 // eslint-disable-next-line no-unused-vars
-const getFormaData = async (setElements, setLoading, idForm) => {
+const getFormData = async (setElements, setLoading, idForm) => {
   const formData = await getForm(idForm);
   if (!formData.error) {
     const json = JSON.parse(formData.string);
@@ -29,10 +29,12 @@ const getFormaData = async (setElements, setLoading, idForm) => {
   setLoading(false);
 };
 
-const getFormaDataByJson = (setElements, setLoading, idForm) => {
+const getFormDataByJson = (setElements, setLoading, idForm) => {
   const json = JSONForm[idForm];
-  json.fields = json.fields.sort((a, b) => a.field_order - b.field_order);
-  setElements(json);
+  if (json) {
+    json.fields = json.fields.sort((a, b) => a.field_order - b.field_order);
+    setElements(json);
+  }
   setLoading(false);
 };
 
@@ -46,14 +48,12 @@ const Formulario = ({ userReducer: { idForm } }) => {
   useEffect(() => {
     replaceUrl("/apps/formulario/");
     if (!idForm) {
-      /* Enviamos a un screen 404 */
       setLoading(false);
     } else {
-      getFormaDataByJson(setElements, setLoading, idForm);
-      //getFormaData(setElements, setLoading, idForm);
+      getFormDataByJson(setElements, setLoading, idForm);
+      //getFormData(setElements, setLoading, idForm);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [idForm]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
