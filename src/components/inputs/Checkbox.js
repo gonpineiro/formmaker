@@ -14,6 +14,7 @@ const Checkbox = ({
   return (
     <>
       <div className="mb-3 form-check">
+        <hr />
         <input
           type="checkbox"
           className="form-check-input"
@@ -26,8 +27,6 @@ const Checkbox = ({
           {field_label}
         </label>
       </div>
-      <div className="invalid-feedback">{field_placeholder} correctamente.</div>
-      <div className="valid-feedback">¡Se ve bien!</div>
     </>
   );
 };

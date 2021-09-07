@@ -1,10 +1,10 @@
 [
   {
     "id": 1,
-    "nombre": "Formulario con NOmbre",
-    "description": "Esto es algo logo",
-    "banner": "https://www.neuquencapital.gov.ar/wp-content/uploads/2020/05/portada-wifi-1-1536x252.png",
-    "terminosCondiciones": "Al presionar 'enviar' acepto los tÃ©rminos y condiciones con un texto super largo por acÃ¡?? o al final un pdf?",
+    "nombre": "Taller gratuito de cocina saludable",
+    "description": "Sábado 4 de septiembre a las 17hs en el Parque Jaime de Nevares (Villegas y Juan XXIII) <br>Recetas:<br>-Sopa al instante en licuadora<br>-Buddha bowl<br> -Trufas de legumbres <br>Será dictado por la Escuela de Cocineros Patagónicos. Organizada por la Subsecretaría de Hábitos Saludables de la Municipalidad de Neuquén.",
+    "banner": "https://lh4.googleusercontent.com/rENPzO6bli5wFfB3uixDhflpE75S_D7n4BVb_7CSX1xRWnmUVmNxJn-YQLTktFYK2gGwageBEcm6WwTjQRCPZVe_8h7dTRRAHYSxxDCODEwqf9nSKtQ_b1of107OGii6sw=w1276",
+    "terminosCondiciones": "Al hacer click en 'Enviar', se compromete a asistir a la capacitación en el día y horario asignado.",
     "fields": [
       {
         "field_order": 1,
@@ -75,19 +75,31 @@
         "field_required": "required",
         "field_options": [
           {
-            "option_label": "Blanco"
+            "option_label": "Sopa al instante en licuadora"
           },
           {
-            "option_label": "Negro"
+            "option_label": "Buddha bowl"
           },
           {
-            "option_label": "Verde"
+            "option_label": "Trufas de legumbres"
           }
         ],
         "field_type": "select"
       },
+      
+    {
+      "field_order": 8,
+      "field_id": "receta",
+      "field_name": "receta",
+      "field_label": "Escriba una receta en 200 palabras",
+      "field_required": "required",
+      "field_placeholder": "Ingrese su receta rápida",
+      "field_type": "textArea",
+      "field_max": "200",
+      "field_value": ""
+    },
       {
-        "field_order": 8,
+        "field_order": 9,
         "field_id": "acepto",
         "field_name": "acepto",
         "field_label": "Confirmo que he leído las bases y condiciones y acepto los términos.",

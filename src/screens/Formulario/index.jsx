@@ -101,11 +101,10 @@ const Formulario = ({ userReducer: { idForm } }) => {
                         />
                       );
                     }
-
                     return <Element key={i} field={field} />;
                   })
                 : null}
-              <br />
+
               <p>{terminosCondiciones}</p>
 
               <button

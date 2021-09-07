@@ -77,6 +77,7 @@ const Element = ({
           field_placeholder={field_placeholder}
           field_value={field_value}
           field_required={field_required}
+          field_max={field_max}
         />
       );
     case "select":
