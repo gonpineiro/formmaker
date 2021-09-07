@@ -4,7 +4,7 @@
     "nombre": "Taller gratuito de cocina saludable",
     "description": "Sábado 4 de septiembre a las 17hs en el Parque Jaime de Nevares (Villegas y Juan XXIII) <br>Recetas:<br>-Sopa al instante en licuadora<br>-Buddha bowl<br> -Trufas de legumbres <br>Será dictado por la Escuela de Cocineros Patagónicos. Organizada por la Subsecretaría de Hábitos Saludables de la Municipalidad de Neuquén.",
     "banner": "https://lh4.googleusercontent.com/rENPzO6bli5wFfB3uixDhflpE75S_D7n4BVb_7CSX1xRWnmUVmNxJn-YQLTktFYK2gGwageBEcm6WwTjQRCPZVe_8h7dTRRAHYSxxDCODEwqf9nSKtQ_b1of107OGii6sw=w1276",
-    "terminosCondiciones": "Al hacer click en 'Enviar', se compromete a asistir a la capacitación en el día y horario asignado.",
+    "terminosCondiciones": "",
     "fields": [
       {
         "field_order": 1,
@@ -40,9 +40,9 @@
         "field_order": 4,
         "field_id": "celular",
         "field_name": "celular",
-        "field_label": "Número de Teléfono",
+        "field_label": "Número de Teléfono Ej:2995193777",
         "field_required": "required",
-        "field_placeholder": "Ingrese su número de teléfono",
+        "field_placeholder": "Ingrese su número de teléfono ",
         "field_type": "number",
         "field_value": "",
         "field_max": "10"
@@ -104,7 +104,7 @@
         "field_order": 9,
         "field_id": "acepto",
         "field_name": "acepto",
-        "field_label": "Confirmo que he leído las bases y condiciones y acepto los términos.",
+        "field_label": "Al hacer click en 'Enviar', se compromete a asistir a la capacitación en el día y horario asignado.",
         "field_type": "checkbox",
         "field_value": "checked",
         "field_required": "required"
