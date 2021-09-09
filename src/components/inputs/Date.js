@@ -3,6 +3,7 @@ import { FormContext } from "../../screens/FormContext";
 
 const Date = ({
   field_id,
+  field_name,
   field_label,
   field_placeholder,
   field_required,
@@ -18,6 +19,7 @@ const Date = ({
         type="date"
         className="form-control"
         id={"id" + field_id}
+        name={field_name}
         onChange={(event) => handleChange(field_id, event)}
         required={field_required}
         value={field_value}

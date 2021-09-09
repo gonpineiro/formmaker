@@ -1,7 +1,9 @@
 const createFormData = (form, fields) => {
   const Formdata = new FormData(form);
   fields.forEach((req) => {
-    Formdata.set(req.field_name, Formdata.get(req.field_name));
+    if (req.field_name) {
+      Formdata.set(req.field_name, Formdata.get(req.field_name));
+    }
   });
   const formObject = {};
 

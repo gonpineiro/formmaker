@@ -110,6 +110,7 @@ const Element = ({
       return (
         <Date
           field_id={field_id}
+          field_name={field_name}
           field_label={field_label}
           field_placeholder={field_placeholder}
           field_required={field_required}

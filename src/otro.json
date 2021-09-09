@@ -61,6 +61,7 @@
       {
         "field_order": 6,
         "field_id": "fechaCocina",
+        "field_name": "fechaCocina",
         "field_label": "Fecha de su presentación",
         "field_placeholder": "Ingrese su fecha",
         "field_type": "date",
