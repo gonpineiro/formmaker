@@ -1,12 +1,10 @@
-[
-  {
+[{
     "id": 1,
     "nombre": "Taller gratuito de cocina saludable",
     "description": "Sábado 4 de septiembre a las 17hs en el Parque Jaime de Nevares (Villegas y Juan XXIII) <br>Recetas:<br>-Sopa al instante en licuadora<br>-Buddha bowl<br> -Trufas de legumbres <br>Será dictado por la Escuela de Cocineros Patagónicos. Organizada por la Subsecretaría de Hábitos Saludables de la Municipalidad de Neuquén.",
     "banner": "https://lh4.googleusercontent.com/rENPzO6bli5wFfB3uixDhflpE75S_D7n4BVb_7CSX1xRWnmUVmNxJn-YQLTktFYK2gGwageBEcm6WwTjQRCPZVe_8h7dTRRAHYSxxDCODEwqf9nSKtQ_b1of107OGii6sw=w1276",
     "terminosCondiciones": "",
-    "fields": [
-      {
+    "fields": [{
         "field_order": 1,
         "field_id": "email",
         "field_name": "email",
@@ -75,8 +73,7 @@
         "field_value": "",
         "field_required": "required",
         "field_placeholder": "Elija una de las opciones de receta",
-        "field_options": [
-          {
+        "field_options": [{
             "option_label": "Sopa al instante en licuadora"
           },
           {
@@ -116,8 +113,7 @@
     "description": "FICHA DE INSCRIPCIÓN",
     "banner": "https://lh5.googleusercontent.com/OkVcjSDxiIL84Z7ACLyR4qLHCjPCBlCZQdBpUYiUbIqLb0YpvgO0QOIDCwfmpCwtOH7EvYiyhmYfGJPdvozh0BjOZn7wYgPOcIJUNZl8aAxmw6tPyPgmGyCfNsIsgZcwRg=w775",
     "terminosCondiciones": "Declaración de responsabilidades <br> Declaro bajo juramento que no padezco afecciones físicas adquiridas ni congénitas, tampoco lesiones, ni alergias que pudieran ocasionar trastornos a mi salud o condiciones de vida, con consecuencia en participar voluntariamente en la presente actividad del programa 'Elijo Activarme'. Asimismo, me he realizado un chequeo médico el cual será renovado cuando me lo solicite la organización, me encuentro en condiciones físicas óptimas para participar en la misma, como así también asumo todos los riesgos asociados con la participación en la presente actividad (caídas, contacto con otros participantes, consecuencias del clima, tránsito vehicular, condiciones del camino y/o cualquier otra clase de riesgos que se pudiera ocasionar) Tomo conocimiento que la Municipalidad de Neuquén  no se responsabiliza por ningún tipo de indemnización, reclamo, costo, daño y/o perjuicio reclamado.<br>Habiendo leído esta declaración y conociendo éstos hechos, libero a la Municipalidad de Neuquén y/o sus empresas controladas o vinculadas y a sus representantes, directores, accionistas de todo y cualquier reclamo o responsabilidad de cualquier tipo que surja de mi participación en la actividad, así́ como de cualquier extravío, robo y/o hurto que pudiera sufrir, o que puedan acontecer con anterioridad, durante el transcurso o posterioridad a la finalización de la actividad del programa 'Elijo Activarme'. Autorizo a la Municipalidad de Neuquén a utilizar, reproducir, distribuir y/o publicar fotografías, películas, videos y/o cualquier otro medio de registración de mi persona tomadas con motivo o en ocasión de la actividad, sin compensación económica alguna a mi favor. <br>Entiendo que la Municipalidad de Neuquén podrá suspender o prorrogar la fecha sin previo aviso, incluso incrementar o reducir la cantidad de inscripciones en función a las necesidades o la disponibilidad técnica o estructural. <br>He , leído detenidamente, comprendido y analizado las condiciones establecidas precedentemente, envío DECLARACIÓN DE RESPONSABILIDADES  en conformidad, constituyendo una cabal e incondicional aceptación a su contenido.<br>",
-    "fields": [
-      {
+    "fields": [{
         "field_order": 1,
         "field_id": "email",
         "field_name": "email",
@@ -214,12 +210,12 @@
       {
         "field_order": 10,
         "field_id": "unSelect",
+        "field_name": "unSelect",
         "field_label": "Seleccionar HORARIOS Y LUGARES DE ACTIVIDAD",
         "field_value": "",
         "field_required": "required",
         "field_placeholder": "Elija una de las opciones",
-        "field_options": [
-          {
+        "field_options": [{
             "option_label": "PARQUE JAIME DE NEVARES ( DIAS:LUNES Y MIÉRCOLES-HORARIO: 9:15 A 10:15HS PROF:FIORELA GIAVINO)"
           },
           {
