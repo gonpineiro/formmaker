@@ -77,8 +77,9 @@ const Formulario = ({ userReducer: { idForm } }) => {
 
   return (
     <FormContext.Provider value={{ handleChange }}>
-      <div className="App container mb-5">
-        <img className="img-fluid" src={banner} alt="" />
+      <img className="full_width" src={banner} alt="" />
+
+      <div className="container mb-5">
         <div className="d-flex justify-content-center">
           <div className="col-12 col-md-8">
             <br />
@@ -104,8 +105,22 @@ const Formulario = ({ userReducer: { idForm } }) => {
                     return <Element key={i} field={field} />;
                   })
                 : null}
-
-              <p>{terminosCondiciones}</p>
+              <div className="card mb-3">
+                <div
+                  className="card-header text-light"
+                  style={{ backgroundColor: "#42b2df" }}
+                >
+                  Términos y Condiciones
+                </div>
+                <div
+                  className="card-body overflow-auto"
+                  style={{ maxHeight: "200px" }}
+                >
+                  <p
+                    dangerouslySetInnerHTML={{ __html: terminosCondiciones }}
+                  ></p>
+                </div>
+              </div>
 
               <button
                 type="submit"
@@ -115,6 +130,7 @@ const Formulario = ({ userReducer: { idForm } }) => {
               >
                 Enviar
               </button>
+              <p>.</p>
             </form>
           </div>
         </div>

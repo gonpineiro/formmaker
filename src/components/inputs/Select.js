@@ -14,27 +14,31 @@ const Select = ({
   return (
     <>
       <div className="mb-3">
-        <label className="form-label">{field_label}</label>
-        <select
-          className="form-select"
-          aria-label="Default select example"
-          onChange={(event) => handleChange(field_id, event)}
-          id={"id" + field_id}
-          name={field_name}
-          required={field_required}
-        >
-          <option value="">Elegir opción</option>
-          {field_options.length > 0 &&
-            field_options.map((option, i) => (
-              <option value={option.field_placeholder} key={i}>
-                {option.option_label}
-              </option>
-            ))}
-        </select>
-        <div className="invalid-feedback">
-          {field_placeholder} correctamente.
+        <div className="card">
+          <div className="card-body">
+            <label className="form-label">{field_label}</label>
+            <select
+              className="form-select"
+              aria-label="Default select example"
+              onChange={(event) => handleChange(field_id, event)}
+              id={"id" + field_id}
+              name={field_name}
+              required={field_required}
+            >
+              <option value="">Elegir opción</option>
+              {field_options.length > 0 &&
+                field_options.map((option, i) => (
+                  <option value={option.field_placeholder} key={i}>
+                    {option.option_label}
+                  </option>
+                ))}
+            </select>
+            <div className="invalid-feedback">
+              {field_placeholder} correctamente.
+            </div>
+            <div className="valid-feedback">¡Se ve bien!</div>
+          </div>
         </div>
-        <div className="valid-feedback">¡Se ve bien!</div>
       </div>
     </>
   );
