@@ -26,7 +26,6 @@ const validateForm = (fields) => {
     }
   });
 
-  console.log(sendPost);
   return sendPost;
 };
 
