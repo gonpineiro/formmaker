@@ -2,6 +2,7 @@ import React from "react";
 import Checkbox from "./inputs/Checkbox";
 import Date from "./inputs/Date";
 import Input from "./inputs/Input";
+import Radio from "./inputs/Radio";
 import Select from "./inputs/Select";
 import TextArea from "./inputs/TextArea";
 
@@ -78,6 +79,18 @@ const Element = ({
           field_value={field_value}
           field_required={field_required}
           field_max={field_max}
+        />
+      );
+    case "radio":
+      return (
+        <Radio
+          field_id={field_id}
+          field_name={field_name}
+          field_label={field_label}
+          field_placeholder={field_placeholder}
+          field_value={field_value}
+          field_options={field_options}
+          field_required={field_required}
         />
       );
     case "select":
