@@ -12,20 +12,26 @@ const Date = ({
   const { handleChange } = useContext(FormContext);
   return (
     <div className="col-12 col-md-4 mb-3">
-      <label htmlFor={"id" + field_id} className="form-label">
-        {field_label}
-      </label>
-      <input
-        type="date"
-        className="form-control"
-        id={"id" + field_id}
-        name={field_name}
-        onChange={(event) => handleChange(field_id, event)}
-        required={field_required}
-        value={field_value}
-      />
-      <div className="invalid-feedback">{field_placeholder} correctamente.</div>
-      <div className="valid-feedback">¡Se ve bien!</div>
+      <div className="card">
+        <div className="card-body">
+          <label htmlFor={"id" + field_id} className="form-label">
+            {field_label}
+          </label>
+          <input
+            type="date"
+            className="form-control"
+            id={"id" + field_id}
+            name={field_name}
+            onChange={(event) => handleChange(field_id, event)}
+            required={field_required}
+            value={field_value}
+          />
+          <div className="invalid-feedback">
+            {field_placeholder} correctamente.
+          </div>
+          <div className="valid-feedback">¡Se ve bien!</div>
+        </div>
+      </div>
     </div>
   );
 };

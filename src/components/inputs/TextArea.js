@@ -14,26 +14,33 @@ const Input = ({
   const [count, setCount] = React.useState(0);
   return (
     <div className="mb-3">
-      <label htmlFor={"id" + field_id} className="form-label">
-        {field_label}
-      </label>
-      <textarea
-        type="text"
-        className="form-control"
-        id={"id" + field_id}
-        name={field_name}
-        aria-describedby={field_id + "Help"}
-        placeholder={field_placeholder ? field_placeholder : ""}
-        value={field_value.slice(0, field_max)}
-        onChange={(event) => handleChange(field_id, event)}
-        onKeyDown={(e) => setCount(e.target.value.length)}
-        required={field_required}
-      />
-      <p>
-        {count}/{field_max}
-      </p>
-      <div className="invalid-feedback">{field_placeholder} correctamente.</div>
-      <div className="valid-feedback">¡Se ve bien!</div>
+      <div className="card">
+        <div className="card-body">
+          <label htmlFor={"id" + field_id} className="form-label">
+            {field_label}
+          </label>
+          <textarea
+            rows="5"
+            type="text"
+            className="form-control"
+            id={"id" + field_id}
+            name={field_name}
+            aria-describedby={field_id + "Help"}
+            placeholder={field_placeholder ? field_placeholder : ""}
+            value={field_value.slice(0, field_max)}
+            onChange={(event) => handleChange(field_id, event)}
+            onKeyDown={(e) => setCount(e.target.value.length)}
+            required={field_required}
+          />
+          <p>
+            {count}/{field_max}
+          </p>
+          <div className="invalid-feedback">
+            {field_placeholder} correctamente.
+          </div>
+          <div className="valid-feedback">¡Se ve bien!</div>
+        </div>
+      </div>
     </div>
   );
 };
