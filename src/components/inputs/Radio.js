@@ -20,7 +20,7 @@ const Radio = ({
             </label>
             {field_options.length > 0 &&
               field_options.map((option, i) => (
-                <div className="form-check">
+                <div key={i} className="form-check">
                   <input
                     required={field_required}
                     className="form-check-input"
@@ -29,7 +29,7 @@ const Radio = ({
                     id={"id" + field_id}
                     name={field_name}
                   />
-                  <label className="form-check-label" for={"id" + field_id}>
+                  <label className="form-check-label" htmlFor={"id" + field_id}>
                     {option.option_label}
                   </label>
                   <div className="invalid-feedback">

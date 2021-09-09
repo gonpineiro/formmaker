@@ -264,12 +264,15 @@
         "field_type": "radio",
         "field_options": [
           {
+            "id": 1,
             "option_label": "+"
           },
           {
+            "id": 2,
             "option_label": "-"
           },
           {
+            "id": 3,
             "option_label": "x"
           }
         ],

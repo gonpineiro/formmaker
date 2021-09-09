@@ -101,7 +101,8 @@ const Formulario = ({ userReducer: { idForm } }) => {
                 </div>
               </div>
               {fields
-                ? fields.map((field, i) => {
+                ? // eslint-disable-next-line array-callback-return
+                  fields.map((field, i) => {
                     if (field.field_type === "checkbox") {
                       return (
                         <Element
