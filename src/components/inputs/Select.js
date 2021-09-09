@@ -16,7 +16,9 @@ const Select = ({
       <div className="mb-3">
         <div className="card">
           <div className="card-body">
-            <label className="form-label">{field_label}</label>
+            <label className="form-label" style={{ color: "#143c75" }}>
+              {field_label}
+            </label>
             <select
               className="form-select"
               aria-label="Default select example"
