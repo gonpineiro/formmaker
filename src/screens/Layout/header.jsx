@@ -1,11 +1,11 @@
-import './header.scss';
-import Logo from './Logo.js';
+import "./header.scss";
+import Logo from "./Logo.js";
 
 const Header = () => {
   return (
-    <header>
-      <div className="header">
-        <div className="header-logo text-center" >
+    <header className="bg-light mb-5">
+      <div className="container">
+        <div className="header-logo text-center">
           <Logo />
         </div>
       </div>

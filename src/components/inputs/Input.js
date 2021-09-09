@@ -14,12 +14,22 @@ const Input = ({
   field_type,
 }) => {
   const { handleChange } = useContext(FormContext);
+  const astericos = () => {
+    if (field_required === "required") {
+      return <span className="text-danger fw-bold"> *</span>;
+    }
+  };
   return (
     <div className="mb-3">
       <div className="card">
         <div className="card-body">
-          <label htmlFor={"id" + field_id} className="form-label">
+          <label
+            htmlFor={"id" + field_id}
+            className="form-label"
+            style={{ color: "#143c75" }}
+          >
             {field_label}
+            {astericos()}
           </label>
           <input
             type={field_type}
