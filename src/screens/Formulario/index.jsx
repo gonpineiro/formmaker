@@ -5,15 +5,10 @@ import Element from "../../components/Element";
 import { FormContext } from "../FormContext";
 import { getFormDataByJson } from "./getForms";
 
-import {
-  className,
-  emailIsValid,
-  replaceUrl,
-  postData,
-  createFormData,
-} from "../../utils";
+import { replaceUrl, postData, createFormData } from "../../utils";
 
 import "./index.scss";
+import validateForm from "../../utils/validateForm";
 
 const Formulario = ({ userReducer: { idForm } }) => {
   const [elements, setElements] = useState(null);
@@ -36,25 +31,7 @@ const Formulario = ({ userReducer: { idForm } }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const fields = elements.fields;
-    let sendPost = true;
-    fields.forEach((req) => {
-      if (req.field_type !== "checkbox") {
-        if (req.field_value === "" && req.field_required === "required") {
-          className("id" + req.field_id, "is-invalid", "add");
-          className("id" + req.field_id, "is-valid", "remove");
-          sendPost = false;
-        } else {
-          className("id" + req.field_id, "is-invalid", "remove");
-          className("id" + req.field_id, "is-valid", "add");
-        }
-        if (req.field_type === "email" && !emailIsValid(req.field_value)) {
-          className("id" + req.field_id, "is-invalid", "add");
-          className("id" + req.field_id, "is-valid", "remove");
-        }
-      }
-    });
-
-    if (sendPost) {
+    if (validateForm(fields)) {
       const formObject = createFormData(event.target.form, fields);
       postData({ formObject, idForm }, "respuesta");
     }
