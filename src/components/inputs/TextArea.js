@@ -16,7 +16,11 @@ const Input = ({
     <div className="mb-3">
       <div className="card">
         <div className="card-body">
-          <label htmlFor={"id" + field_id} className="form-label">
+          <label
+            htmlFor={"id" + field_id}
+            className="form-label"
+            style={{ color: "#143c75" }}
+          >
             {field_label}
           </label>
           <textarea
