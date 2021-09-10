@@ -26,7 +26,7 @@ const Radio = ({
                     className="form-check-input"
                     type="radio"
                     onChange={(event) => handleChange(field_id, event)}
-                    id={"id" + field_id}
+                    id={"id" + option.option_label}
                     name={field_name}
                   />
                   <label className="form-check-label" htmlFor={"id" + field_id}>
