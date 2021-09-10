@@ -5,7 +5,7 @@ import "./index.scss";
 
 const Menu = () => {
   useEffect(() => {
-    replaceUrl("/apps/formulario/menu");
+    replaceUrl("/apps/formmaker/menu");
   });
 
   return (
@@ -13,12 +13,12 @@ const Menu = () => {
       <h2 className="titulo text-center">Menu</h2>
       <div className="row mt-5">
         <div className="col flex-row text-center">
-          <Link className="btn btn-primary" to="/apps/formulario/crear">
+          <Link className="btn btn-primary" to="/apps/formmaker/crear">
             Crear
           </Link>
         </div>
         <div className="col flex-row text-center">
-          <Link className="btn btn-primary" to="/apps/formulario/gestionar">
+          <Link className="btn btn-primary" to="/apps/formmaker/gestionar">
             Gestionar
           </Link>
         </div>

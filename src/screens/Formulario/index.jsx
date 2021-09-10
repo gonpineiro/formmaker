@@ -18,7 +18,7 @@ const Formulario = ({ userReducer: { idForm } }) => {
   const { hcolor, banner, description, fields, terminosCondiciones, nombre } =
     elements ?? {};
   useEffect(() => {
-    replaceUrl("/apps/formulario/");
+    replaceUrl("/apps/formmaker/");
     if (!idForm) {
       setLoading(false);
     } else {
