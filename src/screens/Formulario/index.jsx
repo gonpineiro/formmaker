@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import Element from "../../components/Element";
 import { FormContext } from "../FormContext";
-import { getFormDataByJson } from "./getForms";
+import { getFormData } from "./getForms";
 
 import { replaceUrl, postData, createFormData } from "../../utils";
 
@@ -22,8 +22,8 @@ const Formulario = ({ userReducer: { idForm } }) => {
     if (!idForm) {
       setLoading(false);
     } else {
-      getFormDataByJson(setElements, setLoading, idForm);
-      //getFormData(setElements, setLoading, idForm);
+      //getFormDataByJson(setElements, setLoading, idForm);
+      getFormData(setElements, setLoading, idForm);
     }
   }, [idForm]);
 
