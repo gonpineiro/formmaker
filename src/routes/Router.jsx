@@ -21,9 +21,9 @@ const Router = ({ traerDatosSession, userReducer }) => {
   if (isAdmin) {
     return (
       <RouterLayout>
-        <Route exact path="/apps/formulario/menu" component={Menu} />
-        <Route exact path="/apps/formulario/crear" component={Crear} />
-        <Route exact path="/apps/formulario/gestionar" component={Gestionar} />
+        <Route exact path="/apps/formmaker/menu" component={Menu} />
+        <Route exact path="/apps/formmaker/crear" component={Crear} />
+        <Route exact path="/apps/formmaker/gestionar" component={Gestionar} />
         <Route component={Menu} />
       </RouterLayout>
     );
@@ -31,7 +31,7 @@ const Router = ({ traerDatosSession, userReducer }) => {
 
   return (
     <RouterLayout>
-      <Route exact path="/apps/formulario/" component={Formulario} />
+      <Route exact path="/apps/formmaker/" component={Formulario} />
       <Route component={Formulario} />
     </RouterLayout>
   );
