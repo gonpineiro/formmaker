@@ -10,7 +10,11 @@ const Select = ({
   field_options,
 }) => {
   const { handleChange } = useContext(FormContext);
-
+  const astericos = () => {
+    if (field_required === "required") {
+      return <span className="text-danger fw-bold"> *</span>;
+    }
+  };
   return (
     <>
       <div className="mb-3">
@@ -18,6 +22,7 @@ const Select = ({
           <div className="card-body">
             <label className="form-label" style={{ color: "#143c75" }}>
               {field_label}
+              {astericos()}
             </label>
             <select
               className="form-select"
