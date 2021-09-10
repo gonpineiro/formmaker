@@ -1,12 +1,13 @@
 import "./header.scss";
 import Logo from "./Logo.js";
+import LogoNeg from "./LogoNeg.js";
 
 const Header = () => {
   return (
-    <header className="bg-light mb-5">
+    <header className="mb-5">
       <div className="container">
         <div className="header-logo text-center">
-          <Logo />
+          <LogoNeg />
         </div>
       </div>
     </header>

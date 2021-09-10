@@ -10,6 +10,11 @@ const Date = ({
   field_value,
 }) => {
   const { handleChange } = useContext(FormContext);
+  const astericos = () => {
+    if (field_required === "required") {
+      return <span className="text-danger fw-bold"> *</span>;
+    }
+  };
   return (
     <div className="mb-3">
       <div className="card">
@@ -21,6 +26,7 @@ const Date = ({
               style={{ color: "#143c75" }}
             >
               {field_label}
+              {astericos()}
             </label>
             <input
               type="date"

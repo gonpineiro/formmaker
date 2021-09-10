@@ -14,7 +14,6 @@ const Checkbox = ({
   return (
     <>
       <div className="mb-3 form-check">
-        <hr />
         <input
           type="checkbox"
           className="form-check-input"
