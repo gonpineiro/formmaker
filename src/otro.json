@@ -245,6 +245,12 @@
       },
       {
         "field_order": 11,
+        "field_type": "separator",
+        "separator_title": "Título del separador de segmentos.",
+        "separator_description": "Descipción del segmento con algo más?"
+      },
+      {
+        "field_order": 12,
         "field_id": "enfermedad",
         "field_name": "enfermedad",
         "field_label": "EN CASO DE ENFERMEDAD REALICE UNA BREVE DESCRIPCIÓN DE LA MISMA",
@@ -255,7 +261,7 @@
         "field_value": ""
       },
       {
-        "field_order": 12,
+        "field_order": 13,
         "field_id": "factorSangre",
         "field_name": "factorSangre",
         "field_label": "Elija su factor sanguíneo",
@@ -270,16 +276,12 @@
           {
             "id": 2,
             "option_label": "-"
-          },
-          {
-            "id": 3,
-            "option_label": "x"
           }
         ],
         "field_value": ""
       },
       {
-        "field_order": 13,
+        "field_order": 14,
         "field_id": "acepto",
         "field_name": "acepto",
         "field_label": "Declaración de responsabilidades.",

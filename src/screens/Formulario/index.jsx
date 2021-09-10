@@ -33,6 +33,7 @@ const Formulario = ({ userReducer: { idForm } }) => {
     if (validateForm(fields)) {
       const formObject = createFormData(event.target.form, fields);
       postData({ formObject, idForm }, "respuesta");
+      document.getElementById("thisForm").reset();
     }
   };
 
@@ -50,7 +51,6 @@ const Formulario = ({ userReducer: { idForm } }) => {
   if (loading) return "Loading";
 
   if (!elements) return "404";
-
   return (
     <FormContext.Provider value={{ handleChange }}>
       <div className="container mb-5">
@@ -60,7 +60,7 @@ const Formulario = ({ userReducer: { idForm } }) => {
             <div className="card rounded-3 mb-3">
               <div
                 className="card-header py-3"
-                style={{ backgroundColor: hcolor || "#aaee44" }}
+                style={{ backgroundColor: hcolor || "#266AAD" }}
               ></div>
               <div className="card-body">
                 <h2 className="titulo">{nombre}</h2>
@@ -75,13 +75,13 @@ const Formulario = ({ userReducer: { idForm } }) => {
                 </p>
               </div>
             </div>
-            <form className="needs-validation" noValidate>
+            <form id="thisForm" className="needs-validation" noValidate>
               {fields
                 ? fields.map((field, i) => {
                     if (field.field_type === "checkbox") {
                       return null;
                     }
-                    return <Element key={i} field={field} />;
+                    return <Element key={i} field={field} hcolor={hcolor} />;
                   })
                 : null}
               <div className="card mb-3">

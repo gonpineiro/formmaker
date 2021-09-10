@@ -39,7 +39,7 @@ const Input = ({
             placeholder={field_placeholder ? field_placeholder : ""}
             value={field_value.slice(0, field_max)}
             onChange={(event) => handleChange(field_id, event)}
-            onKeyDown={(e) => setCount(e.target.value.length)}
+            onKeyUp={(e) => setCount(e.target.value.length)}
             required={field_required}
           />
           <p>
