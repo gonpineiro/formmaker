@@ -4,6 +4,7 @@ import Date from "./inputs/Date";
 import Input from "./inputs/Input";
 import Radio from "./inputs/Radio";
 import Select from "./inputs/Select";
+import Separator from "./inputs/Separator";
 import TextArea from "./inputs/TextArea";
 
 const Element = ({
@@ -19,7 +20,10 @@ const Element = ({
     field_required,
     field_type,
     field_value,
+    separator_title,
+    separator_description,
   },
+  hcolor,
   checked,
   setChecked,
 }) => {
@@ -103,6 +107,14 @@ const Element = ({
           field_value={field_value}
           field_options={field_options}
           field_required={field_required}
+        />
+      );
+    case "separator":
+      return (
+        <Separator
+          separator_title={separator_title}
+          separator_description={separator_description}
+          hcolor={hcolor}
         />
       );
     case "checkbox":
