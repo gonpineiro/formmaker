@@ -25,7 +25,7 @@ class FormController
     /* Busca un form por json*/
     public static function getJson($id)
     {
-        $string = file_get_contents(ROOT_PATH . 'preguntas.json');
+        $string = file_get_contents(ROOT_PATH . '.preguntas.json');
         $json = json_decode($string, true);
         $json = array_filter($json, function ($form) use ($id) {
             return $form['id'] == $id;
