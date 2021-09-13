@@ -12,7 +12,6 @@ const postData = async (data, type) => {
     },
   });
   const res = await req.json();
-  console.log(res);
   return res;
 };
 
