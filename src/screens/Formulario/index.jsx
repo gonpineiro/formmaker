@@ -79,7 +79,7 @@ const Formulario = ({ userReducer: { idForm } }) => {
             <form id="thisForm" className="needs-validation" noValidate>
               {fields
                 ? fields.map((field, i) => {
-                    if (field.field_type === "checkbox") {
+                    if (field.field_name === "acepto") {
                       return null;
                     }
                     return <Element key={i} field={field} hcolor={hcolor} />;
@@ -104,7 +104,7 @@ const Formulario = ({ userReducer: { idForm } }) => {
               {fields
                 ? // eslint-disable-next-line array-callback-return
                   fields.map((field, i) => {
-                    if (field.field_type === "checkbox") {
+                    if (field.field_name === "acepto") {
                       return (
                         <Element
                           key={i}

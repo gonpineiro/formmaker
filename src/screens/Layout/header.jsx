@@ -1,5 +1,4 @@
 import "./header.scss";
-import Logo from "./Logo.js";
 import LogoNeg from "./LogoNeg.js";
 
 const Header = () => {
