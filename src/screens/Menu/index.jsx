@@ -10,7 +10,7 @@ const Menu = () => {
 
   return (
     <div className="container">
-      <h2 className="titulo text-center">Menu</h2>
+      <h2 className="titulo text-center">Formularios Dinámicos</h2>
       <div className="row mt-5">
         <div className="col flex-row text-center">
           <Link className="btn btn-primary" to="/apps/formmaker/crear">

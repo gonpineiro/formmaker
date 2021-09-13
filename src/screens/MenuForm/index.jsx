@@ -21,18 +21,26 @@ const MenuForm = () => {
   console.log(forms);
   return (
     <div className="container">
-      <h2 className="titulo text-center">Menu</h2>
+      <h2 className="titulo text-center pt-5">Formularios Dinámicos</h2>
       <div className="row mt-5">
-        {forms.map((form, key) => (
-          <div key={key} className="col md-4 text-center">
-            <Link
-              className="btn btn-primary mr-5"
-              to={"/apps/formulario/" + form.id}
-            >
-              {form.nombre}
-            </Link>
-          </div>
-        ))}
+        <div className="col-7 mx-auto">
+          {forms.map((form, key) => (
+            <div key={key} className="col-12 md-4">
+              <Link
+                className="menu-link col-12 text-center"
+                to={"/apps/formulario/" + form.id}
+              >
+                <div
+                  className="alert"
+                  style={{ backgroundColor: "#5997d1", color: "white" }}
+                  role="alert"
+                >
+                  {form.nombre}
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
