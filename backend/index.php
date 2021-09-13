@@ -1,7 +1,9 @@
 <?php
 
 include('./app/config/config.php');
-header('Access-Control-Allow-Origin: http://localhost:3000');
+if (!PROD) {
+    header('Access-Control-Allow-Origin: http://localhost:3000');
+}
 header('Access-Control-Allow-Headers: application/json');
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
 
