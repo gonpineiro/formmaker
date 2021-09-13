@@ -1,5 +1,6 @@
 import React from "react";
 import Checkbox from "./inputs/Checkbox";
+import Checkboxes from "./inputs/Checkboxes";
 import Date from "./inputs/Date";
 import Input from "./inputs/Input";
 import Radio from "./inputs/Radio";
@@ -129,6 +130,18 @@ const Element = ({
           field_required={field_required}
           setChecked={setChecked}
           checked={checked}
+        />
+      );
+    case "checkboxes":
+      return (
+        <Checkboxes
+          field_id={field_id}
+          field_name={field_name}
+          field_label={field_label}
+          field_placeholder={field_placeholder}
+          field_value={field_value}
+          field_options={field_options}
+          field_required={field_required}
         />
       );
     case "date":

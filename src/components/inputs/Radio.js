@@ -32,12 +32,12 @@ const Radio = ({
                   <label className="form-check-label" htmlFor={"id" + field_id}>
                     {option.option_label}
                   </label>
-                  <div className="invalid-feedback">
-                    {field_placeholder} correctamente.
-                  </div>
-                  <div className="valid-feedback">¡Se ve bien!</div>
                 </div>
               ))}
+            <div className="invalid-feedback">
+              {field_placeholder} correctamente.
+            </div>
+            <div className="valid-feedback">¡Se ve bien!</div>
           </div>
         </div>
       </div>
