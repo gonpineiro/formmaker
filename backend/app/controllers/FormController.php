@@ -33,6 +33,21 @@ class FormController
         return array_values($json)[0];
     }
 
+    /* Busca ids de los json*/
+    public static function getJsonForms()
+    {
+        $string = file_get_contents(ROOT_PATH . '.preguntas.json');
+        $json = json_decode($string, true);
+        $forms = [];
+        foreach ($json as $item) {
+            array_push($forms, [
+                'id' => $item['id'],
+                'nombre' => $item['nombre']
+            ]);
+        }
+        return $forms;
+    }
+
     /* Actualiza un form */
     public static function update($res, $id)
     {
