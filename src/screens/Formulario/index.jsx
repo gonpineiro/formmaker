@@ -9,14 +9,16 @@ import { replaceUrl, postData, createFormData } from "../../utils";
 
 import "./index.scss";
 import validateForm from "../../utils/validateForm";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 
 const Formulario = (/* { userReducer: { idForm } } */) => {
-  let { idForm } = useParams();
+  let history = useHistory();
   const [elements, setElements] = useState(null);
   const [loading, setLoading] = useState(true);
   const [loadingSubmit, setLoadingSubmit] = useState(false);
   const [checked, setChecked] = useState(false);
+  const [idForm] = useState(useParams().idForm);
+
   const { hcolor, banner, description, fields, terminosCondiciones, nombre } =
     elements ?? {};
   useEffect(() => {
@@ -36,7 +38,7 @@ const Formulario = (/* { userReducer: { idForm } } */) => {
       const formObject = createFormData(event.target.form, fields);
       postData({ formObject, idForm }, "respuesta").then(() => {
         setLoadingSubmit(false);
-        console.log(formObject);
+        history.push("/apps/formmaker/");
       });
     } else {
       setLoadingSubmit(false);
@@ -57,7 +59,6 @@ const Formulario = (/* { userReducer: { idForm } } */) => {
   if (loading) return "Loading";
 
   if (!elements) return "404";
-
   return (
     <FormContext.Provider value={{ handleChange }}>
       <div className="container pb-5">

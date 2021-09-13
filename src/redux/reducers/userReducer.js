@@ -25,11 +25,12 @@ export default (state = INITIAL_STATE, action) => {
 
       const datosPersonales = payload.datosPersonales;
       const app = datosPersonales.apps.filter((obj) => obj.id === APP_ID)[0];
+
       return {
         ...state,
         loading: false,
         datosPersonales,
-        isAdmin: app.userProfiles === "3" ? true : false,
+        isAdmin: app && app.userProfiles === "3" ? true : false,
         idForm: payload.idForm,
       };
 
