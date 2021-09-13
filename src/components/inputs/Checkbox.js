@@ -19,25 +19,26 @@ const Checkbox = ({
           <div className="card">
             <div className="card-body">
               <label className="form-check-label" htmlFor={field_id}>
-                {field_label}
+                {field_label + " sdfsad"}
               </label>
-              {field_options.forEach((element) => {
-                <div className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id={element.option_label}
-                  />
-                  <label
-                    className="form-check-label"
-                    for={element.option_label}
-                  >
-                    Default checkbox
-                  </label>
-                </div>;
-                console.log(element.option_label);
-              })}
+              {field_options.lenght > 0 &&
+                field_options.map((option, i) => (
+                  <div className="form-check" key={i}>
+                    <input
+                      type="checkbox"
+                      className="form-check-input"
+                      id={"id" + option.option_label}
+                      //name={field_name}
+                      value={option.option_label}
+                    />
+                    <label
+                      className="form-check-label"
+                      htmlFor={"id" + option.option_label}
+                    >
+                      {option.option_label}
+                    </label>
+                  </div>
+                ))}
             </div>
           </div>
         </div>
