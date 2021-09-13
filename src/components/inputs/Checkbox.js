@@ -27,9 +27,12 @@ const Checkbox = ({
                     className="form-check-input"
                     type="checkbox"
                     value=""
-                    id="flexCheckDefault"
+                    id={element.option_label}
                   />
-                  <label className="form-check-label" for="flexCheckDefault">
+                  <label
+                    className="form-check-label"
+                    for={element.option_label}
+                  >
                     Default checkbox
                   </label>
                 </div>;
