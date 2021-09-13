@@ -15,6 +15,7 @@ const Formulario = (/* { userReducer: { idForm } } */) => {
   let { idForm } = useParams();
   const [elements, setElements] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [loadingSubmit, setLoadingSubmit] = useState(false);
   const [checked, setChecked] = useState(false);
   const { hcolor, banner, description, fields, terminosCondiciones, nombre } =
     elements ?? {};
@@ -28,12 +29,17 @@ const Formulario = (/* { userReducer: { idForm } } */) => {
   }, [idForm]);
 
   const handleSubmit = (event) => {
+    setLoadingSubmit(true);
     event.preventDefault();
     const fields = elements.fields;
     if (validateForm(fields)) {
       const formObject = createFormData(event.target.form, fields);
-      postData({ formObject, idForm }, "respuesta");
-      document.getElementById("thisForm").reset();
+      postData({ formObject, idForm }, "respuesta").then(() => {
+        setLoadingSubmit(false);
+        console.log(formObject);
+      });
+    } else {
+      setLoadingSubmit(false);
     }
   };
 
@@ -51,6 +57,7 @@ const Formulario = (/* { userReducer: { idForm } } */) => {
   if (loading) return "Loading";
 
   if (!elements) return "404";
+
   return (
     <FormContext.Provider value={{ handleChange }}>
       <div className="container mb-5">
@@ -115,14 +122,18 @@ const Formulario = (/* { userReducer: { idForm } } */) => {
                     }
                   })
                 : null}
-              <button
-                type="submit"
-                className="btn btn-info btn-totem"
-                disabled={!checked}
-                onClick={(e) => handleSubmit(e)}
-              >
-                Enviar
-              </button>
+              {!loadingSubmit ? (
+                <button
+                  type="submit"
+                  className="btn btn-info btn-totem"
+                  disabled={!checked}
+                  onClick={(e) => handleSubmit(e)}
+                >
+                  Enviar
+                </button>
+              ) : (
+                "Loading"
+              )}
             </form>
           </div>
         </div>
