@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 
-import Element from "../../components/Element";
+import { Element, Spinner, Loading } from "../../components";
 import { FormContext } from "../FormContext";
 import { getFormData } from "./getForms";
 
@@ -56,7 +56,7 @@ const Formulario = (/* { userReducer: { idForm } } */) => {
     });
   };
 
-  if (loading) return "Loading";
+  if (loading) return <Loading />;
 
   if (!elements) return "404";
   return (
@@ -138,7 +138,7 @@ const Formulario = (/* { userReducer: { idForm } } */) => {
                   </button>
                 </div>
               ) : (
-                "Loading"
+                <Spinner />
               )}
             </form>
           </div>
