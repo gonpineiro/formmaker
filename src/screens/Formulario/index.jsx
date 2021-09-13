@@ -9,22 +9,23 @@ import { replaceUrl, postData, createFormData } from "../../utils";
 
 import "./index.scss";
 import validateForm from "../../utils/validateForm";
+import { useParams } from "react-router";
 
 const Formulario = ({ userReducer: { idForm } }) => {
+  let { id } = useParams();
   const [elements, setElements] = useState(null);
   const [loading, setLoading] = useState(true);
   const [checked, setChecked] = useState(false);
-
+  console.log(id);
   const { hcolor, banner, description, fields, terminosCondiciones, nombre } =
     elements ?? {};
   useEffect(() => {
     replaceUrl("/apps/formmaker/");
-    if (!idForm) {
+    /* if (!idForm) {
       setLoading(false);
-    } else {
-      //getFormDataByJson(setElements, setLoading, idForm);
-      getFormData(setElements, setLoading, idForm);
-    }
+    } else { */
+    //getFormDataByJson(setElements, setLoading, idForm);
+    getFormData(setElements, setLoading, id);
   }, [idForm]);
 
   const handleSubmit = (event) => {
