@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Muni forms",
+  "name": "Formularios dinámicos de la municipalidad de neuquén",
   "icons": [
     {
       "src": "favicon.ico",

@@ -3,7 +3,11 @@ import { className, emailIsValid } from ".";
 const validateForm = (fields) => {
   let sendPost = true;
   fields.forEach((req) => {
-    if (req.field_type !== "checkbox" && req.field_type !== "radio") {
+    if (
+      req.field_type !== "checkbox" &&
+      req.field_type !== "radio" &&
+      req.field_type !== "separator"
+    ) {
       if (req.field_value === "" && req.field_required === "required") {
         className("id" + req.field_id, "is-invalid", "add");
         className("id" + req.field_id, "is-valid", "remove");

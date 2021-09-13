@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getAllForms, replaceUrl } from "../../utils";
+import { getAllForms } from "../../utils";
 import "./index.scss";
 
 const getIdsForms = async (setForms) => {
@@ -18,10 +18,9 @@ const MenuForm = () => {
     getIdsForms(setForms);
   }, []);
 
-  console.log(forms);
   return (
     <div className="container">
-      <h2 className="titulo text-center pt-5">Formularios Dinámicos</h2>
+      <h2 className="titulo text-center">Listado de formularios</h2>
       <div className="row mt-5">
         <div className="col-7 mx-auto">
           {forms.map((form, key) => (

@@ -32,7 +32,7 @@ const Router = ({ traerDatosSession, userReducer }) => {
   return (
     <RouterLayout>
       <Route exact path="/apps/formmaker/" component={MenuForm} />
-      <Route exact path="/apps/formulario/:id" component={Formulario} />
+      <Route exact path="/apps/formulario/:idForm" component={Formulario} />
       <Route component={Formulario} />
     </RouterLayout>
   );

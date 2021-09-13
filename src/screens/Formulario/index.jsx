@@ -11,12 +11,11 @@ import "./index.scss";
 import validateForm from "../../utils/validateForm";
 import { useParams } from "react-router";
 
-const Formulario = ({ userReducer: { idForm } }) => {
-  let { id } = useParams();
+const Formulario = (/* { userReducer: { idForm } } */) => {
+  let { idForm } = useParams();
   const [elements, setElements] = useState(null);
   const [loading, setLoading] = useState(true);
   const [checked, setChecked] = useState(false);
-  console.log(id);
   const { hcolor, banner, description, fields, terminosCondiciones, nombre } =
     elements ?? {};
   useEffect(() => {
@@ -25,7 +24,7 @@ const Formulario = ({ userReducer: { idForm } }) => {
       setLoading(false);
     } else { */
     //getFormDataByJson(setElements, setLoading, idForm);
-    getFormData(setElements, setLoading, id);
+    getFormData(setElements, setLoading, idForm);
   }, [idForm]);
 
   const handleSubmit = (event) => {
