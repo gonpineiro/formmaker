@@ -84,22 +84,25 @@ const Formulario = (/* { userReducer: { idForm } } */) => {
                     return <Element key={i} field={field} hcolor={hcolor} />;
                   })
                 : null}
-              <div className="card mb-3">
-                <div
-                  className="card-header text-light"
-                  style={{ backgroundColor: "#42b2df" }}
-                >
-                  Términos y Condiciones
+              {terminosCondiciones ? (
+                <div className="card mb-3">
+                  <div
+                    className="card-header text-light"
+                    style={{ backgroundColor: "#42b2df" }}
+                  >
+                    Términos y Condiciones
+                  </div>
+                  <div
+                    className="card-body overflow-auto"
+                    style={{ maxHeight: "200px" }}
+                  >
+                    <p
+                      dangerouslySetInnerHTML={{ __html: terminosCondiciones }}
+                    ></p>
+                  </div>
                 </div>
-                <div
-                  className="card-body overflow-auto"
-                  style={{ maxHeight: "200px" }}
-                >
-                  <p
-                    dangerouslySetInnerHTML={{ __html: terminosCondiciones }}
-                  ></p>
-                </div>
-              </div>
+              ) : null}
+
               {fields
                 ? // eslint-disable-next-line array-callback-return
                   fields.map((field, i) => {
@@ -115,15 +118,17 @@ const Formulario = (/* { userReducer: { idForm } } */) => {
                     }
                   })
                 : null}
+            </form>
+            <div className="d-flex justify-content-between ">
               <button
                 type="submit"
-                className="btn btn-info btn-totem"
+                className="btn btn-info btn-totem col-5"
                 disabled={!checked}
                 onClick={(e) => handleSubmit(e)}
               >
                 Enviar
               </button>
-            </form>
+            </div>
           </div>
         </div>
       </div>
