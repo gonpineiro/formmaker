@@ -42,6 +42,7 @@ if (isset($_POST) &&  $_POST['token'] === TOKEN) {
             echo json_encode($error, true);
         }
     } */
+
     if (isset($_POST) && $_POST['type'] === 'get') {
         $formulario = $formController->getJson($_POST['id']);
         if ($formulario) {
@@ -51,6 +52,19 @@ if (isset($_POST) &&  $_POST['token'] === TOKEN) {
             $error = [
                 'error' =>  'Recurso no encontrado',
                 'idForm' => $_POST['id'],
+            ];
+            echo json_encode($error, true);
+        }
+    }
+
+    if (isset($_POST) && $_POST['type'] === 'get-all-form') {
+        $forms = $formController->getJsonForms();
+        if ($forms) {
+            $forms['error'] = null;
+            echo json_encode($forms, true);
+        } else {
+            $error = [
+                'error' =>  'Error a obtener los forms de formularios',
             ];
             echo json_encode($error, true);
         }
