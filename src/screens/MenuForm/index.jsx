@@ -27,7 +27,7 @@ const MenuForm = () => {
     <div className="container">
       <h2 className="titulo text-center">Listado de formularios</h2>
       <div className="row mt-5">
-        <div className="col-7 mx-auto">
+        <div className="col-12 col-md-7 mx-auto">
           {forms.map((form, key) => (
             <div key={key} className="col-12 md-4">
               <Link
