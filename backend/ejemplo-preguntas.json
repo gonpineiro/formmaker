@@ -61,6 +61,12 @@
       },
       {
         "field_order": 6,
+        "field_type": "separator",
+        "separator_title": "Título del separador de segmentos.",
+        "separator_description": "Descipción del segmento con algo más?"
+      },
+      {
+        "field_order": 7,
         "field_id": "fechaCocina",
         "field_name": "fechaCocina",
         "field_label": "Fecha de su presentación",
@@ -70,7 +76,7 @@
         "field_required": "required"
       },
       {
-        "field_order": 7,
+        "field_order": 8,
         "field_id": "unSelect",
         "field_label": "Elegir algo",
         "field_value": "",
@@ -90,7 +96,7 @@
         "field_type": "select"
       },
       {
-        "field_order": 8,
+        "field_order": 9,
         "field_id": "receta",
         "field_name": "receta",
         "field_label": "Escriba una receta en 200 palabras",
@@ -101,7 +107,7 @@
         "field_value": ""
       },
       {
-        "field_order": 9,
+        "field_order": 10,
         "field_id": "acepto",
         "field_name": "acepto",
         "field_label": "Al hacer click en 'Enviar', se compromete a asistir a la capacitación en el día y horario asignado.",
@@ -286,6 +292,30 @@
         "field_type": "checkbox",
         "field_value": "checked",
         "field_required": "required"
+      },
+      {
+        "field_order": 15,
+        "field_id": "variosCheckboxes",
+        "field_name": "variosCheckboxes",
+        "field_label": "Seleccionar algunas de las opciones múltiples",
+        "field_value": "variosCheckboxes",
+        "field_required": "required",
+        "field_placeholder": "Seleccionar algunas de las opciones múltiples",
+        "field_options": [
+          {
+            "option_label": "opción 1"
+          },
+          {
+            "option_label": "opción 2"
+          },
+          {
+            "option_label": "opción 3"
+          },
+          {
+            "option_label": "opción 4"
+          }
+        ],
+        "field_type": "checkboxes"
       }
     ]
   }
