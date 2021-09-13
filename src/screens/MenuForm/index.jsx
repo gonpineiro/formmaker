@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+
+import { Loading } from "../../components";
+
 import { getAllForms } from "../../utils";
 import "./index.scss";
 
@@ -17,6 +20,8 @@ const MenuForm = () => {
   useEffect(() => {
     getIdsForms(setForms);
   }, []);
+
+  if (forms.length === 0) return <Loading />;
 
   return (
     <div className="container">
