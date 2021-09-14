@@ -24,7 +24,7 @@ const Checkbox = ({
           required={field_required}
         />
         <label className="form-check-label" htmlFor={field_id}>
-          {field_label + " sdohohoh"}
+          {field_label}
         </label>
       </div>
     </>
