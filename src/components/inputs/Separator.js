@@ -10,10 +10,12 @@ const Separator = ({ separator_title, separator_description, hcolor }) => {
         >
           {separator_title}
         </div>
-        <div
-          className="card-body text-dark"
-          dangerouslySetInnerHTML={{ __html: separator_description }}
-        ></div>
+        {separator_description ? (
+          <div
+            className="card-body text-dark"
+            dangerouslySetInnerHTML={{ __html: separator_description }}
+          ></div>
+        ) : null}
       </div>
     </div>
   );
