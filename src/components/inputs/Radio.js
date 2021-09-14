@@ -9,7 +9,11 @@ const Radio = ({
   field_placeholder,
 }) => {
   const { handleChange } = useContext(FormContext);
-
+  const astericos = () => {
+    if (field_required === "required") {
+      return <span className="text-danger fw-bold"> *</span>;
+    }
+  };
   return (
     <>
       <div className="mb-3">
@@ -21,6 +25,7 @@ const Radio = ({
               style={{ color: "#143c75" }}
             >
               {field_label}
+              {astericos()}
             </label>
             {field_options.length > 0 &&
               field_options.map((option, i) => (

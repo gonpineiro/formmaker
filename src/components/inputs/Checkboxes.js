@@ -7,6 +7,11 @@ const Checkboxes = ({
   field_options,
   field_name,
 }) => {
+  const astericos = () => {
+    if (field_required === "required") {
+      return <span className="text-danger fw-bold"> *</span>;
+    }
+  };
   return (
     <div className="mb-3">
       <div className="card">
@@ -17,6 +22,7 @@ const Checkboxes = ({
             id={"id" + field_id}
           >
             {field_label}
+            {astericos()}
           </label>
           <div className="container row">
             {field_options.map((option, i) => (
