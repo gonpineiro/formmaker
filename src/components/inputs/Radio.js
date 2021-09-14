@@ -15,7 +15,11 @@ const Radio = ({
       <div className="mb-3">
         <div className="card">
           <div className="card-body">
-            <label className="form-label" style={{ color: "#143c75" }}>
+            <label
+              className="form-label"
+              id={"id" + field_id}
+              style={{ color: "#143c75" }}
+            >
               {field_label}
             </label>
             {field_options.length > 0 &&
