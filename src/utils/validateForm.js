@@ -23,14 +23,13 @@ const validateForm = (fields) => {
           let countChecked = 0;
           checkbox.forEach((item) => {
             if (item.checked) countChecked++;
-
-            if (countChecked === 0) {
-              sendPost = false;
-              className("id" + req.field_id, "label-invalid", "add");
-            } else {
-              className("id" + req.field_id, "label-invalid", "remove");
-            }
           });
+          if (countChecked === 0) {
+            sendPost = false;
+            className("id" + req.field_id, "label-invalid", "add");
+          } else {
+            className("id" + req.field_id, "label-invalid", "remove");
+          }
         }
         break;
       case "checkbox":
