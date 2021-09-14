@@ -69,7 +69,7 @@ const Formulario = (/* { userReducer: { idForm } } */) => {
       <div className="container pb-5">
         <div className="d-flex justify-content-center">
           <div className="col-12 col-md-7">
-            <img className="full_width mb-5" src={banner} alt="" />
+            <img className="full_width mb-5 rounded-3" src={banner} alt="" />
             <div className="card rounded-3 mb-3">
               <div
                 className="card-header py-3"
