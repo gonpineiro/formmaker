@@ -26,6 +26,7 @@ const Checkboxes = ({
                   className="form-check-input"
                   name={field_name}
                   value={option.option_label}
+                  id={"id" + option.option_label}
                 />
                 <label
                   className="form-check-label"

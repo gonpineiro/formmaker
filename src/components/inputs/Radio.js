@@ -33,15 +33,14 @@ const Radio = ({
                     id={"id" + option.option_label}
                     name={field_name}
                   />
-                  <label className="form-check-label" htmlFor={"id" + field_id}>
+                  <label
+                    className="form-check-label"
+                    htmlFor={"id" + option.option_label}
+                  >
                     {option.option_label}
                   </label>
                 </div>
               ))}
-            <div className="invalid-feedback">
-              {field_placeholder} correctamente.
-            </div>
-            <div className="valid-feedback">¡Se ve bien!</div>
           </div>
         </div>
       </div>
