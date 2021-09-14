@@ -19,15 +19,24 @@ if (isset($_POST) &&  $_POST['token'] === TOKEN) {
 
     /* Respuesta de un formulario */
     if (isset($_POST) && $_POST['type'] === 'respuesta') {
-        $response = [
-            'idForm' => $_POST['idForm'],
-            'fecha' => date('Y-m-d H:i:s'),
-            'respuestas' => $_POST["formObject"],
-        ];
 
-        $respuesta = json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-        cargarJsonFile($_POST['idForm'], $respuesta);
-        echo $respuesta;
+        if ($_POST['idForm'] != null) {
+            $data = [
+                'idForm' => $_POST['idForm'],
+                'fecha' => date('Y-m-d H:i:s'),
+                'respuestas' => $_POST["formObject"],
+            ];
+            try {
+                cargarJsonFile($_POST['idForm'], json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+                $msg = 'El formulario se envio correctamente';
+            } catch (\Throwable $th) {
+                $msg = 'Hubo un problema con el envio del formulario';
+            }
+        } else {
+            $msg = 'Hubo un problema con el envio del formulario';
+        }
+
+        echo json_encode(['msg' => $msg]);
     }
 
     /* Consultar un formulario */
