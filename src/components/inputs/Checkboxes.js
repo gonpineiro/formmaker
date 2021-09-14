@@ -17,9 +17,10 @@ const Checkboxes = ({
       <div className="card">
         <div className="card-body">
           <label
-            className="form-check-label"
+            className="form-check-label mb-3"
             htmlFor={field_id}
             id={"id" + field_id}
+            style={{ color: "#143c75" }}
           >
             {field_label}
             {astericos()}
