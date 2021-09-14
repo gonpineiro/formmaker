@@ -28,12 +28,12 @@ if (isset($_POST) &&  $_POST['token'] === TOKEN) {
             ];
             try {
                 cargarJsonFile($_POST['idForm'], json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-                $msg = 'El formulario se envio correctamente';
+                $msg = 'El formulario se envió correctamente';
             } catch (\Throwable $th) {
-                $msg = 'Hubo un problema con el envio del formulario';
+                $msg = 'Hubo un problema con el envío del formulario';
             }
         } else {
-            $msg = 'Hubo un problema con el envio del formulario';
+            $msg = 'Hubo un problema con el envío del formulario';
         }
 
         echo json_encode(['msg' => $msg]);

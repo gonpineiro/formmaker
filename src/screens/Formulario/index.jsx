@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 
-import { Element, Spinner, Loading } from "../../components";
+import { Element, Message, Spinner, Loading } from "../../components";
 import { FormContext } from "../FormContext";
 import { getFormData } from "./getForms";
 
@@ -16,6 +16,7 @@ const Formulario = (/* { userReducer: { idForm } } */) => {
   const [elements, setElements] = useState(null);
   const [loading, setLoading] = useState(true);
   const [loadingSubmit, setLoadingSubmit] = useState(false);
+  const [message, setMessage] = useState(null);
   const [checked, setChecked] = useState(false);
   const [idForm] = useState(useParams().idForm);
 
@@ -36,7 +37,9 @@ const Formulario = (/* { userReducer: { idForm } } */) => {
     const fields = elements.fields;
     if (validateForm(fields)) {
       const formObject = createFormData(event.target.form, fields);
-      postData({ formObject, idForm }, "respuesta").then(() => {
+      postData({ formObject, idForm }, "respuesta").then((msg) => {
+        console.log(msg.msg);
+        setMessage(msg.msg);
         setLoadingSubmit(false);
         //history.push("/apps/formmaker/");
       });
@@ -57,6 +60,8 @@ const Formulario = (/* { userReducer: { idForm } } */) => {
   };
 
   if (loading) return <Loading />;
+
+  if (message) return <Message message={message} />;
 
   if (!elements) return "404";
   return (
