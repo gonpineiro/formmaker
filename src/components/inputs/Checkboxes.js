@@ -11,7 +11,11 @@ const Checkboxes = ({
     <div className="mb-3">
       <div className="card">
         <div className="card-body">
-          <label className="form-check-label" htmlFor={field_id}>
+          <label
+            className="form-check-label"
+            htmlFor={field_id}
+            id={"id" + field_id}
+          >
             {field_label}
           </label>
           <div className="container row">
@@ -20,7 +24,6 @@ const Checkboxes = ({
                 <input
                   type="checkbox"
                   className="form-check-input"
-                  id={"id" + option.option_label}
                   name={field_name}
                   value={option.option_label}
                 />
