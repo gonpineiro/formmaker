@@ -9,10 +9,10 @@ import { replaceUrl, postData, createFormData } from "../../utils";
 
 import "./index.scss";
 import validateForm from "../../utils/validateForm";
-import { useHistory, useParams } from "react-router";
+import { /* useHistory, */ useParams } from "react-router";
 
 const Formulario = (/* { userReducer: { idForm } } */) => {
-  let history = useHistory();
+  //let history = useHistory();
   const [elements, setElements] = useState(null);
   const [loading, setLoading] = useState(true);
   const [loadingSubmit, setLoadingSubmit] = useState(false);
@@ -38,7 +38,7 @@ const Formulario = (/* { userReducer: { idForm } } */) => {
       const formObject = createFormData(event.target.form, fields);
       postData({ formObject, idForm }, "respuesta").then(() => {
         setLoadingSubmit(false);
-        history.push("/apps/formmaker/");
+        //history.push("/apps/formmaker/");
       });
     } else {
       setLoadingSubmit(false);
