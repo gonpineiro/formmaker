@@ -10,13 +10,15 @@ const createFormData = (form, fields) => {
               const content = radio.nextSibling.textContent;
               Formdata.set(req.field_name, content);
             }
-          });          
+          });
           break;
         case "checkboxes":
           const checkbox = document.getElementsByName(req.field_name);
           let values = [];
           checkbox.forEach((item) => {
-            values.push(item.value);
+            if (item.checked) {
+              values.push(item.value);
+            }
           });
           Formdata.set(req.field_name, values);
           break;
@@ -32,7 +34,6 @@ const createFormData = (form, fields) => {
   for (const key of Formdata.keys()) {
     formObject[key] = Formdata.get(key);
   }
-
 
   return formObject;
 };
