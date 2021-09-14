@@ -130,7 +130,7 @@ const Formulario = (/* { userReducer: { idForm } } */) => {
                 <div className="d-flex justify-content-between ">
                   <button
                     type="submit"
-                    className="btn btn-info btn-totem col-5"
+                    className="btn btn-info btn-totem col"
                     disabled={!checked}
                     onClick={(e) => handleSubmit(e)}
                   >
