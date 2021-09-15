@@ -1,18 +1,20 @@
 import { useState } from "react";
 
+const initialState = { field_required: true };
+
 const FieldSelect = ({ formulario, setFormulario, callapseOrden }) => {
-  const [field, setField] = useState({ required: true });
+  const [field, setField] = useState(initialState);
   const [disabledSubmit, setDisabledSubmit] = useState(true);
 
   const formatField = () => {
     let selectField = field;
-    let opciones = selectField.opciones.split(";");
+    let field_options = selectField.field_options.split(";");
 
-    opciones = opciones.filter((item) => item !== "");
+    field_options = field_options.filter((item) => item !== "");
 
     return {
       ...selectField,
-      opciones,
+      field_options,
     };
   };
 
@@ -36,15 +38,16 @@ const FieldSelect = ({ formulario, setFormulario, callapseOrden }) => {
       ...formulario,
     });
 
-    setField({ required: true });
+    setField(initialState);
   };
 
   const handlerTextChange = ({ target: { value } }) => {
     setField({
       ...field,
-      label: value,
-      placeholder: value,
-      descipcionSelect: value,
+      field_label: value,
+      field_placeholder: value,
+      field_name: value,
+      field_id: value,
     });
   };
 
@@ -53,7 +56,7 @@ const FieldSelect = ({ formulario, setFormulario, callapseOrden }) => {
 
     setField({
       ...field,
-      opciones: value,
+      field_options: value,
     });
   };
 
@@ -93,7 +96,7 @@ const FieldSelect = ({ formulario, setFormulario, callapseOrden }) => {
               type="text"
               className="form-control"
               id="select_field_label"
-              value={field.label || ""}
+              value={field.field_label || ""}
               onChange={handlerTextChange}
               placeholder="Ej: Selecciones su tipo de vivienda"
             />
@@ -106,7 +109,7 @@ const FieldSelect = ({ formulario, setFormulario, callapseOrden }) => {
               className="form-control"
               id="select_field_options"
               rows="3"
-              value={field.opciones || ""}
+              value={field.field_options || ""}
               onChange={handlerOptionChange}
               placeholder="Ej: casa; departamento; casa rodante;"
             ></textarea>
