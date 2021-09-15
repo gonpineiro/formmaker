@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const FieldNumber = ({ formulario, setFormulario }) => {
+const FieldNumber = ({ formulario, setFormulario, callapseOrden }) => {
   const [field, setField] = useState({ required: true, type: "number" });
 
   const handlerSubmit = () => {
@@ -42,22 +42,22 @@ const FieldNumber = ({ formulario, setFormulario }) => {
 
   return (
     <div className="accordion-item">
-      <h2 className="accordion-header" id="headingTwo">
+      <h2 className="accordion-header" id={"heading" + callapseOrden}>
         <button
           className="accordion-button collapsed"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#collapseTwo"
+          data-bs-target={"#collapse" + callapseOrden}
           aria-expanded="false"
-          aria-controls="collapseTwo"
+          aria-controls={"collapse" + callapseOrden}
         >
           Number
         </button>
       </h2>
       <div
-        id="collapseTwo"
+        id={"collapse" + callapseOrden}
         className="accordion-collapse collapse"
-        aria-labelledby="headingTwo"
+        aria-labelledby={"heading" + callapseOrden}
         data-bs-parent="#accordionFieldType"
       >
         <div className="accordion-body">
