@@ -1,7 +1,9 @@
 import { useState } from "react";
 
+const initialState = { type: "field_type" };
+
 const FieldSeparator = ({ formulario, setFormulario, callapseOrden }) => {
-  const [field, setField] = useState({ type: "separator" });
+  const [field, setField] = useState(initialState);
 
   const handlerSubmit = () => {
     const inputs = formulario.input;
@@ -9,6 +11,8 @@ const FieldSeparator = ({ formulario, setFormulario, callapseOrden }) => {
     setFormulario({
       ...formulario,
     });
+
+    setField(initialState);
   };
 
   const handlerTitleChange = ({ target: { value } }) => {
