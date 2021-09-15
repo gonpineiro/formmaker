@@ -4,7 +4,7 @@ const FieldText = ({ formulario, setFormulario }) => {
   const [field, setField] = useState({ required: true, type: "text" });
 
   const handlerSubmit = () => {
-    let inputs = formulario.input;
+    const inputs = formulario.input;
     inputs.push(field);
     setFormulario({
       ...formulario,

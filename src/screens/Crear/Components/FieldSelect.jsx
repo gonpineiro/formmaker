@@ -2,14 +2,41 @@ import { useState } from "react";
 
 const FieldSelect = ({ formulario, setFormulario }) => {
   const [field, setField] = useState({ required: true });
+  const [disabledSubmit, setDisabledSubmit] = useState(true);
+
+  const formatField = () => {
+    let selectField = field;
+    let opciones = selectField.opciones.split(";");
+
+    opciones = opciones.filter((item) => item !== "");
+
+    return {
+      ...selectField,
+      opciones,
+    };
+  };
+
+  const enableSubmit = (value) => {
+    let opciones = value.split(";");
+    opciones = opciones.filter((item) => item !== "");
+
+    if (opciones.length === 0) {
+      setDisabledSubmit(true);
+    } else {
+      setDisabledSubmit(false);
+    }
+  };
 
   const handlerSubmit = () => {
-    let inputs = formulario.input;
-    inputs.opciones.split(';')
-    inputs.push(field);
+    const inputs = formulario.input;
+
+    inputs.push(formatField());
+
     setFormulario({
       ...formulario,
     });
+
+    setField({ required: true });
   };
 
   const handlerTextChange = ({ target: { value } }) => {
@@ -22,6 +49,8 @@ const FieldSelect = ({ formulario, setFormulario }) => {
   };
 
   const handlerOptionChange = ({ target: { value } }) => {
+    enableSubmit(value);
+
     setField({
       ...field,
       opciones: value,
@@ -64,6 +93,7 @@ const FieldSelect = ({ formulario, setFormulario }) => {
               type="text"
               className="form-control"
               id="select_field_label"
+              value={field.label || ""}
               onChange={handlerTextChange}
               placeholder="Ej: Selecciones su tipo de vivienda"
             />
@@ -76,6 +106,7 @@ const FieldSelect = ({ formulario, setFormulario }) => {
               className="form-control"
               id="select_field_options"
               rows="3"
+              value={field.opciones || ""}
               onChange={handlerOptionChange}
               placeholder="Ej: casa; departamento; casa rodante;"
             ></textarea>
@@ -99,6 +130,7 @@ const FieldSelect = ({ formulario, setFormulario }) => {
               id="addSelect"
               type="submit"
               onClick={handlerSubmit}
+              disabled={disabledSubmit}
               className="btn btn-primary mb-3"
             >
               Agregar campo
