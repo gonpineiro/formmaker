@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const initialState = { field_required: true };
+const initialState = { field_required: true, field_type: "select" };
 
 const FieldSelect = ({ formulario, setFormulario, callapseOrden }) => {
   const [field, setField] = useState(initialState);

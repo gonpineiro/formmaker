@@ -1,11 +1,18 @@
 import "../index.scss";
 
-const InfoField = () => {
+const InfoField = ({ element, handlerDeleteField }) => {
   return (
-    <div className="card">
+    <div className="card mb-1">
       <div className="card-body d-flex align-items-center">
-        <span className="me-auto">This is some text within a card body.</span>
-        <button type="button" className="btn btn-dark float-end">
+        <span className="me-auto">{element.field_type}</span>
+        <span className="me-auto">
+          {element.field_label || element.separator_title}
+        </span>
+        <button
+          type="button"
+          className="btn btn-dark float-end"
+          onClick={handlerDeleteField}
+        >
           X
         </button>
       </div>

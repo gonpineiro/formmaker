@@ -42,7 +42,7 @@ const Crear = () => {
           </div>
         </div>
         <div className="col-12 col-md-6">
-          <InfoCards />
+          <InfoCards formulario={formulario} setFormulario={setFormulario} />
         </div>
       </div>
     </div>
