@@ -1,7 +1,8 @@
 import { InfoField } from "./Components";
 const InfoCards = ({ formulario: { input }, setFormulario }) => {
   const handlerDeleteField = (element) => {
-    setFormulario({ input: input.filter((item) => item !== element) });
+    input = input.filter((item) => item !== element);
+    setFormulario({ input });
   };
 
   return (
