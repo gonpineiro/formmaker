@@ -1,7 +1,12 @@
 import { useState } from "react";
 
+const initialState = {
+  field_required: true,
+  field_type: "text",
+};
+
 const FieldText = ({ formulario, setFormulario, callapseOrden }) => {
-  const [field, setField] = useState({ required: true, type: "text" });
+  const [field, setField] = useState(initialState);
 
   const handlerSubmit = () => {
     const inputs = formulario.input;
@@ -9,26 +14,31 @@ const FieldText = ({ formulario, setFormulario, callapseOrden }) => {
     setFormulario({
       ...formulario,
     });
+
+    console.log(initialState);
+    setField(initialState);
   };
 
   const handlerTextChange = ({ target: { value } }) => {
     setField({
       ...field,
-      label: value,
-      placeholder: value,
+      field_label: value,
+      field_placeholder: value,
+      field_name: value,
+      field_id: value,
     });
   };
 
   const handlerRequiredChange = () => {
     setField({
       ...field,
-      required: !field.required,
+      field_required: !field.field_required,
     });
   };
   const handlerTypeChange = ({ target: { value } }) => {
     setField({
       ...field,
-      type: value,
+      field_type: value,
     });
   };
 
@@ -75,6 +85,7 @@ const FieldText = ({ formulario, setFormulario, callapseOrden }) => {
               type="text"
               className="form-control"
               id="text_field_label"
+              value={field.field_label || ""}
               onChange={handlerTextChange}
               placeholder="Ej: Nombre mascota, escriba su email, descripción de su vivienda"
             />
@@ -88,7 +99,7 @@ const FieldText = ({ formulario, setFormulario, callapseOrden }) => {
               className="form-select"
               aria-label="Default select example"
               onChange={handlerTypeChange}
-              value={field.type}
+              value={field.field_type}
             >
               <option value="text">Texto</option>
               <option value="textarea">Párrafo</option>
@@ -103,6 +114,7 @@ const FieldText = ({ formulario, setFormulario, callapseOrden }) => {
               type="number"
               className="form-control"
               id="min_text_field_type"
+              value={field.min_lenght || ""}
               onChange={handlerMinCharChange}
               placeholder="Ej: 5"
             />
@@ -115,6 +127,7 @@ const FieldText = ({ formulario, setFormulario, callapseOrden }) => {
               type="number"
               className="form-control"
               id="max_text_field_type"
+              value={field.max_lenght || ""}
               onChange={handlerMaxCharChange}
               placeholder="Ej: 50"
             />
@@ -124,7 +137,7 @@ const FieldText = ({ formulario, setFormulario, callapseOrden }) => {
               <input
                 className="form-check-input"
                 type="checkbox"
-                checked={field.required}
+                checked={field.field_required}
                 onChange={handlerRequiredChange}
                 id="text_field_required"
               />
@@ -138,6 +151,7 @@ const FieldText = ({ formulario, setFormulario, callapseOrden }) => {
               id="addText"
               type="submit"
               onClick={handlerSubmit}
+              disabled={field.field_label ? false : true}
               className="btn btn-primary mb-3"
             >
               Agregar campo

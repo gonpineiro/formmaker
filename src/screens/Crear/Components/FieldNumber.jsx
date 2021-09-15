@@ -14,15 +14,15 @@ const FieldNumber = ({ formulario, setFormulario, callapseOrden }) => {
   const handlerTextChange = ({ target: { value } }) => {
     setField({
       ...field,
-      label: value,
-      placeholder: value,
+      field_label: value,
+      field_placeholder: value,
     });
   };
 
   const handlerRequiredChange = () => {
     setField({
       ...field,
-      required: !field.required,
+      field_required: !field.required,
     });
   };
 
