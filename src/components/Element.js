@@ -3,6 +3,7 @@ import Checkbox from "./inputs/Checkbox";
 import Checkboxes from "./inputs/Checkboxes";
 import Date from "./inputs/Date";
 import Input from "./inputs/Input";
+import Image from "./inputs/Image";
 import Radio from "./inputs/Radio";
 import Select from "./inputs/Select";
 import Separator from "./inputs/Separator";
@@ -23,6 +24,8 @@ const Element = ({
     field_value,
     separator_title,
     separator_description,
+    image_title,
+    image_src,
   },
   hcolor,
   checked,
@@ -84,6 +87,15 @@ const Element = ({
           field_value={field_value}
           field_required={field_required}
           field_max={field_max}
+        />
+      );
+    case "image":
+      return (
+        <Image
+          field_id={field_id}
+          image_title={image_title}
+          image_src={image_src}
+          hcolor={hcolor}
         />
       );
     case "radio":
