@@ -39,6 +39,7 @@ const FieldSelect = ({ formulario, setFormulario, callapseOrden }) => {
     });
 
     setField(initialState);
+    setDisabledSubmit(true);
   };
 
   const handlerTextChange = ({ target: { value } }) => {
@@ -63,7 +64,7 @@ const FieldSelect = ({ formulario, setFormulario, callapseOrden }) => {
   const handlerRequiredChange = () => {
     setField({
       ...field,
-      required: !field.required,
+      field_required: !field.field_required,
     });
   };
 
@@ -119,7 +120,7 @@ const FieldSelect = ({ formulario, setFormulario, callapseOrden }) => {
               <input
                 className="form-check-input"
                 type="checkbox"
-                checked={field.required}
+                checked={field.field_required}
                 onChange={handlerRequiredChange}
                 id="flexCheckChecked"
               />

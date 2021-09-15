@@ -1,7 +1,12 @@
 import { useState } from "react";
 
+const initialState = {
+  field_required: true,
+  field_type: "number",
+};
+
 const FieldNumber = ({ formulario, setFormulario, callapseOrden }) => {
-  const [field, setField] = useState({ required: true, type: "number" });
+  const [field, setField] = useState(initialState);
 
   const handlerSubmit = () => {
     let inputs = formulario.input;
@@ -9,6 +14,8 @@ const FieldNumber = ({ formulario, setFormulario, callapseOrden }) => {
     setFormulario({
       ...formulario,
     });
+
+    setField(initialState);
   };
 
   const handlerTextChange = ({ target: { value } }) => {
@@ -16,6 +23,8 @@ const FieldNumber = ({ formulario, setFormulario, callapseOrden }) => {
       ...field,
       field_label: value,
       field_placeholder: value,
+      field_name: value,
+      field_id: value,
     });
   };
 
@@ -69,6 +78,7 @@ const FieldNumber = ({ formulario, setFormulario, callapseOrden }) => {
               type="text"
               className="form-control"
               id="number_field_label"
+              value={field.field_label || ""}
               placeholder="Ej: Número de mascotas"
               onChange={handlerTextChange}
             />
@@ -81,6 +91,7 @@ const FieldNumber = ({ formulario, setFormulario, callapseOrden }) => {
               type="number"
               className="form-control"
               id="min_number_field_label"
+              value={field.min_lenght || ""}
               onChange={handlerMinCharChange}
               placeholder="Ej: 5"
             />
@@ -93,6 +104,7 @@ const FieldNumber = ({ formulario, setFormulario, callapseOrden }) => {
               type="number"
               className="form-control"
               id="max_number_field_label"
+              value={field.max_lenght || ""}
               onChange={handlerMaxCharChange}
               placeholder="Ej: 50"
             />

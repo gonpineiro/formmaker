@@ -15,7 +15,6 @@ const FieldText = ({ formulario, setFormulario, callapseOrden }) => {
       ...formulario,
     });
 
-    console.log(initialState);
     setField(initialState);
   };
 
@@ -60,11 +59,11 @@ const FieldText = ({ formulario, setFormulario, callapseOrden }) => {
     <div className="accordion-item">
       <h2 className="accordion-header" id={"heading" + callapseOrden}>
         <button
-          className="accordion-button"
+          className="accordion-button collapsed"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target={"#collapse" + callapseOrden}
-          aria-expanded="true"
+          aria-expanded="false"
           aria-controls={"collapse" + callapseOrden}
         >
           Texto
@@ -72,7 +71,7 @@ const FieldText = ({ formulario, setFormulario, callapseOrden }) => {
       </h2>
       <div
         id={"collapse" + callapseOrden}
-        className="accordion-collapse collapse show"
+        className="accordion-collapse collapse"
         aria-labelledby={"heading" + callapseOrden}
         data-bs-parent="#accordionFieldType"
       >

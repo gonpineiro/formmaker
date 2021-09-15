@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const initialState = { type: "field_type" };
+const initialState = { field_type: "separator" };
 
 const FieldSeparator = ({ formulario, setFormulario, callapseOrden }) => {
   const [field, setField] = useState(initialState);
