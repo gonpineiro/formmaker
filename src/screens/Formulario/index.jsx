@@ -66,7 +66,7 @@ const Formulario = (/* { userReducer: { idForm } } */) => {
   if (!elements) return "404";
   return (
     <FormContext.Provider value={{ handleChange }}>
-      <div className="container pb-5">
+      <div className="container pt-5 pb-5">
         <div className="d-flex justify-content-center">
           <div className="col-12 col-md-7">
             <img className="full_width mb-5 rounded-3" src={banner} alt="" />

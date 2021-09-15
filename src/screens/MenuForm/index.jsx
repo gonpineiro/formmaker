@@ -24,8 +24,8 @@ const MenuForm = () => {
   if (forms.length === 0) return <Loading />;
 
   return (
-    <div className="container">
-      <h2 className="titulo text-center">Listado de formularios</h2>
+    <div className="container pt-5">
+      <h2 className="titulo text-center">Listado de Formularios</h2>
       <div className="row mt-5">
         <div className="col-12 col-md-7 mx-auto">
           {forms.map((form, key) => (

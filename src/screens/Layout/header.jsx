@@ -3,7 +3,7 @@ import LogoNeg from "./LogoNeg.js";
 
 const Header = () => {
   return (
-    <header className="mb-5">
+    <header>
       <div className="container">
         <div className="header-logo text-center">
           <LogoNeg />

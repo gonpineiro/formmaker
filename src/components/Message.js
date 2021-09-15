@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Message = ({ message }) => {
   return (
-    <div className="container">
+    <div className="container pt-5">
       <div className="col-12 col-md-8 mx-auto pt-5">
         <div className="alert alert-primary" role="alert">
           {message}
