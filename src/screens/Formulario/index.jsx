@@ -37,9 +37,8 @@ const Formulario = (/* { userReducer: { idForm } } */) => {
     const fields = elements.fields;
     if (validateForm(fields)) {
       const formObject = createFormData(event.target.form, fields);
-      postData({ formObject, idForm }, "respuesta").then((msg) => {
-        console.log(msg.msg);
-        setMessage(msg.msg);
+      postData({ formObject, idForm }, nombre, "respuesta").then(({ msg }) => {
+        setMessage(msg);
         setLoadingSubmit(false);
         //history.push("/apps/formmaker/");
       });

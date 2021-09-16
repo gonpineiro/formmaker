@@ -1,9 +1,10 @@
 import qs from "qs";
 import { TOKEN, URL_BACK } from "../config/config";
 
-const postData = async (data, type) => {
+const postData = async (data, nombre, type) => {
   data.token = TOKEN;
   data.type = type;
+  data.nombre = nombre;
   const req = await fetch(URL_BACK, {
     method: "POST",
     body: qs.stringify(data),

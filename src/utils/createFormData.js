@@ -35,6 +35,8 @@ const createFormData = (form, fields) => {
     formObject[key] = Formdata.get(key);
   }
 
+  delete formObject.acepto;
+
   return formObject;
 };
 
