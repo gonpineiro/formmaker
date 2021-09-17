@@ -9,17 +9,31 @@ const Menu = () => {
   });
 
   return (
-    <div className="container">
-      <h2 className="titulo text-center">Formularios Dinámicos</h2>
+    <div className="container pt-5">
+      <h2 className="titulo text-center mb-5">Formularios Dinámicos</h2>
       <div className="row mt-5">
-        <div className="col flex-row text-center">
-          <Link className="btn btn-primary" to="/apps/formmaker/crear">
+        <div
+          className="col-12 mx-auto text-center mb-3"
+          style={{ minWidth: "300px" }}
+        >
+          <Link className="btn btn-totem" to="/apps/formmaker/crear">
             Crear
           </Link>
         </div>
-        <div className="col flex-row text-center">
-          <Link className="btn btn-primary" to="/apps/formmaker/gestionar">
+        <div
+          className="col-12 mx-auto text-center mb-3"
+          style={{ minWidth: "300px" }}
+        >
+          <Link className="btn btn-totem" to="/apps/formmaker/gestionar">
             Gestionar
+          </Link>
+        </div>
+        <div
+          className="col-12 mx-auto text-center mb-3"
+          style={{ minWidth: "300px" }}
+        >
+          <Link className="btn btn-totem" to="/apps/formmaker/comprobar">
+            Comprobar
           </Link>
         </div>
       </div>

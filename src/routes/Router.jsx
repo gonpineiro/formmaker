@@ -2,7 +2,14 @@ import { useEffect } from "react";
 import { connect } from "react-redux";
 import { Route } from "react-router-dom";
 
-import { Menu, Crear, Gestionar, Formulario, MenuForm } from "../screens";
+import {
+  Menu,
+  Crear,
+  Comprobar,
+  Gestionar,
+  Formulario,
+  MenuForm,
+} from "../screens";
 
 import * as userAction from "../redux/actions/userAction";
 import RouterLayout from "./RouterLayout";
@@ -24,6 +31,7 @@ const Router = ({ traerDatosSession, userReducer }) => {
         <Route exact path="/apps/formmaker/menu" component={Menu} />
         <Route exact path="/apps/formmaker/crear" component={Crear} />
         <Route exact path="/apps/formmaker/gestionar" component={Gestionar} />
+        <Route exact path="/apps/formmaker/comprobar" component={Comprobar} />
         <Route component={Menu} />
       </RouterLayout>
     );
