@@ -36,6 +36,19 @@ const Menu = () => {
             Comprobar
           </Link>
         </div>
+        <div
+          className="col-12 mx-auto text-center mb-3"
+          style={{ minWidth: "300px" }}
+        >
+          <Link
+            className="btn btn-totem"
+            to="/apps/formmaker/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ir a Formularios
+          </Link>
+        </div>
       </div>
     </div>
   );
