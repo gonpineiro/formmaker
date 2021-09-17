@@ -1,8 +1,18 @@
+import { useState } from "react";
 import { InfoField } from "./Components";
+
+import "./index.scss";
+
 const InfoCards = ({ formulario: { input }, setFormulario }) => {
+  const [color, setColor] = useState("#266AAD");
+
   const handlerDeleteField = (element) => {
     input = input.filter((item) => item !== element);
     setFormulario({ input });
+  };
+
+  const handlerColorChange = ({ target: { value } }) => {
+    setColor(value);
   };
 
   return (
@@ -15,6 +25,16 @@ const InfoCards = ({ formulario: { input }, setFormulario }) => {
           handlerDeleteField={() => handlerDeleteField(element)}
         />
       ))}
+      <label htmlFor="colorPicker" className="form-label">
+        Color del formulario
+      </label>
+      <input
+        id="colorPicker"
+        type="color"
+        name="favcolor"
+        value={color}
+        onChange={handlerColorChange}
+      />
     </>
   );
 };

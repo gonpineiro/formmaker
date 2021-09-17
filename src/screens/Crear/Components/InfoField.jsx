@@ -12,6 +12,7 @@ const setDataTip = (element) => {
     case "text":
     case "number":
     case "textarea":
+    case "email":
       dataTip += "Etiqueta: " + element.field_label + "<br />";
       dataTip += "Longitud Maxima: " + (element.max_lenght || "0") + "<br />";
       dataTip += "Longitud Minima: " + (element.min_lenght || "0") + "<br />";
@@ -28,13 +29,12 @@ const setDataTip = (element) => {
 };
 
 const InfoField = ({ element, handlerDeleteField }) => {
-  console.log(element);
   return (
     <div className="card mb-1">
       <div
         data-for="main"
         data-tip={setDataTip(element)}
-        className="card-body d-flex align-items-center hover"
+        className="card-body d-flex align-items-center pb-2 pt-2"
       >
         <span className="me-auto">{element.field_type}</span>
         <span className="me-auto">
