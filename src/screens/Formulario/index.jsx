@@ -144,7 +144,7 @@ const Formulario = (/* { userReducer: { idForm } } */) => {
                     </button>
                     <div className="col"></div>
                     <Link
-                      className="btn btn-info btn-totem mb-3 col-12 col-md-5"
+                      className="btn btn-back mb-3 col-12 col-md-5"
                       to="/apps/formmaker/"
                     >
                       Volver a Formularios
