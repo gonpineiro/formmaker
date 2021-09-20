@@ -41,7 +41,8 @@ const Comprobar = () => {
             </button>
           </div>
 
-          {forms ? InfoFormulario(forms) : avisoIngresarDatos()}
+          {forms ? InfoFormulario(forms) : null}
+          {/* en vez de null se puede usar avisoIngresarDatos() */}
         </div>
       </div>
     </div>
@@ -63,15 +64,15 @@ function InfoFormulario(forms) {
   );
 }
 
-function avisoIngresarDatos() {
-  return (
-    <div className="col-12 col-md-5 mt-5 mx-auto">
-      <div className="alert alert-secondary" role="alert">
-        Ingrese un DNI
-      </div>
-    </div>
-  );
-}
+// function avisoIngresarDatos() {
+//   return (
+//     <div className="col-12 col-md-5 mt-5 mx-auto">
+//       <div className="alert alert-info" role="alert">
+//         Ingrese un DNI
+//       </div>
+//     </div>
+//   );
+// }
 
 function avisoSinDatos() {
   return (
