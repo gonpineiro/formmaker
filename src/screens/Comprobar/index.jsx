@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import "./index.scss";
 
@@ -43,6 +44,14 @@ const Comprobar = () => {
 
           {forms ? InfoFormulario(forms) : null}
           {/* en vez de null se puede usar avisoIngresarDatos() */}
+          <div className="col-auto mt-5">
+            <Link
+              className="btn btn-back mb-3 col-12 col-md-5"
+              to="/apps/formmaker/"
+            >
+              Volver atrás
+            </Link>
+          </div>
         </div>
       </div>
     </div>
