@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { Element, Message, Spinner, Loading } from "../../components";
@@ -131,15 +132,24 @@ const Formulario = (/* { userReducer: { idForm } } */) => {
                   })
                 : null}
               {!loadingSubmit ? (
-                <div className="d-flex justify-content-between ">
-                  <button
-                    type="submit"
-                    className="btn btn-info btn-totem col"
-                    disabled={!checked}
-                    onClick={(e) => handleSubmit(e)}
-                  >
-                    Enviar
-                  </button>
+                <div className="container">
+                  <div className="row">
+                    <button
+                      type="submit"
+                      className="btn btn-info btn-totem mb-3 col-12 col-md-5"
+                      disabled={!checked}
+                      onClick={(e) => handleSubmit(e)}
+                    >
+                      Enviar
+                    </button>
+                    <div className="col"></div>
+                    <Link
+                      className="btn btn-info btn-totem mb-3 col-12 col-md-5"
+                      to="/apps/formmaker/"
+                    >
+                      Volver a Formularios
+                    </Link>
+                  </div>
                 </div>
               ) : (
                 <Spinner />
