@@ -1,14 +1,14 @@
 import { InfoField } from "./Components";
-const InfoCards = ({ formulario: { input }, setFormulario }) => {
+const InfoCards = ({ formulario: { fields }, setFormulario }) => {
   const handlerDeleteField = (element) => {
-    input = input.filter((item) => item !== element);
-    setFormulario({ input });
+    fields = fields.filter((item) => item !== element);
+    setFormulario({ fields });
   };
 
   return (
     <>
       <h4 className="mb-3">Campos Formulario</h4>
-      {input.map((element, key) => (
+      {fields.map((element, key) => (
         <InfoField
           key={key}
           element={element}

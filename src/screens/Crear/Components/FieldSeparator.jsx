@@ -6,8 +6,8 @@ const FieldSeparator = ({ formulario, setFormulario, callapseOrden }) => {
   const [field, setField] = useState(initialState);
 
   const handlerSubmit = () => {
-    const inputs = formulario.input;
-    inputs.push(field);
+    const fields = formulario.fields;
+    fields.push(field);
     setFormulario({
       ...formulario,
     });

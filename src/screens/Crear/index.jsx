@@ -14,9 +14,10 @@ import { useState } from "react";
 import { BasicInput } from "../../components";
 
 const initialState = {
-  banner: 'banner',
+  banner: "banner",
+  hcolor: "#FFF",
   description: "Esto es una descripcion",
-  input: [],
+  fields: [],
 };
 
 const Crear = () => {
@@ -46,9 +47,10 @@ const Crear = () => {
   const ButtonsSubmit = () => {
     const handlerSubmitForm = () => {
       insertForm(formulario);
+      setFormulario(initialState);
     };
 
-    if (formulario.input.length === 0) return "";
+    if (formulario.fields.length === 0) return "";
 
     return (
       <div className="col-auto">

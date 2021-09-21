@@ -9,7 +9,7 @@ const FieldNumber = ({ formulario, setFormulario, callapseOrden }) => {
   const [field, setField] = useState(initialState);
 
   const handlerSubmit = () => {
-    let inputs = formulario.input;
+    let inputs = formulario.fields;
     inputs.push(field);
     setFormulario({
       ...formulario,
