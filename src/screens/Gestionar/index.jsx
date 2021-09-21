@@ -12,7 +12,6 @@ import {
 const Gestionar = () => {
   const [formularios, setFormularios] = useState(null);
   getAllForms().then(({ data: { data } }) => {
-    console.log(data);
   });
   return (
     <div className="container">
