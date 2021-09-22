@@ -23,6 +23,11 @@ const initialState = {
 const Crear = () => {
   const [formulario, setFormulario] = useState(initialState);
 
+  const handlerSubmitForm = () => {
+    insertForm(formulario);
+    setFormulario(initialState);
+  };
+
   const handlerNameChange = ({ target: { value } }) => {
     setFormulario({
       ...formulario,
@@ -45,11 +50,6 @@ const Crear = () => {
   };
 
   const ButtonsSubmit = () => {
-    const handlerSubmitForm = () => {
-      insertForm(formulario);
-      setFormulario(initialState);
-    };
-
     if (formulario.fields.length === 0) return "";
 
     return (

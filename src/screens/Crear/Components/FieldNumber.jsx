@@ -31,7 +31,7 @@ const FieldNumber = ({ formulario, setFormulario, callapseOrden }) => {
   const handlerRequiredChange = () => {
     setField({
       ...field,
-      field_required: !field.required,
+      field_required: !field.field_required,
     });
   };
 
@@ -114,7 +114,7 @@ const FieldNumber = ({ formulario, setFormulario, callapseOrden }) => {
               <input
                 className="form-check-input"
                 type="checkbox"
-                checked={field.required}
+                checked={field.field_required}
                 onChange={handlerRequiredChange}
                 id="number_field_required"
               />

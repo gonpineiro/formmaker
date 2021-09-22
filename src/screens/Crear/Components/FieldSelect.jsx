@@ -30,9 +30,9 @@ const FieldSelect = ({ formulario, setFormulario, callapseOrden }) => {
   };
 
   const handlerSubmit = () => {
-    const inputs = formulario.input;
+    const fields = formulario.fields;
 
-    inputs.push(formatField());
+    fields.push(formatField());
 
     setFormulario({
       ...formulario,
