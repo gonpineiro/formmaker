@@ -53,7 +53,7 @@ const Crear = () => {
     if (formulario.fields.length === 0) return "";
 
     return (
-      <div className="col-auto">
+      <div className="d-flex justify-content-between">
         <button
           id="addSelect"
           type="submit"
