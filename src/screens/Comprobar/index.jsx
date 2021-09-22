@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { URL_WS_COMPROBAR } from "../../config/config";
 import "./index.scss";
 
 const Comprobar = () => {
@@ -9,7 +9,7 @@ const Comprobar = () => {
   const checkUserWithForm = (event) => {
     event.preventDefault();
     if (numDni) {
-      fetch(`http://storage2:82/api_v1/muniForms/${numDni}`)
+      fetch(URL_WS_COMPROBAR + numDni)
         .then((response) => response.json())
         .then((data) => setForms(data));
     } else {
