@@ -5,3 +5,4 @@ export { default as Comprobar } from "./Comprobar";
 export { default as Gestionar } from "./Gestionar";
 export { default as Formulario } from "./Formulario";
 export { default as MenuForm } from "./MenuForm";
+export { default as DetalleForm } from "./DetalleForm";
