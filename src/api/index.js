@@ -1,7 +1,8 @@
 import axios from "axios";
+import { URL_API } from "../config/config";
 
 const api = axios.create({
-  baseURL: "http://localhost:3005/api",
+  baseURL: URL_API,
 });
 
 export const insertForm = (payload) => api.post(`/form`, payload);
