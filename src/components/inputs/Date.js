@@ -11,10 +11,11 @@ const Date = ({
 }) => {
   const { handleChange } = useContext(FormContext);
   const astericos = () => {
-    if (field_required === "required") {
+    if (field_required === "true") {
       return <span className="text-danger fw-bold"> *</span>;
     }
   };
+  const isRequired = field_required === "true";
   return (
     <div className="mb-3">
       <div className="card">
@@ -34,7 +35,7 @@ const Date = ({
               id={"id" + field_id}
               name={field_name}
               onChange={(event) => handleChange(field_id, event)}
-              required={field_required}
+              required={isRequired && "required"}
               value={field_value}
             />
             <div className="invalid-feedback">

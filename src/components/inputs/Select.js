@@ -6,15 +6,15 @@ const Select = ({
   field_label,
   field_required,
   field_placeholder,
-  field_value,
   field_options,
 }) => {
   const { handleChange } = useContext(FormContext);
   const astericos = () => {
-    if (field_required === "required") {
+    if (field_required === "true") {
       return <span className="text-danger fw-bold"> *</span>;
     }
   };
+  const isRequired = field_required === "true";
   return (
     <>
       <div className="mb-3">
@@ -30,7 +30,7 @@ const Select = ({
               onChange={(event) => handleChange(field_id, event)}
               id={"id" + field_id}
               name={field_name}
-              required={field_required}
+              required={isRequired && 'required'}
             >
               <option value="">Elegir opción</option>
               {field_options.length > 0 &&

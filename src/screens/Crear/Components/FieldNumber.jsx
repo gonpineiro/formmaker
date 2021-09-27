@@ -25,6 +25,7 @@ const FieldNumber = ({ formulario, setFormulario, callapseOrden }) => {
       field_placeholder: value,
       field_name: value,
       field_id: value,
+      field_value: ""
     });
   };
 

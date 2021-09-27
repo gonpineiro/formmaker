@@ -15,10 +15,11 @@ const Input = ({
 }) => {
   const { handleChange } = useContext(FormContext);
   const astericos = () => {
-    if (field_required === "required") {
+    if (field_required === "true") {
       return <span className="text-danger fw-bold"> *</span>;
     }
   };
+  const isRequired = field_required === "true";
   return (
     <div className="mb-3">
       <div className="card">
@@ -40,7 +41,7 @@ const Input = ({
             placeholder={field_placeholder ? field_placeholder : ""}
             value={field_value.slice(0, field_max)}
             onChange={(event) => handleChange(field_id, event)}
-            required={field_required}
+            required={isRequired && "required"}
             minLength={field_min}
             maxLength={field_max}
           />

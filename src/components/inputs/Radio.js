@@ -6,7 +6,6 @@ const Radio = ({
   field_label,
   field_required,
   field_options,
-  field_placeholder,
 }) => {
   const { handleChange } = useContext(FormContext);
   const astericos = () => {
@@ -14,6 +13,7 @@ const Radio = ({
       return <span className="text-danger fw-bold"> *</span>;
     }
   };
+  const isRequired = field_required === "true";
   return (
     <>
       <div className="mb-3">
@@ -31,7 +31,7 @@ const Radio = ({
               field_options.map((option, i) => (
                 <div key={i} className="form-check">
                   <input
-                    required={field_required}
+                    required={isRequired && "required"}
                     className="form-check-input"
                     type="radio"
                     onChange={(event) => handleChange(field_id, event)}

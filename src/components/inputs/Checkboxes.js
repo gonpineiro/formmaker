@@ -8,7 +8,7 @@ const Checkboxes = ({
   field_name,
 }) => {
   const astericos = () => {
-    if (field_required === "required") {
+    if (field_required === "true") {
       return <span className="text-danger fw-bold"> *</span>;
     }
   };

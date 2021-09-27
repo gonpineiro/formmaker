@@ -15,8 +15,6 @@ import { useState } from "react";
 import { BasicInput } from "../../components";
 import { postForm } from "../../utils/";
 
-
-
 const Crear = () => {
   const initialState = {
     nombre: null,
@@ -31,6 +29,19 @@ const Crear = () => {
   const handlerSubmitForm = () => {
     /* mongoDb */
     /* insertForm(formulario); */
+
+    const fields = formulario.fields;
+    fields.push({
+      field_order: 33,
+      field_id: "acepto",
+      field_name: "acepto",
+      field_label: "Completé mi formulario",
+      field_type: "checkbox",
+      field_value: "checked",
+      field_required: "required",
+    });
+
+    setFormulario(formulario);
     postForm(formulario, "post-form-json");
     setFormulario(initialState);
   };
