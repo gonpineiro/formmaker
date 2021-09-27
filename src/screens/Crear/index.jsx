@@ -1,4 +1,5 @@
-import { insertForm } from "../../api";
+/* mongoDb */
+/* import { insertForm } from "../../api"; */
 
 import InfoCards from "./InfoCards";
 import {
@@ -14,27 +15,30 @@ import { useState } from "react";
 import { BasicInput } from "../../components";
 import { postForm } from "../../utils/";
 
-const initialState = {
-  banner: "banner",
-  hcolor: "#FFF",
-  description: "Esto es una descripcion",
-  fields: [],
-};
+
 
 const Crear = () => {
+  const initialState = {
+    nombre: null,
+    description: "Esto es una descripcion",
+    hcolor: "#FFF",
+    banner: "banner",
+    terminosCondiciones: null,
+    fields: [],
+  };
   const [formulario, setFormulario] = useState(initialState);
 
   const handlerSubmitForm = () => {
-    insertForm(formulario);
-    postForm(formulario, "post-form-json");
     /* mongoDb */
-    /* setFormulario(initialState); */
+    /* insertForm(formulario); */
+    postForm(formulario, "post-form-json");
+    setFormulario(initialState);
   };
 
   const handlerNameChange = ({ target: { value } }) => {
     setFormulario({
       ...formulario,
-      name: value,
+      nombre: value,
     });
   };
 
@@ -105,7 +109,7 @@ const Crear = () => {
             id="nombre"
             type="text"
             placeholder="Furmulario algo"
-            value={formulario.name}
+            value={formulario.nombre}
             handlerChange={handlerNameChange}
           />
           <BasicInput
