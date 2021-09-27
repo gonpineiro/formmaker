@@ -12,6 +12,7 @@ import "./index.scss";
 
 import { useState } from "react";
 import { BasicInput } from "../../components";
+import { postForm } from "../../utils/";
 
 const initialState = {
   banner: "banner",
@@ -25,7 +26,9 @@ const Crear = () => {
 
   const handlerSubmitForm = () => {
     insertForm(formulario);
-    setFormulario(initialState);
+    postForm(formulario, "post-form-json");
+    /* mongoDb */
+    /* setFormulario(initialState); */
   };
 
   const handlerNameChange = ({ target: { value } }) => {
