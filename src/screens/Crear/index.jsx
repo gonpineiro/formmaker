@@ -28,9 +28,7 @@ const Crear = () => {
   };
   const [formulario, setFormulario] = useState(initialState);
 
-  const handlerSubmitForm = () => {
-    /* mongoDb */
-    /* insertForm(formulario); */
+  const handlerSubmitForm = () => {    
 
     const fields = formulario.fields;
     fields.push({
@@ -46,6 +44,8 @@ const Crear = () => {
     setFormulario(formulario);
     postForm(formulario, "post-form-json");
     setFormulario(initialState);
+    /* mongoDb */
+    /* insertForm(formulario); */
   };
 
   const handlerNameChange = ({ target: { value } }) => {
