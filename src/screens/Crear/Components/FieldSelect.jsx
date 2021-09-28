@@ -66,7 +66,6 @@ const FieldSelect = ({ formulario, setFormulario, callapseOrden }) => {
 
   const handlerOptionChange = ({ target: { value } }) => {
     enableSubmit(value);
-    console.log(value);
     setField({
       ...field,
       field_options: value,

@@ -19,8 +19,12 @@ const setDataTip = (element) => {
       dataTip += "Requerido: " + requiredDesc + "<br />";
       break;
     case "select":
+    case "radio":
+    case "checkboxes":
+      const options = element.field_options.map((el) => el.option_label);
       dataTip += "Etiqueta: " + element.field_label + "<br />";
-      dataTip += "Opciones: " + element.field_options.join() + "<br />";
+      dataTip += "Opciones: " + options.join() + "<br />";
+      dataTip += "Requerido: " + requiredDesc + "<br />";
       break;
     default:
       break;
