@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { FormContext } from "../../screens/FormContext";
+import { asteriscos } from "../../utils";
 
 const Date = ({
   field_id,
@@ -10,11 +11,8 @@ const Date = ({
   field_value,
 }) => {
   const { handleChange } = useContext(FormContext);
-  const astericos = () => {
-    if (field_required === "required") {
-      return <span className="text-danger fw-bold"> *</span>;
-    }
-  };
+
+  const isRequired = field_required === "true";
   return (
     <div className="mb-3">
       <div className="card">
@@ -26,7 +24,7 @@ const Date = ({
               style={{ color: "#143c75" }}
             >
               {field_label}
-              {astericos()}
+              {asteriscos(field_required)}
             </label>
             <input
               type="date"
@@ -34,7 +32,7 @@ const Date = ({
               id={"id" + field_id}
               name={field_name}
               onChange={(event) => handleChange(field_id, event)}
-              required={field_required}
+              required={isRequired && "required"}
               value={field_value}
             />
             <div className="invalid-feedback">

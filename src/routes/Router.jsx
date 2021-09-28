@@ -9,6 +9,7 @@ import {
   Gestionar,
   Formulario,
   MenuForm,
+  DetalleForm,
 } from "../screens";
 
 import * as userAction from "../redux/actions/userAction";
@@ -24,13 +25,14 @@ const Router = ({ traerDatosSession, userReducer }) => {
   if (loading) return "Loading";
 
   if (error) return error;
-
+  
   if (isAdmin) {
     return (
       <RouterLayout>
         <Route exact path="/apps/formmaker/menu" component={Menu} />
         <Route exact path="/apps/formmaker/crear" component={Crear} />
         <Route exact path="/apps/formmaker/gestionar" component={Gestionar} />
+        <Route exact path="/apps/formmaker/gestionar/:id" component={DetalleForm} />
         <Route exact path="/apps/formmaker/comprobar" component={Comprobar} />
         <Route component={Menu} />
       </RouterLayout>

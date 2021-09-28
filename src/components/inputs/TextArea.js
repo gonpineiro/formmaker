@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { FormContext } from "../../screens/FormContext";
+import { asteriscos } from "../../utils";
 
 const Input = ({
   field_id,
@@ -11,11 +12,7 @@ const Input = ({
   field_value,
 }) => {
   const { handleChange } = useContext(FormContext);
-  const astericos = () => {
-    if (field_required === "required") {
-      return <span className="text-danger fw-bold"> *</span>;
-    }
-  };
+  
   const [count, setCount] = React.useState(0);
   return (
     <div className="mb-3">
@@ -27,7 +24,7 @@ const Input = ({
             style={{ color: "#143c75" }}
           >
             {field_label}
-            {astericos()}
+            {asteriscos(field_required)}
           </label>
           <textarea
             rows="5"

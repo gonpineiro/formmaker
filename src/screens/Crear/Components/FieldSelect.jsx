@@ -8,9 +8,20 @@ const FieldSelect = ({ formulario, setFormulario, callapseOrden }) => {
 
   const formatField = () => {
     let selectField = field;
-    let field_options = selectField.field_options.split(";");
+    let options = selectField.field_options.split(";");
 
-    field_options = field_options.filter((item) => item !== "");
+    options = options.filter((item) => item !== "");
+
+    let field_options = [];
+
+    let id = 1;
+    options.forEach((option) =>
+      field_options.push({
+        id,
+        option_label: option,
+      })
+    );
+    id++;
 
     return {
       ...selectField,
@@ -30,9 +41,9 @@ const FieldSelect = ({ formulario, setFormulario, callapseOrden }) => {
   };
 
   const handlerSubmit = () => {
-    const inputs = formulario.input;
+    const fields = formulario.fields;
 
-    inputs.push(formatField());
+    fields.push(formatField());
 
     setFormulario({
       ...formulario,
@@ -49,12 +60,12 @@ const FieldSelect = ({ formulario, setFormulario, callapseOrden }) => {
       field_placeholder: value,
       field_name: value,
       field_id: value,
+      field_value: "",
     });
   };
 
   const handlerOptionChange = ({ target: { value } }) => {
     enableSubmit(value);
-
     setField({
       ...field,
       field_options: value,

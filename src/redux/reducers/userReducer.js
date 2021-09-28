@@ -25,7 +25,6 @@ export default (state = INITIAL_STATE, action) => {
 
       const datosPersonales = payload.datosPersonales;
       const app = datosPersonales.apps.filter((obj) => obj.id === APP_ID)[0];
-
       return {
         ...state,
         loading: false,

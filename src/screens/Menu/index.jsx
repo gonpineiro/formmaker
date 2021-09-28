@@ -12,7 +12,7 @@ const Menu = () => {
     <div className="container pt-5">
       <h2 className="titulo text-center mb-5">Formularios Dinámicos</h2>
       <div className="row mt-5">
-        {/*         <div
+        <div
           className="col-12 mx-auto text-center mb-3"
           style={{ minWidth: "300px" }}
         >
@@ -27,7 +27,7 @@ const Menu = () => {
           <Link className="btn btn-totem" to="/apps/formmaker/gestionar">
             Gestionar
           </Link>
-        </div> */}
+        </div>
         <div
           className="col-12 mx-auto text-center mb-3"
           style={{ minWidth: "300px" }}

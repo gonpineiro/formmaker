@@ -1,21 +1,56 @@
 import { useState } from "react";
 
-const initialState = {
-  field_required: true,
-  field_type: "number",
-};
+const initialState = { field_required: true, field_type: "radio" };
 
-const FieldNumber = ({ formulario, setFormulario, callapseOrden }) => {
+const FieldRadio = ({ formulario, setFormulario, callapseOrden }) => {
   const [field, setField] = useState(initialState);
+  const [disabledSubmit, setDisabledSubmit] = useState(true);
+
+  const formatField = () => {
+    let radioField = field;
+    let options = radioField.field_options.split(";");
+
+    options = options.filter((item) => item !== "");
+
+    let field_options = [];
+
+    let id = 1;
+    options.forEach((option) =>
+      field_options.push({
+        id,
+        option_label: option,
+      })
+    );
+    id++;
+
+    return {
+      ...radioField,
+      field_options,
+    };
+  };
+
+  const enableSubmit = (value) => {
+    let opciones = value.split(";");
+    opciones = opciones.filter((item) => item !== "");
+
+    if (opciones.length === 0) {
+      setDisabledSubmit(true);
+    } else {
+      setDisabledSubmit(false);
+    }
+  };
 
   const handlerSubmit = () => {
-    let inputs = formulario.fields;
-    inputs.push(field);
+    const fields = formulario.fields;
+
+    fields.push(formatField());
+
     setFormulario({
       ...formulario,
     });
 
     setField(initialState);
+    setDisabledSubmit(true);
   };
 
   const handlerTextChange = ({ target: { value } }) => {
@@ -25,7 +60,15 @@ const FieldNumber = ({ formulario, setFormulario, callapseOrden }) => {
       field_placeholder: value,
       field_name: value,
       field_id: value,
-      field_value: ""
+      field_value: "",
+    });
+  };
+
+  const handlerOptionChange = ({ target: { value } }) => {
+    enableSubmit(value);
+    setField({
+      ...field,
+      field_options: value,
     });
   };
 
@@ -33,20 +76,6 @@ const FieldNumber = ({ formulario, setFormulario, callapseOrden }) => {
     setField({
       ...field,
       field_required: !field.field_required,
-    });
-  };
-
-  const handlerMaxCharChange = ({ target: { value } }) => {
-    setField({
-      ...field,
-      max_lenght: value,
-    });
-  };
-
-  const handlerMinCharChange = ({ target: { value } }) => {
-    setField({
-      ...field,
-      min_lenght: value,
     });
   };
 
@@ -61,7 +90,7 @@ const FieldNumber = ({ formulario, setFormulario, callapseOrden }) => {
           aria-expanded="false"
           aria-controls={"collapse" + callapseOrden}
         >
-          Number
+          Radio Button
         </button>
       </h2>
       <div
@@ -72,43 +101,30 @@ const FieldNumber = ({ formulario, setFormulario, callapseOrden }) => {
       >
         <div className="accordion-body">
           <div className="mb-3">
-            <label htmlFor="number_field_label" className="form-label">
+            <label htmlFor="select_field_label" className="form-label">
               Etiqueta
             </label>
             <input
               type="text"
               className="form-control"
-              id="number_field_label"
+              id="select_field_label"
               value={field.field_label || ""}
-              placeholder="Ej: Número de mascotas"
               onChange={handlerTextChange}
+              placeholder="Ej: Selecciones su tipo de vivienda"
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="min_number_field_label" className="form-label">
-              Mínimo
+            <label htmlFor="select_field_options" className="form-label">
+              Escriba las opciones separadas por ;
             </label>
-            <input
-              type="number"
+            <textarea
               className="form-control"
-              id="min_number_field_label"
-              value={field.min_lenght || ""}
-              onChange={handlerMinCharChange}
-              placeholder="Ej: 5"
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="max_number_field_label" className="form-label">
-              Máximo
-            </label>
-            <input
-              type="number"
-              className="form-control"
-              id="max_number_field_label"
-              value={field.max_lenght || ""}
-              onChange={handlerMaxCharChange}
-              placeholder="Ej: 50"
-            />
+              id="select_field_options"
+              rows="3"
+              value={field.field_options || ""}
+              onChange={handlerOptionChange}
+              placeholder="Ej: casa; departamento; casa rodante;"
+            ></textarea>
           </div>
           <div className="mb-3">
             <div className="form-check">
@@ -117,21 +133,19 @@ const FieldNumber = ({ formulario, setFormulario, callapseOrden }) => {
                 type="checkbox"
                 checked={field.field_required}
                 onChange={handlerRequiredChange}
-                id="number_field_required"
+                id="flexCheckChecked"
               />
-              <label
-                className="form-check-label"
-                htmlFor="number_field_required"
-              >
+              <label className="form-check-label" htmlFor="flexCheckChecked">
                 ¿Es un campo requerido?
               </label>
             </div>
           </div>
           <div className="col-auto">
             <button
-              id="addNumber"
+              id="addSelect"
               type="submit"
               onClick={handlerSubmit}
+              disabled={disabledSubmit}
               className="btn btn-primary mb-3"
             >
               Agregar campo
@@ -143,4 +157,4 @@ const FieldNumber = ({ formulario, setFormulario, callapseOrden }) => {
   );
 };
 
-export default FieldNumber;
+export default FieldRadio;
