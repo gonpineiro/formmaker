@@ -7,6 +7,7 @@ import {
   FieldNumber,
   FieldSelect,
   FieldSeparator,
+  FieldRadio,
 } from "./Components";
 
 import "./index.scss";
@@ -112,6 +113,11 @@ const Crear = () => {
               formulario={formulario}
               setFormulario={setFormulario}
               callapseOrden={"FieldSelect"}
+            />
+            <FieldRadio
+              formulario={formulario}
+              setFormulario={setFormulario}
+              callapseOrden={"FieldRadio"}
             />
           </div>
           <h4 className="mb-3 mt-3">Detalle Formulario</h4>
