@@ -1,13 +1,11 @@
+import { asteriscos } from "../../utils";
+
 const Checkbox = ({
   field_id,
   field_label,
-  field_placeholder,
   field_required,
-  field_value,
   checked,
   setChecked,
-  field_options,
-  field_name,
 }) => {
   const hanldeChecked = () => {
     setChecked(!checked);
@@ -26,6 +24,7 @@ const Checkbox = ({
         />
         <label className="form-check-label" htmlFor={field_id}>
           {field_label}
+          {asteriscos(field_required)}
         </label>
       </div>
     </>

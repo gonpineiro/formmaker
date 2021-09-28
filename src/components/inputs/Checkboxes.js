@@ -1,17 +1,12 @@
+import { asteriscos } from "../../utils";
+
 const Checkboxes = ({
   field_id,
   field_label,
-  field_placeholder,
   field_required,
-  field_value,
   field_options,
   field_name,
 }) => {
-  const astericos = () => {
-    if (field_required === "true") {
-      return <span className="text-danger fw-bold"> *</span>;
-    }
-  };
   return (
     <div className="mb-3">
       <div className="card">
@@ -23,7 +18,7 @@ const Checkboxes = ({
             style={{ color: "#143c75" }}
           >
             {field_label}
-            {astericos()}
+            {asteriscos(field_required)}
           </label>
           <div className="container row">
             {field_options.map((option, i) => (

@@ -7,3 +7,4 @@ export { default as createFormData } from "./createFormData";
 export { default as getAllForms } from "./getAllForms";
 export { emailIsValid } from "./regex";
 export { default as postForm } from "./postForm";
+export { default as asteriscos } from "./asteriscos";

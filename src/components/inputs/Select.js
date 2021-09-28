@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { FormContext } from "../../screens/FormContext";
+import { asteriscos } from "../../utils";
 const Select = ({
   field_id,
   field_name,
@@ -9,11 +10,6 @@ const Select = ({
   field_options,
 }) => {
   const { handleChange } = useContext(FormContext);
-  const astericos = () => {
-    if (field_required === "true") {
-      return <span className="text-danger fw-bold"> *</span>;
-    }
-  };
   const isRequired = field_required === "true";
   return (
     <>
@@ -22,7 +18,7 @@ const Select = ({
           <div className="card-body">
             <label className="form-label" style={{ color: "#143c75" }}>
               {field_label}
-              {astericos()}
+              {asteriscos(field_required)}
             </label>
             <select
               className="form-select"
@@ -30,7 +26,7 @@ const Select = ({
               onChange={(event) => handleChange(field_id, event)}
               id={"id" + field_id}
               name={field_name}
-              required={isRequired && 'required'}
+              required={isRequired && "required"}
             >
               <option value="">Elegir opción</option>
               {field_options.length > 0 &&

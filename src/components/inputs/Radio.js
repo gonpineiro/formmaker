@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { FormContext } from "../../screens/FormContext";
+import { asteriscos } from "../../utils";
 const Radio = ({
   field_id,
   field_name,
@@ -8,11 +9,6 @@ const Radio = ({
   field_options,
 }) => {
   const { handleChange } = useContext(FormContext);
-  const astericos = () => {
-    if (field_required === "required") {
-      return <span className="text-danger fw-bold"> *</span>;
-    }
-  };
   const isRequired = field_required === "true";
   return (
     <>
@@ -25,7 +21,7 @@ const Radio = ({
               style={{ color: "#143c75" }}
             >
               {field_label}
-              {astericos()}
+              {asteriscos(field_required)}
             </label>
             {field_options.length > 0 &&
               field_options.map((option, i) => (
