@@ -94,7 +94,14 @@ const Formulario = (/* { userReducer: { idForm } } */) => {
                     if (field.field_name === "acepto") {
                       return null;
                     }
-                    return <Element key={i} field={field} hcolor={hcolor} />;
+                    return (
+                      <Element
+                        key={i}
+                        field={field}
+                        hcolor={hcolor}
+                        preview={false}
+                      />
+                    );
                   })
                 : null}
               {terminosCondiciones ? (

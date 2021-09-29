@@ -15,6 +15,11 @@ const Input = ({
 }) => {
   const { handleChange } = useContext(FormContext);
   const isRequired = field_required === "true";
+
+  const handleInputChange = (event) => {
+    handleChange(field_id, event);
+  };
+
   return (
     <div className="mb-3">
       <div className="card">
@@ -35,7 +40,7 @@ const Input = ({
             aria-describedby={field_id + "Help"}
             placeholder={field_placeholder ? field_placeholder : ""}
             value={field_value.slice(0, field_max)}
-            onChange={(event) => handleChange(field_id, event)}
+            onChange={handleInputChange}
             required={isRequired && "required"}
             minLength={field_min}
             maxLength={field_max}

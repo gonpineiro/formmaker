@@ -17,6 +17,7 @@ import InfoCards from "./InfoCards";
 import { postForm } from "../../utils/";
 
 import "./index.scss";
+import { Preview } from "../";
 
 const Crear = () => {
   const initialState = {
@@ -30,6 +31,7 @@ const Crear = () => {
   const [formulario, setFormulario] = useState(initialState);
   const [keyTab, setKeyTab] = useState("campos");
   const [loadingSubmit, setLoadingSubmit] = useState(false);
+  const [preview, setPreview] = useState(false);
 
   const handlerSubmitForm = () => {
     setLoadingSubmit(true);
@@ -95,6 +97,10 @@ const Crear = () => {
     };
   };
 
+  const handlerPreview = () => {
+    setPreview(true);
+  };
+
   const ButtonsSubmit = () => {
     if (
       !formulario.nombre ||
@@ -115,12 +121,20 @@ const Crear = () => {
         >
           Agregar Formulario
         </button>
-        <button id="addSelect" type="submit" className="btn btn-primary mb-3">
+        <button
+          id="addSelect"
+          type="submit"
+          className="btn btn-primary mb-3"
+          onClick={handlerPreview}
+        >
           Previsualizar
         </button>
       </div>
     );
   };
+
+  if (preview)
+    return <Preview formulario={formulario} setPreview={setPreview} />;
 
   return (
     <div className="container mb-5">
