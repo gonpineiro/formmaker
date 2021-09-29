@@ -23,9 +23,9 @@ const Crear = () => {
     nombre: null,
     description: null,
     hcolor: "#266AAD",
-    banner: "banner",
     terminosCondiciones: null,
     fields: [],
+    banner: null,
   };
   const [formulario, setFormulario] = useState(initialState);
   const [keyTab, setKeyTab] = useState("campos");
@@ -80,6 +80,19 @@ const Crear = () => {
       ...formulario,
       terminosCondiciones: value,
     });
+  };
+
+  const handlerBannerChange = ({ target }) => {
+    let files = target.files;
+    let fileReader = new FileReader();
+    fileReader.readAsDataURL(files[0]);
+
+    fileReader.onload = ({ target: { result } }) => {
+      setFormulario({
+        ...formulario,
+        banner: result,
+      });
+    };
   };
 
   const ButtonsSubmit = () => {
@@ -196,6 +209,12 @@ const Crear = () => {
                   type="text"
                   value={formulario.terminosCondiciones}
                   handlerChange={handlerTermYCondChange}
+                />
+                <BasicInput
+                  label="Banner"
+                  id="banner"
+                  type="file"
+                  handlerChange={handlerBannerChange}
                 />
                 <ButtonsSubmit />
               </Tab>
