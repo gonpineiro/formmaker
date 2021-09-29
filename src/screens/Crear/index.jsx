@@ -1,3 +1,4 @@
+import { Tab, Tabs } from "react-bootstrap";
 /* mongoDb */
 /* import { insertForm } from "../../api"; */
 
@@ -14,7 +15,7 @@ import {
 import "./index.scss";
 
 import { useState } from "react";
-import { BasicInput } from "../../components";
+import { BasicInput, Loading } from "../../components";
 import { postForm } from "../../utils/";
 
 const Crear = () => {
@@ -27,9 +28,11 @@ const Crear = () => {
     fields: [],
   };
   const [formulario, setFormulario] = useState(initialState);
+  const [keyTab, setKeyTab] = useState("campos");
+  const [loadingSubmit, setLoadingSubmit] = useState(false);
 
-  const handlerSubmitForm = () => {    
-
+  const handlerSubmitForm = () => {
+    setLoadingSubmit(true);
     const fields = formulario.fields;
     fields.push({
       field_order: 33,
@@ -42,8 +45,11 @@ const Crear = () => {
     });
 
     setFormulario(formulario);
-    postForm(formulario, "post-form-json");
-    setFormulario(initialState);
+    postForm(formulario, "post-form-json").then(() => {
+      setLoadingSubmit(false);
+      setFormulario(initialState);
+      setKeyTab("campos");
+    });
     /* mongoDb */
     /* insertForm(formulario); */
   };
@@ -126,33 +132,56 @@ const Crear = () => {
               callapseOrden={"FieldCheckbox"}
             />
           </div>
-          <h4 className="mb-3 mt-3">Detalle Formulario</h4>
-          <BasicInput
-            label="Nombre"
-            id="nombre"
-            type="text"
-            placeholder="Furmulario algo"
-            value={formulario.nombre}
-            handlerChange={handlerNameChange}
-          />
-          <BasicInput
-            label="Color"
-            id="hcolor"
-            type="color"
-            value={formulario.hcolor}
-            handlerChange={handlerColorChange}
-          />
-          <BasicInput
-            label="Términos y condiciones"
-            id="termCondi"
-            type="text"
-            value={formulario.terminosCondiciones}
-            handlerChange={handlerTermYCondChange}
-          />
         </div>
         <div className="col-12 col-md-6">
-          <InfoCards formulario={formulario} setFormulario={setFormulario} />
-          <ButtonsSubmit />
+          {!loadingSubmit ? (
+            <Tabs
+              defaultActiveKey={keyTab}
+              onSelect={(k) => setKeyTab(k)}
+              activeKey={keyTab}
+              id="uncontrolled-tab-example"
+              className="mb-3"
+            >
+              <Tab eventKey="campos" title="Campos Formulario" transition>
+                <InfoCards
+                  formulario={formulario}
+                  setFormulario={setFormulario}
+                />
+              </Tab>
+              <Tab
+                eventKey="profile"
+                title="Detalle del Formulario"
+                disabled={formulario.fields.length === 0}
+                transition
+              >
+                <BasicInput
+                  label="Nombre"
+                  id="nombre"
+                  type="text"
+                  placeholder="Furmulario algo"
+                  value={formulario.nombre}
+                  handlerChange={handlerNameChange}
+                />
+                <BasicInput
+                  label="Color"
+                  id="hcolor"
+                  type="color"
+                  value={formulario.hcolor}
+                  handlerChange={handlerColorChange}
+                />
+                <BasicInput
+                  label="Términos y condiciones"
+                  id="termCondi"
+                  type="text"
+                  value={formulario.terminosCondiciones}
+                  handlerChange={handlerTermYCondChange}
+                />
+                <ButtonsSubmit />
+              </Tab>
+            </Tabs>
+          ) : (
+            <Loading />
+          )}
         </div>
       </div>
     </div>

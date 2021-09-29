@@ -3,7 +3,6 @@ import { InfoField } from "./Components";
 import "./index.scss";
 
 const InfoCards = ({ formulario: { fields }, setFormulario }) => {
-
   const handlerDeleteField = (element) => {
     fields = fields.filter((item) => item !== element);
     setFormulario({ fields });
@@ -11,7 +10,6 @@ const InfoCards = ({ formulario: { fields }, setFormulario }) => {
 
   return (
     <>
-      <h4 className="mb-3">Campos Formulario</h4>
       {fields.map((element, key) => (
         <InfoField
           key={key}
