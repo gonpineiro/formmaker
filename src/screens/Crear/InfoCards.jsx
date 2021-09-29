@@ -2,10 +2,10 @@ import { InfoField } from "./Components";
 
 import "./index.scss";
 
-const InfoCards = ({ formulario: { fields }, setFormulario }) => {
+const InfoCards = ({ formulario, formulario: { fields }, setFormulario }) => {
   const handlerDeleteField = (element) => {
     fields = fields.filter((item) => item !== element);
-    setFormulario({ fields });
+    setFormulario({ ...formulario, fields });
   };
 
   return (
