@@ -45,14 +45,14 @@ const FieldText = ({ formulario, setFormulario, callapseOrden }) => {
   const handlerMaxCharChange = ({ target: { value } }) => {
     setField({
       ...field,
-      max_lenght: value,
+      field_max: value,
     });
   };
 
   const handlerMinCharChange = ({ target: { value } }) => {
     setField({
       ...field,
-      min_lenght: value,
+      field_min: value,
     });
   };
 
@@ -114,7 +114,7 @@ const FieldText = ({ formulario, setFormulario, callapseOrden }) => {
               type="number"
               className="form-control"
               id="min_text_field_type"
-              value={field.min_lenght || ""}
+              value={field.field_min || ""}
               onChange={handlerMinCharChange}
               placeholder="Ej: 5"
             />
@@ -127,7 +127,7 @@ const FieldText = ({ formulario, setFormulario, callapseOrden }) => {
               type="number"
               className="form-control"
               id="max_text_field_type"
-              value={field.max_lenght || ""}
+              value={field.field_max || ""}
               onChange={handlerMaxCharChange}
               placeholder="Ej: 50"
             />

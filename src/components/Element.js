@@ -77,7 +77,7 @@ const Element = ({
           field_type={field_type}
         />
       );
-    case "textArea":
+    case "textarea":
       return (
         <TextArea
           field_id={field_id}
