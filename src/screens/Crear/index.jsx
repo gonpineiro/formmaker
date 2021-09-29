@@ -1,8 +1,8 @@
+import { useState } from "react";
 import { Tab, Tabs } from "react-bootstrap";
 /* mongoDb */
 /* import { insertForm } from "../../api"; */
 
-import InfoCards from "./InfoCards";
 import {
   FieldText,
   FieldNumber,
@@ -12,17 +12,17 @@ import {
   FieldCheckbox,
 } from "./Components";
 
-import "./index.scss";
-
-import { useState } from "react";
 import { BasicInput, Loading } from "../../components";
+import InfoCards from "./InfoCards";
 import { postForm } from "../../utils/";
+
+import "./index.scss";
 
 const Crear = () => {
   const initialState = {
     nombre: null,
-    description: "Esto es una descripcion",
-    hcolor: "#FFF",
+    description: null,
+    hcolor: "#266AAD",
     banner: "banner",
     terminosCondiciones: null,
     fields: [],
@@ -61,6 +61,13 @@ const Crear = () => {
     });
   };
 
+  const handlerDescriptionChange = ({ target: { value } }) => {
+    setFormulario({
+      ...formulario,
+      description: value,
+    });
+  };
+
   const handlerColorChange = ({ target: { value } }) => {
     setFormulario({
       ...formulario,
@@ -76,7 +83,13 @@ const Crear = () => {
   };
 
   const ButtonsSubmit = () => {
-    if (formulario.fields.length === 0) return "";
+    if (
+      !formulario.nombre ||
+      !formulario.description ||
+      !formulario.terminosCondiciones
+    ) {
+      return "";
+    }
 
     return (
       <div className="d-flex justify-content-between">
@@ -161,6 +174,14 @@ const Crear = () => {
                   placeholder="Furmulario algo"
                   value={formulario.nombre}
                   handlerChange={handlerNameChange}
+                />
+                <BasicInput
+                  label="Descripción"
+                  id="description"
+                  type="text"
+                  placeholder="Furmulario algo"
+                  value={formulario.description}
+                  handlerChange={handlerDescriptionChange}
                 />
                 <BasicInput
                   label="Color"
