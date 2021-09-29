@@ -32,6 +32,14 @@ const Menu = () => {
           className="col-12 mx-auto text-center mb-3"
           style={{ minWidth: "300px" }}
         >
+          <Link className="btn btn-totem" to="/apps/formmaker/resultados">
+            Resultados
+          </Link>
+        </div>
+        <div
+          className="col-12 mx-auto text-center mb-3"
+          style={{ minWidth: "300px" }}
+        >
           <Link className="btn btn-totem" to="/apps/formmaker/comprobar">
             Comprobar
           </Link>
