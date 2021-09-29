@@ -25,7 +25,7 @@ const FieldText = ({ formulario, setFormulario, callapseOrden }) => {
       field_placeholder: value,
       field_name: value,
       field_id: value,
-      field_value: ""
+      field_value: "",
     });
   };
 
@@ -36,10 +36,19 @@ const FieldText = ({ formulario, setFormulario, callapseOrden }) => {
     });
   };
   const handlerTypeChange = ({ target: { value } }) => {
-    setField({
-      ...field,
-      field_type: value,
-    });
+    if (value === "email") {
+      setField({
+        ...field,
+        field_type: value,
+        field_min: "",
+        field_max: "",
+      });
+    } else {
+      setField({
+        ...field,
+        field_type: value,
+      });
+    }
   };
 
   const handlerMaxCharChange = ({ target: { value } }) => {
@@ -117,6 +126,7 @@ const FieldText = ({ formulario, setFormulario, callapseOrden }) => {
               value={field.field_min || ""}
               onChange={handlerMinCharChange}
               placeholder="Ej: 5"
+              disabled={field.field_type === "email"}
             />
           </div>
           <div className="mb-3">
@@ -130,6 +140,7 @@ const FieldText = ({ formulario, setFormulario, callapseOrden }) => {
               value={field.field_max || ""}
               onChange={handlerMaxCharChange}
               placeholder="Ej: 50"
+              disabled={field.field_type === "email"}
             />
           </div>
           <div className="mb-3">
