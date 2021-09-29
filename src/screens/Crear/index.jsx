@@ -99,6 +99,7 @@ const Crear = () => {
     if (
       !formulario.nombre ||
       !formulario.description ||
+      !formulario.banner ||
       !formulario.terminosCondiciones
     ) {
       return "";
