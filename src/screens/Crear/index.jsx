@@ -83,8 +83,8 @@ const Crear = () => {
   };
 
   const handlerBannerChange = ({ target }) => {
-    let files = target.files;
-    let fileReader = new FileReader();
+    const files = target.files;
+    const fileReader = new FileReader();
     fileReader.readAsDataURL(files[0]);
 
     fileReader.onload = ({ target: { result } }) => {
