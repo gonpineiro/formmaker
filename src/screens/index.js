@@ -7,3 +7,4 @@ export { default as Formulario } from "./Formulario";
 export { default as MenuForm } from "./MenuForm";
 export { default as DetalleForm } from "./DetalleForm";
 export { default as Preview } from "./Preview";
+export { default as Resultados } from "./Resultados";
