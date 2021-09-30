@@ -96,11 +96,13 @@ const Crear = () => {
   };
 
   const handlerBannerChange = ({ target }) => {
+    console.log('inicio');
     const files = target.files;
     const fileReader = new FileReader();
     fileReader.readAsDataURL(files[0]);
-
+    
     fileReader.onload = ({ target: { result } }) => {
+      console.log('carga');
       setFormulario({
         ...formulario,
         banner: result,

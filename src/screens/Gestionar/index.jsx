@@ -27,7 +27,7 @@ const Gestionar = () => {
         {formularios.map((form, key) => (
           <BasicCard
             key={key}
-            title={form.name}
+            title={form.nombre}
             description={form.description}
             id={form._id}
             handler={hanlderShowForm}

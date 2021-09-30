@@ -13,6 +13,7 @@ const BasicInput = ({ label, id, type, placeholder, value, handlerChange }) => {
         value={value || stringValue}
         placeholder={placeholder || ""}
         onChange={handlerChange}
+        accept="image/*"
       />
     </div>
   );
