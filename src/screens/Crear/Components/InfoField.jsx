@@ -14,8 +14,8 @@ const setDataTip = (element) => {
     case "textarea":
     case "email":
       dataTip += "Etiqueta: " + element.field_label + "<br />";
-      dataTip += "Longitud Maxima: " + (element.max_lenght || "0") + "<br />";
-      dataTip += "Longitud Minima: " + (element.min_lenght || "0") + "<br />";
+      dataTip += "Longitud Maxima: " + (element.field_max || "0") + "<br />";
+      dataTip += "Longitud Minima: " + (element.field_min || "0") + "<br />";
       dataTip += "Requerido: " + requiredDesc + "<br />";
       break;
     case "select":
