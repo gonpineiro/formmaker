@@ -34,12 +34,12 @@ const validateForm = (fields) => {
         break;
 
       default:
-        if (req.field_value === "" && req.field_required === "required") {
+        if (req.field_value === "" && req.field_required === "true") {
           className("id" + req.field_id, "is-invalid", "add");
           className("id" + req.field_id, "is-valid", "remove");
           sendPost = false;
         } else {
-          if (req.field_value !== "" && req.field_required === "required") {
+          if (req.field_value !== "" && req.field_required === "true") {
             className("id" + req.field_id, "is-invalid", "remove");
             className("id" + req.field_id, "is-valid", "add");
           }
