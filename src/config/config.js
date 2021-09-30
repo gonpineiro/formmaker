@@ -21,6 +21,9 @@ const TOKEN = process.env.REACT_APP_TOKEN;
 const APP_ID = parseInt(process.env.REACT_APP_APP_ID);
 const ERROR_TOKEN = "Security Token incorrecto ó caducado";
 
+/* json - mongo */
+const TYPE_FORM = 'json';
+
 export {
   URL_GET_TOKEN,
   URL_BACK,
@@ -29,4 +32,5 @@ export {
   TOKEN,
   APP_ID,
   ERROR_TOKEN,
+  TYPE_FORM
 };

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Tab, Tabs } from "react-bootstrap";
 /* mongoDb */
-/* import { insertForm } from "../../api"; */
+import { insertForm } from "../../api";
 
 import {
   FieldText,
@@ -18,6 +18,7 @@ import { postForm } from "../../utils/";
 
 import "./index.scss";
 import { Preview } from "../";
+import { TYPE_FORM } from "../../config/config";
 
 const Crear = () => {
   const initialState = {
@@ -47,13 +48,23 @@ const Crear = () => {
     });
 
     setFormulario(formulario);
-    postForm(formulario, "post-form-json").then(() => {
-      setLoadingSubmit(false);
-      setFormulario(initialState);
-      setKeyTab("campos");
-    });
-    /* mongoDb */
-    /* insertForm(formulario); */
+
+    if (TYPE_FORM === "mongo") {
+      insertForm(formulario).then(() => {
+        setLoadingSubmit(false);
+        setFormulario(initialState);
+        setKeyTab("campos");
+      });
+    }
+
+    if (TYPE_FORM === "json") {
+      console.log("json");
+      postForm(formulario, "post-form-json").then(() => {
+        setLoadingSubmit(false);
+        setFormulario(initialState);
+        setKeyTab("campos");
+      });
+    }
   };
 
   const handlerNameChange = ({ target: { value } }) => {
