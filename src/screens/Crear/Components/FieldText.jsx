@@ -40,8 +40,8 @@ const FieldText = ({ formulario, setFormulario, callapseOrden }) => {
       setField({
         ...field,
         field_type: value,
-        field_min: "",
-        field_max: "",
+        field_min: 0,
+        field_max: 999,
       });
     } else {
       setField({
