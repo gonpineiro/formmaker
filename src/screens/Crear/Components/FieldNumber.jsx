@@ -132,6 +132,7 @@ const FieldNumber = ({ formulario, setFormulario, callapseOrden }) => {
               id="addNumber"
               type="submit"
               onClick={handlerSubmit}
+              disabled={field.field_label ? false : true}
               className="btn btn-primary mb-3"
             >
               Agregar campo
