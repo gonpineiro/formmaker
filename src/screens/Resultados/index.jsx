@@ -10,7 +10,6 @@ const getCsvUrl =
 const getIdsForms = async (setForms) => {
   let forms = await getAllForms();
   forms = Object.values(forms);
-  console.log(forms);
   forms = forms.filter((item) => {
     return item !== null;
   });

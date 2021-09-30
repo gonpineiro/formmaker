@@ -58,7 +58,6 @@ const Crear = () => {
     }
 
     if (TYPE_FORM === "json") {
-      console.log("json");
       postForm(formulario, "post-form-json").then(() => {
         setLoadingSubmit(false);
         setFormulario(initialState);
@@ -96,13 +95,11 @@ const Crear = () => {
   };
 
   const handlerBannerChange = ({ target }) => {
-    console.log('inicio');
     const files = target.files;
     const fileReader = new FileReader();
     fileReader.readAsDataURL(files[0]);
     
     fileReader.onload = ({ target: { result } }) => {
-      console.log('carga');
       setFormulario({
         ...formulario,
         banner: result,

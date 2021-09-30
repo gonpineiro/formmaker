@@ -26,7 +26,6 @@ const Router = ({ traerDatosSession, userReducer }) => {
   if (loading) return "Loading";
 
   if (error) return error;
-
   if (isAdmin) {
     return (
       <RouterLayout>
