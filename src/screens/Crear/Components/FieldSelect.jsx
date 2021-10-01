@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BasicInput } from "../../../components";
 
 const initialState = { field_required: true, field_type: "select" };
 
@@ -57,7 +58,6 @@ const FieldSelect = ({ formulario, setFormulario, callapseOrden }) => {
     setField({
       ...field,
       field_label: value,
-      field_placeholder: value,
       field_name: value,
       field_id: value,
       field_value: "",
@@ -100,19 +100,14 @@ const FieldSelect = ({ formulario, setFormulario, callapseOrden }) => {
         data-bs-parent="#accordionFieldType"
       >
         <div className="accordion-body">
-          <div className="mb-3">
-            <label htmlFor="select_field_label" className="form-label">
-              Etiqueta
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="select_field_label"
-              value={field.field_label || ""}
-              onChange={handlerTextChange}
-              placeholder="Ej: Selecciones su tipo de vivienda"
-            />
-          </div>
+          <BasicInput
+            label="Etiqueta"
+            id={"text_field_label"}
+            type="text"
+            value={field.field_label || ""}
+            handlerChange={handlerTextChange}
+            placeholder="Ej: Selecciones su tipo de vivienda"
+          />
           <div className="mb-3">
             <label htmlFor="select_field_options" className="form-label">
               Escriba las opciones separadas por ;
