@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BasicInput } from "../../../components";
 
 const initialState = { field_required: true, field_type: "radio" };
 
@@ -100,19 +101,14 @@ const FieldRadio = ({ formulario, setFormulario, callapseOrden }) => {
         data-bs-parent="#accordionFieldType"
       >
         <div className="accordion-body">
-          <div className="mb-3">
-            <label htmlFor="select_field_label" className="form-label">
-              Etiqueta
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="select_field_label"
-              value={field.field_label || ""}
-              onChange={handlerTextChange}
-              placeholder="Ej: Selecciones su tipo de vivienda"
-            />
-          </div>
+          <BasicInput
+            label="Etiqueta"
+            id={"text_field_label"}
+            type="text"
+            value={field.field_label || ""}
+            handlerChange={handlerTextChange}
+            placeholder="Ej: Nombre mascota, escriba su email, descripción de su vivienda"
+          />
           <div className="mb-3">
             <label htmlFor="select_field_options" className="form-label">
               Escriba las opciones separadas por ;
