@@ -15,6 +15,7 @@ import {
 
 import * as userAction from "../redux/actions/userAction";
 import RouterLayout from "./RouterLayout";
+import { Loading } from "../components";
 
 const Router = ({ traerDatosSession, userReducer }) => {
   const { isAdmin, error, loading } = userReducer;
@@ -23,7 +24,7 @@ const Router = ({ traerDatosSession, userReducer }) => {
     traerDatosSession();
   }, [traerDatosSession]);
 
-  if (loading) return "Loading";
+  if (loading) return <Loading />;
 
   if (error) return error;
 
