@@ -18,17 +18,19 @@ import { postForm } from "../../utils/";
 
 import "./index.scss";
 import { Preview } from "../";
-import { TYPE_FORM } from "../../config/config";
+import { DEFAULT_COLOR, TYPE_FORM } from "../../config/config";
 
 const Crear = () => {
   const initialState = {
     nombre: null,
+    estado: "borrador",
     description: null,
-    hcolor: "#266AAD",
+    hcolor: DEFAULT_COLOR,
     terminosCondiciones: null,
     fields: [],
     banner: null,
   };
+
   const [formulario, setFormulario] = useState(initialState);
   const [keyTab, setKeyTab] = useState("detalle");
   const [loadingSubmit, setLoadingSubmit] = useState(false);
