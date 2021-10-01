@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BasicInput } from "../../../components";
 
 const initialState = {
   field_required: true,
@@ -22,10 +23,16 @@ const FieldNumber = ({ formulario, setFormulario, callapseOrden }) => {
     setField({
       ...field,
       field_label: value,
-      field_placeholder: value,
       field_name: value,
       field_id: value,
-      field_value: ""
+      field_value: "",
+    });
+  };
+
+  const handlerPlaceholderChange = ({ target: { value } }) => {
+    setField({
+      ...field,
+      field_placeholder: value,
     });
   };
 
@@ -71,45 +78,39 @@ const FieldNumber = ({ formulario, setFormulario, callapseOrden }) => {
         data-bs-parent="#accordionFieldType"
       >
         <div className="accordion-body">
-          <div className="mb-3">
-            <label htmlFor="number_field_label" className="form-label">
-              Etiqueta
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="number_field_label"
-              value={field.field_label || ""}
-              placeholder="Ej: Número de mascotas"
-              onChange={handlerTextChange}
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="min_number_field_label" className="form-label">
-              Mínimo
-            </label>
-            <input
-              type="number"
-              className="form-control"
-              id="min_number_field_label"
-              value={field.field_min || ""}
-              onChange={handlerMinCharChange}
-              placeholder="Ej: 5"
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="max_number_field_label" className="form-label">
-              Máximo
-            </label>
-            <input
-              type="number"
-              className="form-control"
-              id="max_number_field_label"
-              value={field.field_max || ""}
-              onChange={handlerMaxCharChange}
-              placeholder="Ej: 50"
-            />
-          </div>
+          <BasicInput
+            label="Etiqueta"
+            id={"text_field_label"}
+            type="text"
+            value={field.field_label || ""}
+            handlerChange={handlerTextChange}
+            placeholder="Ej: Número de mascotas"
+          />
+          
+          <BasicInput
+            label="Placeholder"
+            id={"placeholder_field_label"}
+            type="text"
+            value={field.field_placeholder || ""}
+            handlerChange={handlerPlaceholderChange}
+            placeholder="Ej: Nombre mascota, escriba su email, descripción de su vivienda"
+          />
+          <BasicInput
+            label="Mínimo"
+            id={"min_number_field_label"}
+            type="number"
+            value={field.field_min || ""}
+            handlerChange={handlerMinCharChange}
+            placeholder="Ej: 5"
+          />
+          <BasicInput
+            label="Máximo"
+            id={"max_number_field_label"}
+            type="number"
+            value={field.field_max || ""}
+            handlerChange={handlerMaxCharChange}
+            placeholder="Ej: 5"
+          />
           <div className="mb-3">
             <div className="form-check">
               <input
