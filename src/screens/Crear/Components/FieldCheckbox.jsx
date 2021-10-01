@@ -119,7 +119,7 @@ const FieldCheckbox = ({ formulario, setFormulario, callapseOrden }) => {
             label="¿Es un campo requerido?"
             checked={field.field_required}
             handlerChange={handlerRequiredChange}
-            id="required_checkbox"
+            id="checkbox_field_required"
           />
           <div className="col-auto">
             <button
