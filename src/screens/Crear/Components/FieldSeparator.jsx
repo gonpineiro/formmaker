@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BasicInput } from "../../../components";
+import { BasicInput, BasicTextarea } from "../../../components";
 
 const initialState = { field_type: "separator" };
 
@@ -59,19 +59,14 @@ const FieldSeparator = ({ formulario, setFormulario, callapseOrden }) => {
             handlerChange={handlerTitleChange}
             placeholder="Ej: Nombre mascota, escriba su email, descripción de su vivienda"
           />
-          <div className="mb-3">
-            <label htmlFor="separator_field_label" className="form-label">
-              Descripción
-            </label>
-            <textarea
-              type="text"
-              className="form-control"
-              id="separator_desciption_field_label"
-              value={field.separator_description || ""}
-              onChange={handlerDescriptionChange}
-              placeholder="Ej: Nombre mascota, escriba su email, descripción de su vivienda"
-            />
-          </div>
+          <BasicTextarea
+            label="Descripción"
+            type="text"
+            id="separator_desciption_field_label"
+            value={field.separator_description || ""}
+            handlerChange={handlerDescriptionChange}
+            placeholder="Ej: Nombre mascota, escriba su email, descripción de su vivienda"
+          />
           <div className="col-auto">
             <button
               id="addText"

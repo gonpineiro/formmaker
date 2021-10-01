@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BasicInput } from "../../../components";
+import { BasicInput, BasicTextarea } from "../../../components";
 
 const initialState = { field_required: true, field_type: "checkboxes" };
 
@@ -106,19 +106,15 @@ const FieldCheckbox = ({ formulario, setFormulario, callapseOrden }) => {
             handlerChange={handlerTextChange}
             placeholder="Ej: Selecciones su tipo de vivienda"
           />
-          <div className="mb-3">
-            <label htmlFor="select_field_options" className="form-label">
-              Escriba las opciones separadas por ;
-            </label>
-            <textarea
-              className="form-control"
-              id="select_field_options"
-              rows="3"
-              value={field.field_options || ""}
-              onChange={handlerOptionChange}
-              placeholder="Ej: casa; departamento; casa rodante;"
-            ></textarea>
-          </div>
+          <BasicTextarea
+            label="Escriba las opciones separadas por ;"
+            type="text"
+            id="checkbox_field_options"
+            rows="3"
+            value={field.field_options || ""}
+            handlerChange={handlerOptionChange}
+            placeholder="Ej: casa; departamento; casa rodante;"
+          />
           <div className="mb-3">
             <div className="form-check">
               <input
