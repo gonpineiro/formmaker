@@ -91,7 +91,7 @@ const FieldRadio = ({ formulario, setFormulario, callapseOrden }) => {
           aria-expanded="false"
           aria-controls={"collapse" + callapseOrden}
         >
-          Radio Button
+          Selección Única 
         </button>
       </h2>
       <div

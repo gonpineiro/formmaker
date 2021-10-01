@@ -88,7 +88,7 @@ const FieldCheckbox = ({ formulario, setFormulario, callapseOrden }) => {
           aria-expanded="false"
           aria-controls={"collapse" + callapseOrden}
         >
-          Check Boxes
+          Selección Múltiple
         </button>
       </h2>
       <div

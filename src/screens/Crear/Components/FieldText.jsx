@@ -83,7 +83,7 @@ const FieldText = ({ formulario, setFormulario, callapseOrden }) => {
           aria-expanded="false"
           aria-controls={"collapse" + callapseOrden}
         >
-          Texto
+          Texto - Párrafo - Email
         </button>
       </h2>
       <div

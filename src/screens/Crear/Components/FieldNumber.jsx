@@ -68,7 +68,7 @@ const FieldNumber = ({ formulario, setFormulario, callapseOrden }) => {
           aria-expanded="false"
           aria-controls={"collapse" + callapseOrden}
         >
-          Number
+          Número
         </button>
       </h2>
       <div

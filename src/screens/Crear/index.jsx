@@ -30,7 +30,7 @@ const Crear = () => {
     banner: null,
   };
   const [formulario, setFormulario] = useState(initialState);
-  const [keyTab, setKeyTab] = useState("campos");
+  const [keyTab, setKeyTab] = useState("detalle");
   const [loadingSubmit, setLoadingSubmit] = useState(false);
   const [preview, setPreview] = useState(false);
 
@@ -98,7 +98,7 @@ const Crear = () => {
     const files = target.files;
     const fileReader = new FileReader();
     fileReader.readAsDataURL(files[0]);
-    
+
     fileReader.onload = ({ target: { result } }) => {
       setFormulario({
         ...formulario,
@@ -116,7 +116,8 @@ const Crear = () => {
       !formulario.nombre ||
       !formulario.description ||
       !formulario.banner ||
-      !formulario.terminosCondiciones
+      !formulario.terminosCondiciones ||
+      formulario.fields.length === 0
     ) {
       return "";
     }
@@ -193,18 +194,7 @@ const Crear = () => {
               id="uncontrolled-tab-example"
               className="mb-3"
             >
-              <Tab eventKey="campos" title="Campos Formulario" transition>
-                <InfoCards
-                  formulario={formulario}
-                  setFormulario={setFormulario}
-                />
-              </Tab>
-              <Tab
-                eventKey="profile"
-                title="Detalle del Formulario"
-                disabled={formulario.fields.length === 0}
-                transition
-              >
+              <Tab eventKey="detalle" title="Detalle del Formulario" transition>
                 <BasicInput
                   label="Nombre"
                   id="nombre"
@@ -242,6 +232,17 @@ const Crear = () => {
                   handlerChange={handlerBannerChange}
                 />
                 <ButtonsSubmit />
+              </Tab>
+              <Tab
+                eventKey="campos"
+                title="Campos Formulario"
+                transition
+                disabled={formulario.fields.length === 0}
+              >
+                <InfoCards
+                  formulario={formulario}
+                  setFormulario={setFormulario}
+                />
               </Tab>
             </Tabs>
           ) : (
