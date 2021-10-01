@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BasicInput } from "../../../components";
 
 const initialState = { field_type: "separator" };
 
@@ -50,19 +51,14 @@ const FieldSeparator = ({ formulario, setFormulario, callapseOrden }) => {
         data-bs-parent="#accordionFieldType"
       >
         <div className="accordion-body">
-          <div className="mb-3">
-            <label htmlFor="separator_field_label" className="form-label">
-              Titulo
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="separator_field_label"
-              value={field.separator_title || ""}
-              onChange={handlerTitleChange}
-              placeholder="Ej: Nombre mascota, escriba su email, descripción de su vivienda"
-            />
-          </div>
+          <BasicInput
+            label="Titulo"
+            id={"text_field_label"}
+            type="text"
+            value={field.separator_title || ""}
+            handlerChange={handlerTitleChange}
+            placeholder="Ej: Nombre mascota, escriba su email, descripción de su vivienda"
+          />
           <div className="mb-3">
             <label htmlFor="separator_field_label" className="form-label">
               Descripción
