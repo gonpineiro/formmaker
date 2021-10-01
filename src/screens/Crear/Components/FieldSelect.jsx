@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BasicInput, BasicTextarea } from "../../../components";
+import { BasicInput, BasicTextarea, BasicCheckbox } from "../../../components";
 
 const initialState = { field_required: true, field_type: "select" };
 
@@ -117,20 +117,12 @@ const FieldSelect = ({ formulario, setFormulario, callapseOrden }) => {
             handlerChange={handlerOptionChange}
             placeholder="Ej: casa; departamento; casa rodante;"
           />
-          <div className="mb-3">
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                checked={field.field_required}
-                onChange={handlerRequiredChange}
-                id="flexCheckChecked"
-              />
-              <label className="form-check-label" htmlFor="flexCheckChecked">
-                ¿Es un campo requerido?
-              </label>
-            </div>
-          </div>
+          <BasicCheckbox
+            label="¿Es un campo requerido?"
+            checked={field.field_required}
+            handlerChange={handlerRequiredChange}
+            id="select_field_required"
+          />
           <div className="col-auto">
             <button
               id="addSelect"

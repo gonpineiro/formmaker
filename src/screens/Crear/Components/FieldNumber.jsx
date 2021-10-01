@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BasicInput } from "../../../components";
+import { BasicCheckbox, BasicInput } from "../../../components";
 
 const initialState = {
   field_required: true,
@@ -110,24 +110,13 @@ const FieldNumber = ({ formulario, setFormulario, callapseOrden }) => {
             value={field.field_max || ""}
             handlerChange={handlerMaxCharChange}
             placeholder="Ej: 5"
+          />          
+          <BasicCheckbox
+            label="¿Es un campo requerido?"
+            checked={field.field_required}
+            handlerChange={handlerRequiredChange}
+            id="number_field_required"
           />
-          <div className="mb-3">
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                checked={field.field_required}
-                onChange={handlerRequiredChange}
-                id="number_field_required"
-              />
-              <label
-                className="form-check-label"
-                htmlFor="number_field_required"
-              >
-                ¿Es un campo requerido?
-              </label>
-            </div>
-          </div>
           <div className="col-auto">
             <button
               id="addNumber"
