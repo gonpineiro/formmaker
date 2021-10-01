@@ -1,4 +1,12 @@
-const BasicInput = ({ label, id, type, placeholder, value, handlerChange }) => {
+const BasicInput = ({
+  label,
+  id,
+  type,
+  placeholder,
+  value,
+  handlerChange,
+  disabled,
+}) => {
   const stringValue = type === "color" ? "#FFF" : "";
 
   return (
@@ -14,6 +22,7 @@ const BasicInput = ({ label, id, type, placeholder, value, handlerChange }) => {
         placeholder={placeholder || ""}
         onChange={handlerChange}
         accept="image/*"
+        disabled={disabled || false}
       />
     </div>
   );
