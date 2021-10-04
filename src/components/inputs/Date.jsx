@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
+
 import { FormContext } from "../../screens/FormContext";
 import { asteriscos } from "../../utils";
+import { DEFAULT_LABEL_COLOR } from "../../config/config";
 
 const Date = ({
   field_id,
@@ -21,7 +23,7 @@ const Date = ({
             <label
               htmlFor={"id" + field_id}
               className="form-label"
-              style={{ color: "#143c75" }}
+              style={{ color: DEFAULT_LABEL_COLOR }}
             >
               {field_label}
               {asteriscos(field_required)}

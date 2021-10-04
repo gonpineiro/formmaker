@@ -1,6 +1,9 @@
 import React, { useContext } from "react";
+
 import { FormContext } from "../../screens/FormContext";
 import { asteriscos } from "../../utils";
+import { DEFAULT_LABEL_COLOR } from "../../config/config";
+
 const Select = ({
   field_id,
   field_name,
@@ -16,7 +19,7 @@ const Select = ({
       <div className="mb-3">
         <div className="card">
           <div className="card-body">
-            <label className="form-label" style={{ color: "#143c75" }}>
+            <label className="form-label" style={{ color: DEFAULT_LABEL_COLOR }}>
               {field_label}
               {asteriscos(field_required)}
             </label>

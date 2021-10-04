@@ -1,4 +1,5 @@
 import { asteriscos } from "../../utils";
+import { DEFAULT_LABEL_COLOR } from "../../config/config";
 
 const Checkboxes = ({
   field_id,
@@ -15,7 +16,7 @@ const Checkboxes = ({
             className="form-check-label mb-3"
             htmlFor={field_id}
             id={"id" + field_id}
-            style={{ color: "#143c75" }}
+            style={{ color: DEFAULT_LABEL_COLOR }}
           >
             {field_label}
             {asteriscos(field_required)}

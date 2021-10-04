@@ -1,6 +1,9 @@
 import React, { useContext } from "react";
+
 import { FormContext } from "../../screens/FormContext";
 import { asteriscos } from "../../utils";
+import { DEFAULT_LABEL_COLOR } from "../../config/config";
+
 const Radio = ({
   field_id,
   field_name,
@@ -18,7 +21,7 @@ const Radio = ({
             <label
               className="form-label"
               id={"id" + field_id}
-              style={{ color: "#143c75" }}
+              style={{ color: DEFAULT_LABEL_COLOR }}
             >
               {field_label}
               {asteriscos(field_required)}

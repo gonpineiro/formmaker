@@ -21,6 +21,7 @@ const TOKEN = process.env.REACT_APP_TOKEN;
 const APP_ID = parseInt(process.env.REACT_APP_APP_ID);
 const ERROR_TOKEN = "Security Token incorrecto ó caducado";
 const DEFAULT_COLOR = "#266AAD";
+const DEFAULT_LABEL_COLOR = "#143c75";
 /* json - mongo */
 const TYPE_FORM = "json";
 
@@ -34,4 +35,5 @@ export {
   ERROR_TOKEN,
   TYPE_FORM,
   DEFAULT_COLOR,
+  DEFAULT_LABEL_COLOR
 };

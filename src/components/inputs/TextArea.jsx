@@ -1,6 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
+
 import { FormContext } from "../../screens/FormContext";
 import { asteriscos } from "../../utils";
+import { DEFAULT_LABEL_COLOR } from "../../config/config";
 
 const Input = ({
   field_id,
@@ -11,9 +13,15 @@ const Input = ({
   field_max,
   field_value,
 }) => {
-  const { handleChange } = useContext(FormContext);
-  
-  const [count, setCount] = React.useState(0);
+  const { handleChange } = useContext(FormContext);  
+  const [count, setCount] = useState(0);
+
+  const isRequired = field_required === "true";  
+
+  const handleInputChange = (event) => {
+    handleChange(field_id, event);
+  };
+
   return (
     <div className="mb-3">
       <div className="card">
@@ -21,7 +29,7 @@ const Input = ({
           <label
             htmlFor={"id" + field_id}
             className="form-label"
-            style={{ color: "#143c75" }}
+            style={{ color: DEFAULT_LABEL_COLOR }}
           >
             {field_label}
             {asteriscos(field_required)}
@@ -35,9 +43,9 @@ const Input = ({
             aria-describedby={field_id + "Help"}
             placeholder={field_placeholder ? field_placeholder : ""}
             value={field_value.slice(0, field_max)}
-            onChange={(event) => handleChange(field_id, event)}
+            onChange={handleInputChange}
             onKeyUp={(e) => setCount(e.target.value.length)}
-            required={field_required}
+            required={isRequired && "required"}
           />
           <p>
             {count}/{field_max}
