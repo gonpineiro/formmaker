@@ -14,7 +14,7 @@ import {
 
 import { BasicInput, Loading } from "../../components";
 import InfoCards from "./InfoCards";
-import { postForm } from "../../utils/";
+import { postForm, orderToPost } from "../../utils/";
 
 import "./index.scss";
 import { Preview } from "../";
@@ -38,9 +38,10 @@ const Crear = () => {
 
   const handlerSubmitForm = () => {
     setLoadingSubmit(true);
-    const fields = formulario.fields;
+    const fields = orderToPost(formulario.fields);
+
     fields.push({
-      field_order: 33,
+      field_order: fields.length + 1,
       field_id: "acepto",
       field_name: "acepto",
       field_label: "Completé mi formulario",
