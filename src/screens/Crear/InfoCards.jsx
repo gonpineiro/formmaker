@@ -45,7 +45,7 @@ const InfoCards = ({ formulario, formulario: { fields }, setFormulario }) => {
           <ul
             {...droppableProvided.droppableProps}
             ref={droppableProvided.innerRef}
-            className="task-container"
+            style={{ padding: 0 }}
           >
             {fields.map((field, index) => (
               <Draggable
