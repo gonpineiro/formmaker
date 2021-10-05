@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BasicCheckbox, BasicInput } from "../../../components";
+import { getOrderId } from "../../../utils";
 
 const initialState = {
   field_required: true,
@@ -11,6 +12,8 @@ const FieldNumber = ({ formulario, setFormulario, callapseOrden }) => {
 
   const handlerSubmit = () => {
     let inputs = formulario.fields;
+    field.order = getOrderId(inputs);
+
     inputs.push(field);
     setFormulario({
       ...formulario,

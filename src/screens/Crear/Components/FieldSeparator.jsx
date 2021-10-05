@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BasicInput, BasicTextarea } from "../../../components";
+import { getOrderId } from "../../../utils";
 
 const initialState = { field_type: "separator" };
 
@@ -8,6 +9,8 @@ const FieldSeparator = ({ formulario, setFormulario, callapseOrden }) => {
 
   const handlerSubmit = () => {
     const fields = formulario.fields;
+    field.order = getOrderId(fields);
+
     fields.push(field);
     setFormulario({
       ...formulario,
@@ -29,6 +32,7 @@ const FieldSeparator = ({ formulario, setFormulario, callapseOrden }) => {
       separator_description: value,
     });
   };
+
 
   return (
     <div className="accordion-item">

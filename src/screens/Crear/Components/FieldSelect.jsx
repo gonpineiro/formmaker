@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BasicInput, BasicTextarea, BasicCheckbox } from "../../../components";
+import { getOrderId } from "../../../utils";
 
 const initialState = { field_required: true, field_type: "select" };
 
@@ -42,7 +43,8 @@ const FieldSelect = ({ formulario, setFormulario, callapseOrden }) => {
   };
 
   const handlerSubmit = () => {
-    const fields = formulario.fields;
+    const fields = formulario.fields;  
+    field.order = getOrderId(fields);
 
     fields.push(formatField());
 
