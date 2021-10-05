@@ -114,14 +114,12 @@ const Crear = () => {
     setPreview(true);
   };
 
+  const handlerChangeToAddFields = () => {
+    setKeyTab("campos");
+  };
+
   const ButtonsSubmit = () => {
-    if (
-      !formulario.nombre ||
-      !formulario.description ||
-      !formulario.banner ||
-      !formulario.terminosCondiciones ||
-      formulario.fields.length === 0
-    ) {
+    if (formulario.fields.length === 0) {
       return "";
     }
 
@@ -131,7 +129,7 @@ const Crear = () => {
           id="addSelect"
           type="submit"
           onClick={handlerSubmitForm}
-          className="btn btn-primary mb-3"
+          className="btn btn-primary mb-3 mr-5"
         >
           Agregar Formulario
         </button>
@@ -150,44 +148,12 @@ const Crear = () => {
   if (preview)
     return <Preview formulario={formulario} setPreview={setPreview} />;
 
+  const hiddenBtnDescription =
+    !formulario.nombre || !formulario.description || !formulario.banner;
+
   return (
     <div className="container mb-5">
       <div className="row mt-5">
-        <div className="col-12 col-md-6">
-          <h4 className="mb-3">Elegir Campos</h4>
-          <div className="accordion" id="accordionFieldType">
-            <FieldSeparator
-              formulario={formulario}
-              setFormulario={setFormulario}
-              callapseOrden={"FieldSeparator"}
-            />
-            <FieldText
-              formulario={formulario}
-              setFormulario={setFormulario}
-              callapseOrden={"FieldText"}
-            />
-            <FieldNumber
-              formulario={formulario}
-              setFormulario={setFormulario}
-              callapseOrden={"FieldNumber"}
-            />
-            <FieldSelect
-              formulario={formulario}
-              setFormulario={setFormulario}
-              callapseOrden={"FieldSelect"}
-            />
-            <FieldRadio
-              formulario={formulario}
-              setFormulario={setFormulario}
-              callapseOrden={"FieldRadio"}
-            />
-            <FieldCheckbox
-              formulario={formulario}
-              setFormulario={setFormulario}
-              callapseOrden={"FieldCheckbox"}
-            />
-          </div>
-        </div>
         <div className="col-12 col-md-6">
           {!loadingSubmit ? (
             <Tabs
@@ -199,7 +165,7 @@ const Crear = () => {
             >
               <Tab eventKey="detalle" title="Detalle del Formulario" transition>
                 <BasicInput
-                  label="Nombre"
+                  label="Nombre *"
                   id="nombre"
                   type="text"
                   placeholder="Furmulario algo"
@@ -207,7 +173,7 @@ const Crear = () => {
                   handlerChange={handlerNameChange}
                 />
                 <BasicInput
-                  label="Descripción"
+                  label="Descripción *"
                   id="description"
                   type="text"
                   placeholder="Furmulario algo"
@@ -215,7 +181,7 @@ const Crear = () => {
                   handlerChange={handlerDescriptionChange}
                 />
                 <BasicInput
-                  label="Color"
+                  label="Color *"
                   id="hcolor"
                   type="color"
                   value={formulario.hcolor}
@@ -229,29 +195,86 @@ const Crear = () => {
                   handlerChange={handlerTermYCondChange}
                 />
                 <BasicInput
-                  label="Banner"
+                  label="Banner *"
                   id="banner"
                   type="file"
                   handlerChange={handlerBannerChange}
                 />
-                <ButtonsSubmit />
+                <div style={{ width: "100%" }}>
+                  <img
+                    style={{ width: "85%" }}
+                    src={formulario.banner || ""}
+                    alt={formulario.banner ? formulario.nombre : ""}
+                  />
+                </div>
+                <button
+                  style={{ marginTop: "16px" }}
+                  id="addSelect"
+                  type="submit"
+                  onClick={handlerChangeToAddFields}
+                  className="btn btn-primary mb-3 mr-5"
+                  hidden={hiddenBtnDescription}
+                >
+                  Cargar Campos
+                </button>
               </Tab>
               <Tab
                 eventKey="campos"
                 title="Campos Formulario"
                 transition
-                disabled={formulario.fields.length === 0}
+                disabled={hiddenBtnDescription}
               >
                 <InfoCards
                   formulario={formulario}
                   setFormulario={setFormulario}
                 />
+                <ButtonsSubmit />
               </Tab>
             </Tabs>
           ) : (
             <Loading />
           )}
         </div>
+
+        {keyTab === "campos" && (
+          <div className="col-12 col-md-6">
+            <h4 className="mb-3">Elegir Campos</h4>
+            <div className="accordion" id="accordionFieldType">
+              <FieldSeparator
+                formulario={formulario}
+                setFormulario={setFormulario}
+                callapseOrden={"FieldSeparator"}
+              />
+              <FieldText
+                formulario={formulario}
+                setFormulario={setFormulario}
+                callapseOrden={"FieldText"}
+              />
+              <FieldNumber
+                formulario={formulario}
+                setFormulario={setFormulario}
+                callapseOrden={"FieldNumber"}
+              />
+              <FieldSelect
+                formulario={formulario}
+                setFormulario={setFormulario}
+                callapseOrden={"FieldSelect"}
+              />
+              <FieldRadio
+                formulario={formulario}
+                setFormulario={setFormulario}
+                callapseOrden={"FieldRadio"}
+              />
+              <FieldCheckbox
+                formulario={formulario}
+                setFormulario={setFormulario}
+                callapseOrden={"FieldCheckbox"}
+              />
+            </div>
+          </div>
+        )}
+
+        <hr style={{ marginTop: "16px" }} />
       </div>
     </div>
   );
