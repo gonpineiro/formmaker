@@ -12,7 +12,7 @@ const FieldText = ({ formulario, setFormulario, callapseOrden }) => {
 
   const handlerSubmit = () => {
     const inputs = formulario.fields;
-    field.order = getOrderId(inputs);
+    field.field_order = getOrderId(inputs);
 
     inputs.push(field);
     setFormulario({

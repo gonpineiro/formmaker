@@ -8,7 +8,6 @@ const reorder = (list, startIndex, endIndex) => {
   const result = [...list];
   const [removed] = result.splice(startIndex, 1);
   result.splice(endIndex, 0, removed);
-
   return result;
 };
 
@@ -18,29 +17,30 @@ const InfoCards = ({ formulario, formulario: { fields }, setFormulario }) => {
     setFormulario({ ...formulario, fields });
   };
 
-  console.log(fields);
+  const handlerOnDragEnd = (result) => {
+    const { source, destination } = result;
+    if (!destination) {
+      return;
+    }
+    if (
+      source.index === destination.index &&
+      source.droppableId === destination.droppableId
+    ) {
+      return;
+    }
+
+    const reordenar = (prevTasks) =>
+      reorder(prevTasks, source.index, destination.index);
+
+    setFormulario({
+      ...formulario,
+      fields: reordenar(fields),
+    });
+  };
 
   return (
-    <DragDropContext
-      onDragEnd={(result) => {
-        const { source, destination } = result;
-        if (!destination) {
-          return;
-        }
-        if (
-          source.index === destination.index &&
-          source.droppableId === destination.droppableId
-        ) {
-          return;
-        }
-
-        const reordenado = (prevTasks) =>
-          reorder(prevTasks, source.index, destination.index);
-
-        setFormulario(...formulario, reordenado);
-      }}
-    >
-      <Droppable droppableId="tasks">
+    <DragDropContext onDragEnd={handlerOnDragEnd}>
+      <Droppable droppableId="fields">
         {(droppableProvided) => (
           <ul
             {...droppableProvided.droppableProps}
@@ -48,14 +48,17 @@ const InfoCards = ({ formulario, formulario: { fields }, setFormulario }) => {
             className="task-container"
           >
             {fields.map((field, index) => (
-              <Draggable key={index} draggableId={index} index={index}>
+              <Draggable
+                key={field.field_order}
+                draggableId={field.field_order}
+                index={index}
+              >
                 {(draggableProvided) => (
                   <InfoField
-                    {...draggableProvided.draggableProps}
-                    ref={draggableProvided.innerRef}
-                    {...draggableProvided.dragHandleProps}
-                    className="task-item"
-                    key={index}
+                    draggableProps={draggableProvided.draggableProps}
+                    innerRef={draggableProvided.innerRef}
+                    dragHandleProps={draggableProvided.dragHandleProps}
+                    key={field.field_order}
                     element={field}
                     handlerDeleteField={() => handlerDeleteField(field)}
                   />

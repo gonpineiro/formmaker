@@ -32,9 +32,20 @@ const setDataTip = (element) => {
   return dataTip;
 };
 
-const InfoField = ({ element, handlerDeleteField }) => {
+const InfoField = ({
+  element,
+  handlerDeleteField,
+  innerRef,
+  dragHandleProps,
+  draggableProps,
+}) => {
   return (
-    <div className="card mb-1">
+    <div
+      className="card mb-1"
+      ref={innerRef}
+      {...dragHandleProps}
+      {...draggableProps}
+    >
       <div
         data-for="main"
         data-tip={setDataTip(element)}

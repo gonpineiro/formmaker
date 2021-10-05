@@ -41,7 +41,7 @@ const FieldCheckbox = ({ formulario, setFormulario, callapseOrden }) => {
 
   const handlerSubmit = () => {
     const fields = formulario.fields;    
-    field.order = getOrderId(fields);
+    field.field_order = getOrderId(fields);
 
     fields.push(formatField());
 
