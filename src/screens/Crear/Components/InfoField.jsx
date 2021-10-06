@@ -1,5 +1,6 @@
 import ReactTooltip from "react-tooltip";
 import { BasicButton } from "../../../components";
+import { convertToEsType } from "../../../utils";
 import "../index.scss";
 
 const setDataTip = (element) => {
@@ -33,29 +34,6 @@ const setDataTip = (element) => {
       break;
   }
   return dataTip;
-};
-
-const convertToEsType = (type) => {
-  switch (type) {
-    case "separator":
-      return "Separador";
-    case "text":
-      return "Texto";
-    case "textarea":
-      return "Párrafo";
-    case "email":
-      return "Email";
-    case "number":
-      return "Número";
-    case "select":
-      return "Select";
-    case "radio":
-      return "Selección Única";
-    case "checkboxes":
-      return "Selección Múltiple";
-    default:
-      break;
-  }
 };
 
 const InfoField = ({

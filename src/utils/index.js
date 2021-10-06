@@ -10,3 +10,4 @@ export { default as postForm } from "./postForm";
 export { default as asteriscos } from "./asteriscos";
 export { default as getOrderId } from "./getOrderId";
 export { default as orderToPost } from "./orderToPost";
+export { default as convertToEsType } from "./convertToEsType";
