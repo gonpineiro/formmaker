@@ -1,23 +1,18 @@
 import { useState } from "react";
 import { Tab, Tabs } from "react-bootstrap";
-/* mongoDb */
+
 import { insertForm } from "../../api";
 
-import {
-  FieldText,
-  FieldNumber,
-  FieldSelect,
-  FieldSeparator,
-  FieldRadio,
-  FieldCheckbox,
-} from "./Components";
-
-import { BasicInput, Loading, BasicButton } from "../../components";
-import InfoCards from "./InfoCards";
 import { postForm, orderToPost } from "../../utils/";
 
-import "./index.scss";
+import InfoCards from "./InfoCards";
+import TabDetailForm from "./TabDetail";
+import FieldsDetail from "./FieldsDetail";
+
 import { Preview } from "../";
+
+import { Loading, BasicButton } from "../../components";
+
 import { DEFAULT_COLOR, TYPE_FORM } from "../../config/config";
 
 const Crear = () => {
@@ -158,55 +153,18 @@ const Crear = () => {
               className="mb-3"
             >
               <Tab eventKey="detalle" title="Detalle del Formulario" transition>
-                <BasicInput
-                  label="Nombre *"
-                  id="nombre"
-                  type="text"
-                  placeholder="Furmulario algo"
-                  value={formulario.nombre}
-                  handlerChange={handlerNameChange}
-                />
-                <BasicInput
-                  label="Descripción *"
-                  id="description"
-                  type="text"
-                  placeholder="Furmulario algo"
-                  value={formulario.description}
-                  handlerChange={handlerDescriptionChange}
-                />
-                <BasicInput
-                  label="Color *"
-                  id="hcolor"
-                  type="color"
-                  value={formulario.hcolor}
-                  handlerChange={handlerColorChange}
-                />
-                <BasicInput
-                  label="Términos y condiciones"
-                  id="termCondi"
-                  type="text"
-                  value={formulario.terminosCondiciones}
-                  handlerChange={handlerTermYCondChange}
-                />
-                <BasicInput
-                  label="Banner *"
-                  id="banner"
-                  type="file"
-                  handlerChange={handlerBannerChange}
-                />
-                <div style={{ width: "100%" }}>
-                  <img
-                    style={{ width: "85%" }}
-                    src={formulario.banner || ""}
-                    alt={formulario.banner ? formulario.nombre : ""}
-                  />
-                </div>
-                <BasicButton
-                  label="Cargar Campos"
-                  handlerClick={handlerChangeToAddFields}
-                  classname="btn btn-primary mb-3 mr-5"
-                  style={{ marginTop: "16px" }}
-                  hidden={hiddenBtnDescription}
+                <TabDetailForm
+                  nombre={formulario.nombre}
+                  handlerNameChange={handlerNameChange}
+                  description={formulario.description}
+                  handlerDescriptionChange={handlerDescriptionChange}
+                  hcolor={formulario.hcolor}
+                  handlerColorChange={handlerColorChange}
+                  terminosCondiciones={formulario.terminosCondiciones}
+                  handlerTermYCondChange={handlerTermYCondChange}
+                  banner={formulario.banner}
+                  handlerBannerChange={handlerBannerChange}
+                  handlerChangeToAddFields={handlerChangeToAddFields}
                 />
               </Tab>
               <Tab
@@ -228,41 +186,7 @@ const Crear = () => {
         </div>
 
         {keyTab === "campos" && (
-          <div className="col-12 col-md-6">
-            <h4 className="mb-3">Elegir Campos</h4>
-            <div className="accordion" id="accordionFieldType">
-              <FieldSeparator
-                formulario={formulario}
-                setFormulario={setFormulario}
-                callapseOrden={"FieldSeparator"}
-              />
-              <FieldText
-                formulario={formulario}
-                setFormulario={setFormulario}
-                callapseOrden={"FieldText"}
-              />
-              <FieldNumber
-                formulario={formulario}
-                setFormulario={setFormulario}
-                callapseOrden={"FieldNumber"}
-              />
-              <FieldSelect
-                formulario={formulario}
-                setFormulario={setFormulario}
-                callapseOrden={"FieldSelect"}
-              />
-              <FieldRadio
-                formulario={formulario}
-                setFormulario={setFormulario}
-                callapseOrden={"FieldRadio"}
-              />
-              <FieldCheckbox
-                formulario={formulario}
-                setFormulario={setFormulario}
-                callapseOrden={"FieldCheckbox"}
-              />
-            </div>
-          </div>
+          <FieldsDetail formulario={formulario} setFormulario={setFormulario} />
         )}
 
         <hr style={{ marginTop: "16px" }} />
