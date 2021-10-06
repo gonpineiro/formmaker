@@ -1,4 +1,4 @@
-import { BasicButton, BasicInput } from "../../components";
+import { BasicButton, BasicInput, BasicTextarea } from "../../components";
 
 const TabDetailForm = ({
   nombre,
@@ -25,11 +25,12 @@ const TabDetailForm = ({
         value={nombre}
         handlerChange={handlerNameChange}
       />
-      <BasicInput
+      <BasicTextarea
         label="Descripción *"
         id="description"
         type="text"
         placeholder="Furmulario algo"
+        rows="3"
         value={description}
         handlerChange={handlerDescriptionChange}
       />
