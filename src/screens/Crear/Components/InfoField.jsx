@@ -50,22 +50,24 @@ const InfoField = ({
       {...dragHandleProps}
       {...draggableProps}
     >
-      <div
-        data-for="main"
-        data-tip={setDataTip(element)}
-        className="card-body d-flex align-items-center pb-2 pt-2"
-      >
-        <div className="col-4">{convertToEsType(element.field_type)}</div>
-        <div className="col-3">
-          {element.field_label || element.separator_description}
+      <div data-for="main" data-tip={setDataTip(element)} className="card">
+        <div className="card-header d-flex align-items-center pb-2 pt-2">
+          <div className="col-4">{convertToEsType(element.field_type)}</div>
+          <div className="col-3">{element.field_placeholder || ""}</div>
+          <div className="col-3">{element.field_required && "Requerido"}</div>
+          <div className="col-2">
+            <BasicButton
+              label="X"
+              handlerClick={handlerDeleteField}
+              classname="btn btn-dark float-end"
+              style={{ paddingTop: "2px", paddingBottom: "2px" }}
+            />
+          </div>
         </div>
-        <div className="col-3">{element.field_required && "Requerido"}</div>
-        <div className="col-2">
-          <BasicButton
-            label="X"
-            handlerClick={handlerDeleteField}
-            classname="btn btn-dark float-end"
-          />
+        <div className="card-body" style={{ padding: "0.5rem 1rem" }}>
+          <div className="col-3">
+            {element.field_label || element.separator_description}
+          </div>
         </div>
       </div>
       <ReactTooltip id="main" multiline effect="solid" type="info" />
