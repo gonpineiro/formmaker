@@ -1,4 +1,4 @@
-import { Element } from "../../components";
+import { BasicButton, Element } from "../../components";
 import { FormContext } from "../FormContext";
 
 import "./index.scss";
@@ -18,14 +18,11 @@ const Preview = ({ formulario, setPreview }) => {
       <div className="container pt-5 pb-5">
         <div className="d-flex justify-content-center">
           <div className="col-12 col-md-7">
-            <button
-              id="addSelect"
-              type="submit"
-              className="btn btn-primary mb-3"
-              onClick={hanlderReturnToForm}
-            >
-              Volver al modo creacion
-            </button>
+            <BasicButton
+              label="Volver al modo creación"
+              handlerClick={hanlderReturnToForm}
+              classname="btn btn-primary mb-3"
+            />
             <img className="full_width mb-5 rounded-3" src={banner} alt="" />
             <div className="card rounded-3 mb-3">
               <div
