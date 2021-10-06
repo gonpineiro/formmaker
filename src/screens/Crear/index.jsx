@@ -12,7 +12,7 @@ import {
   FieldCheckbox,
 } from "./Components";
 
-import { BasicInput, Loading } from "../../components";
+import { BasicInput, Loading, BasicButton } from "../../components";
 import InfoCards from "./InfoCards";
 import { postForm, orderToPost } from "../../utils/";
 
@@ -125,22 +125,16 @@ const Crear = () => {
 
     return (
       <div className="d-flex justify-content-between">
-        <button
-          id="addSelect"
-          type="submit"
-          onClick={handlerSubmitForm}
-          className="btn btn-primary mb-3 mr-5"
-        >
-          Agregar Formulario
-        </button>
-        <button
-          id="addSelect"
-          type="submit"
-          className="btn btn-primary mb-3"
-          onClick={handlerPreview}
-        >
-          Previsualizar
-        </button>
+        <BasicButton
+          handlerClick={handlerSubmitForm}
+          classname="btn btn-primary mb-3 mr-5"
+          label="Agregar Formulario"
+        />
+        <BasicButton
+          handlerClick={handlerPreview}
+          classname="btn btn-primary mb-3"
+          label="Previsualizar"
+        />
       </div>
     );
   };
@@ -207,16 +201,13 @@ const Crear = () => {
                     alt={formulario.banner ? formulario.nombre : ""}
                   />
                 </div>
-                <button
+                <BasicButton
+                  label="Cargar Campos"
+                  handlerClick={handlerChangeToAddFields}
+                  classname="btn btn-primary mb-3 mr-5"
                   style={{ marginTop: "16px" }}
-                  id="addSelect"
-                  type="submit"
-                  onClick={handlerChangeToAddFields}
-                  className="btn btn-primary mb-3 mr-5"
                   hidden={hiddenBtnDescription}
-                >
-                  Cargar Campos
-                </button>
+                />
               </Tab>
               <Tab
                 eventKey="campos"

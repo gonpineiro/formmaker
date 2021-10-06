@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BasicInput, BasicCheckbox } from "../../../components";
+import { BasicInput, BasicCheckbox, BasicButton } from "../../../components";
 import { getOrderId } from "../../../utils";
 
 const initialState = {
@@ -152,17 +152,12 @@ const FieldText = ({ formulario, setFormulario, callapseOrden }) => {
             handlerChange={handlerRequiredChange}
             id="text_field_required"
           />
-          <div className="col-auto">
-            <button
-              id="addText"
-              type="submit"
-              onClick={handlerSubmit}
-              disabled={field.field_label ? false : true}
-              className="btn btn-primary mb-3"
-            >
-              Agregar campo
-            </button>
-          </div>
+          <BasicButton
+            label="Agregar campo"
+            handlerClick={handlerSubmit}
+            classname="btn btn-primary mb-3"
+            disabled={field.field_label ? false : true}
+          />
         </div>
       </div>
     </div>

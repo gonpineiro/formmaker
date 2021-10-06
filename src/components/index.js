@@ -6,3 +6,4 @@ export { default as BasicInput } from "./BasicInput";
 export { default as BasicCard } from "./BasicCard";
 export { default as BasicTextarea } from "./BasicTextarea";
 export { default as BasicCheckbox } from "./BasicCheckbox";
+export { default as BasicButton } from "./BasicButton";

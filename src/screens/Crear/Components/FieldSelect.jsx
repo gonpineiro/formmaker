@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { BasicInput, BasicTextarea, BasicCheckbox } from "../../../components";
+
+import {
+  BasicInput,
+  BasicTextarea,
+  BasicCheckbox,
+  BasicButton,
+} from "../../../components";
+
 import { getOrderId } from "../../../utils";
 
 const initialState = { field_required: true, field_type: "select" };
@@ -43,7 +50,7 @@ const FieldSelect = ({ formulario, setFormulario, callapseOrden }) => {
   };
 
   const handlerSubmit = () => {
-    const fields = formulario.fields;  
+    const fields = formulario.fields;
     field.field_order = getOrderId(fields);
 
     fields.push(formatField());
@@ -125,17 +132,12 @@ const FieldSelect = ({ formulario, setFormulario, callapseOrden }) => {
             handlerChange={handlerRequiredChange}
             id="select_field_required"
           />
-          <div className="col-auto">
-            <button
-              id="addSelect"
-              type="submit"
-              onClick={handlerSubmit}
-              disabled={disabledSubmit}
-              className="btn btn-primary mb-3"
-            >
-              Agregar campo
-            </button>
-          </div>
+          <BasicButton
+            label="Agregar campo"
+            handlerClick={handlerSubmit}
+            classname="btn btn-primary mb-3"
+            disabled={disabledSubmit}
+          />
         </div>
       </div>
     </div>

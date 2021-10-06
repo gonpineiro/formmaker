@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { BasicInput, BasicTextarea } from "../../../components";
+
+import { BasicButton, BasicInput, BasicTextarea } from "../../../components";
+
 import { getOrderId } from "../../../utils";
 
 const initialState = { field_type: "separator" };
@@ -32,7 +34,6 @@ const FieldSeparator = ({ formulario, setFormulario, callapseOrden }) => {
       separator_description: value,
     });
   };
-
 
   return (
     <div className="accordion-item">
@@ -71,17 +72,12 @@ const FieldSeparator = ({ formulario, setFormulario, callapseOrden }) => {
             handlerChange={handlerDescriptionChange}
             placeholder="Ej: Nombre mascota, escriba su email, descripción de su vivienda"
           />
-          <div className="col-auto">
-            <button
-              id="addText"
-              type="submit"
-              onClick={handlerSubmit}
-              disabled={field.separator_title ? false : true}
-              className="btn btn-primary mb-3"
-            >
-              Agregar Separador
-            </button>
-          </div>
+          <BasicButton
+            label="Agregar campo"
+            handlerClick={handlerSubmit}
+            classname="btn btn-primary mb-3"
+            disabled={field.separator_title ? false : true}
+          />
         </div>
       </div>
     </div>

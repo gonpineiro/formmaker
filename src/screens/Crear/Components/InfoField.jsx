@@ -1,4 +1,5 @@
 import ReactTooltip from "react-tooltip";
+import { BasicButton } from "../../../components";
 import "../index.scss";
 
 const setDataTip = (element) => {
@@ -55,13 +56,11 @@ const InfoField = ({
         <span className="me-auto">
           {element.field_label || element.separator_title}
         </span>
-        <button
-          type="button"
-          className="btn btn-dark float-end"
-          onClick={handlerDeleteField}
-        >
-          X
-        </button>
+        <BasicButton
+          label="X"
+          handlerClick={handlerDeleteField}
+          classname="btn btn-dark float-end"
+        />
       </div>
       <ReactTooltip id="main" multiline effect="solid" type="info" />
     </div>

@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { BasicCheckbox, BasicInput } from "../../../components";
+
+import { BasicButton, BasicCheckbox, BasicInput } from "../../../components";
+
 import { getOrderId } from "../../../utils";
 
 const initialState = {
@@ -89,7 +91,7 @@ const FieldNumber = ({ formulario, setFormulario, callapseOrden }) => {
             handlerChange={handlerTextChange}
             placeholder="Ej: Número de mascotas"
           />
-          
+
           <BasicInput
             label="Placeholder"
             id={"placeholder_field_label"}
@@ -113,24 +115,19 @@ const FieldNumber = ({ formulario, setFormulario, callapseOrden }) => {
             value={field.field_max || ""}
             handlerChange={handlerMaxCharChange}
             placeholder="Ej: 5"
-          />          
+          />
           <BasicCheckbox
             label="¿Es un campo requerido?"
             checked={field.field_required}
             handlerChange={handlerRequiredChange}
             id="number_field_required"
           />
-          <div className="col-auto">
-            <button
-              id="addNumber"
-              type="submit"
-              onClick={handlerSubmit}
-              disabled={field.field_label ? false : true}
-              className="btn btn-primary mb-3"
-            >
-              Agregar campo
-            </button>
-          </div>
+          <BasicButton
+            label="Agregar campo"
+            handlerClick={handlerSubmit}
+            classname="btn btn-primary mb-3"
+            disabled={field.field_label ? false : true}
+          />
         </div>
       </div>
     </div>
