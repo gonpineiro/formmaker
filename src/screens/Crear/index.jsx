@@ -39,7 +39,7 @@ const Crear = () => {
       field_order: fields.length + 1,
       field_id: "acepto",
       field_name: "acepto",
-      field_label: "Completé mi formulario",
+      field_label: "He leído y acepto las bases y condiciones.",
       field_type: "checkbox",
       field_value: "checked",
       field_required: "required",
