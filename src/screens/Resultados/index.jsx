@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { Loading } from "../../components";
-
+import { URL_WS_RESULTADOS } from "../../config/config";
 import { getAllForms } from "../../utils";
 import "./index.scss";
-const getCsvUrl =
-  "http://200.85.183.194:90/apps/formmaker/backend/getRespuestas.php?formulario=";
+const getCsvUrl = URL_WS_RESULTADOS;
 const getIdsForms = async (setForms) => {
   let forms = await getAllForms();
   forms = Object.values(forms);
