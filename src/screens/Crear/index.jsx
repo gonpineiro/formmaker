@@ -13,7 +13,7 @@ import { Preview } from "../";
 
 import { Loading, BasicButton } from "../../components";
 
-import { DEFAULT_COLOR, TYPE_FORM } from "../../config/config";
+import { DEFAULT_COLOR, TYPE_FORM, URL_APP } from "../../config/config";
 
 const Crear = () => {
   const initialState = {
@@ -192,7 +192,7 @@ const Crear = () => {
           <div className="col-12 col-md-6 uuid-form">
             <h4>Generado correctamente</h4>
             <small>
-              http://localhost:3000/apps/formmaker?idForm={uuidForm}
+              {URL_APP}?idForm={uuidForm}
             </small>
           </div>
         )}
