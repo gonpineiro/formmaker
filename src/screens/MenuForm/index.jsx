@@ -28,14 +28,17 @@ const MenuForm = () => {
   if (forms.length === 0) return <Loading />;
 
   if (idForm) return <Redirect push to={"/apps/formulario/" + idForm} />;
-
   return (
     <div className="container pt-5">
       <h2 className="titulo text-center">Hacé click e inscribite</h2>
       <div className="row pt-5">
         <div className="col-12 col-md-7 mx-auto">
           {forms.map((form, key) => (
-            <div key={key} className="col-12 md-4">
+            <div
+              key={key}
+              className="col-12 md-4"
+              hidden={form.estado !== "activo"}
+            >
               <Link
                 className="menu-link col-12 text-center"
                 to={"/apps/formulario/" + form.id}
