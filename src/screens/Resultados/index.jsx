@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router";
 
 import { Loading } from "../../components";
 import { URL_WS_RESULTADOS } from "../../config/config";
 import { getAllForms } from "../../utils";
 import "./index.scss";
-const getCsvUrl = URL_WS_RESULTADOS;
+
 const getIdsForms = async (setForms) => {
   let forms = await getAllForms();
   forms = Object.values(forms);
@@ -20,6 +20,10 @@ const Resultados = () => {
   useEffect(() => {
     getIdsForms(setForms);
   }, []);
+
+  const viewForm = (id) => {
+    <Redirect push to={"/apps/formulario?idForm=" + id} />;
+  };
 
   if (forms.length === 0) return <Loading />;
 
@@ -37,17 +41,17 @@ const Resultados = () => {
               >
                 <div className="col-12 col-md-7">{form.nombre}</div>
                 <div className="col-12 col-md-5 d-flex justify-content-evenly">
-                  <Link
-                    className="menu-link"
-                    to={"/apps/formulario/" + form.id}
-                    target="_blank"
+                  <button
+                    type="button"
+                    className="btn btn-light"
+                    onClick={() => viewForm(form.id)}
                   >
-                    <button type="button" className="btn btn-light">
-                      Ver Formulario
-                    </button>
-                  </Link>
+                    Ver Formulario
+                  </button>
                   <a
-                    href={getCsvUrl + form.id + "&nombreForm=" + form.nombre}
+                    href={
+                      URL_WS_RESULTADOS + form.id + "&nombreForm=" + form.nombre
+                    }
                     rel="noreferrer"
                   >
                     <button type="button" className="btn btn-dark">
