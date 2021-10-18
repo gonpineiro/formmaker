@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, Redirect } from "react-router-dom";
 
 import { Loading } from "../../components";
 
@@ -15,13 +15,19 @@ const getIdsForms = async (setForms) => {
   setForms(Object.values(forms));
 };
 
+const useQuery = () => new URLSearchParams(useLocation().search);
+
 const MenuForm = () => {
+  const idForm = useQuery().get("idForm");
+
   const [forms, setForms] = useState([]);
   useEffect(() => {
     getIdsForms(setForms);
   }, []);
 
   if (forms.length === 0) return <Loading />;
+
+  if (idForm) return <Redirect push to={"/apps/formulario/" + idForm} />;
 
   return (
     <div className="container pt-5">

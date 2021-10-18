@@ -30,6 +30,7 @@ const Crear = () => {
   const [keyTab, setKeyTab] = useState("detalle");
   const [loadingSubmit, setLoadingSubmit] = useState(false);
   const [preview, setPreview] = useState(false);
+  const [uuidForm, setUuidForm] = useState(null);
 
   const handlerSubmitForm = () => {
     setLoadingSubmit(true);
@@ -51,15 +52,16 @@ const Crear = () => {
       insertForm(formulario).then(() => {
         setLoadingSubmit(false);
         setFormulario(initialState);
-        setKeyTab("campos");
+        setKeyTab("detalle");
       });
     }
 
     if (TYPE_FORM === "json") {
-      postForm(formulario, "post-form-json").then(() => {
+      postForm(formulario, "post-form-json").then(({ uuid }) => {
         setLoadingSubmit(false);
         setFormulario(initialState);
-        setKeyTab("campos");
+        setKeyTab("detalle");
+        setUuidForm(uuid);
       });
     }
   };
@@ -140,6 +142,7 @@ const Crear = () => {
   const hiddenBtnDescription =
     !formulario.nombre || !formulario.description || !formulario.banner;
 
+  console.log("uuidForm", uuidForm);
   return (
     <div className="container mb-5">
       <div className="row mt-5">
@@ -184,6 +187,15 @@ const Crear = () => {
             <Loading />
           )}
         </div>
+
+        {uuidForm && (
+          <div className="col-12 col-md-6 uuid-form">
+            <h4>Generado correctamente</h4>
+            <small>
+              http://localhost:3000/apps/formmaker?idForm={uuidForm}
+            </small>
+          </div>
+        )}
 
         {keyTab === "campos" && (
           <FieldsDetail formulario={formulario} setFormulario={setFormulario} />

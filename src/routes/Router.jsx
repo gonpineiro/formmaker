@@ -44,7 +44,6 @@ const Router = ({ traerDatosSession, userReducer }) => {
       </RouterLayout>
     );
   }
-
   return (
     <RouterLayout>
       <Route exact path="/apps/formmaker/" component={MenuForm} />
