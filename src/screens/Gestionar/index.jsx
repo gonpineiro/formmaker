@@ -1,38 +1,34 @@
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
-import { getAllForms } from "../../api";
+import { getAllForms } from "../../utils";
 
-import { BasicCard } from "../../components";
+import { BasicTable } from "../../components";
 import "./index.scss";
+
+const getFormsJson = async (setForms) => {
+  let forms = await getAllForms();
+  forms = Object.values(forms);
+  forms = forms.filter((item) => item !== null);
+
+  forms.forEach((form) => {
+    delete form.banner;
+    delete form.id;
+  });
+
+  setForms(Object.values(forms));
+};
 
 const Gestionar = () => {
   const [formularios, setFormularios] = useState([]);
 
-  const history = useHistory();
-
   useEffect(() => {
-    getAllForms().then(({ data: { data } }) => {
-      setFormularios(data);
-    });
+    getFormsJson(setFormularios);
   }, []);
 
-  const hanlderShowForm = (id) => {
-    history.push("/apps/formmaker/gestionar/" + id);
-  };
-
   return (
-    <div className="container">
+    <div className="container pt-5">
       <h2 className="titulo text-center">Gestionar</h2>
       <div className="row mt-5">
-        {formularios.map((form, key) => (
-          <BasicCard
-            key={key}
-            title={form.nombre}
-            description={form.description}
-            id={form._id}
-            handler={hanlderShowForm}
-          />
-        ))}
+        <BasicTable data={formularios} />
       </div>
     </div>
   );

@@ -11,3 +11,5 @@ export { default as asteriscos } from "./asteriscos";
 export { default as getOrderId } from "./getOrderId";
 export { default as orderToPost } from "./orderToPost";
 export { default as convertToEsType } from "./convertToEsType";
+export { default as getColumns } from "./getColumns";
+export { default as capitalizeFirstLetter } from "./capitalizeFirstLetter";
