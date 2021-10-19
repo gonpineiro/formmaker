@@ -25,10 +25,6 @@ const Formulario = (/* { userReducer: { idForm } } */) => {
     elements ?? {};
   useEffect(() => {
     replaceUrl("/apps/formmaker/");
-    /* if (!idForm) {
-      setLoading(false);
-    } else { */
-    //getFormDataByJson(setElements, setLoading, idForm);
     getFormData(setElements, setLoading, idForm);
   }, [idForm]);
 
@@ -41,7 +37,6 @@ const Formulario = (/* { userReducer: { idForm } } */) => {
       postData({ formObject, idForm }, nombre, "respuesta").then(({ msg }) => {
         setMessage(msg);
         setLoadingSubmit(false);
-        //history.push("/apps/formmaker/");
       });
     } else {
       setLoadingSubmit(false);
