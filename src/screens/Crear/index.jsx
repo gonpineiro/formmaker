@@ -24,6 +24,7 @@ const Crear = () => {
     terminosCondiciones: null,
     fields: [],
     banner: null,
+    creationDate: new Date().toLocaleString(),
   };
 
   const [formulario, setFormulario] = useState(initialState);
