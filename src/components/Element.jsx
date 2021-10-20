@@ -3,6 +3,7 @@ import Checkbox from "./inputs/Checkbox";
 import Checkboxes from "./inputs/Checkboxes";
 import Date from "./inputs/Date";
 import Input from "./inputs/Input";
+import Link from "./inputs/Link";
 import Image from "./inputs/Image";
 import Radio from "./inputs/Radio";
 import Select from "./inputs/Select";
@@ -22,8 +23,10 @@ const Element = ({
     field_required,
     field_type,
     field_value,
+    link_title,
     separator_title,
     separator_description,
+    url,
     image_title,
     image_src,
   },
@@ -98,6 +101,8 @@ const Element = ({
           hcolor={hcolor}
         />
       );
+    case "link":
+      return <Link link_title={link_title} url={url} hcolor={hcolor} />;
     case "radio":
       return (
         <Radio
