@@ -18,6 +18,8 @@ const convertToEsType = (type) => {
       return "Selección Múltiple";
     case "link":
       return "Link";
+    case "date":
+      return "Fecha";
     default:
       break;
   }

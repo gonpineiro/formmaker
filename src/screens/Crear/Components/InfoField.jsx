@@ -26,6 +26,10 @@ const setDataTip = (element) => {
       dataTip += "Longitud Minima: " + (element.field_min || "0") + "<br />";
       dataTip += "Requerido: " + requiredDesc + "<br />";
       break;
+    case "date":
+      dataTip += "Etiqueta: " + element.field_label + "<br />";
+      dataTip += "Requerido: " + requiredDesc + "<br />";
+      break;
     case "select":
     case "radio":
     case "checkboxes":
