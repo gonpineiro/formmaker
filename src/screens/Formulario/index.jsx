@@ -85,13 +85,6 @@ const Formulario = (/* { userReducer: { idForm } } */) => {
               </div>
             </div>
             <form id="thisForm" className="needs-validation" noValidate>
-              <input
-                className={"form-control"}
-                id={"id" + field_id}
-                name={field_name}
-                value={field_value.slice(0, field_max)}
-                required={isRequired && "required"}
-              />
               {fields
                 ? fields.map((field, i) => {
                     if (field.field_name === "acepto") {
