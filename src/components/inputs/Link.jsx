@@ -1,22 +1,17 @@
 import React from "react";
 
-const Link = ({ link_title, url, hcolor }) => {
+const Link = ({ link_title, url }) => {
   return (
     <div className="mb-3">
       <div className="card">
-        <div
-          className="card-header text-light"
-          style={{ backgroundColor: hcolor || "#fff" }}
-        >
-          {link_title}
-        </div>
-        {url ? (
-          <div className="card-body text-dark">
+        <div className="card-body text-dark">
+          {link_title ? <p>{link_title}</p> : null}
+          {url ? (
             <a href={url} target="_blank" rel="noreferrer">
               {url}
             </a>
-          </div>
-        ) : null}
+          ) : null}
+        </div>
       </div>
     </div>
   );
