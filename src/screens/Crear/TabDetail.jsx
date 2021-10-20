@@ -23,7 +23,7 @@ const TabDetailForm = ({
         label="Nombre *"
         id="nombre"
         type="text"
-        placeholder="Furmulario algo"
+        placeholder="Formulario algo"
         value={nombre}
         handlerChange={handlerNameChange}
       />
