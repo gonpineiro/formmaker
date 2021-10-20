@@ -47,7 +47,6 @@ const InfoField = ({
   dragHandleProps,
   draggableProps,
 }) => {
-  console.log(element);
   return (
     <div
       className="card mb-1"
@@ -58,7 +57,9 @@ const InfoField = ({
       <div data-for="main" data-tip={setDataTip(element)} className="card">
         <div className="card-header d-flex align-items-center pb-2 pt-2">
           <div className="col-4">{convertToEsType(element.field_type)}</div>
-          <div className="col-3">{element.field_placeholder || ""}</div>
+          <div className="col-3">
+            {element.field_placeholder || element.url || ""}
+          </div>
           <div className="col-3">{element.field_required && "Requerido"}</div>
           <div className="col-2">
             {element.field_id !== "Mail" &&
@@ -75,7 +76,9 @@ const InfoField = ({
         </div>
         <div className="card-body" style={{ padding: "0.5rem 1rem" }}>
           <div className="col-3">
-            {element.field_label || element.separator_description}
+            {element.field_label ||
+              element.separator_description ||
+              element.link_title}
           </div>
         </div>
       </div>

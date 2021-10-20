@@ -16,6 +16,8 @@ const convertToEsType = (type) => {
       return "Selección Única";
     case "checkboxes":
       return "Selección Múltiple";
+    case "link":
+      return "Link";
     default:
       break;
   }

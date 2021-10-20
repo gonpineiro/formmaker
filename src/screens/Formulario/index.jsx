@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
 
 import { Element, Message, Spinner, Loading } from "../../components";
 import { FormContext } from "../FormContext";
@@ -94,13 +93,6 @@ const Formulario = () => {
               </div>
             </div>
             <form id="thisForm" className="needs-validation" noValidate>
-              <input
-                className={"form-control"}
-                id={"id" + field_id}
-                name={field_name}
-                value={field_value.slice(0, field_max)}
-                required={isRequired && "required"}
-              />
               {fields
                 ? fields.map((field, i) => {
                     if (field.field_name === "acepto") {
@@ -181,8 +173,5 @@ const Formulario = () => {
   );
 };
 
-const mapStateToProps = ({ userReducer }) => {
-  return { userReducer };
-};
 
-export default connect(mapStateToProps, null)(Formulario);
+export default Formulario;
