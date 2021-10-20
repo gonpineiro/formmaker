@@ -1,5 +1,6 @@
 import {
   FieldCheckbox,
+  FieldLink,
   FieldNumber,
   FieldRadio,
   FieldSelect,
@@ -15,6 +16,11 @@ const FieldsDetail = ({ formulario, setFormulario }) => (
         formulario={formulario}
         setFormulario={setFormulario}
         callapseOrden={"FieldSeparator"}
+      />
+      <FieldLink
+        formulario={formulario}
+        setFormulario={setFormulario}
+        callapseOrden={"FieldLink"}
       />
       <FieldText
         formulario={formulario}
