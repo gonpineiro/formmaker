@@ -13,10 +13,57 @@ import { Preview } from "../";
 
 import { Loading, BasicButton } from "../../components";
 
-import { TYPE_FORM, URL_APP } from "../../config/config";
-import initialState from "./initialState";
+import { DEFAULT_COLOR, TYPE_FORM, URL_APP } from "../../config/config";
 
 const Crear = () => {
+  const initialState = {
+    nombre: null,
+    estado: "borrador",
+    description: null,
+    hcolor: DEFAULT_COLOR,
+    terminosCondiciones: null,
+    bodyEmail: "",
+    creationDate: new Date().toLocaleString(),
+    fields: [
+      {
+        field_required: true,
+        field_type: "email",
+        field_label: "Mail",
+        field_name: "Mail",
+        field_id: "Mail",
+        field_value: "",
+        field_placeholder: "Ingrese su correo",
+        field_min: "0",
+        field_max: "999",
+        field_order: "1",
+      },
+      {
+        field_required: true,
+        field_type: "number",
+        field_label: "Teléfono",
+        field_name: "Teléfono",
+        field_id: "Teléfono",
+        field_value: "",
+        field_placeholder: "Ingrese su teléfono",
+        field_min: "0",
+        field_max: "16",
+        field_order: "2",
+      },
+      {
+        field_required: true,
+        field_type: "number",
+        field_label: "DNI",
+        field_name: "DNI",
+        field_id: "DNI",
+        field_value: "",
+        field_placeholder: "Ingrese su Documento",
+        field_min: "8",
+        field_max: "8",
+        field_order: "3",
+      },
+    ],
+    banner: null,
+  };
   const [formulario, setFormulario] = useState(initialState);
   const [keyTab, setKeyTab] = useState("detalle");
   const [loadingSubmit, setLoadingSubmit] = useState(false);
@@ -58,6 +105,7 @@ const Crear = () => {
   };
 
   const handlerNameChange = ({ target: { value } }) => {
+    hanlderCleanURLForm();
     setFormulario({
       ...formulario,
       nombre: value,
@@ -65,6 +113,7 @@ const Crear = () => {
   };
 
   const handlerDescriptionChange = ({ target: { value } }) => {
+    hanlderCleanURLForm();
     setFormulario({
       ...formulario,
       description: value,
@@ -72,6 +121,7 @@ const Crear = () => {
   };
 
   const handlerColorChange = ({ target: { value } }) => {
+    hanlderCleanURLForm();
     setFormulario({
       ...formulario,
       hcolor: value,
@@ -79,6 +129,7 @@ const Crear = () => {
   };
 
   const handlerTermYCondChange = ({ target: { value } }) => {
+    hanlderCleanURLForm();
     setFormulario({
       ...formulario,
       terminosCondiciones: value,
@@ -86,6 +137,7 @@ const Crear = () => {
   };
 
   const handlerBannerChange = ({ target }) => {
+    hanlderCleanURLForm();
     const files = target.files;
     const fileReader = new FileReader();
     fileReader.readAsDataURL(files[0]);
@@ -99,10 +151,15 @@ const Crear = () => {
   };
 
   const handlerBodyEmailChange = ({ target: { value } }) => {
+    hanlderCleanURLForm();
     setFormulario({
       ...formulario,
       bodyEmail: value,
     });
+  };
+
+  const hanlderCleanURLForm = () => {
+    if (uuidForm) setUuidForm(null);
   };
 
   const handlerPreview = () => {
@@ -114,9 +171,7 @@ const Crear = () => {
   };
 
   const ButtonsSubmit = () => {
-    if (formulario.fields.length === 0) {
-      return "";
-    }
+    if (formulario.fields.length === 0) return "";
 
     return (
       <div className="d-flex justify-content-between">
