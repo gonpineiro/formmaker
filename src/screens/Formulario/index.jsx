@@ -63,9 +63,10 @@ const Formulario = () => {
 
   if (loading) return <Loading />;
 
-  if (message) return <Message message={message} />;
+  if (message) return <Message message={message} backForm />;
 
-  if (estado !== 'activo') return <Message message={'El formulario no se encuentra activo'} />;
+  if (estado !== "activo")
+    return <Message message={"El formulario no se encuentra activo"} />;
 
   if (!elements) return "404";
   return (
@@ -172,6 +173,5 @@ const Formulario = () => {
     </FormContext.Provider>
   );
 };
-
 
 export default Formulario;
