@@ -11,6 +11,8 @@ const TabDetailForm = ({
   handlerTermYCondChange,
   banner,
   handlerBannerChange,
+  bodyEmail,
+  handlerBodyEmailChange,
   handlerChangeToAddFields,
 }) => {
   const hiddenBtnDescription = !nombre || !description || !banner;
@@ -47,6 +49,15 @@ const TabDetailForm = ({
         type="text"
         value={terminosCondiciones}
         handlerChange={handlerTermYCondChange}
+      />
+      <BasicTextarea
+        label="Cuerpo del correo electronico *"
+        id="bodyEmail"
+        type="text"
+        placeholder="Cuerpo del correo"
+        rows="3"
+        value={bodyEmail}
+        handlerChange={handlerBodyEmailChange}
       />
       <BasicInput
         label="Banner *"

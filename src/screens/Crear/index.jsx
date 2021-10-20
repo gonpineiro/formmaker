@@ -22,9 +22,10 @@ const Crear = () => {
     description: null,
     hcolor: DEFAULT_COLOR,
     terminosCondiciones: null,
+    bodyEmail: "",
+    creationDate: new Date().toLocaleString(),
     fields: [],
     banner: null,
-    creationDate: new Date().toLocaleString(),
   };
 
   const [formulario, setFormulario] = useState(initialState);
@@ -108,6 +109,13 @@ const Crear = () => {
     };
   };
 
+  const handlerBodyEmailChange = ({ target: { value } }) => {
+    setFormulario({
+      ...formulario,
+      bodyEmail: value,
+    });
+  };
+
   const handlerPreview = () => {
     setPreview(true);
   };
@@ -143,7 +151,6 @@ const Crear = () => {
   const hiddenBtnDescription =
     !formulario.nombre || !formulario.description || !formulario.banner;
 
-  console.log("uuidForm", uuidForm);
   return (
     <div className="container mb-5">
       <div className="row mt-5">
@@ -168,6 +175,8 @@ const Crear = () => {
                   handlerTermYCondChange={handlerTermYCondChange}
                   banner={formulario.banner}
                   handlerBannerChange={handlerBannerChange}
+                  bodyEmail={formulario.bodyEmail}
+                  handlerBodyEmailChange={handlerBodyEmailChange}
                   handlerChangeToAddFields={handlerChangeToAddFields}
                 />
               </Tab>
