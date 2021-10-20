@@ -41,6 +41,7 @@ const Formulario = () => {
     const fields = elements.fields;
     if (validateForm(fields)) {
       const formObject = createFormData(event.target.form, fields);
+      console.log(formObject);
       postData({ formObject, idForm }, nombre, "respuesta").then(({ msg }) => {
         setMessage(msg);
         setLoadingSubmit(false);
@@ -93,6 +94,13 @@ const Formulario = () => {
               </div>
             </div>
             <form id="thisForm" className="needs-validation" noValidate>
+              <input
+                className={"form-control"}
+                id={"id" + field_id}
+                name={field_name}
+                value={field_value.slice(0, field_max)}
+                required={isRequired && "required"}
+              />
               {fields
                 ? fields.map((field, i) => {
                     if (field.field_name === "acepto") {

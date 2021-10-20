@@ -11,6 +11,10 @@ const setDataTip = (element) => {
       dataTip += "Titulo: " + element.separator_title + "<br />";
       dataTip += "Descripción: " + element.separator_description + "<br />";
       break;
+    case "link":
+      dataTip += "Titulo: " + element.link_title + "<br />";
+      dataTip += "URL: " + element.url + "<br />";
+      break;
     case "text":
     case "number":
     case "textarea":
@@ -43,6 +47,7 @@ const InfoField = ({
   dragHandleProps,
   draggableProps,
 }) => {
+  console.log(element);
   return (
     <div
       className="card mb-1"
