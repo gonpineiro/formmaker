@@ -13,21 +13,10 @@ import { Preview } from "../";
 
 import { Loading, BasicButton } from "../../components";
 
-import { DEFAULT_COLOR, TYPE_FORM, URL_APP } from "../../config/config";
+import { TYPE_FORM, URL_APP } from "../../config/config";
+import initialState from "./initialState";
 
 const Crear = () => {
-  const initialState = {
-    nombre: null,
-    estado: "borrador",
-    description: null,
-    hcolor: DEFAULT_COLOR,
-    terminosCondiciones: null,
-    bodyEmail: "",
-    creationDate: new Date().toLocaleString(),
-    fields: [],
-    banner: null,
-  };
-
   const [formulario, setFormulario] = useState(initialState);
   const [keyTab, setKeyTab] = useState("detalle");
   const [loadingSubmit, setLoadingSubmit] = useState(false);

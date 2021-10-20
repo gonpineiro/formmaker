@@ -56,12 +56,16 @@ const InfoField = ({
           <div className="col-3">{element.field_placeholder || ""}</div>
           <div className="col-3">{element.field_required && "Requerido"}</div>
           <div className="col-2">
-            <BasicButton
-              label="X"
-              handlerClick={handlerDeleteField}
-              classname="btn btn-dark float-end"
-              style={{ paddingTop: "2px", paddingBottom: "2px" }}
-            />
+            {element.field_id !== "Mail" &&
+              element.field_id !== "Teléfono" &&
+              element.field_id !== "DNI" && (
+                <BasicButton
+                  label="X"
+                  handlerClick={handlerDeleteField}
+                  classname="btn btn-dark float-end"
+                  style={{ paddingTop: "2px", paddingBottom: "2px" }}
+                />
+              )}
           </div>
         </div>
         <div className="card-body" style={{ padding: "0.5rem 1rem" }}>
