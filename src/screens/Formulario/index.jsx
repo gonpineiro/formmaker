@@ -10,10 +10,9 @@ import { replaceUrl, postData, createFormData } from "../../utils";
 
 import "./index.scss";
 import validateForm from "../../utils/validateForm";
-import { /* useHistory, */ useParams } from "react-router";
+import { useParams } from "react-router";
 
-const Formulario = (/* { userReducer: { idForm } } */) => {
-  //let history = useHistory();
+const Formulario = () => {
   const [elements, setElements] = useState(null);
   const [loading, setLoading] = useState(true);
   const [loadingSubmit, setLoadingSubmit] = useState(false);
@@ -21,8 +20,16 @@ const Formulario = (/* { userReducer: { idForm } } */) => {
   const [checked, setChecked] = useState(false);
   const [idForm] = useState(useParams().idForm);
 
-  const { hcolor, banner, description, fields, terminosCondiciones, nombre } =
-    elements ?? {};
+  const {
+    hcolor,
+    banner,
+    description,
+    fields,
+    terminosCondiciones,
+    nombre,
+    estado,
+  } = elements ?? {};
+
   useEffect(() => {
     replaceUrl("/apps/formmaker/");
     getFormData(setElements, setLoading, idForm);
@@ -57,6 +64,8 @@ const Formulario = (/* { userReducer: { idForm } } */) => {
   if (loading) return <Loading />;
 
   if (message) return <Message message={message} />;
+
+  if (estado !== 'activo') return <Message message={'El formulario no se encuentra activo'} />;
 
   if (!elements) return "404";
   return (
