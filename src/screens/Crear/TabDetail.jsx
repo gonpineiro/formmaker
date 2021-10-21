@@ -26,6 +26,13 @@ const TabDetailForm = ({
         alt={banner ? nombre : ""}
       />
       <BasicInput
+        label="Banner *"
+        id="banner"
+        type="file"
+        lang="es"
+        handlerChange={handlerBannerChange}
+      />
+      <BasicInput
         label="Nombre *"
         id="nombre"
         type="text"
@@ -33,13 +40,7 @@ const TabDetailForm = ({
         value={nombre}
         handlerChange={handlerNameChange}
       />
-      <BasicInput
-        label="Banner *"
-        id="banner"
-        type="file"
-        lang="es"
-        handlerChange={handlerBannerChange}
-      />
+
       <BasicTextarea
         label="Descripción *"
         id="description"
