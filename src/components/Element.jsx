@@ -1,4 +1,5 @@
 import React from "react";
+import AnswerDate from "./inputs/AnswerDate";
 import Checkbox from "./inputs/Checkbox";
 import Checkboxes from "./inputs/Checkboxes";
 import Date from "./inputs/Date";
@@ -35,6 +36,15 @@ const Element = ({
   setChecked,
 }) => {
   switch (field_type) {
+    case "answerdate":
+      return (
+        <AnswerDate
+          field_id={field_id}
+          field_name={field_name}
+          field_required={field_required}
+          field_type={field_type}
+        />
+      );
     case "text":
       return (
         <Input
