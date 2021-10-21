@@ -19,6 +19,19 @@ const TabDetailForm = ({
 
   return (
     <>
+      <img
+        className="rounded pb-3"
+        style={{ width: "100%" }}
+        src={banner || ""}
+        alt={banner ? nombre : ""}
+      />
+      <BasicInput
+        label="Banner *"
+        id="banner"
+        type="file"
+        lang="es"
+        handlerChange={handlerBannerChange}
+      />
       <BasicInput
         label="Nombre *"
         id="nombre"
@@ -27,11 +40,12 @@ const TabDetailForm = ({
         value={nombre}
         handlerChange={handlerNameChange}
       />
+
       <BasicTextarea
         label="Descripción *"
         id="description"
         type="text"
-        placeholder="Furmulario algo"
+        placeholder="Formulario algo"
         rows="3"
         value={description}
         handlerChange={handlerDescriptionChange}
@@ -51,7 +65,7 @@ const TabDetailForm = ({
         handlerChange={handlerTermYCondChange}
       />
       <BasicTextarea
-        label="Cuerpo del correo electronico *"
+        label="Texto del correo electrónico *"
         id="bodyEmail"
         type="text"
         placeholder="Cuerpo del correo"
@@ -59,19 +73,6 @@ const TabDetailForm = ({
         value={bodyEmail}
         handlerChange={handlerBodyEmailChange}
       />
-      <BasicInput
-        label="Banner *"
-        id="banner"
-        type="file"
-        handlerChange={handlerBannerChange}
-      />
-      <div style={{ width: "100%" }}>
-        <img
-          style={{ width: "85%" }}
-          src={banner || ""}
-          alt={banner ? nombre : ""}
-        />
-      </div>
       <BasicButton
         label="Cargar Campos"
         handlerClick={handlerChangeToAddFields}
