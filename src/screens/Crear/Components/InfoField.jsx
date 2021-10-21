@@ -68,7 +68,8 @@ const InfoField = ({
           <div className="col-2">
             {element.field_id !== "Mail" &&
               element.field_id !== "Teléfono" &&
-              element.field_id !== "DNI" && (
+              element.field_id !== "DNI" &&
+              element.field_type !== "answerdate" && (
                 <BasicButton
                   label="X"
                   handlerClick={handlerDeleteField}
