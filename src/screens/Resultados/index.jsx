@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Redirect } from "react-router";
 
 import { Loading } from "../../components";
 import { URL_WS_RESULTADOS } from "../../config/config";
@@ -8,9 +7,7 @@ import { getAllForms } from "../../utils";
 const getIdsForms = async (setForms) => {
   let forms = await getAllForms();
   forms = Object.values(forms);
-  forms = forms.filter((item) => {
-    return item !== null;
-  });
+  forms = forms.filter((item) => item !== null);
   setForms(Object.values(forms));
 };
 
@@ -19,10 +16,6 @@ const Resultados = () => {
   useEffect(() => {
     getIdsForms(setForms);
   }, []);
-
-  const viewForm = (id) => {
-    <Redirect push to={"/apps/formulario?idForm=" + id} />;
-  };
 
   if (forms.length === 0) return <Loading />;
 
