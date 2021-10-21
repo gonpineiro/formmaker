@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { URL_WS_COMPROBAR } from "../../config/config";
-import "./index.scss";
 
 const Comprobar = () => {
   const [numDni, setNumDni] = useState("");

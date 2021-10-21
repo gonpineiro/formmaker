@@ -1,8 +1,6 @@
 import { BasicButton, Element } from "../../components";
 import { FormContext } from "../FormContext";
 
-import "./index.scss";
-
 const Preview = ({ formulario, setPreview }) => {
   const { hcolor, banner, description, fields, terminosCondiciones, nombre } =
     formulario ?? {};

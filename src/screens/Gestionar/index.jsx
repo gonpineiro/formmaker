@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { getAllForms } from "../../utils";
 
 import { BasicTable } from "../../components";
-import "./index.scss";
 
 const getFormsJson = async (setForms) => {
   let forms = await getAllForms();

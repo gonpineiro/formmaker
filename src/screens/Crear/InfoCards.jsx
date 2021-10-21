@@ -2,8 +2,6 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 import { InfoField } from "./Components";
 
-import "./index.scss";
-
 const reorder = (list, startIndex, endIndex) => {
   const result = [...list];
   const [removed] = result.splice(startIndex, 1);

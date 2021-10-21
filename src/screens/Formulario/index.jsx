@@ -7,7 +7,6 @@ import { getFormData } from "./getForms";
 
 import { replaceUrl, postData, createFormData } from "../../utils";
 
-import "./index.scss";
 import validateForm from "../../utils/validateForm";
 import { useParams } from "react-router";
 

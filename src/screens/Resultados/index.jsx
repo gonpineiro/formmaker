@@ -4,7 +4,6 @@ import { Redirect } from "react-router";
 import { Loading } from "../../components";
 import { URL_WS_RESULTADOS } from "../../config/config";
 import { getAllForms } from "../../utils";
-import "./index.scss";
 
 const getIdsForms = async (setForms) => {
   let forms = await getAllForms();

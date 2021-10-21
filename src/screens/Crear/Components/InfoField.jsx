@@ -1,7 +1,6 @@
 import ReactTooltip from "react-tooltip";
 import { BasicButton } from "../../../components";
 import { convertToEsType } from "../../../utils";
-import "../index.scss";
 
 const setDataTip = (element) => {
   let dataTip = "Tipo: " + convertToEsType(element.field_type) + "<br />";

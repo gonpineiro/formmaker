@@ -5,8 +5,6 @@ import ReactTooltip from "react-tooltip";
 import { getFormById } from "../../api";
 import { Loading } from "../../components";
 
-import "./index.scss";
-
 const DetalleForm = () => {
   const [form, setForm] = useState(null);
   const { id } = useParams();

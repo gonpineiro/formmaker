@@ -4,7 +4,6 @@ import { Link, useLocation, Redirect } from "react-router-dom";
 import { Loading } from "../../components";
 
 import { getAllForms } from "../../utils";
-import "./index.scss";
 
 const getIdsForms = async (setForms) => {
   let forms = await getAllForms();
