@@ -30,7 +30,7 @@ const Resultados = () => {
     <div className="container pt-5">
       <h2 className="titulo text-center">Resultados de Formularios</h2>
       <div className="row pt-5">
-        <div className="col-12 col-md-8 mx-auto">
+        <div className="col-12 col-md-6 mx-auto">
           {forms.map((form, key) => (
             <div key={key} className="row">
               <div
@@ -39,14 +39,7 @@ const Resultados = () => {
                 role="alert"
               >
                 <div className="col-12 col-md-7">{form.nombre}</div>
-                <div className="col-12 col-md-5 d-flex justify-content-evenly">
-                  <button
-                    type="button"
-                    className="btn btn-light"
-                    onClick={() => viewForm(form.id)}
-                  >
-                    Ver Formulario
-                  </button>
+                <div className="col-12 col-md-5 d-flex justify-content-end">
                   <a
                     href={
                       URL_WS_RESULTADOS + form.id + "&nombreForm=" + form.nombre

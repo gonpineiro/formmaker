@@ -204,7 +204,9 @@ const Crear = () => {
     !formulario.nombre || !formulario.description || !formulario.banner;
 
   return (
-    <div className="container mb-5">
+    <div className="container pt-5 pb-5">
+      <h2 className="titulo text-center">Crear Formulario</h2>
+
       <div className="row mt-5">
         <div className="col-12 col-md-6">
           {!loadingSubmit ? (
