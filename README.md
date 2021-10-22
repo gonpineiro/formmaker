@@ -1,6 +1,13 @@
 ### Formmaker
 Proyecto para la creación de formularios dinámicos, (inspirado en GoogleForm).
 
+Desarrolladores:
+
+Nombre                               | Contacto
+-------------                        | -------------
+Gonzalo Piñeiro Aleman Urquiza       | [gon.pineiro@gmail.com](mailto:gon.pineiro@gmail.com)
+Norberto Stange                      | [norbertostange@gmail.com](mailto:norbertostange@gmail.com)
+
 - <b>Frontend</b>: ReactJS
 - <b>Backend PHP</b>: Lectura/Escritura de archivos JSON, para los formularios y respuestas.
 - <b>Backend NodeJS</b>: Se encuentra en desarrollo, pero la idea es utilizar una base de datos Mongo para una mejor optimización.
