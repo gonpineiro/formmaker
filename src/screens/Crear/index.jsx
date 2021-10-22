@@ -61,14 +61,6 @@ const Crear = () => {
         field_max: "8",
         field_order: "3",
       },
-      {
-        field_type: "answerdate",
-        field_label: "fechaHoraRespuesta",
-        field_name: "fechaHoraRespuesta",
-        field_id: "fechaHoraRespuesta",
-        field_value: "",
-        field_order: "4",
-      },
     ],
     banner: null,
   };
@@ -81,6 +73,15 @@ const Crear = () => {
   const handlerSubmitForm = () => {
     setLoadingSubmit(true);
     const fields = orderToPost(formulario.fields);
+
+    fields.push({
+      field_order: fields.length + 1,
+      field_id: "fechaHoraRespuesta",
+      field_name: "fechaHoraRespuesta",
+      field_label: "fechaHoraRespuesta",
+      field_type: "answerdate",
+      field_value: "",
+    });
 
     fields.push({
       field_order: fields.length + 1,
