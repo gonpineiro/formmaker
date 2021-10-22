@@ -1,61 +1,87 @@
 ### Formmaker
-Proyecto para la creacion de formularios dinamicos, (inspirado en GoogleForm).
+Proyecto para la creación de formularios dinámicos, (inspirado en GoogleForm).
 
-- Front: ReactJS
-- Backend PHP: Lectura/Escritura de archivos Json, tanto para los formularios como las respuestas.
-- Backend NodeJs: Se encuentra en desarrollo, pero la idea es utilizar una base de datos Mongo para una mejor optimizacion.
+- <b>Frontend</b>: ReactJS
+- <b>Backend PHP</b>: Lectura/Escritura de archivos JSON, para los formularios y respuestas.
+- <b>Backend NodeJS</b>: Se encuentra en desarrollo, pero la idea es utilizar una base de datos Mongo para una mejor optimización.
+
+<small> El proyecto no admite ambos backend en simultaneo, el backend funcional es el de PHP, el de NodeJS no se encuentra operativo. </small>
 
 #### Inicio del proyecto:
 
-Nombre  | Detalle
-------------- | -------------
-`npm start`  | Inicia el proyecto en entorno de desarrollo
-`npm run build`   | Hace el Build del proyecto para enviarlo a produccion o replica
+Nombre              | Detalle
+-------------       | -------------
+`npm start`         | Inicia el proyecto en entorno de desarrollo.
+`npm run build`     | Hace el Build del proyecto para enviarlo a producción o replica.
+#### Ingreso al sitio
+- Para el ingreso al listado de los formulario hay que ingresar la URL raíz, detecta que no es admin y muestra el listado de los formularios activos. `http://localhost:3000/apps/formulario`
+- Para el ingreso a panel admin se debe ingrear a la URL con el parametro `SESSIONKEY` enviado por `GET`: `http://localhost:3000/apps/formulario?SESSIONKEY=<tokenWebLogin>`
+- Para ingresar a un formulario particular se debe ingrear a la URL con el parametro `idForm` enviado por `GET`: `localhost:3000/apps/formulario?idForm=1`    
 
-#### Configuracion de variables de entorno:
+#### Consideraciones al generar un Formulario
 
-El proyecto esta desarrollado para soportar 3 entornos:
+- Cuando se genera un formulario la aplicación va retornar una URL con el parametro `idForm` generado, dicho ID es el nombre del formulario.
+- Los formularios se generan en un estado `borrador` para poder ingresar/visualizar el formulario se debe cambiar manualmente el estado a `activo`
+- Si Backend del proyecto es el de PHP, los formularios se generan dentro de una carpeta del proyecto `ver documentación del backend en PHP`
+- Si Backend del proyecto es el de NodeJS, los formularios se generan en una base de datos Mongo.
 
-- Local: entorno en la computadora local.
-- Replica: entorno de prueba que replica el entorno de produccion.
-- Produccion: entorno publicado
+#### Configuración de variables de entorno:
 
-Cuando se hace levanta el proyecto en entorno `dev` o entorno prouduccion, haciendo `build`. Se inyectan las siguentes variables en los procesos del entorno. El archivo se encuentra en el root del proyecto `.env`
+El proyecto esta desarrollado para soportar tres entornos:
 
-Pequeño detalle de la funcion de cada variable.
+- <b>Local</b>: entorno en la computadora local.
+- <b>Replica</b>: entorno de prueba que replica el entorno de producción.
+- <b>Producción</b>: entorno publicado
 
-Info: https://create-react-app.dev/docs/adding-custom-environment-variables/
+Cuando se levanta el proyecto en entorno `dev` o entorno producción (haciendo `build`). Se inyectan las siguentes variables en los procesos del entorno. El archivo se encuentra en el root del proyecto `.env`
 
-<small>
-REACT_APP_URL_GET_TOKEN: URL donde se obtiene por metodo GET los datos del usuario, (WebLogin)
+<b>Info</b>: https://create-react-app.dev/docs/adding-custom-environment-variables/
 
-REACT_APP_APP_ID: Id de la aplicación, no es importante.
+Nombre                                      | Detalle
+-------------                               | -------------
+REACT_APP_URL_GET_TOKEN                     | URL donde se obtiene por metodo GET los datos del usuario, (WebLogin)
+REACT_APP_APP_ID                            | Id de la aplicación, (opcional).
+REACT_APP_TOKEN                             | Código de seguridad para el envio de información, ideal para Backend PHP, el .env del back debe tener el mismo código.
+REACT_APP_ENV                               | Configuración del entorno: local - replica - produccion
+REACT_APP_URL_LOCAL                         | URL el proyecto en el entorno Local.
+REACT_APP_URL_REPLICA                       | URL el proyecto en el entorno Replica.
+REACT_APP_URL_PRODUCCION                    | URL el proyecto en el entorno Producción.
+REACT_APP_URL_BK_LOCAL                      | URL del Backend en el entorno Local
+REACT_APP_URL_BK_REPLICA                    | URL del Backend en el entorno Replica
+REACT_APP_URL_BK_PRODUCCION                 | URL del Backend en el entorno Producción
+REACT_APP_URL_COMPROBAR_DNI_REPLICA         | URL para realizar la consulta por DNI en Replica
+REACT_APP_URL_COMPROBAR_DNI_PRODUCCION      | URL para realizar la consulta por DNI en Producción
+REACT_APP_URL_RESULTADOS_LOCAL              | URL del Backend para obtener los resultados por .csv en entorno Local
+REACT_APP_URL_RESULTADOS_REPLICA            | URL del Backend para obtener los resultados por .csv en entorno Replica
+REACT_APP_URL_RESULTADOS_PRODUCCION         | URL del Backend para obtener los resultados por .csv en entorno Producción
+REACT_APP_API_BK_PROD                       | URL Backend Mongo entorno Local
+REACT_APP_API_BK_DEV                        | URL Backend Mongo entorno Replica
+REACT_APP_API_BK_REPLICA                    | URL Backend Mongo entorno Producción
 
-REACT_APP_TOKEN: Código de seguridad para el envio de información, ideal para Backend PHP, el .env del back debe tener el mismo código.
+#### Información Adicional
 
-REACT_APP_ENV: Configuración del entorno: local - replica - produccion
+- Cuando se crea un formulario el proyecto inyecta el campo `acepto` dentro del formulario, genera el `checkbox` de "Aceptar Términos y condiciones".
+- Cuando se crea un formulario el proyecto inyecta el campo `fechaHoraRespuesta` dentro del formulario, es para guardar la fecha y hora de la respuesta, se recomienda ingrear esta lógica en el backend.
+- Antes de crear el formulario, se encuentra configurado por defecto tres campos: `Mail`, `Teléfono`, `DNI`, el campo Mail es <b>importante</b> porque es donde se va enviar el email cuando un usuario realiza una respuesta.
 
-Las siguentes 3 varibles son para definir cual va ser la URL del proyecto en los 3 entornos, sirve para generar URL o validar query params:
-REACT_APP_URL_LOCAL=http://localhost:3000/apps/formmaker
-REACT_APP_URL_REPLICA=
-REACT_APP_URL_PRODUCCION=
+#### Tipos de campos que genera el proyecto
 
-Las siguentes 3 varibles son para definir cual va ser la URL del backend en los 3 entornos:
-REACT_APP_URL_BK_LOCAL=
-REACT_APP_URL_BK_REPLICA=
-REACT_APP_URL_BK_PRODUCCION=
+Nombre                                      | Detalle
+-------------                               | -------------
+`AnswerDate`                                | Campo oculto para guardar fecha y hora de la respuesta
+`Checkbox`                                  | Único input de tipo checkbox, se usa para el campo `acepto`
+`Checkboxs`                                 | Selección Múltiple de checkbox
+`Date`                                      | Dato de tipo Fecha
+`Image`                                     | Para mostrar el Banner del formulario
+`Input`                                     | Texto, Parrafo, Email, Número
+`Link`                                      | Genera un Link para el usuario
+`Radio`                                     | Unica Selección
+`Select`                                    | Selección Múltiple de select
+`Separator`                                 | Separador del formulario, genera un detalle
+`TextArea`                                  | Input de tipo párrafo
 
-Las siguentes 2 varibles son para definir cual va ser la URL donde se hace la consulta de verificar el DNI de las respuestas:
-REACT_APP_URL_COMPROBAR_DNI_REPLICA =
-REACT_APP_URL_COMPROBAR_DNI_PRODUCCION =
+#### Pendientes del proyecto
 
-Las siguentes 3 varibles son para definir cual va ser la URL del backend para obtener los resultados en .csv
-REACT_APP_URL_RESULTADOS_LOCAL=
-REACT_APP_URL_RESULTADOS_REPLICA=
-REACT_APP_URL_RESULTADOS_PRODUCCION=
-
-Las siguentes 3 varibles son para definir cual va ser la URL del backend en mongo.
-REACT_APP_API_BK_PROD=
-REACT_APP_API_BK_DEV=
-REACT_APP_API_BK_REPLICA=
-</small>
+- Terminar el modulo de Gestionar Formularios
+- Poder editar los formularios creados.
+- Generar un sistema de permisos para las respuestas
