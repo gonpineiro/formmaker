@@ -20,7 +20,7 @@ const Resultados = () => {
   if (forms.length === 0) return <Loading />;
 
   return (
-    <div className="container pt-5">
+    <div className="container pt-5 px-4">
       <h2 className="titulo text-center">Resultados de Formularios</h2>
       <div className="row pt-5">
         <div className="col-12 col-md-6 mx-auto">
@@ -31,8 +31,8 @@ const Resultados = () => {
                 style={{ backgroundColor: "#5997d1", color: "white" }}
                 role="alert"
               >
-                <div className="col-12 col-md-7">{form.nombre}</div>
-                <div className="col-12 col-md-5 d-flex justify-content-end">
+                <div>{form.nombre}</div>
+                <div>
                   <a
                     href={
                       URL_WS_RESULTADOS + form.id + "&nombreForm=" + form.nombre
