@@ -100,6 +100,7 @@ const Crear = () => {
       insertForm(formulario).then(() => {
         setLoadingSubmit(false);
         setFormulario(initialState);
+        setLabelAcepto('');
         setKeyTab("detalle");
       });
     }
@@ -108,6 +109,7 @@ const Crear = () => {
       postForm(formulario, "post-form-json").then(({ uuid }) => {
         setLoadingSubmit(false);
         setFormulario(initialState);
+        setLabelAcepto('');
         setKeyTab("detalle");
         setUuidForm(uuid);
       });
