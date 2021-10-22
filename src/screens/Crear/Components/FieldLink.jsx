@@ -62,15 +62,15 @@ const FieldLink = ({ formulario, setFormulario, callapseOrden }) => {
             type="text"
             value={field.link_title || ""}
             handlerChange={handlerTitleChange}
-            placeholder="Ej: Nombre mascota, escriba su email, descripción de su vivienda"
+            placeholder="Ej: Google"
           />
           <BasicTextarea
-            label="Descripción"
+            label="link"
             type="text"
             id="link_desciption_field_label"
             value={field.url || ""}
             handlerChange={handlerDescriptionChange}
-            placeholder="Ej: Nombre mascota, escriba su email, descripción de su vivienda"
+            placeholder="Ej: https://www.google.com.ar"
           />
           <BasicButton
             label="Agregar campo"
