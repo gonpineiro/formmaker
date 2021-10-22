@@ -12,6 +12,8 @@ const TabDetailForm = ({
   banner,
   handlerBannerChange,
   bodyEmail,
+  labelAcepto,
+  handlerLabelAceptoChange,
   handlerBodyEmailChange,
   handlerChangeToAddFields,
 }) => {
@@ -63,6 +65,13 @@ const TabDetailForm = ({
         type="text"
         value={terminosCondiciones}
         handlerChange={handlerTermYCondChange}
+      />
+      <BasicInput
+        label="Etiqueta de aceptar Términos y condiciones"
+        id="labelAcepto"
+        type="text"
+        value={labelAcepto}
+        handlerChange={handlerLabelAceptoChange}
       />
       <BasicTextarea
         label="Texto del correo electrónico *"

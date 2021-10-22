@@ -69,6 +69,7 @@ const Crear = () => {
   const [loadingSubmit, setLoadingSubmit] = useState(false);
   const [preview, setPreview] = useState(false);
   const [uuidForm, setUuidForm] = useState(null);
+  const [labelAcepto, setLabelAcepto] = useState("");
 
   const handlerSubmitForm = () => {
     setLoadingSubmit(true);
@@ -87,7 +88,7 @@ const Crear = () => {
       field_order: fields.length + 1,
       field_id: "acepto",
       field_name: "acepto",
-      field_label: "He leído y acepto las bases y condiciones.",
+      field_label: labelAcepto,
       field_type: "checkbox",
       field_value: "checked",
       field_required: "required",
@@ -167,6 +168,11 @@ const Crear = () => {
     });
   };
 
+  const handlerLabelAceptoChange = ({ target: { value } }) => {
+    hanlderCleanURLForm();
+    setLabelAcepto(value);
+  };
+
   const hanlderCleanURLForm = () => {
     if (uuidForm) setUuidForm(null);
   };
@@ -232,6 +238,8 @@ const Crear = () => {
                   handlerBannerChange={handlerBannerChange}
                   bodyEmail={formulario.bodyEmail}
                   handlerBodyEmailChange={handlerBodyEmailChange}
+                  labelAcepto={labelAcepto}
+                  handlerLabelAceptoChange={handlerLabelAceptoChange}
                   handlerChangeToAddFields={handlerChangeToAddFields}
                 />
               </Tab>
