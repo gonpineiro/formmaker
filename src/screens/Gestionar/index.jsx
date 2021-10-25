@@ -9,7 +9,6 @@ const getFormsJson = async (setForms) => {
   forms = forms.filter((item) => item !== null);
 
   forms.forEach((form) => {
-    delete form.banner;
     delete form.id;
   });
 
