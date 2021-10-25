@@ -29,7 +29,7 @@ Nombre              | Detalle
 
 - Cuando se genera un formulario la aplicación va retornar una URL con el parametro `idForm` generado, dicho ID es el nombre del formulario.
 - Los formularios se generan en un estado `borrador` para poder ingresar/visualizar el formulario se debe cambiar manualmente el estado a `activo`
-- Si Backend del proyecto es el de PHP, los formularios se generan dentro de una carpeta del proyecto `ver documentación del backend en PHP`
+- Si Backend del proyecto es el de PHP, los formularios se generan dentro de una carpeta del proyecto.
 - Si Backend del proyecto es el de NodeJS, los formularios se generan en una base de datos Mongo.
 
 #### Configuración de variables de entorno:
@@ -37,10 +37,10 @@ Nombre              | Detalle
 El proyecto esta desarrollado para soportar tres entornos:
 
 - <b>Local</b>: entorno en la computadora local.
-- <b>Replica</b>: entorno de prueba que replica el entorno de producción.
-- <b>Producción</b>: entorno publicado
+- <b>Replica</b>: entorno de prueba que replíca el entorno de producción.
+- <b>Producción</b>: entorno publicado.
 
-Cuando se levanta el proyecto en entorno `dev` o entorno producción (haciendo `build`). Se inyectan las siguentes variables en los procesos del entorno. El archivo se encuentra en el root del proyecto `.env`
+<small>Cuando se levanta el proyecto en entorno `dev` o entorno producción (haciendo `build`). Se inyectan las siguentes variables en los procesos del entorno. El archivo se encuentra en el root del proyecto `.env`</small>
 
 <b>Info</b>: https://create-react-app.dev/docs/adding-custom-environment-variables/
 
