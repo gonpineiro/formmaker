@@ -31,7 +31,7 @@ const Comprobar = () => {
               type="number"
               className="form-control"
               id="numDni"
-              placeholder="32020923"
+              placeholder="99999999"
               onChange={(event) => setNumDni(event.target.value)}
             />
           </div>
