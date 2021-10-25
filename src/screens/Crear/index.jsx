@@ -13,7 +13,7 @@ import { Preview } from "../";
 
 import { Loading, BasicButton } from "../../components";
 
-import { DEFAULT_COLOR, TYPE_FORM, URL_APP } from "../../config/config";
+import { DEFAULT_COLOR, TYPE_FORM } from "../../config/config";
 
 const Crear = () => {
   const initialState = {
@@ -100,7 +100,7 @@ const Crear = () => {
       insertForm(formulario).then(() => {
         setLoadingSubmit(false);
         setFormulario(initialState);
-        setLabelAcepto('');
+        setLabelAcepto("");
         setKeyTab("detalle");
       });
     }
@@ -109,7 +109,7 @@ const Crear = () => {
       postForm(formulario, "post-form-json").then(({ uuid }) => {
         setLoadingSubmit(false);
         setFormulario(initialState);
-        setLabelAcepto('');
+        setLabelAcepto("");
         setKeyTab("detalle");
         setUuidForm(uuid);
       });
@@ -206,6 +206,9 @@ const Crear = () => {
     );
   };
 
+  const colWidthCreate = () =>
+    keyTab === "detalle" ? "col-12 col-md-12" : "col-12 col-md-6";
+
   if (preview)
     return <Preview formulario={formulario} setPreview={setPreview} />;
 
@@ -217,7 +220,7 @@ const Crear = () => {
       <h2 className="titulo text-center">Crear Formulario</h2>
 
       <div className="row mt-5">
-        <div className="col-12 col-md-6">
+        <div className={colWidthCreate()}>
           {!loadingSubmit ? (
             <Tabs
               defaultActiveKey={keyTab}
@@ -243,6 +246,7 @@ const Crear = () => {
                   labelAcepto={labelAcepto}
                   handlerLabelAceptoChange={handlerLabelAceptoChange}
                   handlerChangeToAddFields={handlerChangeToAddFields}
+                  uuidForm={uuidForm}
                 />
               </Tab>
               <Tab
@@ -261,16 +265,7 @@ const Crear = () => {
           ) : (
             <Loading />
           )}
-        </div>
-
-        {uuidForm && (
-          <div className="col-12 col-md-6 uuid-form">
-            <h4>Generado correctamente</h4>
-            <small>
-              {URL_APP}?idForm={uuidForm}
-            </small>
-          </div>
-        )}
+        </div>       
 
         {keyTab === "campos" && (
           <FieldsDetail formulario={formulario} setFormulario={setFormulario} />
