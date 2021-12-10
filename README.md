@@ -1,6 +1,12 @@
 ### Formmaker
 Proyecto para la creación de formularios dinámicos, (inspirado en GoogleForm).
 
+Gestión del Proyecto:
+
+Nombre                               | Contacto
+-------------                        | -------------
+Laura Murillo                        | [lauradejaramillo@gmail.com](mailto:lauradejaramillo@gmail.com)
+
 Desarrolladores:
 
 Nombre                               | Contacto
