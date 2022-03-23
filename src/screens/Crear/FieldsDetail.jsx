@@ -5,6 +5,7 @@ import {
   FieldNumber,
   FieldRadio,
   FieldSelect,
+  FieldSelectSearch,
   FieldSeparator,
   FieldText,
 } from "./Components";
@@ -42,6 +43,11 @@ const FieldsDetail = ({ formulario, setFormulario }) => (
         formulario={formulario}
         setFormulario={setFormulario}
         callapseOrden={"FieldSelect"}
+      />
+      <FieldSelectSearch
+        formulario={formulario}
+        setFormulario={setFormulario}
+        callapseOrden={"FieldSelectSearch"}
       />
       <FieldRadio
         formulario={formulario}

@@ -8,6 +8,7 @@ import Link from "./inputs/Link";
 import Image from "./inputs/Image";
 import Radio from "./inputs/Radio";
 import Select from "./inputs/Select";
+import SelectSearch from "./inputs/SelectSearch";
 import Separator from "./inputs/Separator";
 import TextArea from "./inputs/TextArea";
 
@@ -128,6 +129,18 @@ const Element = ({
     case "select":
       return (
         <Select
+          field_id={field_id}
+          field_name={field_name}
+          field_label={field_label}
+          field_placeholder={field_placeholder}
+          field_value={field_value}
+          field_options={field_options}
+          field_required={field_required}
+        />
+      );
+    case "selectSearch":
+      return (
+        <SelectSearch
           field_id={field_id}
           field_name={field_name}
           field_label={field_label}

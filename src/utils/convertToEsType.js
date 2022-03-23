@@ -11,7 +11,9 @@ const convertToEsType = (type) => {
     case "number":
       return "Número";
     case "select":
-      return "Select";
+      return "Desplegable";
+    case "selectSearch":
+      return "Desplegable Búsqueda";
     case "radio":
       return "Selección Única";
     case "checkboxes":

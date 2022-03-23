@@ -9,9 +9,9 @@ import {
 
 import { getOrderId } from "../../../utils";
 
-const initialState = { field_required: true, field_type: "select" };
+const initialState = { field_required: true, field_type: "selectSearch" };
 
-const FieldSelect = ({ formulario, setFormulario, callapseOrden }) => {
+const FieldSelectSearch = ({ formulario, setFormulario, callapseOrden }) => {
   const [field, setField] = useState(initialState);
   const [disabledSubmit, setDisabledSubmit] = useState(true);
 
@@ -99,7 +99,7 @@ const FieldSelect = ({ formulario, setFormulario, callapseOrden }) => {
           aria-expanded="false"
           aria-controls={"collapse" + callapseOrden}
         >
-          Desplegable
+          Desplegable Búsqueda
         </button>
       </h2>
       <div
@@ -144,4 +144,4 @@ const FieldSelect = ({ formulario, setFormulario, callapseOrden }) => {
   );
 };
 
-export default FieldSelect;
+export default FieldSelectSearch;
