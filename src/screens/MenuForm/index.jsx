@@ -4,17 +4,35 @@ import { Link, useLocation, Redirect } from "react-router-dom";
 import { Loading } from "../../components";
 
 import { getAllForms } from "../../utils";
+import { getAllForms as getAll } from "../../api";
+import { TYPE_FORM } from "../../config/config";
 
 const getIdsForms = async (setForms) => {
-  let forms = await getAllForms();
-  forms = Object.values(forms);
-  forms = forms.filter((item) => {
-    return item !== null;
-  });
-  setForms(Object.values(forms));
+  if (TYPE_FORM === "mongo") {
+    let forms = await getAll();
+    forms = forms.data.data;
+    forms = Object.values(forms);
+    forms = forms.filter((item) => item !== null);
+
+    setForms(Object.values(forms));
+  }
+
+  if (TYPE_FORM === "mongo") {
+    let forms = await getAllForms();
+    forms = Object.values(forms);
+    forms = forms.filter((item) => item !== null);
+
+    setForms(Object.values(forms));
+  }
 };
 
 const useQuery = () => new URLSearchParams(useLocation().search);
+
+const redirectFormUrl = (form) => {
+  if (TYPE_FORM === "mongo") return "/apps/formulario/" + form._id;
+
+  if (TYPE_FORM === "json") return "/apps/formulario/" + form.id;
+};
 
 const MenuForm = () => {
   const idForm = useQuery().get("idForm");
@@ -40,7 +58,7 @@ const MenuForm = () => {
             >
               <Link
                 className="menu-link col-12 text-center"
-                to={"/apps/formulario/" + form.id}
+                to={redirectFormUrl(form)}
               >
                 <div
                   className="alert"

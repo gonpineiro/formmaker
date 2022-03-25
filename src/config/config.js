@@ -32,7 +32,7 @@ const DEFAULT_COLOR = "#266AAD";
 const DEFAULT_LABEL_COLOR = "#143c75";
 
 /* json - mongo */
-const TYPE_FORM = "json";
+const TYPE_FORM = process.env.REACT_APP_TYPE_FORM;
 
 export {
   URL_APP,
