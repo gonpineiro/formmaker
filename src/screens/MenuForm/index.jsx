@@ -17,7 +17,7 @@ const getIdsForms = async (setForms) => {
     setForms(Object.values(forms));
   }
 
-  if (TYPE_FORM === "mongo") {
+  if (TYPE_FORM === "json") {
     let forms = await getAllForms();
     forms = Object.values(forms);
     forms = forms.filter((item) => item !== null);

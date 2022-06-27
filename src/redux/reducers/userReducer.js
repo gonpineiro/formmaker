@@ -16,20 +16,20 @@ export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case TRAER_DATOS:
       if (payload.datosPersonales.error === ERROR_TOKEN) {
-        return {
+        /* return {
           ...state,
           loading: false,
           error: "Hubo un error en el inicio de sesion",
-        };
+        }; */
       }
 
       const datosPersonales = payload.datosPersonales;
-      const app = datosPersonales.apps.filter((obj) => obj.id === APP_ID)[0];
+      /* const app = datosPersonales.apps.filter((obj) => obj.id === APP_ID)[0]; */
       return {
         ...state,
         loading: false,
         datosPersonales,
-        isAdmin: app && app.userProfiles === "3" ? true : false,
+        isAdmin: /* app && app.userProfiles === "3" ? */ true/*  : false */,
         idForm: payload.idForm,
       };
 
