@@ -48,7 +48,7 @@ const Input = ({
             required={isRequired && "required"}
           />
           <p>
-            {count}/{field_max}
+            {(field_max != null && field_max != undefined && field_max != '') ? count/field_max : '' }
           </p>
           <div className="invalid-feedback">
             {field_placeholder} correctamente.
