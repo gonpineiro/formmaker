@@ -27,6 +27,7 @@ const Element = ({
         field_required,
         field_type,
         field_value,
+        field_accept,
         link_title,
         separator_title,
         separator_description,
@@ -38,7 +39,9 @@ const Element = ({
     checked,
     setChecked,
 }) => {
-    console.log(field_other_input);
+    //console.log("que llego? "+ JSON.stringify(field_required));
+    //console.log("hola: "+ field_accept);
+    //console.log(field_other_input);
     switch (field_type) {
         case 'answerdate':
             return (
@@ -198,6 +201,19 @@ const Element = ({
                     field_placeholder={field_placeholder}
                     field_required={field_required}
                     field_value={field_value}
+                />
+            );
+        case 'file':
+            return (
+                <Input
+                    field_id={field_id}
+                    field_type={field_type}
+                    field_name={field_name}
+                    field_label={field_label}
+                    field_placeholder={field_placeholder}
+                    field_required={field_required}
+                    field_value={field_value}
+                    field_accept={field_accept}
                 />
             );
         default:
