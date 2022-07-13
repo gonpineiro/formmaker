@@ -14,6 +14,7 @@ const Input = ({
   field_min,
   field_max,
   field_type,
+  field_accept,
 }) => {
   const { handleChange } = useContext(FormContext);
   const isRequired = field_required === "true";
@@ -21,6 +22,13 @@ const Input = ({
   const handleInputChange = (event) => {
     handleChange(field_id, event);
   };
+  /*console.log("que llego? "+ JSON.stringify(field_required));
+  console.log("Es true? "+ (field_required == true));
+  console.log("Es true 2? "+ (field_required === true));
+  console.log("Es true 3? "+ (field_required == "true"));
+  console.log("Es true 4? "+ (field_required === "true"));*/
+
+  //field_accept = (field_accept != undefined ? field_accept.join(" ") : '')
 
   return (
     <div className="mb-3">
@@ -46,9 +54,11 @@ const Input = ({
             required={isRequired && "required"}
             minLength={field_min}
             maxLength={field_max}
+            //accept={field_accept}
+            accept={(field_accept != undefined ? field_accept.join(" ") : '')}
           />
           <div className="invalid-feedback">
-            {field_placeholder} correctamente.
+            {field_type !== "file" ? field_placeholder+' correctamente' : 'Debe adjuntar un archivo'}.
           </div>
           <div className="valid-feedback">¡Se ve bien!</div>
         </div>
