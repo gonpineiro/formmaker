@@ -4,6 +4,10 @@ import { URL_APP } from "../../config/config";
 const TabDetailForm = ({
   nombre,
   handlerNameChange,
+  dni,
+  handlerDniChange,
+  email,
+  handlerEmailChange,
   description,
   handlerDescriptionChange,
   hcolor,
@@ -19,7 +23,7 @@ const TabDetailForm = ({
   handlerChangeToAddFields,
   uuidForm,
 }) => {
-  const hiddenBtnDescription = !nombre || !description || !banner;
+  const hiddenBtnDescription = !nombre || !dni || !description || !banner;
 
   return (
     <div className="row">
@@ -32,6 +36,22 @@ const TabDetailForm = ({
           value={nombre}
           handlerChange={handlerNameChange}
         />
+        <BasicInput
+          label="DNI de los encargados* (separar por ',')"
+          id="dni"
+          type="text"
+          placeholder="28394823, 24384932"
+          value={dni}
+          handlerChange={handlerDniChange}
+        />
+        {/* <BasicInput
+          label="Email del encargado"
+          id="email"
+          type="email"
+          placeholder="juan.perez@gmail.com"
+          value={email}
+          handlerChange={handlerEmailChange}
+        /> */}
         <BasicTextarea
           label="Descripción *"
           id="description"
