@@ -22,6 +22,8 @@ const convertToEsType = (type) => {
       return "Link";
     case "date":
       return "Fecha";
+    case "file":
+      return "Archivo";
     default:
       break;
   }
