@@ -8,6 +8,7 @@ import {
   FieldSelectSearch,
   FieldSeparator,
   FieldText,
+  FieldFile,
 } from "./Components";
 
 const FieldsDetail = ({ formulario, setFormulario }) => (
@@ -59,6 +60,11 @@ const FieldsDetail = ({ formulario, setFormulario }) => (
         setFormulario={setFormulario}
         callapseOrden={"FieldCheckbox"}
       />
+      {/* <FieldFile
+        formulario={formulario}
+        setFormulario={setFormulario}
+        callapseOrden={"FieldFile"}
+      /> */}
     </div>
   </div>
 );
