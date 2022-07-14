@@ -8,3 +8,4 @@ export { default as FieldSeparator } from "./FieldSeparator";
 export { default as FieldRadio } from "./FieldRadio";
 export { default as FieldCheckbox } from "./FieldCheckbox";
 export { default as FieldDate } from "./FieldDate";
+export { default as FieldFile } from "./FieldFile";

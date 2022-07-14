@@ -28,6 +28,11 @@ const setDataTip = (element) => {
             dataTip += 'Etiqueta: ' + element.field_label + '<br />';
             dataTip += 'Requerido: ' + requiredDesc + '<br />';
             break;
+        case 'file':
+            dataTip += 'Etiqueta: ' + element.field_label + '<br />';
+            dataTip += 'Extensiones: ' + element.field_accepted + '<br />';
+            dataTip += 'Requerido: ' + requiredDesc + '<br />';
+            break;
         case 'select':
         case 'radio':
         case 'selectSearch':
@@ -55,6 +60,8 @@ const InfoField = ({ element, handlerDeleteField, innerRef, dragHandleProps, dra
                         {element.field_id !== 'Mail' &&
                             element.field_id !== 'Teléfono' &&
                             element.field_id !== 'DNI' &&
+                            element.field_id !== 'Nombre' &&
+                            element.field_id !== 'Apellido' &&
                             element.field_type !== 'answerdate' && (
                                 <BasicButton
                                     label="X"
