@@ -19,12 +19,39 @@ const Crear = () => {
   const initialState = {
     nombre: null,
     estado: "borrador",
+    dni: null,
+    email: null,
     description: null,
     hcolor: DEFAULT_COLOR,
     terminosCondiciones: null,
     bodyEmail: "",
     creationDate: new Date().toLocaleString(),
     fields: [
+      //se agrega Nombre y Apellido como obligatorios
+      {
+        field_required: true,
+        field_type: "text",
+        field_label: "Nombre",
+        field_name: "Nombre",
+        field_id: "Nombre",
+        field_value: "",
+        field_placeholder: "Ingrese su Nombre",
+        field_min: "2",
+        field_max: "50",
+        field_order: "1",
+      },
+      {
+        field_required: true,
+        field_type: "text",
+        field_label: "Apellido",
+        field_name: "Apellido",
+        field_id: "Apellido",
+        field_value: "",
+        field_placeholder: "Ingrese su Apellido",
+        field_min: "2",
+        field_max: "50",
+        field_order: "2",
+      },
       {
         field_required: true,
         field_type: "email",
@@ -35,7 +62,7 @@ const Crear = () => {
         field_placeholder: "Ingrese su correo",
         field_min: "0",
         field_max: "999",
-        field_order: "1",
+        field_order: "3",
       },
       {
         field_required: true,
@@ -47,7 +74,7 @@ const Crear = () => {
         field_placeholder: "Ingrese su teléfono",
         field_min: "0",
         field_max: "16",
-        field_order: "2",
+        field_order: "4",
       },
       {
         field_required: true,
@@ -59,11 +86,12 @@ const Crear = () => {
         field_placeholder: "Ingrese su Documento",
         field_min: "0",
         field_max: "8",
-        field_order: "3",
+        field_order: "5",
       },
     ],
     banner: null,
   };
+
   const [formulario, setFormulario] = useState(initialState);
   const [keyTab, setKeyTab] = useState("detalle");
   const [loadingSubmit, setLoadingSubmit] = useState(false);
@@ -73,7 +101,10 @@ const Crear = () => {
 
   const handlerSubmitForm = () => {
     setLoadingSubmit(true);
+    //console.log("form dni: "+JSON.stringify(formulario.dni));
+    formulario.dni = formulario.dni.filter(n => n); //para filtrar el ultimo valor si escriben comma al final pero no escriben un dni
     const fields = orderToPost(formulario.fields);
+    //console.log("form dni: "+JSON.stringify(formulario.dni));
 
     fields.push({
       field_order: fields.length + 1,
@@ -106,7 +137,10 @@ const Crear = () => {
     }
 
     if (TYPE_FORM === "json") {
+      //console.log("formulario: "+JSON.stringify(formulario));
       postForm(formulario, "post-form-json").then(({ uuid }) => {
+        //console.log("formulario: "+formulario);
+        //console.log("formulario: "+JSON.stringify(formulario));
         setLoadingSubmit(false);
         setFormulario(initialState);
         setLabelAcepto("");
@@ -121,6 +155,24 @@ const Crear = () => {
     setFormulario({
       ...formulario,
       nombre: value,
+    });
+  };
+
+  const handlerDniChange = ({ target: { value } }) => {
+    hanlderCleanURLForm();
+    setFormulario({
+      ...formulario,
+      //dni: value,
+      dni: (value.replace(/\s/g, '').split(",")),
+    });
+  };
+  //console.log("form dni: "+JSON.stringify(formulario.dni));
+
+  const handlerEmailChange = ({ target: { value } }) => {
+    hanlderCleanURLForm();
+    setFormulario({
+      ...formulario,
+      email: value,
     });
   };
 
@@ -213,7 +265,7 @@ const Crear = () => {
     return <Preview formulario={formulario} setPreview={setPreview} />;
 
   const hiddenBtnDescription =
-    !formulario.nombre || !formulario.description || !formulario.banner;
+    !formulario.nombre || !formulario.dni || !formulario.description || !formulario.banner;
 
   return (
     <div className="container pt-5 pb-5">
@@ -233,6 +285,10 @@ const Crear = () => {
                 <TabDetailForm
                   nombre={formulario.nombre}
                   handlerNameChange={handlerNameChange}
+                  dni={formulario.dni}
+                  handlerDniChange={handlerDniChange}
+                  email={formulario.email}
+                  handlerEmailChange={handlerEmailChange}
                   description={formulario.description}
                   handlerDescriptionChange={handlerDescriptionChange}
                   hcolor={formulario.hcolor}
