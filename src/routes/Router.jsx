@@ -9,6 +9,7 @@ import {
   Gestionar,
   Formulario,
   MenuForm,
+  MenuCsv,
   DetalleForm,
   Resultados,
 } from "../screens";
@@ -18,7 +19,7 @@ import RouterLayout from "./RouterLayout";
 import { Loading } from "../components";
 
 const Router = ({ traerDatosSession, userReducer }) => {
-  const { isAdmin, error, loading } = userReducer;
+  const { isAdmin, error, loading, dniLoggedUser } = userReducer;
 
   useEffect(() => {
     traerDatosSession();
@@ -27,7 +28,10 @@ const Router = ({ traerDatosSession, userReducer }) => {
   if (loading) return <Loading />;
 
   if (error) return error;
-  if (isAdmin) {
+  //console.log("hola");
+  //console.log("dni: "+dniLoggedUser);
+  if (isAdmin === 3 || isAdmin === "3") {
+    //console.log("admin: "+isAdmin);
     return (
       <RouterLayout>
         <Route exact path="/apps/formmaker/menu" component={Menu} />
@@ -44,6 +48,19 @@ const Router = ({ traerDatosSession, userReducer }) => {
       </RouterLayout>
     );
   }
+
+  if (isAdmin === 2 || isAdmin === "2") {
+    //console.log("admin: "+isAdmin);
+    return (
+      <RouterLayout>
+        {/* <Route exact path="/apps/formmaker/menu" component={Menu} /> */}
+        <Route exact path="/apps/formmaker/resultados" component={Resultados} />
+        <Route component={MenuCsv} />
+      </RouterLayout>
+    );
+  }
+  //console.log("admin: "+isAdmin);
+
   return (
     <RouterLayout>
       <Route exact path="/apps/formmaker/" component={MenuForm} />
