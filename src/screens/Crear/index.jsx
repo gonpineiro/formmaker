@@ -96,57 +96,81 @@ const Crear = () => {
   const [keyTab, setKeyTab] = useState("detalle");
   const [loadingSubmit, setLoadingSubmit] = useState(false);
   const [preview, setPreview] = useState(false);
+  const [fileSizeAllowed, setFileSizeAllowed] = useState(true);
   const [uuidForm, setUuidForm] = useState(null);
   const [labelAcepto, setLabelAcepto] = useState("");
 
   const handlerSubmitForm = () => {
     setLoadingSubmit(true);
     //console.log("form dni: "+JSON.stringify(formulario.dni));
-    formulario.dni = formulario.dni.filter(n => n); //para filtrar el ultimo valor si escriben comma al final pero no escriben un dni
+    formulario.dni = formulario.dni.split(";").filter(n => n); //para filtrar el ultimo valor si escriben comma al final pero no escriben un dni
     const fields = orderToPost(formulario.fields);
     //console.log("form dni: "+JSON.stringify(formulario.dni));
+    //console.log("fields: "+JSON.stringify(fields));
 
-    fields.push({
+    const fechaHoraRespuestaObject = {
       field_order: fields.length + 1,
       field_id: "fechaHoraRespuesta",
       field_name: "fechaHoraRespuesta",
       field_label: "fechaHoraRespuesta",
       field_type: "answerdate",
       field_value: "",
-    });
-
-    fields.push({
+    };
+    const aceptoObject = {
       field_order: fields.length + 1,
       field_id: "acepto",
       field_name: "acepto",
-      field_label: labelAcepto,
+      field_label: "Acepto",
       field_type: "checkbox",
       field_value: "checked",
       field_required: "required",
-    });
+    };
+    fields.push(fechaHoraRespuestaObject);
+    fields.push(aceptoObject);
+
+    //console.log("Indice: "+fields.indexOf(fechaHoraRespuestaObject));
 
     setFormulario(formulario);
 
     if (TYPE_FORM === "mongo") {
-      insertForm(formulario).then(() => {
-        setLoadingSubmit(false);
-        setFormulario(initialState);
-        setLabelAcepto("");
-        setKeyTab("detalle");
-      });
+      insertForm(formulario)
+        .then(() => {
+          setLoadingSubmit(false);
+          setFormulario(initialState);
+          setLabelAcepto("");
+          setKeyTab("detalle");
+        })
+        .catch(error => {
+          fields.splice(fields.indexOf(fechaHoraRespuestaObject), 1);
+          fields.splice(fields.indexOf(aceptoObject), 1);
+          //console.log("Ocurrio un error!: " + JSON.stringify(error));
+        })
+        .finally(() => {
+          setLoadingSubmit(false);
+        });;
     }
 
     if (TYPE_FORM === "json") {
       //console.log("formulario: "+JSON.stringify(formulario));
-      postForm(formulario, "post-form-json").then(({ uuid }) => {
-        //console.log("formulario: "+formulario);
-        //console.log("formulario: "+JSON.stringify(formulario));
-        setLoadingSubmit(false);
-        setFormulario(initialState);
-        setLabelAcepto("");
-        setKeyTab("detalle");
-        setUuidForm(uuid);
-      });
+      postForm(formulario, "post-form-json")
+        .then(({ uuid }) => {
+          //console.log("formulario: "+formulario);
+          //console.log("formulario: "+JSON.stringify(formulario));
+          setLoadingSubmit(false);
+          setFormulario(initialState);
+          setLabelAcepto("");
+          setKeyTab("detalle");
+          setUuidForm(uuid);
+        })
+        .catch(error => {
+          fields.splice(fields.indexOf(fechaHoraRespuestaObject), 1);
+          fields.splice(fields.indexOf(aceptoObject), 1);
+          //console.log("Ocurrio un error!: " + JSON.stringify(error))
+          //console.log("Ocurrio un error!: " + error)
+        })
+        .finally(() => {
+          setLoadingSubmit(false);
+        });
     }
   };
 
@@ -162,8 +186,8 @@ const Crear = () => {
     hanlderCleanURLForm();
     setFormulario({
       ...formulario,
-      //dni: value,
-      dni: (value.replace(/\s/g, '').split(",")),
+      //dni: value,.split(";")
+      dni: (value.replace(/\s/g, '')),
     });
   };
   //console.log("form dni: "+JSON.stringify(formulario.dni));
@@ -204,14 +228,25 @@ const Crear = () => {
     hanlderCleanURLForm();
     const files = target.files;
     const fileReader = new FileReader();
-    fileReader.readAsDataURL(files[0]);
 
-    fileReader.onload = ({ target: { result } }) => {
+    if(files[0].size < 8000000){
+      setFileSizeAllowed(true);
+      fileReader.readAsDataURL(files[0]);
+  
+      fileReader.onload = ({ target: { result } }) => {
+        setFormulario({
+          ...formulario,
+          banner: result,
+        });
+      };
+    }else{
       setFormulario({
         ...formulario,
-        banner: result,
-      });
-    };
+        banner: null,
+      })
+      setFileSizeAllowed(false);
+    }
+
   };
 
   const handlerBodyEmailChange = ({ target: { value } }) => {
@@ -296,6 +331,7 @@ const Crear = () => {
                   terminosCondiciones={formulario.terminosCondiciones}
                   handlerTermYCondChange={handlerTermYCondChange}
                   banner={formulario.banner}
+                  fileSizeAllowed={fileSizeAllowed}
                   handlerBannerChange={handlerBannerChange}
                   bodyEmail={formulario.bodyEmail}
                   handlerBodyEmailChange={handlerBodyEmailChange}
@@ -321,7 +357,7 @@ const Crear = () => {
           ) : (
             <Loading />
           )}
-        </div>       
+        </div>
 
         {keyTab === "campos" && (
           <FieldsDetail formulario={formulario} setFormulario={setFormulario} />
