@@ -23,7 +23,7 @@ const Checkboxes = ({
           </label>
           <div className="container row">
             {field_options.map((option, i) => (
-              <div className="form-check col-6" key={i}>
+              <div className="form-check col-12" key={i}>
                 <input
                   type="checkbox"
                   className="form-check-input"
