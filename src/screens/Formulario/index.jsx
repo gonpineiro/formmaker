@@ -15,6 +15,7 @@ const Formulario = () => {
   const [loading, setLoading] = useState(true);
   const [loadingSubmit, setLoadingSubmit] = useState(false);
   const [message, setMessage] = useState(null);
+  const [messageColor, setMessageColor] = useState('primary');
   const [checked, setChecked] = useState(false);
   const [idForm] = useState(useParams().idForm);
 
@@ -34,16 +35,33 @@ const Formulario = () => {
   }, [idForm]);
 
   const handleSubmit = (event) => {
-    setLoadingSubmit(true);
+    setLoadingSubmit(true); //siempre dejar activado para que el usuario no pueda reenviar el formulario
     event.preventDefault();
+
     const fields = elements.fields;
     if (validateForm(fields)) {
+      //se crea el formdata correspondiente a las respuestas
       const formObject = createFormData(event.target.form, fields);
-      console.log(formObject);
-      postData({ formObject, idForm }, nombre, "respuesta").then(({ msg }) => {
-        setMessage(msg);
-        setLoadingSubmit(false);
+
+      //se elimina el arreglo de campos del formulario para evitar que por x o por y quede dicha informacion cargada
+      setElements({
+        ...elements,
+        fields: null
       });
+
+      if (formObject != null) {
+          postData({ formObject, idForm }, nombre, "respuesta")
+            .then(({ msg }) => {
+              setMessage(msg);
+            })
+            .finally(() => {
+              setLoadingSubmit(false);
+            });
+      } else {
+        setMessage("Ocurrio un error al registrar sus respuestas. Por favor, intente completar el formulario nuevamente y si el problema persiste contate con un administrador. Sepa disculpar las molestias ocasionadas.");
+        setMessageColor("danger");
+        setLoadingSubmit(false);
+      }
     } else {
       setLoadingSubmit(false);
     }
@@ -62,7 +80,7 @@ const Formulario = () => {
 
   if (loading) return <Loading />;
 
-  if (message) return <Message message={message} backForm />;
+  if (message) return <Message message={message} color={messageColor} backForm />;
 
   if (estado !== "activo")
     return <Message message={"El formulario no se encuentra activo"} />;
@@ -95,18 +113,18 @@ const Formulario = () => {
             <form id="thisForm" className="needs-validation" noValidate>
               {fields
                 ? fields.map((field, i) => {
-                    if (field.field_name === "acepto") {
-                      return null;
-                    }
-                    return (
-                      <Element
-                        key={i}
-                        field={field}
-                        hcolor={hcolor}
-                        preview={false}
-                      />
-                    );
-                  })
+                  if (field.field_name === "acepto") {
+                    return null;
+                  }
+                  return (
+                    <Element
+                      key={i}
+                      field={field}
+                      hcolor={hcolor}
+                      preview={false}
+                    />
+                  );
+                })
                 : null}
               {terminosCondiciones ? (
                 <div className="card mb-3">
@@ -129,24 +147,24 @@ const Formulario = () => {
 
               {fields
                 ? // eslint-disable-next-line array-callback-return
-                  fields.map((field, i) => {
-                    if (field.field_name === "acepto") {
-                      return (
-                        <Element
-                          key={i}
-                          field={field}
-                          setChecked={setChecked}
-                          checked={checked}
-                        />
-                      );
-                    }
-                  })
+                fields.map((field, i) => {
+                  if (field.field_name === "acepto") {
+                    return (
+                      <Element
+                        key={i}
+                        field={field}
+                        setChecked={setChecked}
+                        checked={checked}
+                      />
+                    );
+                  }
+                })
                 : null}
               {!loadingSubmit ? (
                 <div className="container">
                   <div className="row">
                     <button
-                      type="submit"
+                      type="button"
                       className="btn btn-info btn-totem mb-3 col-12 col-md-5"
                       disabled={!checked}
                       onClick={(e) => handleSubmit(e)}
