@@ -1,7 +1,6 @@
 const createFormData = (form, fields) => {
   const Formdata = new FormData(form);
-  console.log("form: "+Formdata);
-  console.log("form: "+JSON.stringify(Formdata));
+  let inputValue;
   fields.forEach((req) => {
     if (req.field_name) {
       switch (req.field_type) {
@@ -27,8 +26,8 @@ const createFormData = (form, fields) => {
           break;
 
         case "file":
-          console.log("req: "+req);
-          console.log("req: "+JSON.stringify(req));
+          //console.log("req: "+req);
+          //console.log("req: "+JSON.stringify(req));
           const files = document.getElementsByName(req.field_name);
           /*let fileArray = [];
           files.forEach((item) => {
@@ -45,18 +44,40 @@ const createFormData = (form, fields) => {
           break;
 
         default:
-          Formdata.set(req.field_name, Formdata.get(req.field_name));
+          //Formdata.set(req.field_name, Formdata.get(req.field_name));
+          //console.log("Field: "+JSON.stringify(Formdata.get(req.field_name)));
+          //inputValue = Formdata.get(req.field_name);
+          inputValue = document.getElementsByName(req.field_name);
+          //console.log("\nInput:"+inputValue);
+          if(req.field_id !== 'acepto' && (inputValue[0].value == undefined || inputValue[0].value == null || inputValue[0].value == 'null')){
+            Formdata.set(req.field_name, inputValue[0].value);
+          }else{
+            console.log("\nInput:"+inputValue[0]);
+          }
           break;
       }
     }
   });
-  const formObject = {};
+  let formObject = {};
 
   for (const key of Formdata.keys()) {
-    formObject[key] = Formdata.get(key);
+    //se agrega esta condicion para probar si el problema de los campos en nulo proviene del front.
+    //La idea es que si se devuelve un form data nulo, se le indique al usuario que no se pudo registrar
+    //su respuesta. El formdata nulo surge si alguno de los valores obtenidos es nulo
+    if(key != "acepto"){
+      if(formObject != null){
+        if(Formdata.get(key) != null && Formdata.get(key) != 'null' && Formdata.get(key) != undefined ){
+          formObject[key] = Formdata.get(key);
+        }else{
+          formObject = null;
+        }
+      }
+    }
   }
-
-  delete formObject.acepto;
+  if(formObject != null){
+    delete formObject.acepto;
+  }
+  //formObject = null; //utilizado para probar el caso nulo
 
   return formObject;
 };
