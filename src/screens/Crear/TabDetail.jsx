@@ -1,4 +1,4 @@
-import { BasicButton, BasicInput, BasicTextarea } from "../../components";
+import { BasicButton, BasicInput, BasicTextarea, Message } from "../../components";
 import { URL_APP } from "../../config/config";
 
 const TabDetailForm = ({
@@ -15,6 +15,7 @@ const TabDetailForm = ({
   terminosCondiciones,
   handlerTermYCondChange,
   banner,
+  fileSizeAllowed,
   handlerBannerChange,
   bodyEmail,
   labelAcepto,
@@ -37,10 +38,10 @@ const TabDetailForm = ({
           handlerChange={handlerNameChange}
         />
         <BasicInput
-          label="DNI de los encargados* (separar por ',')"
+          label="DNI de los encargados* (separar por ';')"
           id="dni"
           type="text"
-          placeholder="28394823, 24384932"
+          placeholder="28394823; 24384932"
           value={dni}
           handlerChange={handlerDniChange}
         />
@@ -107,8 +108,9 @@ const TabDetailForm = ({
           lang="es"
           handlerChange={handlerBannerChange}
         />
+        {(!fileSizeAllowed) ? <Message message={"El archivo supera los 8MB de tamaño"} color={"danger"}></Message> : ''}
         <img
-          className="rounded pb-3"
+          className="rounded pb-3 d-flex mx-auto"
           style={{ width: "70%" }}
           src={banner || ""}
           alt={banner ? nombre : ""}
