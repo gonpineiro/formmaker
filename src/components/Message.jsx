@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
-const Message = ({ message, backForm }) => {
+const Message = ({ message, backForm, color = "primary" }) => {
   return (
     <div className="container pt-5">
       <div className="col-12 col-md-8 mx-auto pt-5">
-        <div className="alert alert-primary" role="alert">
+        <div className={'alert alert-'+color} role="alert">
           {message}
         </div>
         {backForm && (
