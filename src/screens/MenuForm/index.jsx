@@ -29,9 +29,11 @@ const getIdsForms = async (setForms) => {
 const useQuery = () => new URLSearchParams(useLocation().search);
 
 const redirectFormUrl = (form) => {
-  if (TYPE_FORM === "mongo") return "/apps/formulario/" + form._id;
-
-  if (TYPE_FORM === "json") return "/apps/formulario/" + form.id;
+  //console.log("type: "+TYPE_FORM);
+  //console.log("es JSON?: "+(TYPE_FORM === "json"));
+  if (TYPE_FORM === "mongo") return "/apps/formmaker?idForm=" + form._id;
+  //https://weblogin.muninqn.gov.ar/apps/formmaker?idForm=62e2c1c7a0140
+  if (TYPE_FORM === "json") return "/apps/formmaker?idForm=" + form.id;
 };
 
 const MenuForm = () => {
@@ -43,7 +45,7 @@ const MenuForm = () => {
   }, []);
 
   if (forms.length === 0) return <Loading />;
-
+  
   if (idForm) return <Redirect push to={"/apps/formulario/" + idForm} />;
   return (
     <div className="container pt-5">
