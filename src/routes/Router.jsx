@@ -53,7 +53,7 @@ const Router = ({ traerDatosSession, userReducer }) => {
     //console.log("admin: "+isAdmin);
     return (
       <RouterLayout>
-        {/* <Route exact path="/apps/formmaker/menu" component={Menu} /> */}
+        <Route exact path="/apps/formmaker/menu" component={MenuCsv} /> 
         <Route exact path="/apps/formmaker/resultados" component={Resultados} />
         <Route component={MenuCsv} />
       </RouterLayout>
