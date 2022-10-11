@@ -51,7 +51,8 @@ const Input = ({
             {(field_max != null && field_max != undefined && field_max != '') ? count/field_max : '' }
           </p>
           <div className="invalid-feedback">
-            {field_placeholder} correctamente.
+            {/* {field_placeholder} correctamente. */}
+            {(field_placeholder != undefined ? field_placeholder + " correctamente" : "El valor del campo " + field_name + " no es válido.")}
           </div>
           <div className="valid-feedback">¡Se ve bien!</div>
         </div>

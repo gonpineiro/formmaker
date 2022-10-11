@@ -83,7 +83,7 @@ const Formulario = () => {
   if (message) return <Message message={message} color={messageColor} backForm />;
 
   if (estado !== "activo")
-    return <Message message={"El formulario no se encuentra activo"} />;
+    return <Message message={"Se completaron los turnos disponibles. Pronto habilitaremos nuevas fechas."} />;
 
   if (!elements) return "404";
   return (

@@ -38,7 +38,8 @@ const Date = ({
               value={field_value}
             />
             <div className="invalid-feedback">
-              {field_placeholder} correctamente.
+              {/* {field_placeholder} correctamente. */}
+              {(field_placeholder != undefined ? field_placeholder + " correctamente" : "Debe indicar una fecha válida para el campo " + field_name + ".")}
             </div>
           </div>
         </div>

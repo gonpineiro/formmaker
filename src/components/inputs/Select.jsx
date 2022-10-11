@@ -40,7 +40,8 @@ const Select = ({
                 ))}
             </select>
             <div className="invalid-feedback">
-              {field_placeholder} correctamente.
+              {/* {field_placeholder} correctamente. */}
+              {(field_placeholder != undefined ? field_placeholder + " correctamente" : "Debe seleccionar un valor para el campo " + field_name + ".")}
             </div>
             <div className="valid-feedback">¡Se ve bien!</div>
           </div>
