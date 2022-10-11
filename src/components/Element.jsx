@@ -19,6 +19,8 @@ const Element = ({
         field_label,
         field_max,
         field_min,
+        field_maxValue,
+        field_minValue,
         field_name,
         field_options,
         field_other,
@@ -79,6 +81,8 @@ const Element = ({
                     field_class={field_class}
                     field_min={field_min}
                     field_max={field_max}
+                    field_minValue={field_minValue}
+                    field_maxValue={field_maxValue}
                     field_type={field_type}
                 />
             );

@@ -11,8 +11,10 @@ const Input = ({
   field_placeholder,
   field_required,
   field_value,
-  field_min,
   field_max,
+  field_min,
+  field_maxValue,
+  field_minValue,
   field_type,
   field_accept,
 }) => {
@@ -54,11 +56,14 @@ const Input = ({
             required={isRequired && "required"}
             minLength={field_min}
             maxLength={field_max}
-            //accept={field_accept}
+            //esto es por el input number, para agregar valores maximos y minimos
+            min={field_minValue}
+            max={field_maxValue}
             accept={(field_accept != undefined ? field_accept.join(" ") : '')}
           />
           <div className="invalid-feedback">
-            {field_type !== "file" ? field_placeholder+' correctamente' : 'Debe adjuntar un archivo'}.
+            {/* {field_type !== "file" ? field_placeholder+' correctamente' : 'Debe adjuntar un archivo'}. */}
+            {(field_type === "file" ? 'Debe adjuntar un archivo' : (field_placeholder != undefined ? field_placeholder + " correctamente" : "El valor del campo " + field_name + " no es válido."))}
           </div>
           <div className="valid-feedback">¡Se ve bien!</div>
         </div>

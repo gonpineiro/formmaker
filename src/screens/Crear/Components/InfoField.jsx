@@ -14,8 +14,10 @@ const setDataTip = (element) => {
             dataTip += 'Titulo: ' + element.link_title + '<br />';
             dataTip += 'URL: ' + element.url + '<br />';
             break;
-        case 'text':
         case 'number':
+            dataTip += 'Valor Máximo Permitido: ' + (element.field_maxValue || '-') + '<br />';
+            dataTip += 'Valor Mínimo Permitido: ' + (element.field_minValue || '-') + '<br />';
+        case 'text':
         case 'textarea':
         case 'email':
             dataTip += 'Etiqueta: ' + element.field_label + '<br />';

@@ -62,6 +62,20 @@ const FieldNumber = ({ formulario, setFormulario, callapseOrden }) => {
     });
   };
 
+  const handlerMaxValueChange = ({ target: { value } }) => {
+    setField({
+      ...field,
+      field_maxValue: value,
+    });
+  };
+
+  const handlerMinValueChange = ({ target: { value } }) => {
+    setField({
+      ...field,
+      field_minValue: value,
+    });
+  };
+
   return (
     <div className="accordion-item">
       <h2 className="accordion-header" id={"heading" + callapseOrden}>
@@ -101,20 +115,36 @@ const FieldNumber = ({ formulario, setFormulario, callapseOrden }) => {
             placeholder="Ej: Nombre mascota, escriba su email, descripción de su vivienda"
           />
           <BasicInput
-            label="Mínimo"
+            label="Longitud Mínima"
             id={"min_number_field_label"}
             type="number"
             value={field.field_min || ""}
             handlerChange={handlerMinCharChange}
-            placeholder="Ej: 5"
+            placeholder="Ej: 1"
           />
           <BasicInput
-            label="Máximo"
+            label="Longitud Máxima"
             id={"max_number_field_label"}
             type="number"
             value={field.field_max || ""}
             handlerChange={handlerMaxCharChange}
+            placeholder="Ej: 8"
+          />
+          <BasicInput
+            label="Valor Mínimo Aceptado"
+            id={"min_number_field_label"}
+            type="number"
+            value={field.field_minValue || ""}
+            handlerChange={handlerMinValueChange}
             placeholder="Ej: 5"
+          />
+          <BasicInput
+            label="Valor Máximo Aceptado"
+            id={"max_number_field_label"}
+            type="number"
+            value={field.field_maxValue || ""}
+            handlerChange={handlerMaxValueChange}
+            placeholder="Ej: 85"
           />
           <BasicCheckbox
             label="¿Es un campo requerido?"

@@ -86,6 +86,8 @@ const Crear = () => {
         field_placeholder: "Ingrese su Documento",
         field_min: "0",
         field_max: "8",
+        field_minValue: "0",
+        //field_maxValue: "99999999",
         field_order: "5",
       },
     ],

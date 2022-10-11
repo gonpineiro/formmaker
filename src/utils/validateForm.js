@@ -3,6 +3,7 @@ import { className, emailIsValid } from ".";
 const validateForm = (fields) => {
   let sendPost = true;
   fields.forEach((req) => {
+    //console.log("hola");
     switch (req.field_type) {
       case "email":
         if (!emailIsValid(req.field_value)) {
@@ -14,6 +15,7 @@ const validateForm = (fields) => {
           className("id" + req.field_id, "is-valid", "add");
         }
         break;
+
       case "checkboxes":
       case "radio":
         if(req.field_required === true || req.field_required === "true"){
@@ -30,10 +32,34 @@ const validateForm = (fields) => {
             className("id" + req.field_id, "label-invalid", "remove");
           }
         }
-
         break;
+
       case "checkbox":
       case "separator":
+        break;
+
+      case "number":
+        if (req.field_value === "" && (req.field_required === "true" || req.field_required === true) ) {
+          className("id" + req.field_id, "is-invalid", "add");
+          className("id" + req.field_id, "is-valid", "remove");
+          sendPost = false;
+        } else {
+          if (req.field_value !== "" && (req.field_required === "true" || req.field_required === true)) {
+            className("id" + req.field_id, "is-invalid", "remove");
+            className("id" + req.field_id, "is-valid", "add");
+          }
+
+          if (req.field_value !== "" && (req.field_value < req.field_minValue)){
+            className("id" + req.field_id, "is-invalid", "add");
+            className("id" + req.field_id, "is-valid", "remove");
+          }
+  
+          if (req.field_value !== "" && (req.field_value > req.field_maxValue)){
+            className("id" + req.field_id, "is-invalid", "add");
+            className("id" + req.field_id, "is-valid", "remove");
+          }
+        }
+        
         break;
 
       default:
