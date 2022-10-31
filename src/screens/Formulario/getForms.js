@@ -1,4 +1,4 @@
-import { getForm } from "../../utils";
+import { getForm, renameTab } from "../../utils";
 
 import { TYPE_FORM } from "../../config/config";
 import { getFormById } from "../../api";
@@ -11,6 +11,7 @@ export const getFormData = async (setElements, setLoading, idForm) => {
         (a, b) => a.field_order - b.field_order
       );
       setElements(formData);
+      (formData.nombre ? renameTab("Formulario "+formData.nombre) : renameTab("Formularios Dinámicos")) //para cambiar el titulo de la pestaña
     } else {
       setElements(undefined);
     }

@@ -1,6 +1,8 @@
 import { BasicButton, Element } from "../../components";
 import { FormContext } from "../FormContext";
 
+import { renameTab } from "../../utils";
+
 const Preview = ({ formulario, setPreview }) => {
   const { hcolor, banner, description, fields, terminosCondiciones, nombre } =
     formulario ?? {};
@@ -10,6 +12,8 @@ const Preview = ({ formulario, setPreview }) => {
   };
 
   const handleChange = () => {};
+
+  renameTab("Previsualización de Formulario");
 
   return (
     <FormContext.Provider value={{ handleChange }}>

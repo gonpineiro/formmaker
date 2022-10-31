@@ -3,7 +3,7 @@ import { Tab, Tabs } from "react-bootstrap";
 
 import { insertForm } from "../../api";
 
-import { postForm, orderToPost } from "../../utils/";
+import { postForm, orderToPost, renameTab } from "../../utils/";
 
 import InfoCards from "./InfoCards";
 import TabDetailForm from "./TabDetail";
@@ -131,7 +131,6 @@ const Crear = () => {
     fields.push(aceptoObject);
 
     //console.log("Indice: "+fields.indexOf(fechaHoraRespuestaObject));
-
     setFormulario(formulario);
 
     if (TYPE_FORM === "mongo") {
@@ -297,6 +296,8 @@ const Crear = () => {
 
   const colWidthCreate = () =>
     keyTab === "detalle" ? "col-12 col-md-12" : "col-12 col-md-6";
+
+  renameTab("Nuevo Formulario");
 
   if (preview)
     return <Preview formulario={formulario} setPreview={setPreview} />;

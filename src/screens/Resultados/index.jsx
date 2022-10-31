@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { Loading, Message } from "../../components";
 import { URL_WS_RESULTADOS } from "../../config/config";
-import { getAllForms } from "../../utils";
+import { getAllForms, renameTab } from "../../utils";
 
 //redux
 import { connect } from "react-redux";
@@ -32,6 +32,8 @@ const Resultados = ({ userReducer }) => {
   }, []);
 
   if (forms.length === 0) return <Loading />;
+
+  renameTab("Csv Formularios");
 
   return (
 
