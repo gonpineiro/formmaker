@@ -1,6 +1,19 @@
 import { BasicButton, BasicInput, BasicTextarea, Message } from "../../components";
 import { URL_APP } from "../../config/config";
 
+// WYSIWIG para descripcion y email
+// import { Editor } from "react-draft-wysiwyg";
+// import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+
+// import {Editor, EditorState} from 'draft-js';
+// import 'draft-js/dist/Draft.css';
+
+// import ReactQuill from 'react-quill';
+// import 'react-quill/dist/quill.snow.css';
+
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+
 const TabDetailForm = ({
   nombre,
   handlerNameChange,
@@ -22,9 +35,42 @@ const TabDetailForm = ({
   handlerLabelAceptoChange,
   handlerBodyEmailChange,
   handlerChangeToAddFields,
-  uuidForm,
+  uuidForm
 }) => {
   const hiddenBtnDescription = !nombre || !dni || !description || !banner;
+
+  const modulesDescription = {
+    toolbar: [
+      [{ font: [] }],
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      ["bold", "italic", "underline", "strike"],
+      [{ color: [] }, { background: [] }],
+      [{ script: "sub" }, { script: "super" }],
+      ["blockquote", "code-block"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      // [{ indent: "-1" }, { indent: "+1" }, { align: [] }],
+      [{ indent: "-1" }, { indent: "+1" }],
+      [{ align: ''  }, { align: 'center', className:'text-center' }, { align: 'right' }, { align: 'justify' }],
+      ["link", "image", "video"],
+      ["clean"],
+    ],
+  };
+  const modulesEmail = {
+    toolbar: [
+      [{ font: [] }],
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      ["bold", "italic", "underline", "strike"],
+      [{ color: [] }, { background: [] }],
+      [{ script: "sub" }, { script: "super" }],
+      ["blockquote", "code-block"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      // [{ indent: "-1" }, { indent: "+1" }, { align: [] }],
+      [{ indent: "-1" }, { indent: "+1" }],
+      [{ align: ''  }, { align: 'center', className:'text-center' }, { align: 'right' }, { align: 'justify' }],
+      ["link"],
+      ["clean"],
+    ],
+  };
 
   return (
     <div className="row">
@@ -53,7 +99,7 @@ const TabDetailForm = ({
           value={email}
           handlerChange={handlerEmailChange}
         /> */}
-        <BasicTextarea
+        {/* <BasicTextarea
           label="Descripción *"
           id="description"
           type="text"
@@ -61,6 +107,32 @@ const TabDetailForm = ({
           rows="3"
           value={description}
           handlerChange={handlerDescriptionChange}
+          disabled={true}
+        /> */}
+        <label htmlFor={"description"} className="form-label">
+          {"Descripción *"}
+        </label>
+        {/* <Editor
+          id="description"
+          type="text"
+          placeholder="Formulario algo"
+          wrapperClassName="form-control mb-3"
+          onChange={handlerDescriptionChange}
+        /> */}
+        {/* <Editor 
+          id="description"
+          type="text"
+          editorState={description}
+          onChange={handlerDescriptionChange} 
+        /> */}
+        <ReactQuill
+          theme="snow"
+          id="description"
+          className="bg-light"
+          placeholder={"Escriba una descripción para el formulario"}
+          modules={modulesDescription}
+          value={description}
+          onChange={handlerDescriptionChange}
         />
         <BasicInput
           label="Color *"
@@ -83,7 +155,7 @@ const TabDetailForm = ({
           value={labelAcepto}
           handlerChange={handlerLabelAceptoChange}
         />
-        <BasicTextarea
+        {/* <BasicTextarea
           label="Texto del correo electrónico *"
           id="bodyEmail"
           type="text"
@@ -91,6 +163,18 @@ const TabDetailForm = ({
           rows="3"
           value={bodyEmail}
           handlerChange={handlerBodyEmailChange}
+        /> */}
+        <label htmlFor={"bodyEmail"} className="form-label">
+          {"Texto del correo electrónico *"}
+        </label>
+        <ReactQuill
+          theme="snow"
+          id="bodyEmail"
+          className="bg-light"
+          placeholder={"Cuerpo del correo"}
+          modules={modulesEmail}
+          value={bodyEmail}
+          onChange={handlerBodyEmailChange}
         />
         <BasicButton
           label="Cargar Campos"

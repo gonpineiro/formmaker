@@ -53,3 +53,17 @@
     align-items: center;
     justify-content: center;
 }
+
+/* Para forzar las que las clases que agrega la libreria consigan el resultado esperado en los elementos de la descripcion*/
+.ql-align-center{
+    display: block;
+    text-align: center;
+  }
+  .ql-align-right{
+    display: block;
+    text-align: right;
+  }
+
+  .copyLink:hover{
+    background-color: #1578d4 !important;
+  }

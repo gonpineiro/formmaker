@@ -201,12 +201,13 @@ const Crear = () => {
     });
   };
 
-  const handlerDescriptionChange = ({ target: { value } }) => {
+  const handlerDescriptionChange = (wysiwygValue) => {
     hanlderCleanURLForm();
     setFormulario({
       ...formulario,
-      description: value,
+      description: wysiwygValue,
     });
+    console.log(wysiwygValue);
   };
 
   const handlerColorChange = ({ target: { value } }) => {
@@ -250,11 +251,18 @@ const Crear = () => {
 
   };
 
-  const handlerBodyEmailChange = ({ target: { value } }) => {
+  // const handlerBodyEmailChange = ({ target: { value } }) => {
+  //   hanlderCleanURLForm();
+  //   setFormulario({
+  //     ...formulario,
+  //     bodyEmail: value,
+  //   });
+  // };
+  const handlerBodyEmailChange = (wysiwygValue) => {
     hanlderCleanURLForm();
     setFormulario({
       ...formulario,
-      bodyEmail: value,
+      bodyEmail: wysiwygValue,
     });
   };
 

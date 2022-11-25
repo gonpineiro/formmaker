@@ -44,8 +44,30 @@ const MenuForm = () => {
     getIdsForms(setForms);
   }, []);
 
+  const handleCopyClick = (event) => {
+    const idForm = "form-"+event.target.getAttribute("data-id");
+    // console.log(idForm);
+    const linkElementToForm = document.getElementById(idForm);
+
+    const linkToForm = linkElementToForm.getAttribute("href");
+
+    // console.log(linkToForm);
+    // console.log(window.location.origin);
+    // Get the text field
+    // var copyText = document.getElementById("myInput");
+
+    // // Select the text field
+    // linkToForm.select();
+    // linkToForm.setSelectionRange(0, 99999); // For mobile devices
+
+    navigator.clipboard.writeText((window.location.origin+linkToForm));
+
+    // // Alert the copied text
+    // alert("Copied the text: " + copyText.value);
+  }
+
   if (forms.length === 0) return <Loading />;
-  
+
   if (idForm) return <Redirect push to={"/apps/formulario/" + idForm} />;
   return (
     <div className="container pt-5">
@@ -55,21 +77,31 @@ const MenuForm = () => {
           {forms.map((form, key) => (
             <div
               key={key}
-              className="col-12 md-4"
+              className="col-12 m-0 row"
               hidden={form.estado !== "activo"}
             >
               <Link
-                className="menu-link col-12 text-center"
+                className="menu-link col p-0"
                 to={redirectFormUrl(form)}
+                id={"form-"+key}
               >
                 <div
-                  className="alert"
+                  className="alert col-12 text-center"
                   style={{ backgroundColor: "#5997d1", color: "white" }}
                   role="alert"
                 >
                   {form.nombre}
                 </div>
               </Link>
+              <div
+                className="alert col-1 text-center d-flex justify-content-center copyLink"
+                title="Copiar enlace"
+                data-id={key}
+                style={{ backgroundColor: "#5997d1", color: "white", cursor: "pointer" }}
+                onClick={handleCopyClick}
+              >
+                <i class="large material-icons text-white my-auto" title="Copiar enlace" data-id={key}>content_copy</i>
+              </div>
             </div>
           ))}
         </div>
