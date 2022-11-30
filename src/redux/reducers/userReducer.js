@@ -38,6 +38,7 @@ export default (state = INITIAL_STATE, action) => {
         //isAdmin: /* app && app.userProfiles === "3" ? */ true/*  : false */,
         isAdmin: (app != null ? app.userProfiles : false),
         dniLoggedUser: (datosPersonales.datosPersonales != null &&  datosPersonales.datosPersonales != undefined ? datosPersonales.datosPersonales.documento : null),
+        nombreUsuario: (datosPersonales.datosPersonales != null &&  datosPersonales.datosPersonales != undefined ? datosPersonales.datosPersonales.razonSocial : null),
         idForm: payload.idForm,
       };
 

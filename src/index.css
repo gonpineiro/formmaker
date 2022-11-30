@@ -67,3 +67,9 @@
   .copyLink:hover{
     background-color: #1578d4 !important;
   }
+
+  .ql-container{
+    min-height: fit-content;
+    height: 120px;
+    margin-bottom: 10px;
+  }
