@@ -6,14 +6,23 @@ import {
   BasicCheckbox,
   BasicButton,
 } from "../../../components";
+import AlertMessage from "../../../components/Alert";
 
 import { getOrderId } from "../../../utils";
+import FieldDependant from "./FieldDependent";
 
-const initialState = { field_required: true, field_type: "checkboxes" };
+const initialState = {
+  field_required: true,
+  field_type: "checkboxes",
+  field_dependant: false,
+  field_dependsOnField: -1,
+  field_optionExpected: null,
+};
 
 const FieldCheckbox = ({ formulario, setFormulario, callapseOrden }) => {
   const [field, setField] = useState(initialState);
-  const [disabledSubmit, setDisabledSubmit] = useState(true);
+  const [disabledSubmit, setDisabledSubmit] = useState(false);
+  const [cantSubmitMessage, setCantSubmitMessage] = useState('');
 
   const formatField = () => {
     let checkField = field;
@@ -35,29 +44,62 @@ const FieldCheckbox = ({ formulario, setFormulario, callapseOrden }) => {
     };
   };
 
-  const enableSubmit = (value) => {
-    let opciones = value.split(";");
-    opciones = opciones.filter((item) => item !== "");
+  // const enableSubmit = (value) => {
+  //   let opciones = value.split(";");
+  //   opciones = opciones.filter((item) => item !== "");
 
-    if (opciones.length === 0) {
-      setDisabledSubmit(true);
+  //   if (opciones.length === 0) {
+  //     setDisabledSubmit(true);
+  //     setCantSubmitMessage("No escribió las opciones seleccionables")
+  //   } else if ([null, undefined, ''].includes(field.field_id)) {
+  //     setDisabledSubmit(true);
+  //     setCantSubmitMessage("Indique un titulo para el campo")
+  //   } else if ((field.field_dependant && field.field_dependsOnField != -1 && field.field_optionExpected == null)) {
+  //     setDisabledSubmit(true);
+  //     setCantSubmitMessage("No seleccionó una opción de dependencia")
+  //   } else {
+  //     setDisabledSubmit(false);
+  //     setCantSubmitMessage('');
+  //   }
+  // };
+
+
+  const puedeAgregarOpcion = () => {
+    let puedeAgregarOpcion = false;
+    if([null, undefined, [], ''].includes(field.field_options)){
+      setCantSubmitMessage("Falta definir las opciones seleccionables")
+    }else if (field.field_options.length === 0) {
+      setCantSubmitMessage("Falta definir las opciones seleccionables")
+    } else if ([null, undefined, ''].includes(field.field_id)) {
+      setCantSubmitMessage("Falta definir el titulo para el campo")
+    } else if ((field.field_dependant && field.field_dependsOnField != -1 && [null, undefined, ''].includes(field.field_optionExpected))) {
+      setCantSubmitMessage("No seleccionó la opción de la cual depende para aparecer")
     } else {
       setDisabledSubmit(false);
+      setCantSubmitMessage('');
+      puedeAgregarOpcion = true;
     }
-  };
+
+    return puedeAgregarOpcion;
+  }
 
   const handlerSubmit = () => {
-    const fields = formulario.fields;
-    field.field_order = getOrderId(fields);
+    // console.log(puedeAgregarOpcion());
+    
 
-    fields.push(formatField());
+    if (puedeAgregarOpcion()) {
+      const fields = formulario.fields;
+      field.field_order = getOrderId(fields);
 
-    setFormulario({
-      ...formulario,
-    });
+      fields.push(formatField());
 
-    setField(initialState);
-    setDisabledSubmit(true);
+      setFormulario({
+        ...formulario,
+      });
+
+      setField(initialState);
+      // setDisabledSubmit(true);
+    }
   };
 
   const handlerTextChange = ({ target: { value } }) => {
@@ -69,14 +111,16 @@ const FieldCheckbox = ({ formulario, setFormulario, callapseOrden }) => {
       field_id: value,
       field_value: "",
     });
+    puedeAgregarOpcion();
   };
 
   const handlerOptionChange = ({ target: { value } }) => {
-    enableSubmit(value);
+    // enableSubmit(value);
     setField({
       ...field,
       field_options: value,
     });
+    puedeAgregarOpcion();
   };
 
   const handlerRequiredChange = () => {
@@ -107,6 +151,9 @@ const FieldCheckbox = ({ formulario, setFormulario, callapseOrden }) => {
         data-bs-parent="#accordionFieldType"
       >
         <div className="accordion-body">
+          {/* <div className="row">
+            <FieldDependant formulario={formulario} setField={setField} field={field} id_dependant={"field_dependant_checkbox"} puedeAgregarOpcion={puedeAgregarOpcion}></FieldDependant>
+          </div> */}
           <BasicInput
             label="Etiqueta"
             id={"text_field_label"}
@@ -136,6 +183,10 @@ const FieldCheckbox = ({ formulario, setFormulario, callapseOrden }) => {
             classname="btn btn-primary mb-3"
             disabled={disabledSubmit}
           />
+          {
+            cantSubmitMessage != '' ?
+              <AlertMessage message={cantSubmitMessage} color={"danger"}></AlertMessage> : ''
+          }
         </div>
       </div>
     </div>
