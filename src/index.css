@@ -1,3 +1,6 @@
+*{
+    text-decoration: none !important;
+}
 .label-invalid{
     color: red !important;
 }

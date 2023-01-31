@@ -18,6 +18,8 @@ import * as userAction from "../redux/actions/userAction";
 import RouterLayout from "./RouterLayout";
 import { Loading } from "../components";
 
+import Previsualizar from "../screens/Previsualizar";
+
 const Router = ({ traerDatosSession, userReducer }) => {
   const { isAdmin, error, loading, dniLoggedUser } = userReducer;
 
@@ -44,6 +46,7 @@ const Router = ({ traerDatosSession, userReducer }) => {
         />
         <Route exact path="/apps/formmaker/comprobar" component={Comprobar} />
         <Route exact path="/apps/formmaker/resultados" component={Resultados} />
+        <Route exact path="/apps/formmaker/previsualizar" component={Previsualizar} />
         <Route component={Menu} />
       </RouterLayout>
     );
@@ -55,6 +58,7 @@ const Router = ({ traerDatosSession, userReducer }) => {
       <RouterLayout>
         <Route exact path="/apps/formmaker/menu" component={MenuCsv} /> 
         <Route exact path="/apps/formmaker/resultados" component={Resultados} />
+        <Route exact path="/apps/formmaker/previsualizar" component={Previsualizar} />
         <Route component={MenuCsv} />
       </RouterLayout>
     );

@@ -30,6 +30,7 @@ const MenuCsv = () => {
       <h2 className="titulo text-center mb-5">Formularios Dinámicos</h2>
       <div className="row mt-5">
         <OptionButton name="Resultados" url="/apps/formmaker/resultados" />
+        <OptionButton name="Previsualizar" url="/apps/formmaker/previsualizar" />
         <OptionButton
           name="Ir a Formularios"
           url="/apps/formmaker/"

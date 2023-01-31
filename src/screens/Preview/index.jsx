@@ -4,7 +4,7 @@ import { FormContext } from "../FormContext";
 import { renameTab } from "../../utils";
 import { useState } from "react";
 
-const Preview = ({ formulario, setPreview }) => {
+const Preview = ({ formulario, setPreview, buttonMessage }) => {
   const [elements, setElements] = useState(formulario);
   const { hcolor, banner, description, fields, terminosCondiciones, nombre } =
     formulario ?? {};
@@ -63,7 +63,7 @@ const Preview = ({ formulario, setPreview }) => {
         <div className="d-flex justify-content-center">
           <div className="col-12 col-md-7">
             <BasicButton
-              label="Volver al modo creación"
+              label={buttonMessage ? buttonMessage : "Volver al modo creación"}
               handlerClick={hanlderReturnToForm}
               classname="btn btn-primary mb-3"
             />

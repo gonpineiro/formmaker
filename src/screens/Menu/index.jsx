@@ -32,6 +32,7 @@ const Menu = () => {
         <OptionButton name="Crear" url="/apps/formmaker/crear" />
         <OptionButton name="Gestionar" url="/apps/formmaker/gestionar" />
         <OptionButton name="Resultados" url="/apps/formmaker/resultados" />
+        <OptionButton name="Previsualizar" url="/apps/formmaker/previsualizar" />
         <OptionButton name="Comprobar" url="/apps/formmaker/comprobar" />
         <OptionButton
           name="Ir a Formularios"

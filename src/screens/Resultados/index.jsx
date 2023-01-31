@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { Loading, Message } from "../../components";
+import { BasicButton, Loading, Message } from "../../components";
 import { URL_WS_RESULTADOS } from "../../config/config";
 import { getAllForms, renameTab } from "../../utils";
 
@@ -57,10 +57,17 @@ const Resultados = ({ userReducer }) => {
                           URL_WS_RESULTADOS + form.id + "&nombreForm=" + form.nombre
                         }
                         rel="noreferrer"
+                      // style="text-decoration: none;"
                       >
-                        <button type="button" className="btn btn-dark">
-                          Descargar .csv
-                        </button>
+                        <BasicButton
+                          // handlerClick={(event) => { handlerPreview(form.id) }}
+                          classname="btn btn-dark my-auto "
+                          label="Descargar .csv"
+                          icon={'file_download'}
+                        />
+                        {/* <button type="button" className="btn btn-dark d-flex">
+                          Descargar .csv <i class="material-icons text-white ms-2 my-auto">file_download</i>
+                        </button> */}
                       </a>
                     </div>
                   </div>
