@@ -3,6 +3,25 @@ import { className, emailIsValid } from ".";
 const validateForm = (fields) => {
   let sendPost = true;
   fields.forEach((req) => {
+
+    if (req.field_dependant == "true" && req.field_dependsOnField != "-1") {
+      let filteredField = fields.filter((field) => {
+          return (field.field_id == req.field_dependsOnField);
+      });
+
+      if(filteredField.length == 1){
+        // console.log("funciona!");
+        // console.log(filteredField);
+          if(filteredField[0].field_value == req.field_optionExpected){
+          //     // console.log("Lo consegui!");
+          //     field_type_if_can_show = field_type;
+              req.field_required = true;
+          }else{
+              req.field_required = false;
+          }
+      }
+  }
+
     //console.log("hola");
     switch (req.field_type) {
       case "email":
