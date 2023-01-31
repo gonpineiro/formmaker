@@ -36,15 +36,74 @@ const Element = ({
         url,
         image_title,
         image_src,
+
+        field_dependant,
+        field_dependsOnField,
+        field_optionExpected,
+        field_visibility
     },
     hcolor,
     checked,
     setChecked,
+    formElements,
 }) => {
     //console.log("que llego? "+ JSON.stringify(field_required));
     //console.log("hola: "+ field_accept);
     //console.log(field_other_input);
-    switch (field_type) {
+    // console.log(formElements);
+
+    let field_type_if_can_show = null;
+    if (["true", true].includes(field_dependant) && (field_dependsOnField != "-1" || field_dependsOnField != -1)) {
+        // console.log("entre");
+        // console.log(field_value);
+        // console.log(formElements);
+        // console.log(field_name);
+        // console.log(field_id);
+        // console.log(field_label);
+        let filteredField = formElements.fields.filter((field) => {
+            return (field.field_id == field_dependsOnField);
+        });
+
+        // console.log(filteredField);
+        // console.log(filteredField.length == 1);
+
+        if (filteredField.length == 1) {
+            // console.log("");
+            // if(field_optionExpected == "dsu1"){
+            //     console.log("opcion esperada");
+            //     console.log(field_optionExpected);
+            //     console.log(filteredField[0].field_value);
+            //     console.log(filteredField[0].field_visibility);
+            // }
+            // console.log("");
+
+            if (filteredField[0].field_value == field_optionExpected) {
+                // console.log("Lo consegui!");
+                // console.log(filteredField[0].field_visibility);
+                if ([undefined, null, '', true, 'true'].includes(filteredField[0].field_visibility)) {
+                    field_type_if_can_show = field_type;
+                    field_required = true;
+                    field_visibility = true;
+                } else {
+                    field_required = false;
+                    field_visibility = false;
+                }
+            } else {
+                field_required = false;
+                field_visibility = false;
+            }
+        }
+    } else {
+        field_type_if_can_show = field_type;
+    }
+
+    // if([false].includes(field_visibility)){
+    //     field_type_if_can_show = null;
+    // }
+
+
+    // console.log(field_dependant);
+    switch (field_type_if_can_show) {
         case 'answerdate':
             return (
                 <AnswerDate
