@@ -39,6 +39,7 @@ const Radio = ({
                                         onChange={(event) => handleChange(field_id, event)}
                                         id={'id' + option.option_label + field_id}
                                         name={field_name}
+                                        value={option.option_label}
                                     />
                                     <label
                                         className="form-check-label"
