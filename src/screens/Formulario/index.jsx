@@ -53,6 +53,7 @@ const Formulario = () => {
           postData({ formObject, idForm }, nombre, "respuesta")
             .then(({ msg }) => {
               setMessage(msg);
+              // setLoadingSubmit(false);
             })
             .finally(() => {
               setLoadingSubmit(false);
@@ -69,13 +70,48 @@ const Formulario = () => {
 
   const handleChange = (id, { target: { value } }) => {
     const newElements = { ...elements };
+    let field_id;
     newElements.fields.forEach((field) => {
-      const { field_id } = field;
-      if (id === field_id) {
+      // const { field_id } = field;
+      if (id === field.field_id) {
+        field_id = field.field_id
         field["field_value"] = value;
       }
       setElements(newElements);
     });
+
+    newElements.fields.forEach((field) => {
+      // const { field_id } = field;
+      // console.log("Dependiente");
+      // console.log(field_id);
+      // console.log(field.field_dependsOnField);
+      // console.log("");
+      if (field_id === field.field_dependsOnField) {
+        // field["field_value"] = element.target.nextElementSibling.textContent;
+        field["field_value"] = null;
+      }
+      setElements(newElements);
+    });
+    // elements.fields.map((field) => {
+    //   if(field.field_id == id){
+    //     console.log(field);
+    //     console.log(value);
+    //     field.field_value = value;
+    //   }
+    // })
+    // setElements({...elements});
+    // console.log("actualice!");
+    // console.log(elements);
+    // const newElements = { ...elements };
+    // newElements.fields.forEach((field) => {
+    //   const { field_id } = field;
+    //   console.log(field_id);
+    //   console.log(id);
+    //   if (id === field_id) {
+    //     field["field_value"] = value;
+    //   }
+    //   setElements(newElements);
+    // });
   };
 
   if (loading) return <Loading />;
@@ -122,6 +158,7 @@ const Formulario = () => {
                       field={field}
                       hcolor={hcolor}
                       preview={false}
+                      formElements={elements}
                     />
                   );
                 })
