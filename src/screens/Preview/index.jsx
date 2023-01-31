@@ -2,16 +2,58 @@ import { BasicButton, Element } from "../../components";
 import { FormContext } from "../FormContext";
 
 import { renameTab } from "../../utils";
+import { useState } from "react";
 
 const Preview = ({ formulario, setPreview }) => {
+  const [elements, setElements] = useState(formulario);
   const { hcolor, banner, description, fields, terminosCondiciones, nombre } =
     formulario ?? {};
 
+  // console.log(formulario);
+
   const hanlderReturnToForm = () => {
+    limpiarForm();
     setPreview(false);
   };
 
-  const handleChange = () => {};
+  const limpiarForm = () => {
+    const newElements = { ...elements };
+    newElements.fields.forEach((field) => {
+      field["field_value"] = "";
+      setElements(newElements);
+    });
+  };
+
+  // const handleChange = (id, element) => {
+  const handleChange = (id, { target: { value } }) => {
+    // console.log(value);
+    const newElements = { ...elements };
+    let field_id;
+    newElements.fields.forEach((field) => {
+      // const { field_id } = field;
+      if (id === field.field_id) {
+        field_id = field.field_id
+        // field["field_value"] = element.target.nextElementSibling.textContent;
+        field["field_value"] = value;
+      }
+      setElements(newElements);
+    });
+
+    newElements.fields.forEach((field) => {
+      // const { field_id } = field;
+      // console.log("Dependiente");
+      // console.log(field_id);
+      // console.log(field.field_dependsOnField);
+      // console.log("");
+      if (field_id === field.field_dependsOnField) {
+        // field["field_value"] = element.target.nextElementSibling.textContent;
+        field["field_value"] = null;
+      }
+      setElements(newElements);
+    });
+
+
+  };
 
   renameTab("Previsualización de Formulario");
 
@@ -46,11 +88,11 @@ const Preview = ({ formulario, setPreview }) => {
             </div>
             {fields
               ? fields.map((field, i) => {
-                  if (field.field_name === "acepto") {
-                    return null;
-                  }
-                  return <Element key={i} field={field} hcolor={hcolor} />;
-                })
+                if (field.field_name === "acepto") {
+                  return null;
+                }
+                return (<Element key={i} field={field} hcolor={hcolor} formElements={formulario} />);
+              })
               : null}
             {terminosCondiciones ? (
               <div className="card mb-3">
@@ -73,11 +115,11 @@ const Preview = ({ formulario, setPreview }) => {
 
             {fields
               ? // eslint-disable-next-line array-callback-return
-                fields.map((field, i) => {
-                  if (field.field_name === "acepto") {
-                    return <Element key={i} field={field} />;
-                  }
-                })
+              fields.map((field, i) => {
+                if (field.field_name === "acepto") {
+                  return <Element key={i} field={field} />;
+                }
+              })
               : null}
           </div>
         </div>
