@@ -1,3 +1,5 @@
+// import { useContext } from "react";
+// import { FormContext } from "../../screens/FormContext";
 import { asteriscos } from "../../utils";
 
 const Checkbox = ({
@@ -7,9 +9,16 @@ const Checkbox = ({
   checked,
   setChecked,
 }) => {
+  // const { handleChange } = useContext(FormContext);
+
+
+  // const hanldeChecked = (id, event) => {
   const hanldeChecked = () => {
     setChecked(!checked);
+    // handleChange(id,event)
   };
+
+
   const isRequired = field_required === "true";
   return (
     <>
@@ -20,6 +29,7 @@ const Checkbox = ({
           id={field_id}
           checked={checked}
           onChange={hanldeChecked}
+          // onChange={(event) => hanldeChecked(field_id, event)}
           required={isRequired && "required"}
         />
         <label className="form-check-label" htmlFor={field_id}>
