@@ -105,13 +105,15 @@ const Crear = () => {
   const handlerSubmitForm = () => {
     setLoadingSubmit(true);
     //console.log("form dni: "+JSON.stringify(formulario.dni));
-    formulario.dni = formulario.dni.split(";").filter(n => n); //para filtrar el ultimo valor si escriben comma al final pero no escriben un dni
+    if ((typeof formulario.dni == "string")) {
+      formulario.dni = formulario.dni.split(";").filter(n => n); //para filtrar el ultimo valor si escriben comma al final pero no escriben un dni
+    }
     const fields = orderToPost(formulario.fields);
     //console.log("form dni: "+JSON.stringify(formulario.dni));
     //console.log("fields: "+JSON.stringify(fields));
 
     const fechaHoraRespuestaObject = {
-      field_order: fields.length + 1,
+      field_order: (fields.length + 1).toString(),
       field_id: "fechaHoraRespuesta",
       field_name: "fechaHoraRespuesta",
       field_label: "fechaHoraRespuesta",
@@ -119,7 +121,7 @@ const Crear = () => {
       field_value: "",
     };
     const aceptoObject = {
-      field_order: fields.length + 1,
+      field_order: (fields.length + 2).toString(),
       field_id: "acepto",
       field_name: "acepto",
       field_label: "Acepto",
@@ -127,6 +129,19 @@ const Crear = () => {
       field_value: "checked",
       field_required: "required",
     };
+
+    const indexOfFechaHora = fields.indexOf(fechaHoraRespuestaObject);
+    if(indexOfFechaHora != -1){
+      fields.splice(indexOfFechaHora, 1);
+    }
+
+    const indexOfAcepto = fields.indexOf(aceptoObject);
+    if(indexOfAcepto != -1){
+      fields.splice(indexOfAcepto, 1);
+    }
+    // (fields.indexOf(aceptoObject) != -1 ? fields.splice(fields.indexOf(aceptoObject), 1) : true )
+    
+    // fields.splice(fields.indexOf(aceptoObject), 1);
     fields.push(fechaHoraRespuestaObject);
     fields.push(aceptoObject);
 
@@ -141,9 +156,10 @@ const Crear = () => {
           setLabelAcepto("");
           setKeyTab("detalle");
         })
-        .catch(error => {
-          fields.splice(fields.indexOf(fechaHoraRespuestaObject), 1);
-          fields.splice(fields.indexOf(aceptoObject), 1);
+        .catch((err) => {
+          console.error(err);
+          // fields.splice(fields.indexOf(fechaHoraRespuestaObject), 1);
+          // fields.splice(fields.indexOf(aceptoObject), 1);
           //console.log("Ocurrio un error!: " + JSON.stringify(error));
         })
         .finally(() => {
@@ -152,7 +168,9 @@ const Crear = () => {
     }
 
     if (TYPE_FORM === "json") {
-      //console.log("formulario: "+JSON.stringify(formulario));
+      // console.log("formulario: ");
+      // console.log(formulario);
+      // setLoadingSubmit(false);
       postForm(formulario, "post-form-json")
         .then(({ uuid }) => {
           //console.log("formulario: "+formulario);
@@ -163,9 +181,9 @@ const Crear = () => {
           setKeyTab("detalle");
           setUuidForm(uuid);
         })
-        .catch(error => {
-          fields.splice(fields.indexOf(fechaHoraRespuestaObject), 1);
-          fields.splice(fields.indexOf(aceptoObject), 1);
+        .catch((err) => {
+          console.error(err);
+
           //console.log("Ocurrio un error!: " + JSON.stringify(error))
           //console.log("Ocurrio un error!: " + error)
         })
@@ -207,7 +225,7 @@ const Crear = () => {
       ...formulario,
       description: wysiwygValue,
     });
-    console.log(wysiwygValue);
+    // console.log(wysiwygValue);
   };
 
   const handlerColorChange = ({ target: { value } }) => {
@@ -231,17 +249,17 @@ const Crear = () => {
     const files = target.files;
     const fileReader = new FileReader();
 
-    if(files[0].size < 8000000){
+    if (files[0].size < 8000000) {
       setFileSizeAllowed(true);
       fileReader.readAsDataURL(files[0]);
-  
+
       fileReader.onload = ({ target: { result } }) => {
         setFormulario({
           ...formulario,
           banner: result,
         });
       };
-    }else{
+    } else {
       setFormulario({
         ...formulario,
         banner: null,
