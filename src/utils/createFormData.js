@@ -12,7 +12,22 @@ const createFormData = (form, fields) => {
           if(radio.length > 0){
             radio.forEach((radio) => {
               if (radio.checked) {
-                const content = radio.nextSibling.textContent;
+                let content;
+                // console.log("radio value:");
+                // console.log(radio.value);
+                if(['otro', 'Otro'].includes(radio.value)){
+                  const otherField = document.getElementById("value_" + req.field_id);
+                  // console.log("otherField.value");
+                  // console.log(otherField.value);
+                  // console.log(otherField);
+                  if(![null, undefined, ''].includes(otherField.value)){
+                    content = otherField.value;
+                  }else{
+                    content = "-";
+                  }
+                }else{
+                  content = radio.nextSibling.textContent;
+                }
                 Formdata.set(req.field_name, content);
               }
             });
@@ -66,8 +81,8 @@ const createFormData = (form, fields) => {
           //   console.log("\nInput:"+inputValue[0]);
           // }
           if(req.field_id !== 'acepto'){
-            console.log(req.field_name);
-            console.log(inputValue[0]);
+            // console.log(req.field_name);
+            // console.log(inputValue[0]);
             // Formdata.set(req.field_name, ((inputValue[0].value == undefined || inputValue[0].value == null || inputValue[0].value == 'null') ? "-" : inputValue[0].value));
             if([undefined, null, 'null', ''].includes(inputValue[0])){
               Formdata.set(req.field_name, "-");
