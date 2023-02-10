@@ -41,14 +41,38 @@ const validateForm = (fields) => {
           //console.log("required? "+ req.field_required);
           const radio = document.getElementsByName(req.field_name);
           let countRadio = 0;
+          let otherSelected = false;
           radio.forEach((radio) => {
-            if (radio.checked) countRadio++;
+            if (radio.checked){
+              if(['otro', 'Otro'].includes(radio.value)){
+                otherSelected = true;
+              }
+              // console.log("elegido");
+              // console.log(radio.value);
+              // console.log(radio);
+              countRadio++;
+            }
           });
-          if (countRadio === 0) {
-            sendPost = false;
-            className("id" + req.field_id, "label-invalid", "add");
-          } else {
-            className("id" + req.field_id, "label-invalid", "remove");
+          if(otherSelected){
+            // console.log(req.field_id);
+            const otherField = document.getElementById("value_" + req.field_id);
+            // console.log(otherField.value);
+            // console.log(otherField);
+            if([null, undefined, ''].includes(otherField.value)){
+              className("value_" + req.field_id, "is-invalid", "add");
+              className("id" + req.field_id, "label-invalid", "add");
+              sendPost = false;
+            }else{
+              className("value_" + req.field_id, "is-invalid", "remove");
+              className("id" + req.field_id, "label-invalid", "remove");
+            }
+          }else{
+            if (countRadio === 0) {
+              sendPost = false;
+              className("id" + req.field_id, "label-invalid", "add");
+            } else {
+              className("id" + req.field_id, "label-invalid", "remove");
+            }
           }
         }
         break;
