@@ -13,7 +13,13 @@ const Radio = ({
     field_options,
     field_other,
     field_other_input,
+    field_value
 }) => {
+    // console.log("esto llega?");
+    // console.log(field_other_input);
+    // if (field_other_input) {
+    //     field_other_input.field_id = (field_other_input.field_id).split("_")[1]
+    // }
     const { handleChange } = useContext(FormContext);
     const isRequired = field_required === 'true';
     return (
@@ -45,20 +51,24 @@ const Radio = ({
                                         className="form-check-label"
                                         htmlFor={'id' + option.option_label + field_id}
                                     >
-                                        {option.option_label}
+                                        {/* {option.option_label} */}
+                                        {option.option_label.charAt(0).toUpperCase() + option.option_label.slice(1)}
                                     </label>
                                 </div>
                             ))}
-                        {field_other && field_other_input && (
+                        {field_value == "otro" && field_other && field_other_input && (
                             <BasicInput
                                 label={field_other_input.field_label}
                                 type="text"
-                                value=""
+                                value={field_other_input.field_value}
                                 id={field_other_input.field_id}
                                 placeholder={field_other_input.field_label}
-                                onChange={(event) =>
-                                    handleChange(field_other_input.field_id, event)
+                                handlerChange={(event) => {
+                                        // console.log("!asfa")
+                                        handleChange(field_other_input.field_id, event)
+                                    }
                                 }
+                                required={true}
                             />
                         )}
                     </div>
