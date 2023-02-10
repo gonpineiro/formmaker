@@ -22,6 +22,7 @@ const Input = ({
   const isRequired = field_required === "true";
 
   const handleInputChange = (event) => {
+    // console.log("Wow!");
     handleChange(field_id, event);
   };
   /*console.log("que llego? "+ JSON.stringify(field_required));
@@ -51,7 +52,8 @@ const Input = ({
             name={field_name}
             aria-describedby={field_id + "Help"}
             placeholder={field_placeholder ? field_placeholder : ""}
-            value={field_value.slice(0, field_max)}
+            // value={field_value.slice(0, field_max)}
+            value={(field_value ? field_value.slice(0, field_max) : field_value)}
             onChange={handleInputChange}
             required={isRequired && "required"}
             minLength={field_min}
