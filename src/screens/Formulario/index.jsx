@@ -50,14 +50,14 @@ const Formulario = () => {
       });
 
       if (formObject != null) {
-          postData({ formObject, idForm }, nombre, "respuesta")
-            .then(({ msg }) => {
-              setMessage(msg);
-              // setLoadingSubmit(false);
-            })
-            .finally(() => {
-              setLoadingSubmit(false);
-            });
+        postData({ formObject, idForm }, nombre, "respuesta")
+          .then(({ msg }) => {
+            setMessage(msg);
+            setLoadingSubmit(false);
+          })
+          .finally(() => {
+            setLoadingSubmit(false);
+          });
       } else {
         setMessage("Ocurrio un error al registrar sus respuestas. Por favor, intente completar el formulario nuevamente y si el problema persiste contate con un administrador. Sepa disculpar las molestias ocasionadas.");
         setMessageColor("danger");
@@ -69,13 +69,33 @@ const Formulario = () => {
   };
 
   const handleChange = (id, { target: { value } }) => {
+
     const newElements = { ...elements };
     let field_id;
+    // let algo = newElements.fields.filter((field) => {
+    //   console.log(field.field_id);
+    //   console.log(field);
+    //   console.log(id);
+    //   return field.field_id === id;
+    // })
+    // console.log(value);
+    // console.log("Encontre el elemento?");
+    // console.log(algo);
+
     newElements.fields.forEach((field) => {
       // const { field_id } = field;
+      // console.log("entre");
+      // console.log(field);
       if (id === field.field_id) {
         field_id = field.field_id
         field["field_value"] = value;
+      }else if (field.field_other === 'true') {
+        // console.log("entre");
+        // console.log(field);
+        if (field.field_other_input.field_id === id) {
+          field_id = field.field_other_input.field_id
+          field.field_other_input["field_value"] = value;
+        }
       }
       setElements(newElements);
     });
