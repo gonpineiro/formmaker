@@ -6,6 +6,7 @@ const BasicInput = ({
   value,
   handlerChange,
   disabled,
+  required
 }) => {
   const stringValue = type === "color" ? "#FFF" : "";
 
@@ -23,6 +24,7 @@ const BasicInput = ({
         onChange={handlerChange}
         accept="image/*"
         disabled={disabled || false}
+        required= {[true, 'true'].includes(required)}
       />
     </div>
   );
