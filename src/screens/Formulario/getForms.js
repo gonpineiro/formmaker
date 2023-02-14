@@ -4,9 +4,12 @@ import { TYPE_FORM } from "../../config/config";
 import { getFormById } from "../../api";
 
 export const getFormData = async (setElements, setLoading, idForm) => {
+  // setElements(null);
   if (TYPE_FORM === "json") {
     const formData = await getForm(idForm);
     if (!formData.error) {
+      // console.log("formulario inicial:");
+      // console.log(formData);
       formData.fields = formData.fields.sort(
         (a, b) => a.field_order - b.field_order
       );

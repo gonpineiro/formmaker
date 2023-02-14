@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Tab, Tabs } from "react-bootstrap";
 
 import { insertForm } from "../../api";
@@ -15,8 +15,11 @@ import { Loading, BasicButton } from "../../components";
 
 import { DEFAULT_COLOR, TYPE_FORM } from "../../config/config";
 
-const Crear = () => {
-  const initialState = {
+const Crear = ({ replicarFormulario, setReplicate, buttonMessage }) => {
+
+  renameTab("Nuevo Formulario");
+
+  const initialState = (replicarFormulario ? replicarFormulario : {
     nombre: null,
     estado: "borrador",
     dni: null,
@@ -92,9 +95,10 @@ const Crear = () => {
       },
     ],
     banner: null,
-  };
+  })
 
   const [formulario, setFormulario] = useState(initialState);
+  const [editTitle, setEditTitle] = useState("");
   const [keyTab, setKeyTab] = useState("detalle");
   const [loadingSubmit, setLoadingSubmit] = useState(false);
   const [preview, setPreview] = useState(false);
@@ -102,15 +106,49 @@ const Crear = () => {
   const [uuidForm, setUuidForm] = useState(null);
   const [labelAcepto, setLabelAcepto] = useState("");
 
+
+  useEffect(() => {
+
+    if (replicarFormulario) {
+      replicarFormulario.dni = (replicarFormulario.dni instanceof Array ? replicarFormulario.dni.join(";") : replicarFormulario.dni);
+      replicarFormulario.estado = "borrador"
+      let fieldsArray = [];
+      replicarFormulario.fields.forEach((aField, index) => {
+        if (aField.field_id == 'fechaHoraRespuesta' || aField.field_id == 'acepto') {
+          delete replicarFormulario.fields[index];
+        } else {
+          fieldsArray.push(aField);
+        }
+      });
+      setFormulario({
+        ...replicarFormulario,
+        fields: fieldsArray
+      });
+      setEditTitle("(Replicando formulario '" + formulario.nombre + "')")
+    }
+
+  }, [])
+  // console.log(formulario);
+
+
+
+  const handlerReturnToPrevisualizar = () => {
+    setFormulario(null);
+    setEditTitle("");
+    setReplicate(false);
+  }
+
   const handlerSubmitForm = () => {
+    // console.log("handlerSubmit");
     setLoadingSubmit(true);
     //console.log("form dni: "+JSON.stringify(formulario.dni));
     if ((typeof formulario.dni == "string")) {
       formulario.dni = formulario.dni.split(";").filter(n => n); //para filtrar el ultimo valor si escriben comma al final pero no escriben un dni
     }
+
     const fields = orderToPost(formulario.fields);
     //console.log("form dni: "+JSON.stringify(formulario.dni));
-    //console.log("fields: "+JSON.stringify(fields));
+
 
     const fechaHoraRespuestaObject = {
       field_order: (fields.length + 1).toString(),
@@ -131,16 +169,16 @@ const Crear = () => {
     };
 
     const indexOfFechaHora = fields.indexOf(fechaHoraRespuestaObject);
-    if(indexOfFechaHora != -1){
+    if (indexOfFechaHora != -1) {
       fields.splice(indexOfFechaHora, 1);
     }
 
     const indexOfAcepto = fields.indexOf(aceptoObject);
-    if(indexOfAcepto != -1){
+    if (indexOfAcepto != -1) {
       fields.splice(indexOfAcepto, 1);
     }
     // (fields.indexOf(aceptoObject) != -1 ? fields.splice(fields.indexOf(aceptoObject), 1) : true )
-    
+
     // fields.splice(fields.indexOf(aceptoObject), 1);
     fields.push(fechaHoraRespuestaObject);
     fields.push(aceptoObject);
@@ -168,13 +206,8 @@ const Crear = () => {
     }
 
     if (TYPE_FORM === "json") {
-      // console.log("formulario: ");
-      // console.log(formulario);
-      // setLoadingSubmit(false);
       postForm(formulario, "post-form-json")
         .then(({ uuid }) => {
-          //console.log("formulario: "+formulario);
-          //console.log("formulario: "+JSON.stringify(formulario));
           setLoadingSubmit(false);
           setFormulario(initialState);
           setLabelAcepto("");
@@ -183,17 +216,15 @@ const Crear = () => {
         })
         .catch((err) => {
           console.error(err);
-
-          //console.log("Ocurrio un error!: " + JSON.stringify(error))
-          //console.log("Ocurrio un error!: " + error)
         })
         .finally(() => {
-          setLoadingSubmit(false);
-        });
+      setLoadingSubmit(false);
+      });
     }
   };
 
   const handlerNameChange = ({ target: { value } }) => {
+    // console.log("handlerNameChange");
     hanlderCleanURLForm();
     setFormulario({
       ...formulario,
@@ -202,6 +233,7 @@ const Crear = () => {
   };
 
   const handlerDniChange = ({ target: { value } }) => {
+    // console.log("handlerDniChange");
     hanlderCleanURLForm();
     setFormulario({
       ...formulario,
@@ -209,9 +241,9 @@ const Crear = () => {
       dni: (value.replace(/\s/g, '')),
     });
   };
-  //console.log("form dni: "+JSON.stringify(formulario.dni));
 
   const handlerEmailChange = ({ target: { value } }) => {
+    // console.log("handlerEmailChange");
     hanlderCleanURLForm();
     setFormulario({
       ...formulario,
@@ -220,15 +252,22 @@ const Crear = () => {
   };
 
   const handlerDescriptionChange = (wysiwygValue) => {
-    hanlderCleanURLForm();
-    setFormulario({
-      ...formulario,
-      description: wysiwygValue,
-    });
+    // console.log(formulario.description);
+    if (formulario.description != wysiwygValue) {
+      // console.log(wysiwygValue);
+      // console.log("handlerDescriptionChange");
+      hanlderCleanURLForm();
+      //agregado porque al cargar un formulario ya creado, renderizaba muchas veces seguidas y se rompia todo
+      setFormulario({
+        ...formulario,
+        description: wysiwygValue,
+      });
+    }
     // console.log(wysiwygValue);
   };
 
   const handlerColorChange = ({ target: { value } }) => {
+    // console.log("handlerColorChange");
     hanlderCleanURLForm();
     setFormulario({
       ...formulario,
@@ -237,6 +276,7 @@ const Crear = () => {
   };
 
   const handlerTermYCondChange = ({ target: { value } }) => {
+    // console.log("handlerTermYCondChange");
     hanlderCleanURLForm();
     setFormulario({
       ...formulario,
@@ -245,6 +285,7 @@ const Crear = () => {
   };
 
   const handlerBannerChange = ({ target }) => {
+    // console.log("handlerBannerChange");
     hanlderCleanURLForm();
     const files = target.files;
     const fileReader = new FileReader();
@@ -269,35 +310,35 @@ const Crear = () => {
 
   };
 
-  // const handlerBodyEmailChange = ({ target: { value } }) => {
-  //   hanlderCleanURLForm();
-  //   setFormulario({
-  //     ...formulario,
-  //     bodyEmail: value,
-  //   });
-  // };
   const handlerBodyEmailChange = (wysiwygValue) => {
-    hanlderCleanURLForm();
-    setFormulario({
-      ...formulario,
-      bodyEmail: wysiwygValue,
-    });
+    if (formulario.bodyEmail != wysiwygValue) {
+      // console.log("handlerBodyEmail");
+      hanlderCleanURLForm();
+      setFormulario({
+        ...formulario,
+        bodyEmail: wysiwygValue,
+      });
+    }
   };
 
   const handlerLabelAceptoChange = ({ target: { value } }) => {
+    // console.log("handlerLabelAceptoChange");
     hanlderCleanURLForm();
     setLabelAcepto(value);
   };
 
   const hanlderCleanURLForm = () => {
+    // console.log("hanlderCleanURLForm");
     if (uuidForm) setUuidForm(null);
   };
 
   const handlerPreview = () => {
+    // console.log("handlerPreview");
     setPreview(true);
   };
 
   const handlerChangeToAddFields = () => {
+    // console.log("handlerChangeToAddFields");
     setKeyTab("campos");
   };
 
@@ -323,8 +364,6 @@ const Crear = () => {
   const colWidthCreate = () =>
     keyTab === "detalle" ? "col-12 col-md-12" : "col-12 col-md-6";
 
-  renameTab("Nuevo Formulario");
-
   if (preview)
     return <Preview formulario={formulario} setPreview={setPreview} />;
 
@@ -333,7 +372,18 @@ const Crear = () => {
 
   return (
     <div className="container pt-5 pb-5">
-      <h2 className="titulo text-center">Crear Formulario</h2>
+      <h2 className="titulo text-center">Crear Formulario </h2>
+      <h5 className="titulo text-center">{editTitle} </h5>
+      <div className="d-flex justify-content-center">
+        {buttonMessage ?
+          <BasicButton
+            label={buttonMessage}
+            handlerClick={handlerReturnToPrevisualizar}
+            classname="btn btn-primary mb-3"
+          /> : ''
+        }
+      </div>
+
 
       <div className="row mt-5">
         <div className={colWidthCreate()}>

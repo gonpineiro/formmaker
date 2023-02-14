@@ -10,23 +10,24 @@ import { connect } from "react-redux";
 import * as userAction from "../../redux/actions/userAction";
 import Preview from "../Preview";
 import AlertMessage from "../../components/Alert";
+import { Crear } from "..";
 
 
-const getIdsForms = async (setForms, dataUser) => {
-    /*console.log("dataUser: " + JSON.stringify(dataUser));
-    console.log("dni get: " + dataUser.dni);*/
+const getIdsForms = async (setForms, setLoading, dataUser) => {
     let dniU;
     (dataUser.profile == 2 || dataUser.profile == '2' ? dniU = dataUser.dni : dataUser.dniU = null);
     let forms = await getAllForms(dniU);
     forms = Object.values(forms);
     forms = forms.filter((item) => item !== null);
     setForms(Object.values(forms));
+    setLoading(false);
 };
 
 const Previsualizacion = ({ userReducer }) => {
     const { isAdmin, dniLoggedUser } = userReducer;
     const [forms, setForms] = useState([]);
     const [preview, setPreview] = useState(false);
+    const [replicate, setReplicate] = useState(false);
     const [alertMessage, setAlertMessage] = useState('');
     const [elements, setElements] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -44,13 +45,11 @@ const Previsualizacion = ({ userReducer }) => {
     } = elements ?? {};
 
     useEffect(() => {
-        getIdsForms(setForms, dataUser);
+        getIdsForms(setForms, setLoading, dataUser);
     }, []);
 
-    // if (forms.length === 0) return <Loading />;
-    // console.log(elements);
-
     const handlerPreview = async (idForm) => {
+        setLoading(true);
         if (idForm) {
             await getFormData(setElements, setLoading, idForm);
             setPreview(true)
@@ -59,7 +58,22 @@ const Previsualizacion = ({ userReducer }) => {
         }
     };
 
+    const handlerReplicate = async (idForm) => {
+        setLoading(true);
+        if (idForm) {
+            await getFormData(setElements, setLoading, idForm);
+
+            setReplicate(true)
+        } else {
+            setAlertMessage("No se recibio informacion del formulario")
+        }
+    };
+
+    if (replicate) return <Crear replicarFormulario={elements} setReplicate={setReplicate} buttonMessage={"Regresar"} />;
+
     if (preview) return <Preview formulario={elements} setPreview={setPreview} buttonMessage={"Regresar"} />;
+
+    if (loading) return <Loading />;
 
     renameTab("Previsualizar Formularios");
 
@@ -92,6 +106,14 @@ const Previsualizacion = ({ userReducer }) => {
                                                 label="Previsualizar"
                                                 icon={'remove_red_eye'}
                                             />
+                                            {isAdmin ?
+                                                <BasicButton
+                                                    handlerClick={(event) => { handlerReplicate(form.id) }}
+                                                    classname="btn btn-dark my-auto ms-1"
+                                                    label="Replicar"
+                                                    icon={'content_copy'}
+                                                /> : ''
+                                            }
                                         </div>
                                     </div>
                                 </div>
